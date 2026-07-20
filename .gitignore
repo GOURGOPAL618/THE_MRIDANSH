@@ -1,0 +1,34 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+.env
+*.env
+venv/
+ENV/
+env/
+.venv/
+
+# IDE / Editor configuration
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Notebook cache & temporary files
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Project Specific Data and Storage Blocks
+5_storage/checkpoints/*
+5_storage/state_database/*.db
+5_storage/telemetry_logs/*.log
+
+# Operating System garbage files
+.DS_Store
+Thumbs.db
