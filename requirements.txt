@@ -1,0 +1,13 @@
+# Core Engine & Configs
+pyyaml>=6.0
+pydantic>=2.0.0
+
+# Numerical & Geospatial (Data Pipeline)
+numpy>=1.24.0
+pandas>=2.0.0
+geopandas>=0.13.0
+rasterio>=1.3.0
+
+# Physics & ML Frameworks (For Kaggle Notebooks & Local)
+torch>=2.0.0
+scipy>=1.10.0
