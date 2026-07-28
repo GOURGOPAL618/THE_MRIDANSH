@@ -70,4 +70,5 @@ if __name__ == "__main__":
     assert "hydraulic_conductivity" in physics_results and "physics_constraint_loss" in physics_results
     assert physics_results["hydraulic_conductivity"].shape == (120, 120)
 
+
     print("\n[SUCCESS] Monday (Day 7) Soil Richards Physics Engine: PASSED OPERATIONAL CHECKS!\n")
