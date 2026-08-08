@@ -1,0 +1,40 @@
+/* Custom CSS for MRIDANSH Command Center */
+
+/* Main Container Padding Adjustment */
+.block-container {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* Glassmorphism Card Style for Metrics & Sections */
+div[data-testid="stMetric"] {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+div[data-testid="stMetric"]:hover {
+    border-color: #00cc96;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Sidebar Custom Accent */
+section[data-testid="stSidebar"] {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Header Accents */
+h1, h2, h3 {
+    font-weight: 600 !important;
+    letter-spacing: -0.5px;
+}
+
+/* Custom Dividers */
+hr {
+    margin: 1.5rem 0 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
