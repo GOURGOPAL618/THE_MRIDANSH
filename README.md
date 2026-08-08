@@ -40,7 +40,7 @@
 > **This section updates daily.** Tick a box the day it's shipped, and drop a one-line status note in `NOTES` so future-you (and anyone reviewing the repo) can see exact progress at a glance.
 
 ```
-PHASE 1 PROGRESS ████░░░░░░░░░░░░░░░░░░░░░░░░  1 / 12 DAYS COMPLETE  (8%)
+PHASE 1 PROGRESS ████████████████████████████  12 / 12 DAYS COMPLETE  (100%)
 ```
 
 | DAY | STATUS | MODULE | NOTES |
