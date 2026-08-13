@@ -1,5 +1,5 @@
 """
-MRIDANSH : Cloud-Optimized GeoTIFF (COG) Ingestor & Raster Processor (Day 15)
+THE MRIDANSH : Cloud-Optimized GeoTIFF (COG) Ingestor & Raster Processor (Day 15)
 Handles HTTP/S3 remote raster windowed streaming, resampling to unified grids,
 and NoData masking for Earth Observation workflows.
 """
