@@ -32,3 +32,19 @@ env/
 # Operating System garbage files
 .DS_Store
 Thumbs.db
+
+# Virtual Environments
+mridansh_env/
+venv/
+.venv/
+env/
+
+# Python Cache & Build Artifacts
+__pycache__/
+*.pyc
+.cache/
+
+# Map Output Artifacts
+*.html
+test_map_*.html
+map/
