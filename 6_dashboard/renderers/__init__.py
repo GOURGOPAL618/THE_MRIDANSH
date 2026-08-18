@@ -1,4 +1,5 @@
 # THE_MRIDANSH/6_dashboard/renderers/__init__.py
+from .aoi_selector import AOIPolygonSelector
 from .map_renderers import GISMapRenderer
 
-__all__ = ["GISMapRenderer"]
+__all__ = ["GISMapRenderer", "AOIPolygonSelector"]

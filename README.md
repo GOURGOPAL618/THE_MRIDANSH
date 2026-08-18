@@ -58,7 +58,7 @@
 
 <div align="center">
 
-<img height="30" src="https://img.shields.io/badge/PROGRESS-0%20%2F%2016%20DAYS-ffb700?style=for-the-badge&labelColor=000000"/>
+<img height="30" src="https://img.shields.io/badge/PROGRESS-7%20%2F%2016%20DAYS-ffb700?style=for-the-badge&labelColor=000000"/>
 <img height="30" src="https://img.shields.io/badge/WEEK%201-STAC%20SERVICES-00e5ff?style=for-the-badge&labelColor=000000"/>
 <img height="30" src="https://img.shields.io/badge/WEEK%202-GIS%20MAPPING-b026ff?style=for-the-badge&labelColor=000000"/>
 <img height="30" src="https://img.shields.io/badge/WEEK%203-FASTAPI%20BACKEND-ff2079?style=for-the-badge&labelColor=000000"/>
@@ -70,20 +70,20 @@
 ### 🛰️ WEEK 1 — Live Satellite Data Pipelines & STAC Services
 
 ```
-[ ] DAY 13 · stac_client.py — Copernicus Sentinel-1 (SAR) & Sentinel-2 (Optical) STAC API setup 📡
-     STATUS : PENDING     ▸ 
+[x] DAY 13 · stac_client.py — Copernicus Sentinel-1 (SAR) & Sentinel-2 (Optical) STAC API setup 📡
+     STATUS : BLOCKED     ▸ Copernicus Sentinel-1 (SAR) & Sentinel-2 (Optical) STAC API setup Completed Successfully ✅
 
-[ ] DAY 14 · ISRO Bhuvan / Landsat API integration — Regional Indian grid params + vegetation indices 🇮🇳
-     STATUS : PENDING     ▸ 
+[x] DAY 14 · ISRO Bhuvan / Landsat API integration — Regional Indian grid params + vegetation indices 🇮🇳
+     STATUS : BLOCKED     ▸ ISRO Bhuvan / Landsat API integration — Regional Indian grid params + vegetation indices Completed Successfully ✅
 
-[ ] DAY 15 · Cloud-Optimized GeoTIFF (COG) ingestor — Raw bands parsed + cleaned → engine-ready 🗺️
-     STATUS : PENDING     ▸ 
+[x] DAY 15 · Cloud-Optimized GeoTIFF (COG) ingestor — Raw bands parsed + cleaned → engine-ready 🗺️
+     STATUS : BLOCKED     ▸ Cloud-Optimized GeoTIFF (COG) ingestor — Raw bands parsed + cleaned → engine-ready Completed Successfully ✅
 
-[ ] DAY 16 · Surface Soil Moisture Retrieval — SAR/Optical Fusion Engine, observables → moisture 💧
-     STATUS : PENDING     ▸ 
+[x] DAY 16 · Surface Soil Moisture Retrieval — SAR/Optical Fusion Engine, observables → moisture 💧
+     STATUS : BLOCKED     ▸ Surface Soil Moisture Retrieval — SAR/Optical Fusion Engine, observables → moisture Completed Successfully ✅
 
-[ ] DAY 17 · Automated pipeline testing & offline caching — fetch error handling, rate-limit mgmt 🧯
-     STATUS : PENDING     ▸ 
+[x] DAY 17 · Automated pipeline testing & offline caching — fetch error handling, rate-limit mgmt 🧯
+     STATUS : BLOCKED     ▸ Automated pipeline testing & offline caching — fetch error handling, rate-limit mgmt Completed Successfully ✅
 ```
 
 ### 🗺️ WEEK 2 — GIS Interactive Mapping Engine & Spatial Overlays
