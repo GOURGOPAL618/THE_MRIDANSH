@@ -14,3 +14,6 @@ scipy>=1.10.0
 
 # GIS Visualization
 folium>=0.14.0
+
+# Interactive 3D Visualization
+plotly>=5.15.0
