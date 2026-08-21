@@ -89,19 +89,19 @@
 ### 🗺️ WEEK 2 — GIS Interactive Mapping Engine & Spatial Overlays
 
 ```
-[ ] DAY 18 · renderers/map_renderers.py — Mapbox & Folium 2D/3D geospatial visualization 🌍
-     STATUS : PENDING     ▸ 
+[x] DAY 18 · renderers/map_renderers.py — Mapbox & Folium 2D/3D geospatial visualization 🌍
+     STATUS : BLOCKED     ▸ Mapbox & Folium 2D/3D geospatial visualization Completed Successfully ✅
 
-[ ] DAY 19 · AOI (Area of Interest) polygon drawing tool — field boundary / grid sector select ✏️
-     STATUS : PENDING     ▸ 
+[x] DAY 19 · AOI (Area of Interest) polygon drawing tool — field boundary / grid sector select ✏️
+     STATUS : BLOCKED     ▸ Field boundary / grid sector select Completed Successfully ✅
 
-[ ] DAY 20 · Satellite imagery raster overlay — Sentinel RGB + Soil Moisture layers on map 🎞️
-     STATUS : PENDING     ▸ 
+[x] DAY 20 · Satellite imagery raster overlay — Sentinel RGB + Soil Moisture layers on map 🎞️
+     STATUS : BLOCKED     ▸ Sentinel RGB + Soil Moisture layers on map Completed Successfully ✅
 
-[ ] DAY 21 · Terrain Elevation (DEM/SRTM) & slope gradient layer — stability + runoff vectors ⛰️
-     STATUS : PENDING     ▸ 
+[x] DAY 21 · Terrain Elevation (DEM/SRTM) & slope gradient layer — stability + runoff vectors ⛰️
+     STATUS : BLOCKED     ▸ Terrain Elevation (DEM/SRTM) & slope gradient layer Completed Successfully ✅
 
-[ ] DAY 22 · Geospatial indexing & grid tiling engine — split geography into computational sub-grids 🧩
+[] DAY 22 · Geospatial indexing & grid tiling engine — split geography into computational sub-grids 🧩
      STATUS : PENDING     ▸ 
 ```
 
@@ -193,55 +193,6 @@ THE_MRIDANSH/
 
 ---
 
-<div align="center">
-
-## 🌌 OPERATOR LOGS — PERSONAL CORE DUMP
-
-> *"Every pixel in a satellite image is a data point waiting to speak."*
-
-<img height="34" src="https://img.shields.io/badge/OPERATOR-GOURGOPAL%20MOHAPATRA-00e5ff?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/COMMAND%20CENTER-JAGANNATH%20COMMAND%20CENTER%20(JCC)-b026ff?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/PHILOSOPHY-UNCONSTRAINED%20BY%20TERRESTRIAL%20BOUNDARIES-ff2079?style=for-the-badge&labelColor=000000"/>
-
-<br/><br/>
-
-<img height="34" src="https://img.shields.io/badge/🚀%20DRIVES-SPACE%20%E2%80%94%20FIRST%2C%20LAST%2C%20ALWAYS-00e5ff?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/💪%20FUEL-SELF--BELIEF-b026ff?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/🧠%20LANGUAGE-DEEP%20LEARNING-ff2079?style=for-the-badge&labelColor=000000"/>
-
-<br/><br/>
-
-<img height="34" src="https://img.shields.io/badge/🧬%20OBSESSION-HUMAN%20BODIES%20IN%20SPACE-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/🛰️%20BELIEF-UNMAPPED%20UNTIL%20SEEN%20FROM%20ORBIT-ffb700?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/📡%20SPIRIT%20CODE-THINKS%20IN%20DIMENSIONS%20UNSEEN-00e5ff?style=for-the-badge&labelColor=000000"/>
-
-<br/><br/>
-
-<img height="34" src="https://img.shields.io/badge/🌾%20NEXT%20CHAPTER-THE%20MRIDANSH-b026ff?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/🟢%20STATUS-ALL%20SYSTEMS%20NOMINAL-00ffab?style=for-the-badge&labelColor=000000"/>
-
-<br/><br/>
-
----
-
-## 🧬 ASTROVITAL AI — SPACE MEDICINE ROADMAP
-
-<img height="34" src="https://img.shields.io/badge/ECOSYSTEM-ASTROVITAL%20AI-b026ff?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/DOMAIN-SPACE%20MEDICINE%20AI-00e5ff?style=for-the-badge&labelColor=000000"/>
-
-<br/><br/>
-
-<img height="34" src="https://img.shields.io/badge/VITALX%20CORE%20V1-✅%20RELEASED-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/AEREXIS%20OMEGA%20V1.5-🔶%20PLANNED%20%C2%B7%202027-ffb700?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/OMNISENTINEL%20V1.5-🔶%20PLANNED%20%C2%B7%202027-ffb700?style=for-the-badge&labelColor=000000"/>
-
-<br/><br/>
-
-*ASTROVITAL AI is the long-term Space Medicine AI arm of the operator's work — exploring how human physiology holds up beyond Earth, where biology meets the cosmos. VITALX CORE V1 is live; the next two versions are slated for 2027.*
-
-</div>
-
----
 
 <div align="center">
 
