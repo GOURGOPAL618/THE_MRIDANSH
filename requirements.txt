@@ -17,3 +17,7 @@ folium>=0.14.0
 
 # Interactive 3D Visualization
 plotly>=5.15.0
+
+# Async REST API Server Framework
+fastapi>=0.100.0
+uvicorn>=0.22.0
