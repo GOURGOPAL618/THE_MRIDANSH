@@ -12,6 +12,10 @@ import os
 API_DIR = os.path.join(os.path.dirname(__file__), "6_dashboard", "api")
 sys.path.insert(0, API_DIR)
 
+# Inject 2_data_pipeline so 'preprocessing' package is importable
+DATA_PIPELINE_DIR = os.path.join(os.path.dirname(__file__), "2_data_pipeline")
+sys.path.insert(0, DATA_PIPELINE_DIR)
+
 import uvicorn
 
 if __name__ == "__main__":
