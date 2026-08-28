@@ -21,3 +21,4 @@ plotly>=5.15.0
 # Async REST API Server Framework
 fastapi>=0.100.0
 uvicorn>=0.22.0
+streamlit>=1.0.0
