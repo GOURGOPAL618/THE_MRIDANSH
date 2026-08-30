@@ -2,19 +2,21 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,20:0a0e27,45:1a1a3e,55:2d0a3e,80:0a0e27,100:000000&height=320&section=header&text=THE%20MRIDANSH&fontSize=80&fontColor=00e5ff&animation=fadeIn&fontAlignY=35&desc=AETHER-MRID1607X%20%E2%80%A2%20UNIFIED%20SOIL%20STATE%20ESTIMATION%20SYSTEM&descAlignY=55&descSize=17&descColor=8a8fb5" width="100%"/>
 
-<img src="https://readme-typing-svg.demolab.com/?lines=%3E+PHASE+1+%3A+CORE+CONSTRUCTION+%E2%80%94+COMPLETE;%3E+PHASE+2+%3A+LIVE+PIPELINES+%2B+GIS+%2B+API+%E2%80%94+16+DAY+CYCLE;%3E+DAILY+TELEMETRY+SYNC+%3A+ENABLED;JAGANNATH+COMMAND+CENTER+%7C+JCC+HEADQUARTERS&font=Fira+Code&size=19&duration=2400&pause=700&color=00E5FF&center=true&vCenter=true&width=980&height=70" />
+<img src="https://readme-typing-svg.demolab.com/?lines=%3E+PHASE+1+%3A+CORE+CONSTRUCTION+%E2%80%94+COMPLETE;%3E+PHASE+2+%3A+LIVE+PIPELINES+%2B+GIS+%2B+API+%E2%80%94+COMPLETE;%3E+PHASE+3+%3A+INTERACTIVE+GIS+MAPPING+%E2%80%94+WEEK+1+INITIATED;%3E+DAILY+TELEMETRY+SYNC+%3A+ENABLED;JAGANNATH+COMMAND+CENTER+%7C+JCC+HEADQUARTERS&font=Fira+Code&size=19&duration=2400&pause=700&color=00E5FF&center=true&vCenter=true&width=980&height=70" />
 
 <br/>
 
 <img height="34" src="https://img.shields.io/badge/STATUS-BUILD%20IN%20PROGRESS-00e5ff?style=for-the-badge&labelColor=000000"/>
 <img height="34" src="https://img.shields.io/badge/PHASE%201-COMPLETED-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/PHASE%202-IN%20PROGRESS-b026ff?style=for-the-badge&labelColor=000000"/>
+<img height="34" src="https://img.shields.io/badge/PHASE%202-COMPLETED-00ffab?style=for-the-badge&labelColor=000000"/>
+<img height="34" src="https://img.shields.io/badge/PHASE%203-IN%20PROGRESS-b026ff?style=for-the-badge&labelColor=000000"/>
 <img height="34" src="https://img.shields.io/badge/CORE%20ENGINE-AETHER--MRID1607X-ff2079?style=for-the-badge&labelColor=000000"/>
 <img height="34" src="https://img.shields.io/badge/COMMAND%20CENTER-JCC-00ffab?style=for-the-badge&labelColor=000000"/>
 
 <br/><br/>
 
-<img height="34" src="https://img.shields.io/badge/PHASE%202%20CYCLE-16%20DAYS-ffb700?style=for-the-badge&labelColor=000000"/>
+<img height="34" src="https://img.shields.io/badge/PHASE%202%20CYCLE-16%20DAYS%20%E2%9C%94-00ffab?style=for-the-badge&labelColor=000000"/>
+<img height="34" src="https://img.shields.io/badge/PHASE%203%20WEEK%201-6%20DAYS-ffb700?style=for-the-badge&labelColor=000000"/>
 <img height="34" src="https://img.shields.io/badge/PYTHON-3.10%2B-00e5ff?style=for-the-badge&logo=python&logoColor=00e5ff&labelColor=000000"/>
 <img height="34" src="https://img.shields.io/badge/BACKEND-FASTAPI-00ffab?style=for-the-badge&logo=fastapi&logoColor=00ffab&labelColor=000000"/>
 <img height="34" src="https://img.shields.io/badge/GIS-MAPBOX%20%2B%20FOLIUM-b026ff?style=for-the-badge&labelColor=000000"/>
@@ -58,86 +60,55 @@
 
 <div align="center">
 
-<img height="30" src="https://img.shields.io/badge/PROGRESS-7%20%2F%2016%20DAYS-ffb700?style=for-the-badge&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/WEEK%201-STAC%20SERVICES-00e5ff?style=for-the-badge&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/WEEK%202-GIS%20MAPPING-b026ff?style=for-the-badge&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/WEEK%203-FASTAPI%20BACKEND-ff2079?style=for-the-badge&labelColor=000000"/>
+<img height="34" src="https://img.shields.io/badge/PHASE%202-✅%20COMPLETE-00ffab?style=for-the-badge&labelColor=000000"/>
+<img height="30" src="https://img.shields.io/badge/PROGRESS-16%20%2F%2016%20DAYS%20%E2%9C%94-00ffab?style=for-the-badge&labelColor=000000"/>
 
 </div>
 
-> **Update ritual:** at day-end, flip `[ ]` → `[x]`, change `PENDING` → `SHIPPED` / `IN-PROGRESS` / `BLOCKED`, and drop a one-line result after the `▸`. That's it — no tables to touch.
+| WEEK | SCOPE | RESULT |
+|---|---|---|
+| **Week 1** · Days 13–17 | Live Satellite Data Pipelines & STAC Services — Copernicus Sentinel-1/2, ISRO Bhuvan/Landsat, COG ingestion, moisture retrieval, offline caching | ✅ COMPLETE |
+| **Week 2** · Days 18–22 | GIS Interactive Mapping Engine & Spatial Overlays — Mapbox/Folium render, AOI drawing, raster overlays, DEM/slope layers, grid tiling | ✅ COMPLETE |
+| **Week 3** · Days 23–28 | FastAPI Backend & Async Processing — core API architecture, `/predict` + `/gis/layer` endpoints, Streamlit↔FastAPI live link, multi-threading, integration lock | ✅ COMPLETE |
 
-### 🛰️ WEEK 1 — Live Satellite Data Pipelines & STAC Services
-
-```
-[x] DAY 13 · stac_client.py — Copernicus Sentinel-1 (SAR) & Sentinel-2 (Optical) STAC API setup 📡
-     STATUS : BLOCKED     ▸ Copernicus Sentinel-1 (SAR) & Sentinel-2 (Optical) STAC API setup Completed Successfully ✅
-
-[x] DAY 14 · ISRO Bhuvan / Landsat API integration — Regional Indian grid params + vegetation indices 🇮🇳
-     STATUS : BLOCKED     ▸ ISRO Bhuvan / Landsat API integration — Regional Indian grid params + vegetation indices Completed Successfully ✅
-
-[x] DAY 15 · Cloud-Optimized GeoTIFF (COG) ingestor — Raw bands parsed + cleaned → engine-ready 🗺️
-     STATUS : BLOCKED     ▸ Cloud-Optimized GeoTIFF (COG) ingestor — Raw bands parsed + cleaned → engine-ready Completed Successfully ✅
-
-[x] DAY 16 · Surface Soil Moisture Retrieval — SAR/Optical Fusion Engine, observables → moisture 💧
-     STATUS : BLOCKED     ▸ Surface Soil Moisture Retrieval — SAR/Optical Fusion Engine, observables → moisture Completed Successfully ✅
-
-[x] DAY 17 · Automated pipeline testing & offline caching — fetch error handling, rate-limit mgmt 🧯
-     STATUS : BLOCKED     ▸ Automated pipeline testing & offline caching — fetch error handling, rate-limit mgmt Completed Successfully ✅
-```
-
-### 🗺️ WEEK 2 — GIS Interactive Mapping Engine & Spatial Overlays
-
-```
-[x] DAY 18 · renderers/map_renderers.py — Mapbox & Folium 2D/3D geospatial visualization 🌍
-     STATUS : BLOCKED     ▸ Mapbox & Folium 2D/3D geospatial visualization Completed Successfully ✅
-
-[x] DAY 19 · AOI (Area of Interest) polygon drawing tool — field boundary / grid sector select ✏️
-     STATUS : BLOCKED     ▸ Field boundary / grid sector select Completed Successfully ✅
-
-[x] DAY 20 · Satellite imagery raster overlay — Sentinel RGB + Soil Moisture layers on map 🎞️
-     STATUS : BLOCKED     ▸ Sentinel RGB + Soil Moisture layers on map Completed Successfully ✅
-
-[x] DAY 21 · Terrain Elevation (DEM/SRTM) & slope gradient layer — stability + runoff vectors ⛰️
-     STATUS : BLOCKED     ▸ Terrain Elevation (DEM/SRTM) & slope gradient layer Completed Successfully ✅
-
-[x] DAY 22 · Geospatial indexing & grid tiling engine — split geography into computational sub-grids 🧩
-     STATUS : BLOCKED     ▸ Geospatial indexing & grid tiling engine — split geography into computational sub-grids Completed Successfully ✅
-```
-
-### ⚙️ WEEK 3 — FastAPI Backend & Asynchronous Processing Engine
-
-```
-[ ] DAY 23 · FastAPI core architecture setup (api/main.py) — async REST API architecture ⚡
-     STATUS : PENDING     ▸ 
-
-[ ] DAY 24 · Engine execution endpoint (/api/v1/predict) — expose Richards + EnKF core via REST 🧠
-     STATUS : PENDING     ▸ 
-
-[ ] DAY 25 · GIS data endpoint (/api/v1/gis/layer) — map vector + satellite raster delivery 🗂️
-     STATUS : PENDING     ▸ 
-
-[ ] DAY 26 · Streamlit ↔ FastAPI connection — frontend moved from local cache to live async endpoints 🔗
-     STATUS : PENDING     ▸ 
-
-[ ] DAY 27 · Performance optimization & multi-threading — background download + physics compute 🚀
-     STATUS : PENDING     ▸ 
-
-[ ] DAY 28 · Phase 2 integration lock, testing & push to GitHub — full pipeline verification 🔒
-     STATUS : PENDING     ▸ 
-```
+> Full 16-day mission log has been archived. All Phase 2 deliverables shipped and pushed to GitHub — Day 28 marked the final integration lock.
 
 ---
 
-## 🗓️ 03 — DAILY TRANSMISSION LOG
+## 🌍 03 — PHASE 3 MISSION LOG — INTERACTIVE GIS MAPPING (DAYS 29–34)
+
+<div align="center">
+
+<img height="34" src="https://img.shields.io/badge/PHASE%203-🔶%20IN%20PROGRESS-b026ff?style=for-the-badge&labelColor=000000"/>
+<img height="30" src="https://img.shields.io/badge/PROGRESS-0%20%2F%206%20DAYS-ffb700?style=for-the-badge&labelColor=000000"/>
+<img height="30" src="https://img.shields.io/badge/WEEK%201-INTERACTIVE%20GIS%20MAPPING-b026ff?style=for-the-badge&labelColor=000000"/>
+
+</div>
+
+> **Update ritual:** at day-end, flip the status cell to `✅ SHIPPED` / `🔶 IN-PROGRESS` / `❌ BLOCKED` and fill the **Result** column with a one-line outcome. No code-block editing needed — just the table row.
+
+### 🗺️ WEEK 1 — Interactive GIS Mapping Engine & Live Overlay Sync
+
+| DAY | MODULE | DESCRIPTION | STATUS | RESULT |
+|:---:|---|---|:---:|---|
+| **29** 🗺️ | Base Map Engine Scaffolding | Folium / streamlit-folium (or PyDeck) dark-themed viewport init | ⬜ PENDING | — |
+| **30** 🧩 | GeoJSON Mesh Layer Live Integration | `/api/v1/gis/layer` connected to frontend map view — live boundary render | ⬜ PENDING | — |
+| **31** 🌡️ | Spatial Soil Moisture Heatmap Overlay | Moisture (m³/m³) choropleth/tile gradient — Red (low) → Blue (high) | ⬜ PENDING | — |
+| **32** 📍 | Interactive Polygon & Point Telemetry Trigger | Click-to-query lat/lon auto-fill into backend search form | ⬜ PENDING | — |
+| **33** 🔀 | Multi-Domain Viewport Layer Switcher | Agronomy (crop stress/moisture) vs Civil (stability/pore pressure) toggles | ⬜ PENDING | — |
+| **34** 🔒 | GIS Viewport End-to-End Testing & Lock | Responsive check, zoom/pan persistence, Git lock, sandbox readiness | ⬜ PENDING | — |
+
+---
+
+## 🗓️ 04 — DAILY TRANSMISSION LOG
 
 > A running, dated build diary — newest entry on top. Copy the template block below, fill it in, and paste it right under this line each day.
 
 <br/>
 
-> ### 📅 DAY 12 · 08 AUG 2026 &nbsp; `✅ COMPLETE`
-> **Shipped —** Streamlit Interactive Viewports & Command Center Runtime
-> **Next up —** Phase 2: real satellite APIs, Mapbox/Folium GIS layers, FastAPI backend connection
+> ### 📅 DAY 28 · 28 AUG 2026 &nbsp; `✅ COMPLETE`
+> **Shipped —** Phase 2 integration lock: live STAC pipelines, GIS mapping engine, and FastAPI backend fully verified and pushed
+> **Next up —** Phase 3 Week 1: interactive GIS mapping engine, live layer sync, and click-to-query telemetry
 
 <br/>
 
@@ -154,7 +125,7 @@
 
 ---
 
-## 📁 04 — SYSTEM ARCHITECTURE BASELINE
+## 📁 05 — SYSTEM ARCHITECTURE BASELINE
 
 ```
 THE_MRIDANSH/
@@ -166,7 +137,8 @@ THE_MRIDANSH/
 ├── 5_storage/               # Local Databases, Artifacts & Checkpoints
 ├── 6_dashboard/             # Streamlit Interactive UI Viewports
 │   └── renderers/
-│       └── map_renderers.py # [PHASE 2] Mapbox / Folium GIS Layer Engine
+│       ├── map_renderers.py # [PHASE 2] Mapbox / Folium GIS Layer Engine
+│       └── gis_viewport/    # [PHASE 3] Interactive GIS Mapping & Overlay Sync
 ├── 7_config/                # System Level Variables & Envs
 ├── api/                     # [PHASE 2] FastAPI Async Backend
 │   └── main.py
@@ -187,7 +159,8 @@ THE_MRIDANSH/
 | **PROJECT ADMINISTRATOR** | GOURGOPAL MOHAPATRA |
 | **BUILD START** | 21 JULY 2026 |
 | **PHASE 1** | 12-DAY CORE CONSTRUCTION CYCLE — ✅ COMPLETED |
-| **PHASE 2** | 16-DAY LIVE PIPELINES · GIS · API INTEGRATION — 🔶 IN PROGRESS |
+| **PHASE 2** | 16-DAY LIVE PIPELINES · GIS · API INTEGRATION — ✅ COMPLETED |
+| **PHASE 3** | INTERACTIVE GIS MAPPING (WEEK 1: 6-DAY CYCLE) — 🔶 IN PROGRESS |
 
 </div>
 
