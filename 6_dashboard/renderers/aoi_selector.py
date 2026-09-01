@@ -4,17 +4,17 @@ Integrates Folium Draw plugins to allow users to draw custom spatial boundaries 
 and extracts bounding boxes, area metrics, and GeoJSON parameters for downstream satellite ingestion.
 """
 
-import json
-from typing import Any, Dict, List, Tuple
+from typing import Any
+
 import folium
 from folium import plugins
 
+
 class AOIPolygonSelector:
-    """ Interactive AOI Drawing Tool and Spatial Coordinate Parser."""
+    """Interactive AOI Drawing Tool and Spatial Coordinate Parser."""
 
     def __init__(self):
         """Initializes AOI Selector engine."""
-        pass
 
     def add_drawing_control(
         self,
@@ -49,18 +49,14 @@ class AOIPolygonSelector:
         draw_tool.add_to(folium_map)
         return folium_map
 
-    def parse_drawn_geojson(
-        self, geojson_feature: Dict[str, Any]
-    ) -> Dict[str, Any]:
+    def parse_drawn_geojson(self, geojson_feature: dict[str, Any]) -> dict[str, Any]:
         """Parses raw GeoJSON feature drawn by user and extracts key GIS spatial metrics."""
         geometry = geojson_feature.get("geometry", {})
         geom_type = geometry.get("type", "")
         coords = geometry.get("coordinates", [])
 
         if geom_type not in ["Polygon", "MultiPolygon"] or not coords:
-            raise ValueError(
-                f"Unsupported or Empty Geometry Type: {geom_type}"
-            )
+            raise ValueError(f"Unsupported or Empty Geometry Type: {geom_type}")
 
         # Extract all coordinates pairs to calculate Bounding Box
         all_lons = []
@@ -86,7 +82,7 @@ class AOIPolygonSelector:
         center_coords = [(min_lat + max_lat) / 2.0, (min_lon + max_lon) / 2.0]
 
         # Approximate Area Calculation In Hectares & Sq meters (Equirectangular Approximation)
-        lat_dist = (max_lat - min_lat) * 111000.0    # Meters per degree lat
+        lat_dist = (max_lat - min_lat) * 111000.0  # Meters per degree lat
         lon_dist = (
             (max_lon - min_lon) * 111000.0 * 0.939
         )  # Cos (20 deg lat) approx 0.939
@@ -112,11 +108,11 @@ if __name__ == "__main__":
 
     # 1. Initialize  Base Map
     print("\n1. Initializing Folium Map with Leaflet Draw Plugin...")
-    base_map = folium.Map(location = [20.2961, 85.8245], zoom_start = 13)
+    base_map = folium.Map(location=[20.2961, 85.8245], zoom_start=13)
     selector.add_drawing_control(base_map)
 
     # Save Verification HTML File
-    output_html ="test_aoi_draw_day19.html"
+    output_html = "test_aoi_draw_day19.html"
     base_map.save(output_html)
     print(f"   Saved Interactive Drawing Map to: {output_html}")
 

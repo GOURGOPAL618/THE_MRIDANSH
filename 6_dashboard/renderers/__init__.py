@@ -5,8 +5,8 @@ from .raster_overlays import SpatialRasterOverlayEngine
 from .surface_3d import Surface3DRenderer
 
 __all__ = [
-    "GISMapRenderer",
     "AOIPolygonSelector",
+    "GISMapRenderer",
     "SpatialRasterOverlayEngine",
     "Surface3DRenderer",
 ]

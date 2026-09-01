@@ -68,15 +68,15 @@ def render_agronomy_viewport(soil_state, agronomy_output):
     col_left, col_right = st.columns([2, 1])
 
     with col_left:
-        st.plotly_chart(fig_depth, use_container_width = True)
+        st.plotly_chart(fig_depth, use_container_width=True)
 
     with col_right:
         st.markdown("### 🌾 Crop Suitability Insights")
         st.info(
             f"**Field Status:** {agronomy_output.get('moisture_zone', 'Field Capacity')}\n\n"
-            f"• **Topsoil (0-15cm):** {moisture_layers[0]*100:.1f}% — Optimal for seed germination.\n"
-            f"• **Rooting Zone (15-60cm):** {moisture_layers[2]*100:.1f}% — Active uptake zone.\n"
-            f"• **Subsoil (60-100cm):** {moisture_layers[4]*100:.1f}% — Deep storage."
+            f"• **Topsoil (0-15cm):** {moisture_layers[0] * 100:.1f}% — Optimal for seed germination.\n"
+            f"• **Rooting Zone (15-60cm):** {moisture_layers[2] * 100:.1f}% — Active uptake zone.\n"
+            f"• **Subsoil (60-100cm):** {moisture_layers[4] * 100:.1f}% — Deep storage."
         )
 
     st.markdown("---")
@@ -93,7 +93,7 @@ def render_agronomy_viewport(soil_state, agronomy_output):
     col_npk1, col_npk2 = st.columns([2, 1])
 
     with col_npk1:
-        st.plotly_chart(fig_npk, use_container_width = True)
+        st.plotly_chart(fig_npk, use_container_width=True)
 
     with col_npk2:
         st.markdown("### 📋 Precision Advisory")
@@ -118,7 +118,7 @@ def render_agronomy_viewport(soil_state, agronomy_output):
     simulated_moisture = np.clip(
         moisture_layers + (rain_input * 0.0025) / (depths / 10), 0.05, 0.48
     )
-    
+
     fig_sim = go.Figure()
     fig_sim.add_trace(
         go.Scatter(
@@ -149,4 +149,4 @@ def render_agronomy_viewport(soil_state, agronomy_output):
         height=350,
     )
 
-    st.plotly_chart(fig_sim, use_container_width = True)
+    st.plotly_chart(fig_sim, use_container_width=True)

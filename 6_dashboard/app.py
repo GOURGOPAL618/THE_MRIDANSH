@@ -1,15 +1,14 @@
 """
-THE MRIDANSH Dashboard : Dynamic Multi-Domain Soil Intelligence (Day 27)
-Master Entry Point connecting Viewports with FastAPI REST Telemetry.
+THE MRIDANSH Dashboard : Dynamic Multi-Domain Soil Intelligence (Day 29)
+Master Entry Point connecting Viewports, FastAPI Telemetry & Interactive GIS Map.
 """
 
-import os
 import sys
 from pathlib import Path
-import streamlit as st
-import pandas as pd
 
-# Setup Respiratory & Dashboard Root Path
+import pandas as pd
+import streamlit as st
+
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DASHBOARD_DIR = Path(__file__).resolve().parent
 
@@ -17,14 +16,10 @@ for path in [str(ROOT_DIR), str(DASHBOARD_DIR)]:
     if path not in sys.path:
         sys.path.insert(0, path)
 
-# Import Viewports & Unified Runtime Cache Integration Engine
+from renderers.map_renderers import render_streamlit_folium_map
 from runtime_cache import get_api_client, get_unified_soil_engine_state
 from viewports.agronomy_view import render_agronomy_viewport
 from viewports.civil_view import render_civil_viewport
-
-# ---------------------------------------------------------------------------
-# 1. Streamlit Page Configuration & Styling Scaffolding
-# ---------------------------------------------------------------------------
 
 st.set_page_config(
     page_title="THE MRIDANSH | Multi-Domain Soil Intelligence Engine",
@@ -33,17 +28,15 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Load Custom CSS Asset if available
 css_file_path = DASHBOARD_DIR / "assets" / "style.css"
 if css_file_path.exists():
-    with open(css_file_path, "r") as f:
+    with open(css_file_path) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-# Custom Status Indicator Styling
 st.markdown(
     """
     <style>
-    .status-online { color: #00FF66; fontweight: bold; }
+    .status-online { color: #00FF66; font-weight: bold; }
     .status-offline { color: #FF3333; font-weight: bold; }
     </style>
 """,
@@ -52,33 +45,26 @@ st.markdown(
 
 
 def main():
-    # -----------------------------------------------------------------------
-    # 2. Engine State & API Client Instantiation
-    # -----------------------------------------------------------------------
     api_client = get_api_client()
     soil_state, agronomy_output, civil_output = get_unified_soil_engine_state()
 
-    # -----------------------------------------------------------------------
-    # 3. Sidebar Navigation, Regional Filters & Telemetry
-    # -----------------------------------------------------------------------
-    st.sidebar.image(
-        "https://img.icons8.com/isometric/100/earth-element.png", width=70
-    )
+    st.sidebar.image("https://img.icons8.com/isometric/100/earth-element.png", width=70)
     st.sidebar.title("AETHER-MRID1607X - THE MRIDANSH")
     st.sidebar.caption("Unified Soil Physics & Intelligence Center")
     st.sidebar.markdown("---")
 
-    # FastAPI Backend Telementary Check
     health_data = api_client.check_health()
     backend_online = health_data.get("status") == "HEALTHY"
 
-    st.sidebar.subheader("📡 Backend Telementary")
+    st.sidebar.subheader("📡 Backend Telemetry")
     if backend_online:
         st.sidebar.markdown(
             "Status: <span class='status-online'>● ONLINE (FastAPI)</span>",
-            unsafe_allow_html = True,
+            unsafe_allow_html=True,
         )
-        st.sidebar.caption(f"Engine: {health_data.get('service', 'Async REST Backend')}")
+        st.sidebar.caption(
+            f"Engine: {health_data.get('service', 'Async REST Backend')}"
+        )
     else:
         st.sidebar.markdown(
             "Status: <span class='status-offline'>● OFFLINE (Fallback)</span>",
@@ -88,16 +74,14 @@ def main():
 
     st.sidebar.markdown("---")
 
-    # Domain Viewport Radio Navigation
     selected_viewport = st.sidebar.radio(
         "Select Intelligence Viewport:",
         ["🌱 Agronomy & Soil Health", "🏗️ Civil & Geotechnical Stability"],
-        index = 0,
+        index=0,
     )
 
     st.sidebar.markdown("---")
 
-    # Regional Target Selector
     st.sidebar.subheader("📍Target Location")
     region = st.sidebar.selectbox(
         "Selected Grid Sector:",
@@ -115,101 +99,115 @@ def main():
     )
 
     st.sidebar.markdown("---")
-    st.sidebar.caption("THE MRIDANSH Architecture v1.0 | Day 27 Integration")
+    st.sidebar.caption("THE MRIDANSH Architecture v1.0 | Day 29 Scaffolding")
 
-    # -----------------------------------------------------------------------
-    # 4. Interactive REST Controls Panel (FastAPI Triggers)
-    # -----------------------------------------------------------------------
     st.title("🌾 THE MRIDANSH Geospatial Intelligence Center")
     st.markdown(
         "Real-time integration of **Richards-1D Physics**, **Ensemble Kalman Filtering (EnKF)**, and **FastAPI Layer Service**."
     )
-    
-    with st.expander("⚡ Interactive REST API Trigger Panel (Day 27 Controls)", expanded=False):
-        tab1, tab2 = st.tabs(["🚀 Physics Simulation (`/predict`)", "🗺️ GIS Grid Mesh (`/gis/layer`)"])
 
-        # TAB 1: Physics Engine Simulation POST Endpoint
+    with st.expander("⚡ Interactive REST API Trigger Panel", expanded=True):
+        tab1, tab2 = st.tabs(
+            ["🚀 Physics Simulation (`/predict`)", "🗺️ GIS Grid Mesh (`/gis/layer`)"]
+        )
+
         with tab1:
             st.markdown("##### Execute Richards-1D + EnKF Simulation Engine")
             with st.form("simulation_form"):
                 c1, c2, c3 = st.columns(3)
                 with c1:
-                    lat_input = st.number_input("Target Latitude", value = 20.2961, format = "%.4f")
-                
+                    lat_input = st.number_input(
+                        "Target Latitude", value=20.2961, format="%.4f"
+                    )
                 with c2:
-                    lon_input = st.number_input("Target Longitude", value = 85.8245, format = "%.4f")
-
+                    lon_input = st.number_input(
+                        "Target Longitude", value=85.8245, format="%.4f"
+                    )
                 with c3:
-                    day_input = st.slider("Simulation Days", min_value = 1, max_value = 30, value = 7)
+                    day_input = st.slider(
+                        "Simulation Days", min_value=1, max_value=30, value=7
+                    )
 
-                enkf_toggle = st.checkbox("Enable EnKF Satellite Assimilation", value=True)
+                enkf_toggle = st.checkbox(
+                    "Enable EnKF Satellite Assimilation", value=True
+                )
                 submit_btn = st.form_submit_button("Run Physics Simulation ⚡")
 
                 if submit_btn:
                     with st.spinner("Invoking FastAPI `/api/v1/predict` Engine..."):
                         pred_res = api_client.trigger_prediction(
-                            lat = lat_input, lon = lon_input, days = day_input, enkf = enkf_toggle
+                            lat=lat_input,
+                            lon=lon_input,
+                            days=day_input,
+                            enkf=enkf_toggle,
                         )
 
                     if pred_res and pred_res.get("status") == "SUCCESS":
-                        st.success(f"Simulation Executed In {pred_res.get('execution_time_sec')} sec!")
+                        st.success(
+                            f"Simulation Executed In {pred_res.get('execution_time_sec')} sec!"
+                        )
                         r_col1, r_col2 = st.columns(2)
                         with r_col1:
-                            df_profile = pd.DataFrame({
-                                "Depth (cm)": pred_res.get("depths_cm"),
-                                "Moisture (m³/m³)": pred_res.get("predicted_moisture_m3m3"),
-                                "Uncertainty (±)": pred_res.get("uncertainty_bounds")
-                            })
+                            df_profile = pd.DataFrame(
+                                {
+                                    "Depth (cm)": pred_res.get("depths_cm"),
+                                    "Moisture (m³/m³)": pred_res.get(
+                                        "predicted_moisture_m3m3"
+                                    ),
+                                    "Uncertainty (±)": pred_res.get(
+                                        "uncertainty_bounds"
+                                    ),
+                                }
+                            )
+                            st.dataframe(df_profile, use_container_width=True)
 
-                            st.dataframe(df_profile, use_container_width = True)
-                        
                         with r_col2:
                             st.line_chart(
-                                data = df_profile.set_index("Depth (cm)")["Moisture (m³/m³)"],
-                                use_container_width = True
+                                data=df_profile.set_index("Depth (cm)")[
+                                    "Moisture (m³/m³)"
+                                ],
+                                use_container_width=True,
                             )
-
                     else:
                         st.warning("FastAPI Server offline. Showing fallback profile.")
 
-        
-        # Tab 2: GIS Spatial Subgrid Mesh GET Endpoint
         with tab2:
-            st.markdown("##### Fetch Computational Sub-Grid Mesh Polygons")
+            st.markdown("##### Base Map Engine & GIS Sub-Grid Viewport")
             g1, g2 = st.columns([1, 2])
+
+            gis_data_payload = None
 
             with g1:
                 grid_r = st.slider("Grid Row", 1, 8, 4)
                 grid_c = st.slider("Grid Col", 1, 8, 4)
                 fetch_gis_btn = st.button("Fetch GIS Grid Mesh Tiles 🗺️")
 
-            with g2:
                 if fetch_gis_btn:
                     with st.spinner("Requesting `/api/v1/gis/layer` GeoJSON..."):
                         gis_res = api_client.fetch_gis_layer(
-                            layer_type = "spatial_grid_mesh", rows = grid_r, cols = grid_c
+                            layer_type="spatial_grid_mesh", rows=grid_r, cols=grid_c
                         )
 
                     if gis_res and gis_res.get("status") == "SUCCESS":
-                        geojson_data = gis_res.get("geojson_data", {})
-                        st.success(f"Loaded {len(geojson_data.get('features', []))} Sub-Grid Polygon Tiles!")
-                        with st.expander("🔍 View Raw GeoJSON Payload"):
-                            st.json(geojson_data)
-
+                        gis_data_payload = gis_res.get("geojson_data", {})
+                        st.success(
+                            f"Loaded {len(gis_data_payload.get('features', []))} Sub-Grid Tiles!"
+                        )
                     else:
                         st.error("Failed To Fetch GIS Layer From Backend.")
 
-    st.markdown("---")
+            with g2:
+                render_streamlit_folium_map(
+                    lat=20.2961, lon=85.8245, zoom=11, geojson_data=gis_data_payload
+                )
 
-    # -----------------------------------------------------------------------
-    # 5. Main Viewport Routing (Preserved from Day 12)
-    # -----------------------------------------------------------------------
+    st.markdown("---")
 
     if "Agronomy" in selected_viewport:
         render_agronomy_viewport(soil_state, agronomy_output)
     else:
         render_civil_viewport(soil_state, civil_output)
 
-if __name__ == "__main__":
-    main()     
 
+if __name__ == "__main__":
+    main()

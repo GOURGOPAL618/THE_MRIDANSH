@@ -3,19 +3,21 @@ THE MRIDANSH : API Router Scaffolding - v1 Endpoints (Day 23)
 Modular router container for prediction, GIS raster delivery, and pipeline triggers.
 """
 
-from typing import Any, Dict
-from fastapi import APIRouter
-from routes.predict_router import predict_router
-from routes.gis_router import gis_router
+from typing import Any
 
-api_v1_router = APIRouter(prefix = "/api/v1", tags = ["v1_endpoints"])
+from fastapi import APIRouter
+from routes.gis_router import gis_router
+from routes.predict_router import predict_router
+
+api_v1_router = APIRouter(prefix="/api/v1", tags=["v1_endpoints"])
 
 # Mount Prediction Router
 api_v1_router.include_router(predict_router)
 api_v1_router.include_router(gis_router)
 
-@api_v1_router.get("/status", summary = "V1 API Subsystem Status")
-async def get_v1_status() -> Dict[str, Any]:
+
+@api_v1_router.get("/status", summary="V1 API Subsystem Status")
+async def get_v1_status() -> dict[str, Any]:
     """Returns status metrics of the v1 API routes."""
 
     return {
@@ -25,5 +27,5 @@ async def get_v1_status() -> Dict[str, Any]:
             "/api/v1/status",
             "/api/v1/predict",
             "/api/v1/gis/layer",
-        ]
+        ],
     }

@@ -1,0 +1,35 @@
+[project]
+name = "the-mridansh"
+version = "1.0.0"
+description = "AETHER-MRID1607X: Unified Soil State Estimation System"
+authors = [{ name = "Gourgopal Mohapatra" }]
+requires-python = ">=3.10"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+# Enable industry-standard linting rules
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort (import sorting)
+    "UP",  # pyupgrade (modernize python syntax)
+    "B",   # flake8-bugbear (common bugs)
+    "SIM", # flake8-simplify (code simplification)
+    "C4",  # flake8-comprehensions
+]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

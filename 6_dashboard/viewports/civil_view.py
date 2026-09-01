@@ -9,6 +9,7 @@ from renderers.chart_renderers import (
     plot_ground_stability_gauge,
 )
 
+
 def render_civil_viewport(soil_state, civil_output):
     """Renders the Civil & Geotechnical Domain Page.
 
@@ -22,7 +23,7 @@ def render_civil_viewport(soil_state, civil_output):
     )
 
     # 1. Civil Top KPI Summary Cards
-    col1, col2,col3, col4 = st.columns(4)
+    col1, col2, col3, col4 = st.columns(4)
 
     stability_score = civil_output.get("ground_stability_index", 0.82)
     pore_pressure = civil_output.get("pore_water_pressure_kPa", 14.2)
@@ -42,7 +43,7 @@ def render_civil_viewport(soil_state, civil_output):
             value=f"{pore_pressure:.1f} kPa",
             delta="Normal",
         )
-    
+
     with col3:
         st.metric(
             label="Bulk Soil Density",
@@ -72,10 +73,10 @@ def render_civil_viewport(soil_state, civil_output):
         st.plotly_chart(fig_gauge, use_container_width=True)
 
         st.warning(
-            f"**Geotechnical Risk Assessment:**\n\n"
-            f"• **Risk Level:** Low to Moderate\n"
-            f"• **Saturation Risk:** Pore pressure is within allowable thresholds (<25 kPa).\n"
-            f"• **Shear Strength:** Maintained at upper soil horizon."
+            "**Geotechnical Risk Assessment:**\n\n"
+            "• **Risk Level:** Low to Moderate\n"
+            "• **Saturation Risk:** Pore pressure is within allowable thresholds (<25 kPa).\n"
+            "• **Shear Strength:** Maintained at upper soil horizon."
         )
 
     st.markdown("---")
@@ -111,4 +112,3 @@ def render_civil_viewport(soil_state, civil_output):
         st.info(
             "ℹ️ *Note: Extended geotechnical parameters (Dynamic CBR, Settlement & Bearing Capacity) will be unlocked in Phase 2 via MARGAVEDHA Engine integration.*"
         )
-        

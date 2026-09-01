@@ -5,8 +5,8 @@ from .sentinel_ingestor import SentinelDataIngestor
 from .stac_client import SatelliteSTACClient
 
 __all__ = [
-    "SentinelDataIngestor",
-    "SatelliteSTACClient",
     "MultiSourceIngestor",
     "ResilientSatelliteIngestor",
+    "SatelliteSTACClient",
+    "SentinelDataIngestor",
 ]

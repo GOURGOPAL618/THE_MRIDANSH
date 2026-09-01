@@ -4,8 +4,10 @@ Combines Sentinel-1 SAR Backscatter (VV, VH) with Sentinel-2/Landsat Optical Ind
 (NDVI, NDMI) and DEM Terrain attributes into a unified multi-modal spatial tensor.
 """
 
-from typing import Dict, Any, Tuple, List
+from typing import Any
+
 import numpy as np
+
 
 class SatelliteSAROpticalFusionEngine:
     """Fuses multi-modal Earth Observation data (SAR, Optical, DEM) into aligned matrices
@@ -13,7 +15,7 @@ class SatelliteSAROpticalFusionEngine:
     for physics-guided surface soil moisture retrieval algorithms.
     """
 
-    def __init__(self, spatial_grid_shape: Tuple[int, int] - (100, 100)):
+    def __init__(self, spatial_grid_shape: tuple[int, int] - (100, 100)):
         """Initializes Fusion Engine with standard target spatial grid dimensions.
 
         Parameters:
@@ -23,20 +25,16 @@ class SatelliteSAROpticalFusionEngine:
         self.grid_shape = spatial_grid_shape
 
     def align_channel(
-        self, channel_data:  np.ndarray, target_shape: Tuple[int, int]
+        self, channel_data: np.ndarray, target_shape: tuple[int, int]
     ) -> np.ndarray:
         """Resamples and aligns raw channel matrix to target spatial grid."""
 
         if channel_data.shape == target_shape:
             return channel_data
-        
-        rows = np.linspace(
-            0, channel_data.shape[0] - 1, target_shape[0]
-        ).astype(int)
 
-        cols = np.linspace(
-            0, channel_data.shape[1] - 1, target_shape[1]
-        ).astype(int)
+        rows = np.linspace(0, channel_data.shape[0] - 1, target_shape[0]).astype(int)
+
+        cols = np.linspace(0, channel_data.shape[1] - 1, target_shape[1]).astype(int)
         return channel_data[np.ix_(rows, cols)]
 
     def create_fused_spatial_tensor(
@@ -47,7 +45,7 @@ class SatelliteSAROpticalFusionEngine:
         ndmi: np.ndarray,
         dem_elevation: np.ndarray,
         dem_slope: np.ndarray,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Fuses SAR backscatter, Optical Vegetation/Moisture Indices, and DEM Terrain into
 
         a stacked 3D multi-channel spatial tensor (H x W x C).
@@ -85,7 +83,7 @@ class SatelliteSAROpticalFusionEngine:
                 ele_aligned,
                 slope_aligned,
             ],
-            axis = -1,
+            axis=-1,
         )
 
         return {
@@ -122,9 +120,7 @@ class SatelliteSAROpticalFusionEngine:
         sar_dielectric = np.clip((vv + 25.0) / 20.0, 0.0, 1.0)
 
         # Empirical retrieval combination
-        soil_moisture_proxy = (
-            0.50 * sar_dielectric + 0.35 * ndmi - 0.15 * ndvi
-        )
+        soil_moisture_proxy = 0.50 * sar_dielectric + 0.35 * ndmi - 0.15 * ndvi
 
         # Volumetric Moisture Range Clipping (0.05 to 0.45 m3/m3 typical for topsoil)
         soil_moisture_volumetric = np.clip(soil_moisture_proxy, 0.05, 0.45)
@@ -132,11 +128,10 @@ class SatelliteSAROpticalFusionEngine:
         return np.round(soil_moisture_volumetric, 4)
 
 
-
 # Quick Verification Test
 if __name__ == "__main__":
     print("🛰️ Testing Day 16 SAR/Optical Fusion Engine & Soil Moisture Retrieval...")
-    fusion_engine = SatelliteSAROpticalFusionEngine(spatial_grid_shape = (100, 100))
+    fusion_engine = SatelliteSAROpticalFusionEngine(spatial_grid_shape=(100, 100))
 
     # synthetic multi-model inputs (100 * 100 spatial grid)
     np.random.seed(42)
@@ -149,12 +144,12 @@ if __name__ == "__main__":
 
     print("\n1. Fusing SAR, Optical, and DEM Observables into Tensor...")
     result = fusion_engine.create_fused_spatial_tensor(
-        sar_vv = mock_vv,
-        sar_vh = mock_vh,
-        ndvi = mock_ndvi,
-        ndmi = mock_ndmi,
-        dem_elevation = mock_elev,
-        dem_slope = mock_slope,
+        sar_vv=mock_vv,
+        sar_vh=mock_vh,
+        ndvi=mock_ndvi,
+        ndmi=mock_ndmi,
+        dem_elevation=mock_elev,
+        dem_slope=mock_slope,
     )
 
     print(f"   Fused Tensor Shape (H, W, C): {result['tensor_shape']}")
@@ -172,4 +167,3 @@ if __name__ == "__main__":
     print(f"   Mean Surface Moisture: {sm_retrieved.mean():.4f} m³/m³")
 
     print("\n✅ Day 16 SAR/Optical Fusion Engine Verification Complete!")
-

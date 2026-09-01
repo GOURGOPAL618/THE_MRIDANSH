@@ -5,29 +5,30 @@ and API routing structure for satellite processing pipelines.
 """
 
 import time
-from typing import Dict, Any
+from typing import Any
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-
 from routes.v1_router import api_v1_router
+
 
 def create_application() -> FastAPI:
     """FastAPI Application Factory."""
     app = FastAPI(
-        title = "THE MRIDANSH - GEOSPATIAL AGRICULTURE ENGINE API",
-        description = "Async REST API backend powering satellite soil moisture assimilation, GIS overlays, and Richards+EnKF physics engine.",
+        title="THE MRIDANSH - GEOSPATIAL AGRICULTURE ENGINE API",
+        description="Async REST API backend powering satellite soil moisture assimilation, GIS overlays, and Richards+EnKF physics engine.",
         version="1.0.0",
-        docs_url = "/docs",
-        redoc_url = "/redoc",
+        docs_url="/docs",
+        redoc_url="/redoc",
     )
 
     # Enable CORS for Streamlit / Web UI Communication
     app.add_middleware(
         CORSMiddleware,
-        allow_origins = ["*"],
-        allow_credentials = True,
-        allow_methods = ["*"],
-        allow_headers = ["*"],
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
     )
 
     # Middleware for request timing telementary
@@ -43,8 +44,8 @@ def create_application() -> FastAPI:
     app.include_router(api_v1_router)
 
     # Telementry / Health Check Endpoint
-    @app.get("/health", tags = ["Telementry"], summary = "System Health Check")
-    async def health_check() -> Dict[str, Any]:
+    @app.get("/health", tags=["Telementry"], summary="System Health Check")
+    async def health_check() -> dict[str, Any]:
         """Provides backend engine health status and operational parameters."""
         return {
             "status": "HEALTHY",
@@ -66,5 +67,6 @@ app = create_application()
 
 if __name__ == "__main__":
     import uvicorn
+
     print("⚡ Starting Day 23 FastAPI REST Engine Server on http://127.0.0.1:8000 ...")
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

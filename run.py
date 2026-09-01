@@ -5,8 +5,8 @@ api directory directly into sys.path, allowing uvicorn to import main:app
 without requiring a valid top-level Python package name.
 """
 
-import sys
 import os
+import sys
 
 # Inject the api directory so 'main' is importable directly
 API_DIR = os.path.join(os.path.dirname(__file__), "6_dashboard", "api")

@@ -8,8 +8,9 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
+
 def plot_moisture_depth_profile(depths, moisture_profile):
-    """ Renders 2D Depth vs Volumetric Water Content Curve."""
+    """Renders 2D Depth vs Volumetric Water Content Curve."""
     fig = go.Figure()
     fig.add_trace(
         go.Scatter(
@@ -21,7 +22,7 @@ def plot_moisture_depth_profile(depths, moisture_profile):
             marker=dict(size=8, color="#0d47a1"),
         )
     )
-    
+
     fig.update_layout(
         title="Volumetric Water Content vs Soil Depth",
         xaxis_title="Volumetric Moisture (%)",
@@ -34,17 +35,18 @@ def plot_moisture_depth_profile(depths, moisture_profile):
 
     return fig
 
+
 def plot_npk_distribution(nitrogen, phosphorus, potassium):
-    """ Renders Agronomic NPK Status Bar Chart."""
+    """Renders Agronomic NPK Status Bar Chart."""
     df_npk = pd.DataFrame(
         {
             "Nutrient": ["Nitrogen (N)", "Phosphorus (P)", "Potassium (K)"],
             "Estimated Level": [nitrogen, phosphorus, potassium],
             "Optimal Baseline": [120.0, 30.0, 150.0],
         }
-    ) 
-    
-    fig= px.bar(
+    )
+
+    fig = px.bar(
         df_npk,
         x="Nutrient",
         y=["Estimated Level", "Optimal Baseline"],
@@ -55,12 +57,12 @@ def plot_npk_distribution(nitrogen, phosphorus, potassium):
         height=350,
     )
 
-    fig.update_layout(margin = dict(l = 20, r = 20, t = 40, b = 20))
+    fig.update_layout(margin=dict(l=20, r=20, t=40, b=20))
     return fig
 
 
 def plot_3d_soil_stratification():
-    """ Renders 3D GeoTechnical SubSurface Soil Profile Visualizer."""
+    """Renders 3D GeoTechnical SubSurface Soil Profile Visualizer."""
 
     x = np.linspace(0, 50, 20)
     y = np.linspace(0, 50, 20)
@@ -110,8 +112,8 @@ def plot_3d_soil_stratification():
     )
 
     fig.update_layout(
-        title = "Subsurface 3D Soil Stratification Mesh",
-        scene = dict(
+        title="Subsurface 3D Soil Stratification Mesh",
+        scene=dict(
             xaxis_title="East (m)",
             yaxis_title="North (m)",
             zaxis_title="Depth (m)",
@@ -124,8 +126,9 @@ def plot_3d_soil_stratification():
 
     return fig
 
+
 def plot_ground_stability_gauge(stability_index):
-    """ Renders Gauge Chart For Geo Technical Ground Stability Index."""
+    """Renders Gauge Chart For Geo Technical Ground Stability Index."""
 
     fig = go.Figure(
         go.Indicator(
@@ -145,5 +148,5 @@ def plot_ground_stability_gauge(stability_index):
         )
     )
 
-    fig.update_layout(template = "plotly_dark", height = 300)
+    fig.update_layout(template="plotly_dark", height=300)
     return fig
