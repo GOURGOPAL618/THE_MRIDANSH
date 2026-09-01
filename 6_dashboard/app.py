@@ -148,15 +148,15 @@ def main():
                         )
                         r_col1, r_col2 = st.columns(2)
                         with r_col1:
+                            depths_data = pred_res.get("depths_cm") or [5, 15, 30, 60, 100]
+                            moisture_data = pred_res.get("predicted_moisture_m3m3") or [0.0, 0.0, 0.0, 0.0, 0.0]
+                            uncertainty_data = pred_res.get("uncertainty_bounds") or [0.0, 0.0, 0.0, 0.0, 0.0]
+
                             df_profile = pd.DataFrame(
                                 {
-                                    "Depth (cm)": pred_res.get("depths_cm"),
-                                    "Moisture (m³/m³)": pred_res.get(
-                                        "predicted_moisture_m3m3"
-                                    ),
-                                    "Uncertainty (±)": pred_res.get(
-                                        "uncertainty_bounds"
-                                    ),
+                                    "Depth (cm)": depths_data,
+                                    "Moisture (m³/m³)": moisture_data,
+                                    "Uncertainty (±)": uncertainty_data,
                                 }
                             )
                             st.dataframe(df_profile, use_container_width=True)
