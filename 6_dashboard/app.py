@@ -171,16 +171,19 @@ def main():
                     else:
                         st.warning("FastAPI Server offline. Showing fallback profile.")
 
+        # Tab 2: GIS Spatial Subgrid Mesh GET Endpoint (Day 30 Integration)
         with tab2:
-            st.markdown("##### Base Map Engine & GIS Sub-Grid Viewport")
+            st.markdown("##### Dynamic Sub-Grid Mesh GeoJSON Integration")
             g1, g2 = st.columns([1, 2])
 
-            gis_data_payload = None
+            # Initialize session state for persistent map rendering
+            if "live_geojson_mesh" not in st.session_state:
+                st.session_state.live_geojson_mesh = None
 
             with g1:
-                grid_r = st.slider("Grid Row", 1, 8, 4)
-                grid_c = st.slider("Grid Col", 1, 8, 4)
-                fetch_gis_btn = st.button("Fetch GIS Grid Mesh Tiles 🗺️")
+                grid_r = st.slider("Grid Row", 1, 8, 4, key="day30_row")
+                grid_c = st.slider("Grid Col", 1, 8, 4, key="day30_col")
+                fetch_gis_btn = st.button("Fetch & Overlay Sub-Grid Mesh 🗺️")
 
                 if fetch_gis_btn:
                     with st.spinner("Requesting `/api/v1/gis/layer` GeoJSON..."):
@@ -189,16 +192,27 @@ def main():
                         )
 
                     if gis_res and gis_res.get("status") == "SUCCESS":
-                        gis_data_payload = gis_res.get("geojson_data", {})
-                        st.success(
-                            f"Loaded {len(gis_data_payload.get('features', []))} Sub-Grid Tiles!"
+                        st.session_state.live_geojson_mesh = gis_res.get(
+                            "geojson_data", {}
                         )
+                        num_tiles = len(
+                            st.session_state.live_geojson_mesh.get("features", [])
+                        )
+                        st.success(f"Rendered {num_tiles} Polygon Mesh Tiles!")
+
                     else:
                         st.error("Failed To Fetch GIS Layer From Backend.")
 
+                if st.session_state.live_geojson_mesh:
+                    with st.expander("🔍 Inspect Active GeoJSON Payload"):
+                        st.json(st.session_state.live_geojson_mesh)
+
             with g2:
                 render_streamlit_folium_map(
-                    lat=20.2961, lon=85.8245, zoom=11, geojson_data=gis_data_payload
+                    lat=20.2961,
+                    lon=85.8245,
+                    zoom=11,
+                    geojson_data=st.session_state.live_geojson_mesh,
                 )
 
     st.markdown("---")

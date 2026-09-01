@@ -92,7 +92,7 @@
 | DAY | MODULE | DESCRIPTION | STATUS | RESULT |
 |:---:|---|---|:---:|---|
 | **29** 🗺️ | Base Map Engine Scaffolding | Folium / streamlit-folium (or PyDeck) dark-themed viewport init | ✅ COMPLETE | Interactive map embedded with Esri layers |
-| **30** 🧩 | GeoJSON Mesh Layer Live Integration | `/api/v1/gis/layer` connected to frontend map view — live boundary render | ⬜ PENDING | — |
+| **30** 🧩 | GeoJSON Mesh Layer Live Integration | `/api/v1/gis/layer` connected to frontend map view — live boundary render | ✅ COMPLETE | GIS Sub-grid successfully integrated with Row/Col sliders |
 | **31** 🌡️ | Spatial Soil Moisture Heatmap Overlay | Moisture (m³/m³) choropleth/tile gradient — Red (low) → Blue (high) | ⬜ PENDING | — |
 | **32** 📍 | Interactive Polygon & Point Telemetry Trigger | Click-to-query lat/lon auto-fill into backend search form | ⬜ PENDING | — |
 | **33** 🔀 | Multi-Domain Viewport Layer Switcher | Agronomy (crop stress/moisture) vs Civil (stability/pore pressure) toggles | ⬜ PENDING | — |

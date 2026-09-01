@@ -139,7 +139,7 @@ def render_streamlit_folium_map(
     zoom: int = 11,
     geojson_data: dict[str, Any] | None = None,
 ):
-    """Bridge function to render GIS Map directly inside Streamlit Dashboard."""
+    """Bridge Function to render GIS Map Inside Streamlit Dashboard (Day 30)"""
     renderer = GISMapRenderer(default_center=(lat, lon), default_zoom=zoom)
     f_map = renderer.create_folium_2d_map()
 
@@ -147,106 +147,8 @@ def render_streamlit_folium_map(
         renderer.add_geojson_aoi_overlay(
             folium_map=f_map,
             geojson_data=geojson_data,
-            layer_name="Sub-Grid Spatial Mesh",
+            layer_name="Live Sub-Grid Mesh",
         )
 
     folium.LayerControl(collapsed=False).add_to(f_map)
-    return st_folium(f_map, width="100%", height=450, key="day29_base_map")
-
-
-#     def generate_mapbox_3d_config(
-#         self,
-#         bbox: List[float],
-#         pitch: float = 60.0,
-#         bearing: float = -17.6,
-#         mapbox_token: str = "PK_PUBLIC_MOCK_TOKEN",
-#     ) -> Dict[str, Any]:
-#         """Generates configuration payload for Mapbox GL JS 3D Terrain & Satellite Vector rendering.
-
-#         Parameters:
-#             bbox: [min_lon, min_lat, max_lon, max_lat]
-#             pitch: Camera tilt angle in degrees (0-85)
-#             bearing: Camera orientation angle
-#         """
-
-#         center_lon = (bbox[0] + bbox[2]) / 2.0
-#         center_lat = (bbox[1] + bbox[3]) / 2.0
-
-#         return {
-#             "mapbox_token": mapbox_token,
-#             "style": "mapbox://styles/mapbox/satellite-streets-v12",
-#             "camera": {
-#                 "center": [center_lon, center_lat],
-#                 "zoom": 13.5,
-#                 "pitch": pitch,
-#                 "bearing": bearing,
-#             },
-
-#             "terrain": {"source": "mapbox-dem", "exaggeration": 1.5},
-#             "sources": {
-#                 "mapbox-dem": {
-#                     "type": "raster-dem",
-#                     "url": "mapbox://mapbox.mapbox-terrain-dem-v1",
-#                     "tileSize": 512,
-#                     "maxzoom": 14,
-#                 }
-#             },
-#         }
-
-
-# # Quick Verification Test
-# if __name__ == "__main__":
-#     print("🗺️ Testing Day 18 GIS Map Renderer Engine...")
-#     renderer = GISMapRenderer()
-
-#     # 1. Test Folium 2D Map Generation
-#     print("\n1. Initializing Folium 2D Interactive Map with Base Tiles...")
-#     f_map = renderer.create_folium_2d_map()
-
-#     # Sample AOI Polygon (Bhubaneswar Field Boundary GeoJSON)
-#     sample_geojson = {
-#         "type": "FeatureCollection",
-#         "features": [
-#             {
-#                 "type": "Feature",
-#                 "geometry": {
-#                     "type": "Polygon",
-#                     "coordinates": [
-#                         [
-#                             [85.75, 20.20],
-#                             [85.90, 20.20],
-#                             [85.90, 20.35],
-#                             [85.75, 20.35],
-#                             [85.75, 20.20],
-#                         ]
-#                     ],
-#                 },
-#                 "properties": {"name": "Bhubaneswar Spatial Corridor AOI"}
-#             }
-#         ],
-#     }
-
-#     print("\n2. Overlaying GeoJSON AOI Boundary Layer...")
-#     renderer.add_geojson_aoi_overlay(
-#         folium_map = f_map,
-#         geojson_data = sample_geojson,
-#         layer_name = "Bhubaneswar Target Zone",
-#     )
-
-#     # Add Layer Control to Map
-#     folium.LayerControl(collapsed = False).add_to(f_map)
-
-#     # Save verification HTML file
-#     output_html = "test_map_day18.html"
-#     f_map.save(output_html)
-#     print(f"   Saved Interactive Map HTML to: {output_html}")
-
-#     # 2. Test Mapbox 3D Config Generation
-#     print("\n3. Generating Mapbox GL JS 3D Terrain Config...")
-#     bhubaneswar_bbox = [85.75, 20.20, 85.90, 20.35]
-#     mapbox_cfg = renderer.generate_mapbox_3d_config(bbox=bhubaneswar_bbox)
-#     print(f"   3D Camera Center: {mapbox_cfg['camera']['center']}")
-#     print(f"   3D Camera Pitch: {mapbox_cfg['camera']['pitch']} deg")
-#     print(f"   Terrain Exaggeration: {mapbox_cfg['terrain']['exaggeration']}x")
-
-#     print("\n✅ Day 18 GIS Map Renderer Engine Complete!")
+    return st_folium(f_map, width="100%", height=480, key="day30_live_meah_map")

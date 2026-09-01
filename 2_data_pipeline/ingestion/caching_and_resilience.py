@@ -53,7 +53,8 @@ class ResilientSatelliteIngestor:
         endpoint_name: str,
         params: dict[str, Any],
         fetch_function: Callable[[dict[str, Any]], dict[str, Any]],
-        fallback_data_generator: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
+        fallback_data_generator: Callable[[dict[str, Any]], dict[str, Any]]
+        | None = None,
     ) -> dict[str, Any]:
         """Executes satellite API calls with Caching -> Retry -> Exponential Backoff -> Offline Fallback chain."""
         cache_key = self._generate_cache_key(endpoint_name, params)
