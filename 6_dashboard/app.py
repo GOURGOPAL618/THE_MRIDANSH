@@ -16,7 +16,7 @@ for path in [str(ROOT_DIR), str(DASHBOARD_DIR)]:
     if path not in sys.path:
         sys.path.insert(0, path)
 
-from renderers.map_renderers import render_streamlit_folium_map
+from renderers.map_renderers import render_heatmap_folium_map
 from runtime_cache import get_api_client, get_unified_soil_engine_state
 from viewports.agronomy_view import render_agronomy_viewport
 from viewports.civil_view import render_civil_viewport
@@ -208,11 +208,12 @@ def main():
                         st.json(st.session_state.live_geojson_mesh)
 
             with g2:
-                render_streamlit_folium_map(
-                    lat=20.2961,
-                    lon=85.8245,
-                    zoom=11,
-                    geojson_data=st.session_state.live_geojson_mesh,
+                # Day 31 Spatial Moisture Heatmap Viewport
+                render_heatmap_folium_map(
+                    lat = 20.2961,
+                    lon = 85.8245,
+                    zoom = 11,
+                    geojson_data = st.session_state.live_geojson_mesh
                 )
 
     st.markdown("---")
