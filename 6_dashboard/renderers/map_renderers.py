@@ -4,7 +4,7 @@ Integrates Folium and Mapbox GL JS configurations for dynamic spatial raster ove
 AOI polygon boundaries, and soil moisture surface maps.
 """
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Tuple
 
 import folium
 from folium import plugins
@@ -191,16 +191,25 @@ def render_heatmap_folium_map(
     zoom: int = 11,
     geojson_data: Optional[Dict[str, Any]] = None,
 ):
-    """Bridge helper for Day 31 Soil Moisture Heatmap Rendering."""
-    renderer = GISMapRenderer(default_center=(lat, lon), default_zoom=zoom)
+    """Renders GIS Map and returns click interaction state dictionary."""
+    renderer = GISMapRenderer(default_center = (lat, lon), default_zoom = zoom)
     f_map = renderer.create_folium_2d_map()
 
     if geojson_data:
         renderer.add_soil_moisture_heatmap_overlay(
-            folium_map=f_map,
-            geojson_data=geojson_data,
-            layer_name="Soil Moisture Heatmap",
+            folium_map = f_map,
+            geojson_data = geojson_data,
+            layer_name = "Soil Moisture Heatmap",
         )
 
-    folium.LayerControl(collapsed=False).add_to(f_map)
-    return st_folium(f_map, width="100%", height=480, key="day31_heatmap_map_v2")
+    folium.LayerControl(collapsed = False).add_to(f_map)
+
+    # Return st_folium click data
+    return st_folium(
+        f_map,
+        width = "100%",
+        height = 480,
+        key = "day32_interactive_click_map",
+        returned_objects = ["last_clicked"],
+    )
+

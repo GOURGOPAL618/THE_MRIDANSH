@@ -110,6 +110,12 @@ def main():
         tab1, tab2 = st.tabs(
             ["🚀 Physics Simulation (`/predict`)", "🗺️ GIS Grid Mesh (`/gis/layer`)"]
         )
+        
+        # Initialize selected coordinates session rate
+        if "selected_lat" not in st.session_state:
+            st.session_state.selected_lat = 20.2961
+        if "selected_lon" not in st.session_state:
+            st.session_state.selected_lon = 85.8245
 
         with tab1:
             st.markdown("##### Execute Richards-1D + EnKF Simulation Engine")
@@ -117,16 +123,20 @@ def main():
                 c1, c2, c3 = st.columns(3)
                 with c1:
                     lat_input = st.number_input(
-                        "Target Latitude", value=20.2961, format="%.4f"
+                        "Target Latitude",
+                        value = float(st.session_state.selected_lat),
+                        format = "%.4f"
                     )
+
                 with c2:
                     lon_input = st.number_input(
-                        "Target Longitude", value=85.8245, format="%.4f"
+                        "Target Longitude",
+                        value = float(st.session_state.selected_lon),
+                        format = "%.4f"
                     )
+
                 with c3:
-                    day_input = st.slider(
-                        "Simulation Days", min_value=1, max_value=30, value=7
-                    )
+                    dayInput = st.slider('Simulation Days', min_value = 1, max_value = 30, value = 7)
 
                 enkf_toggle = st.checkbox(
                     "Enable EnKF Satellite Assimilation", value=True
@@ -138,7 +148,7 @@ def main():
                         pred_res = api_client.trigger_prediction(
                             lat=lat_input,
                             lon=lon_input,
-                            days=day_input,
+                            days=dayInput,
                             enkf=enkf_toggle,
                         )
 
@@ -173,7 +183,7 @@ def main():
 
         # Tab 2: GIS Spatial Subgrid Mesh GET Endpoint (Day 30 Integration)
         with tab2:
-            st.markdown("##### Dynamic Sub-Grid Mesh GeoJSON Integration")
+            st.markdown("##### Dynamic Sub-Grid Mesh GeoJSON Integration & Point Telementary Trigger")
             g1, g2 = st.columns([1, 2])
 
             # Initialize session state for persistent map rendering
@@ -181,8 +191,8 @@ def main():
                 st.session_state.live_geojson_mesh = None
 
             with g1:
-                grid_r = st.slider("Grid Row", 1, 8, 4, key="day30_row")
-                grid_c = st.slider("Grid Col", 1, 8, 4, key="day30_col")
+                grid_r = st.slider("Grid Row", 1, 8, 4, key="day32_row")
+                grid_c = st.slider("Grid Col", 1, 8, 4, key="day32_col")
                 fetch_gis_btn = st.button("Fetch & Overlay Sub-Grid Mesh 🗺️")
 
                 if fetch_gis_btn:
@@ -192,29 +202,43 @@ def main():
                         )
 
                     if gis_res and gis_res.get("status") == "SUCCESS":
-                        st.session_state.live_geojson_mesh = gis_res.get(
-                            "geojson_data", {}
-                        )
-                        num_tiles = len(
-                            st.session_state.live_geojson_mesh.get("features", [])
-                        )
+                        st.session_state.live_geojson_mesh = gis_res.get("geojson_data", {})
+                        num_tiles = len(st.session_state.live_geojson_mesh.get("features", []))
                         st.success(f"Rendered {num_tiles} Polygon Mesh Tiles!")
-
                     else:
                         st.error("Failed To Fetch GIS Layer From Backend.")
+
+                # Lat/Lon Active Capture Banner
+                st.info(
+                    f"📍 **Active Coordinates:**\n\n"
+                    f"**Lat:** `{st.session_state.selected_lat:.4f}` | "
+                    f"**Lon:** `{st.session_state.selected_lon:.4f}`\n\n"
+                    f"*(Click anywhere on the map to auto-select targets)*"
+                )
 
                 if st.session_state.live_geojson_mesh:
                     with st.expander("🔍 Inspect Active GeoJSON Payload"):
                         st.json(st.session_state.live_geojson_mesh)
 
             with g2:
-                # Day 31 Spatial Moisture Heatmap Viewport
-                render_heatmap_folium_map(
-                    lat = 20.2961,
-                    lon = 85.8245,
+                map_output = render_heatmap_folium_map(
+                    lat = st.session_state.selected_lat,
+                    lon = st.session_state.selected_lon,
                     zoom = 11,
                     geojson_data = st.session_state.live_geojson_mesh
                 )
+
+                # Capture Map Click LAT/LON Event
+                if map_output and map_output.get("last_clicked"):
+                    clicked_coords = map_output["last_clicked"]
+                    new_lat = round(clicked_coords["lat"], 4)
+                    new_lon = round(clicked_coords["lng"], 4)
+
+                    if (new_lat != st.session_state.selected_lat) or (new_lon != st.session_state.selected_lon):
+                        st.session_state.selected_lat = new_lat
+                        st.session_state.selected_lon = new_lon
+                        st.rerun()
+
 
     st.markdown("---")
 
