@@ -219,13 +219,17 @@ def main():
                 if st.session_state.live_geojson_mesh:
                     with st.expander("🔍 Inspect Active GeoJSON Payload"):
                         st.json(st.session_state.live_geojson_mesh)
+            
+            # Determine Active Domain Mode from sidebar Radio Selection
+            active_domain_mode = "agronomy" if "Agronomy" in selected_viewport else "civil" 
 
             with g2:
                 map_output = render_heatmap_folium_map(
                     lat = st.session_state.selected_lat,
                     lon = st.session_state.selected_lon,
                     zoom = 11,
-                    geojson_data = st.session_state.live_geojson_mesh
+                    geojson_data = st.session_state.live_geojson_mesh,
+                    domain_mode = active_domain_mode
                 )
 
                 # Capture Map Click LAT/LON Event
@@ -250,3 +254,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

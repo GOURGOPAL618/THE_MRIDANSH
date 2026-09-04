@@ -29,8 +29,8 @@ class GISMapRenderer:
 
     def create_folium_2d_map(
         self,
-        center: tuple[float, float] | None = None,
-        zoom: int | None = None,
+        center: Optional[Tuple[float, float]] = None,
+        zoom: Optional[int] = None,
     ) -> folium.Map:
         """Generates an interactive 2D Folium Map with multiple base tiles and layer controls."""
         map_center = center or self.default_center
@@ -132,35 +132,49 @@ class GISMapRenderer:
 
         return folium_map
 
+
     def add_soil_moisture_heatmap_overlay(
         self,
         folium_map: folium.Map,
         geojson_data: Dict[str, Any],
+        domain_mode: str = "agronomy",
         layer_name: str = "Soil Moisture Heatmap",
     ) -> folium.Map:
-        """Dynamic color map generation mapped correctly with backend tile coordinates."""
+        """Domain-Aware Choropleth Styling Logic."""
 
-        def get_tile_color(props: Dict[str, Any]) -> str:
+        def get_domain_color(props: Dict[str, Any]) -> str:
             # Generate deterministic moisture gradient from grid position if explicit moisture key is missing
             moisture = props.get("moisture_m3m3")
             if moisture is None:
                 r = props.get("row", 0)
                 c = props.get("col", 0)
                 moisture = 0.12 + ((r * 3 + c * 5) % 25) / 100.0  # Range: 0.12 to 0.36
-
-            if moisture < 0.16:
-                return "#FF3333"  # Dry / Stress (Red)
-            elif moisture < 0.22:
-                return "#FF9900"  # Low (Orange)
-            elif moisture < 0.28:
-                return "#FFFF00"  # Medium (Yellow)
-            elif moisture < 0.34:
-                return "#00FF66"  # Optimal (Green)
+            if domain_mode == "agronomy":
+                # Agronomy Focus: Crop Stress & Irrigation Need
+                if moisture < 0.16:
+                    return "#FF3333"  # Dry / Stress (Red)
+                elif moisture < 0.22:
+                    return "#FF9900"  # Low (Orange)
+                elif moisture < 0.28:
+                    return "#FFFF00"  # Medium (Yellow)
+                elif moisture < 0.34:
+                    return "#00FF66"  # Optimal (Green)
+                else:
+                    return "#0099FF"  # Saturated (Blue)
+            
             else:
-                return "#0099FF"  # Saturated (Blue)
+                # Civil Focus: Subgrade Stability & Saturation Liquefaction Risk
+                if moisture < 0.15:
+                    return "#00FF66"     # High Bearing Capacity / Dry Subgrade (Green)
+                elif moisture < 0.25:
+                    return "#FFFF00"     # Stable Moisture Range (Yellow)
+                elif moisture < 0.32:
+                    return "#FF9900"     # Moderate Liquefaction / Shear Loss Risk (Orange)
+                else:
+                    return "#FF0055"     # High Slope Failure / Unstable Saturation (Critical Red)
 
         style_function = lambda feature: {
-            "fillColor": get_tile_color(feature.get("properties", {})),
+            "fillColor": get_domain_color(feature.get("properties", {})),
             "color": "#FFFFFF",
             "weight": 1.5,
             "fillOpacity": 0.60,
@@ -176,7 +190,7 @@ class GISMapRenderer:
 
         geojson_layer = folium.GeoJson(
             geojson_data,
-            name=layer_name,
+            name=f"{layer_name} ({domain_mode.upper()})",
             style_function=style_function,
             tooltip=tooltip,
         )
@@ -190,16 +204,18 @@ def render_heatmap_folium_map(
     lon: float = 85.8245,
     zoom: int = 11,
     geojson_data: Optional[Dict[str, Any]] = None,
+    domain_mode: str = "agronomy",
 ):
-    """Renders GIS Map and returns click interaction state dictionary."""
+    """Bridge Helper With Multi-Domain Viewport Support (Day 33)"""
     renderer = GISMapRenderer(default_center = (lat, lon), default_zoom = zoom)
     f_map = renderer.create_folium_2d_map()
 
     if geojson_data:
         renderer.add_soil_moisture_heatmap_overlay(
             folium_map = f_map,
+            domain_mode = domain_mode,
             geojson_data = geojson_data,
-            layer_name = "Soil Moisture Heatmap",
+            layer_name = "Domain Soil Intelligence",
         )
 
     folium.LayerControl(collapsed = False).add_to(f_map)
@@ -209,7 +225,7 @@ def render_heatmap_folium_map(
         f_map,
         width = "100%",
         height = 480,
-        key = "day32_interactive_click_map",
+        key = f"day33_map_{domain_mode}",
         returned_objects = ["last_clicked"],
     )
 
