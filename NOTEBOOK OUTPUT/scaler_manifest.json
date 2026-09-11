@@ -1,0 +1,26 @@
+{
+  "Project": "THE MRIDANSH",
+  "engine": "AETHER-MRID1607X",
+  "notebook": "02_preprocessing.ipynb",
+  "temporal_split_index": 28,
+  "train_sample_count": 28,
+  "test_sample_count": 7,
+  "feature_scaler_parameters": {
+    "s1_vv_lee": {
+      "mean": -13.510027922701811,
+      "std": 2.197309599467909
+    },
+    "s1_vh_db": {
+      "mean": -19.648007479125024,
+      "std": 3.4012699200375653
+    },
+    "dem_elevation_m": {
+      "mean": 18.5,
+      "std": 1e-06
+    },
+    "ndvi_masked": {
+      "min": 0.18364952752897318,
+      "max": 0.7692757597519014
+    }
+  }
+}
