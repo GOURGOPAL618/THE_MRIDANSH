@@ -132,7 +132,7 @@
 | DAY | NOTEBOOK | MAIN WORK | VALIDATION | STATUS | RESULT |
 |:---:|---|---|---|:---:|---|
 | **35–36** | `01_data_ingestion` | STAC, Sentinel-1/2, DEM, weather, metadata | Data availability, CRS, timestamps, missing data | ✅ COMPLETE | Days 1-2 - Completed with aerospace telemetry visuals, spatial resampling, and STAC assembly |
-| **37–38** | `02_preprocessing` | Cloud masking, SAR/optical QC, normalization, alignment | Data leakage + spatial alignment checks | ✅ COMPLETE | |
+| **37–38** | `02_preprocessing` | Cloud masking, SAR/optical QC, normalization, alignment | Data leakage + spatial alignment checks | ✅ COMPLETE | Days 3-4 - Completed with zero-leakage feature scaling, Lee SAR filtering, and artifact export |
 | **39–40** | `03_spatial_modeling` | Terrain features, graph construction, GCN experiment | Spatial ablation + unseen-area test | ⏳ PENDING | |
 | **41–42** | `04_temporal_modeling` | Time-series construction, ConvLSTM experiment | Temporal holdout + sequence ablation | ⏳ PENDING | |
 
