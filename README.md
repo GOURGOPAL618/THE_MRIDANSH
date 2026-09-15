@@ -102,7 +102,7 @@
 <div align="center">
 
 <img height="34" src="https://img.shields.io/badge/PHASE%203-🔶%20IN%20PROGRESS-b026ff?style=for-the-badge&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/PROGRESS-10%20%2F%2025%20DAYS-ffb700?style=for-the-badge&labelColor=000000"/>
+<img height="30" src="https://img.shields.io/badge/PROGRESS-18%20%2F%2025%20DAYS-ffb700?style=for-the-badge&labelColor=000000"/>
 
 </div>
 
