@@ -147,7 +147,7 @@
 | DAY | NOTEBOOK | MAIN WORK | VALIDATION | STATUS | RESULT |
 |:---:|---|---|---|:---:|---|
 | **43–45** | `05_physics_validation` | Richards/Darcy, physical constraints, physics loss, PINN experiment | Conservation/physical consistency + boundary-condition tests | ✅ COMPLETED | NOTEBOOK COMPLETED SUCCESSFULLY |
-| **46–47** | `06_state_estimation` | EnKF, observation update, state reconstruction | Prior vs posterior error + assimilation stability | ⏳ PENDING | |
+| **46–47** | `06_state_estimation` | EnKF, observation update, state reconstruction | Prior vs posterior error + assimilation stability | ⏳ ONGOING | Complete Day 1 EnKF foundation, state matrix architecture, and prior-posterior plots |
 | **48–49** | `07_uncertainty_analysis` | Ensemble variance, confidence, uncertainty propagation | Calibration, uncertainty vs error, bad-data stress tests | ⏳ PENDING | |
 
 ---
