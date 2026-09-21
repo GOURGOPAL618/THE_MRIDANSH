@@ -171,10 +171,10 @@
 
 <br/>
 
-> ### 📅 DAY 45 · 19 SEP 2026 &nbsp; `✅ COMPLETE`
-> **Shipped —** Notebook 05: 05_physics_validation Completed  
-> **Next up —** Day 46-47 · notebook 06 kickoff
-
+> ### 📅 DAY 46 · 21 SEP 2026 &nbsp; `✅ COMPLETE`
+> **Shipped —** Notebook-06: complete Day 1 EnKF foundation, state matrix architecture, and prior-posterior plots  
+> **Next up —** Day 47 · Assimilation Validation, Noise Sensitivity & Stability Tests  
+ 
 <br/>
 
 <details>
