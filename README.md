@@ -185,7 +185,7 @@
 
 | NOTEBOOK | DAYS | DURATION | MAIN PURPOSE | STATUS |
 |---|:---:|:---:|---|:---:|
-| **06 State Estimation** | Day 1–2 | 2 days | EnKF + unified soil state | ⏳ ONGOING |
+| **06 State Estimation** | Day 1–2 | 2 days | EnKF + unified soil state | ✅ COMPLETED |
 | **07 Uncertainty Analysis** | Day 3–4 | 2 days | Confidence + uncertainty propagation | ⏳ PENDING |
 | **08 Robustness & Failure Analysis** | Day 5–7 | 3 days | Break the system deliberately | ⏳ PENDING |
 | **09 Hyperspectral Experiment** | Day 8–10 | 3 days | Test HSI as an experimental modality | ⏳ PENDING |
