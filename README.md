@@ -201,9 +201,9 @@
 
 <br/>
 
-> ### 📅 DAY 46 · 21 SEP 2026 &nbsp; `✅ COMPLETE`
-> **Shipped —** Notebook-06: complete Day 1 EnKF foundation, state matrix architecture, and prior-posterior plots  
-> **Next up —** Day 47 · Assimilation Validation, Noise Sensitivity & Stability Tests  
+> ### 📅 DAY 47 · 22 SEP 2026 &nbsp; `✅ COMPLETE`
+> **Shipped —** Notebook-06: 06 State Estimation - complete   
+> **Next up —** Notebook 7: 07 Uncertainty Analysis - Day 1 start   
  
 <br/>
 
