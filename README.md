@@ -168,10 +168,10 @@
 <div align="center">
 
 ```
-╔═══════════════════════════════════════════════════════════════════════╗
-║            🔬  EXTENDED NOTEBOOK ROADMAP · NOTEBOOKS 06 → 12           ║
-║                 PHASE 3 · WEEK 3 & WEEK 4 REVISED (18 DAYS)            ║
-╚═══════════════════════════════════════════════════════════════════════╝
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  ▸▸  NOTEBOOK RECON · 06 THROUGH 12  ▸▸  REVISED SCIENTIFIC TRACK
+  ▸▸  18-DAY SPRINT  ·  PHASE 3 WEEK 3 + WEEK 4  ·  STATUS: LIVE
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ```
 
 <img height="30" src="https://img.shields.io/badge/ROADMAP%20TYPE-EXTENDED%20%2F%20REVISED-ffd700?style=for-the-badge&labelColor=000000"/>
@@ -230,9 +230,13 @@ THE_MRIDANSH/
 │   ├── 03_spatial_modeling.ipynb      # [PHASE 3 · WK2] Terrain features, graph construction, GCN
 │   ├── 04_temporal_modeling.ipynb     # [PHASE 3 · WK2] Time-series construction, ConvLSTM
 │   ├── 05_physics_validation.ipynb    # [PHASE 3 · WK3] Richards/Darcy constraints, PINN
-│   ├── 06_state_estimation.ipynb      # [PHASE 3 · WK3] EnKF, observation update
-│   ├── 07_uncertainty_analysis.ipynb  # [PHASE 3 · WK3] Ensemble variance, calibration
-│   └── 08_model_evaluation.ipynb      # [PHASE 3 · WK4] Full evaluation, ablation, final report
+│   ├── 06_state_estimation.ipynb      # [ROADMAP] EnKF, observation update, state reconstruction
+│   ├── 07_uncertainty_analysis.ipynb  # [ROADMAP] Ensemble variance, confidence, calibration
+│   ├── 08_robustness_failure_analysis.ipynb  # [ROADMAP] Deliberate stress & failure testing
+│   ├── 09_hyperspectral_experiment.ipynb     # [ROADMAP] HSI as an experimental modality
+│   ├── 10_ablation_study.ipynb               # [ROADMAP] Which components actually matter
+│   ├── 11_generalization_baseline_eval.ipynb # [ROADMAP] Spatial/temporal generalization + baselines
+│   └── 12_final_scientific_audit.ipynb       # [ROADMAP] Final evidence, limitations & lock
 ├── 2_data_pipeline/         # Multi-modal Satellite Ingestion & Fusion
 │   └── stac_client.py       # [PHASE 2] Copernicus / ISRO Bhuvan / Landsat STAC connectors
 ├── 3_core_engine/           # AETHER Scientific PINN + EnKF Core
