@@ -4,7 +4,7 @@
 
 <img src="https://readme-typing-svg.demolab.com/?lines=%3E+PHASE+1+%3A+CORE+CONSTRUCTION+%E2%80%94+COMPLETE;%3E+PHASE+2+%3A+LIVE+PIPELINES+%2B+GIS+%2B+API+%E2%80%94+COMPLETE;%3E+PHASE+3+%3A+WEEK+1+GIS+MAPPING+%E2%80%94+COMPLETE;%3E+PHASE+3+%3A+WEEK+2+DATA+%2B+SPATIOTEMPORAL+CORE+%E2%80%94+INITIATED;%3E+DAILY+TELEMETRY+SYNC+%3A+ENABLED;JAGANNATH+COMMAND+CENTER+%7C+JCC+HEADQUARTERS&font=Fira+Code&size=19&duration=2400&pause=700&color=00E5FF&center=true&vCenter=true&width=980&height=70" />
 
-<br/>
+<br/
 
 <img height="34" src="https://img.shields.io/badge/STATUS-BUILD%20IN%20PROGRESS-00e5ff?style=for-the-badge&labelColor=000000"/>
 <img height="34" src="https://img.shields.io/badge/PHASE%201-COMPLETED-00ffab?style=for-the-badge&labelColor=000000"/>
