@@ -165,11 +165,23 @@
 
 ---
 
-### 🔬 EXTENDED NOTEBOOK ROADMAP — WEEK 3 & 4 (NOTEBOOKS 06–12)
-
 <div align="center">
-<img height="30" src="https://img.shields.io/badge/ROADMAP-EXTENDED%20%2F%2018%20DAYS-b026ff?style=for-the-badge&labelColor=000000"/>
+
+```
+╔═══════════════════════════════════════════════════════════════════════╗
+║            🔬  EXTENDED NOTEBOOK ROADMAP · NOTEBOOKS 06 → 12           ║
+║                 PHASE 3 · WEEK 3 & WEEK 4 REVISED (18 DAYS)            ║
+╚═══════════════════════════════════════════════════════════════════════╝
+```
+
+<img height="30" src="https://img.shields.io/badge/ROADMAP%20TYPE-EXTENDED%20%2F%20REVISED-ffd700?style=for-the-badge&labelColor=000000"/>
+<img height="30" src="https://img.shields.io/badge/TOTAL%20SPAN-18%20DAYS-ff0044?style=for-the-badge&labelColor=000000"/>
+<img height="30" src="https://img.shields.io/badge/NOTEBOOKS-06%20%E2%86%92%2012-8a2be2?style=for-the-badge&labelColor=000000"/>
+<img height="30" src="https://img.shields.io/badge/SUPERSEDES-NOTEBOOK%2008%20(ORIGINAL)-555555?style=for-the-badge&labelColor=000000"/>
+
 </div>
+
+> 🧭 **Why this exists:** the original single `08_model_evaluation` notebook has been split into five dedicated stages — robustness, hyperspectral, ablation, generalization and final audit — for tighter scientific rigor before the Phase 3 lock.
 
 | NOTEBOOK | DAYS | DURATION | MAIN PURPOSE | STATUS |
 |---|:---:|:---:|---|:---:|
@@ -255,6 +267,7 @@ THE_MRIDANSH/
 | **PHASE 3 · WEEK 2** | DATA FOUNDATION & SPATIOTEMPORAL MODELING (8-DAY CYCLE) — ⏳ PENDING |
 | **PHASE 3 · WEEK 3** | PHYSICS CONSTRAINTS & STATE ESTIMATION (7-DAY CYCLE) — ⏳ PENDING |
 | **PHASE 3 · WEEK 4** | FULL EVALUATION & PHASE 3 LOCK (4-DAY CYCLE) — ⏳ PENDING |
+| **EXTENDED ROADMAP** | NOTEBOOKS 06 → 12 · 18-DAY REVISED CYCLE — 🔶 IN PROGRESS |
 
 </div>
 
