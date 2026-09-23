@@ -148,7 +148,7 @@
 |:---:|---|---|---|:---:|---|
 | **43–45** | `05_physics_validation` | Richards/Darcy, physical constraints, physics loss, PINN experiment | Conservation/physical consistency + boundary-condition tests | ✅ COMPLETED | NOTEBOOK COMPLETED SUCCESSFULLY |
 | **46–47** | `06_state_estimation` | EnKF, observation update, state reconstruction | Prior vs posterior error + assimilation stability | ✅ COMPLETED | NOTEBOOK COMPLETED SUCCESSFULLY|
-| **48–49** | `07_uncertainty_analysis` | Ensemble variance, confidence, uncertainty propagation | Calibration, uncertainty vs error, bad-data stress tests | ⏳ PENDING | |
+| **48–49** | `07_uncertainty_analysis` | Ensemble variance, confidence, uncertainty propagation | Calibration, uncertainty vs error, bad-data stress tests | ⏳ ONGOING | Notebook-07: complete Day 3 multi-source uncertainty decomposition & confidence profiling |
 
 ---
 
@@ -186,7 +186,7 @@
 | NOTEBOOK | DAYS | DURATION | MAIN PURPOSE | STATUS |
 |---|:---:|:---:|---|:---:|
 | **06 State Estimation** | Day 1–2 | 2 days | EnKF + unified soil state | ✅ COMPLETED |
-| **07 Uncertainty Analysis** | Day 3–4 | 2 days | Confidence + uncertainty propagation | ⏳ PENDING |
+| **07 Uncertainty Analysis** | Day 3–4 | 2 days | Confidence + uncertainty propagation | ⏳ ONGOING |
 | **08 Robustness & Failure Analysis** | Day 5–7 | 3 days | Break the system deliberately | ⏳ PENDING |
 | **09 Hyperspectral Experiment** | Day 8–10 | 3 days | Test HSI as an experimental modality | ⏳ PENDING |
 | **10 Ablation Study** | Day 11–12 | 2 days | Determine which components actually matter | ⏳ PENDING |
@@ -201,9 +201,9 @@
 
 <br/>
 
-> ### 📅 DAY 47 · 22 SEP 2026 &nbsp; `✅ COMPLETE`
-> **Shipped —** Notebook-06: 06 State Estimation - complete   
-> **Next up —** Notebook 7: 07 Uncertainty Analysis - Day 1 start   
+> ### 📅 DAY 48 · 23 SEP 2026 &nbsp; `✅ COMPLETE`
+> **Shipped —** notebook-07: complete Day 3 multi-source uncertainty decomposition & confidence profiling   
+> **Next up —** Notebook 7: 07 Uncertainty Analysis - Day 2 Finishing   
  
 <br/>
 
