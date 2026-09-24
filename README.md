@@ -148,7 +148,7 @@
 |:---:|---|---|---|:---:|---|
 | **43–45** | `05_physics_validation` | Richards/Darcy, physical constraints, physics loss, PINN experiment | Conservation/physical consistency + boundary-condition tests | ✅ COMPLETED | NOTEBOOK COMPLETED SUCCESSFULLY |
 | **46–47** | `06_state_estimation` | EnKF, observation update, state reconstruction | Prior vs posterior error + assimilation stability | ✅ COMPLETED | NOTEBOOK COMPLETED SUCCESSFULLY|
-| **48–49** | `07_uncertainty_analysis` | Ensemble variance, confidence, uncertainty propagation | Calibration, uncertainty vs error, bad-data stress tests | ⏳ ONGOING | Notebook-07: complete Day 3 multi-source uncertainty decomposition & confidence profiling |
+| **48–49** | `07_uncertainty_analysis` | Ensemble variance, confidence, uncertainty propagation | Calibration, uncertainty vs error, bad-data stress tests | ✅ COMPLETED | Notebook-07: complete uncertainty calibration, reliability curves, and 14-day cloud outage stress test |
 
 ---
 
