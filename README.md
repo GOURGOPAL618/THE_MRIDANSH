@@ -141,7 +141,7 @@
 ### ⚛️ WEEK 3 — Physics Constraints & State Estimation (Days 43–49) · 7-DAY CYCLE
 
 <div align="center">
-<img height="30" src="https://img.shields.io/badge/WEEK%203-⏳%20PENDING-ffb700?style=for-the-badge&labelColor=000000"/>
+<img height="30" src="https://img.shields.io/badge/WEEK%203-✅%20COMPLETE-00ffab?style=for-the-badge&labelColor=000000"/>
 </div>
 
 | DAY | NOTEBOOK | MAIN WORK | VALIDATION | STATUS | RESULT |
@@ -186,7 +186,7 @@
 | NOTEBOOK | DAYS | DURATION | MAIN PURPOSE | STATUS |
 |---|:---:|:---:|---|:---:|
 | **06 State Estimation** | Day 1–2 | 2 days | EnKF + unified soil state | ✅ COMPLETED |
-| **07 Uncertainty Analysis** | Day 3–4 | 2 days | Confidence + uncertainty propagation | ⏳ ONGOING |
+| **07 Uncertainty Analysis** | Day 3–4 | 2 days | Confidence + uncertainty propagation | ✅ COMPLETE |
 | **08 Robustness & Failure Analysis** | Day 5–7 | 3 days | Break the system deliberately | ⏳ PENDING |
 | **09 Hyperspectral Experiment** | Day 8–10 | 3 days | Test HSI as an experimental modality | ⏳ PENDING |
 | **10 Ablation Study** | Day 11–12 | 2 days | Determine which components actually matter | ⏳ PENDING |
