@@ -202,8 +202,8 @@
 <br/>
 
 > ### 📅 DAY 50 · 24 SEP 2026 &nbsp; `✅ COMPLETE`
-> **Shipped —** Notebook-07: complete uncertainty calibration, reliability curves, and 14-day cloud outage stress test 
-> **Next up —** Notebook 8 : 08 Robustness & Failure Analysis Kickoff
+> **Shipped —** Notebook-07: complete uncertainty calibration, reliability curves, and 14-day cloud outage stress test   
+> **Next up —** Notebook 8 : 08 Robustness & Failure Analysis Kickoff  
  
 <br/>
 
