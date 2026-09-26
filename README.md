@@ -203,7 +203,7 @@
 
 > ### 📅 DAY 51 · 26 SEP 2026 &nbsp; `✅ COMPLETE`
 > **Shipped —** Notebook-08: complete Day 6 controlled data corruption, noise injection, and calibration shift diagnostics   
-> **Next up —** Notebook 8: Day 3 
+> **Next up —** Notebook 8: Day 3 : Environmental Edge Cases & Failure Mode Catalogue
  
 <br/>
 
