@@ -201,9 +201,9 @@
 
 <br/>
 
-> ### 📅 DAY 51 · 26 SEP 2026 &nbsp; `✅ COMPLETE`
-> **Shipped —** Notebook-08: complete Day 6 controlled data corruption, noise injection, and calibration shift diagnostics   
-> **Next up —** Notebook 8: Day 3 : Environmental Edge Cases & Failure Mode Catalogue
+> ### 📅 DAY 52 · 28 SEP 2026 &nbsp; `✅ COMPLETE`
+> **Shipped —** Notebook-08: complete Day 7 environmental edge cases, failure taxonomy, and lock notebook 08   
+> **Next up —** Notebook 9: 09 Hyperspectral Experiment: Kickoff  
  
 <br/>
 
