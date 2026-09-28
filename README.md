@@ -155,7 +155,7 @@
 ### 📊 WEEK 4 — Full Evaluation & Phase 3 Lock (Days 50–53) · 4-DAY CYCLE
 
 <div align="center">
-<img height="30" src="https://img.shields.io/badge/WEEK%204-⏳%20ONING-ffb700?style=for-the-badge&labelColor=000000"/>
+<img height="30" src="https://img.shields.io/badge/WEEK%204-⏳%20ONGOING-ffb700?style=for-the-badge&labelColor=000000"/>
 </div>
 
 | DAY | NOTEBOOK | MAIN WORK | VALIDATION | STATUS | RESULT |
