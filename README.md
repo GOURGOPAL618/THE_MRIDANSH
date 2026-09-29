@@ -201,9 +201,9 @@
 
 <br/>
 
-> ### 📅 DAY 52 · 28 SEP 2026 &nbsp; `✅ COMPLETE`
-> **Shipped —** Notebook-08: complete Day 7 environmental edge cases, failure taxonomy, and lock notebook 08   
-> **Next up —** Notebook 9: 09 Hyperspectral Experiment: Kickoff  
+> ### 📅 DAY 53 · 29 SEP 2026 &nbsp; `✅ COMPLETE`
+> **Shipped —** Notebook-09: complete Day 8 HSI data prep, atmospheric QC masking, and PCA feature extraction  
+> **Next up —** Notebook 9: Day 9 - Controlled AB Testing (Config-A Baseline vs Config-B Baseline + HSI)   
  
 <br/>
 
