@@ -201,9 +201,9 @@
 
 <br/>
 
-> ### 📅 DAY 53 · 29 SEP 2026 &nbsp; `✅ COMPLETE`
-> **Shipped —** Notebook-09: complete Day 8 HSI data prep, atmospheric QC masking, and PCA feature extraction  
-> **Next up —** Notebook 9: Day 9 - Controlled AB Testing (Config-A Baseline vs Config-B Baseline + HSI)   
+> ### 📅 DAY 54 · 30 SEP 2026 &nbsp; `✅ COMPLETE`
+> **Shipped —** Notebook-09: complete Day 9 controlled AB testing, scatter diagnostics, and HSI fallback audit  
+> **Next up —** Notebook 9: Day 10 - Multi-Metric Comparative Audit & Final Scientific Verdict  
  
 <br/>
 
