@@ -188,8 +188,8 @@
 | **06 State Estimation** | Day 1–2 | 2 days | EnKF + unified soil state | ✅ COMPLETED |
 | **07 Uncertainty Analysis** | Day 3–4 | 2 days | Confidence + uncertainty propagation | ✅ COMPLETED |
 | **08 Robustness & Failure Analysis** | Day 5–7 | 3 days | Break the system deliberately | ✅ COMPLETED |
-| **09 Hyperspectral Experiment** | Day 8–10 | 3 days | Test HSI as an experimental modality | ✅ COMPLETE |
-| **10 Ablation Study** | Day 11–12 | 2 days | Determine which components actually matter | ⏳ ONGOING |
+| **09 Hyperspectral Experiment** | Day 8–10 | 3 days | Test HSI as an experimental modality | ✅ COMPLETED |
+| **10 Ablation Study** | Day 11–12 | 2 days | Determine which components actually matter | ✅ COMPLETED |
 | **11 Generalization & Baseline Evaluation** | Day 13–15 | 3 days | Spatial/temporal generalization + baselines | ⏳ PENDING |
 | **12 Final Scientific Audit** | Day 16–18 | 3 days | Final evidence, limitations & lock | ⏳ PENDING |
 
