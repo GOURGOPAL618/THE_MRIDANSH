@@ -17,11 +17,27 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.append(str(ROOT_DIR))
 
 
+from enum import Enum
+
+
 # ---------------------------------------------------------------------------
-# 1. Existing Soil State Container & Cache Engine
+# 0. Explicit Dashboard Data State Contract
+# ---------------------------------------------------------------------------
+class DataState(str, Enum):
+    """Explicit lifecycle and truth states for dashboard data consumption."""
+
+    LIVE = "LIVE"
+    DEMO = "DEMO"
+    UNAVAILABLE = "UNAVAILABLE"
+    ERROR = "ERROR"
+    STALE = "STALE"
+
+
+# ---------------------------------------------------------------------------
+# 1. Soil State Container & Demonstration Cache Engine
 # ---------------------------------------------------------------------------
 class ObjectContainer:
-    """Dummy Container For Structured State Objects."""
+    """Container for structured state objects with attribute and dict-like access."""
 
     def __init__(self, **kwargs):
         for k, v in kwargs.items():
@@ -30,37 +46,51 @@ class ObjectContainer:
 
 @st.cache_resource
 def get_unified_soil_engine_state():
-    """Instantiates and caches the Unified Soil State and Domain Translators."""
+    """Returns demonstration scaffolding soil state for UI development.
 
-    # Hydro State
+    NOTE: The dashboard is disconnected from the live physical inference engine
+    and domain integration router. All metrics below are synthetic demonstration
+    placeholders and must NOT be used for agronomic or civil engineering decisions.
+    """
+
+    # Hydro State - Uncalibrated Demo Placeholders
     hydro = ObjectContainer(
         moisture_profile=np.array([0.22, 0.28, 0.31, 0.33, 0.35]),
         saturation_degree=0.68,
         hydraulic_cond=0.0012,
         bulk_density=1.38,
+        data_state=DataState.DEMO,
+        is_demo=True,
     )
 
-    # Bio Chemical State
+    # Bio Chemical State - Unconnected / Unavailable Sensors
     biogeo = ObjectContainer(
-        nitrogen_est=115.4,
-        phosphorus_est=28.2,
-        potassium_est=142.8,
-        organic_carbon=0.78,
-        ph_level=6.8,
+        nitrogen_est=None,
+        phosphorus_est=None,
+        potassium_est=None,
+        organic_carbon=None,
+        ph_level=None,
+        data_state=DataState.UNAVAILABLE,
+        is_demo=True,
     )
 
-    # Terrain State
+    # Terrain State - Fixed Geometric Reference
     terrain = ObjectContainer(
         elevation_m=245.0,
         slope_deg=4.2,
         aspect_deg=180.0,
+        data_state=DataState.DEMO,
+        is_demo=True,
     )
 
-    # Reliability / Assimilation State
+    # Reliability / Assimilation State - Engine Disconnected
     reliability = ObjectContainer(
-        confidence_score=0.92,
-        observation_freshness_hrs=1.5,
-        ensemble_spread=0.04,
+        confidence_score=None,
+        observation_freshness_hrs=None,
+        ensemble_spread=None,
+        status="DISCONNECTED",
+        data_state=DataState.UNAVAILABLE,
+        is_demo=True,
     )
 
     # Unified Soil State Container
@@ -69,20 +99,38 @@ def get_unified_soil_engine_state():
         biogeo=biogeo,
         terrain=terrain,
         reliability=reliability,
+        data_state=DataState.DEMO,
+        is_demo=True,
+        provenance="Synthetic Demonstration Scaffolding (Not for Scientific/Field Use)",
     )
 
-    # Translated Output Mock Rules
+    # Translated Output Scaffolding - Clearly Isolated
     agronomy_output = {
+        "data_state": DataState.DEMO,
+        "is_demo": True,
+        "provenance": "Synthetic Demonstration Scaffolding (Not for Agronomic Use)",
         "root_zone_moisture": 0.295,
-        "organic_carbon_est": 0.78,
-        "npk_status": "Optimal",
-        "moisture_zone": "Field Capacity",
+        "organic_carbon_est": None,
+        "npk_status": "Unavailable",
+        "moisture_zone": "Uncalibrated Demo",
+        "nutrient_recommendation": (
+            "Nutrient recommendation unavailable — validated soil-chemistry inputs "
+            "and a supported recommendation method are not connected."
+        ),
     }
 
     civil_output = {
+        "data_state": DataState.DEMO,
+        "is_demo": True,
+        "provenance": "Synthetic Demonstration Scaffolding (Not for Engineering Use)",
         "ground_stability_index": 0.84,
         "pore_water_pressure_kPa": 13.8,
-        "bearing_capacity_est_kPa": 185.0,
+        "bearing_capacity_est_kPa": None,
+        "safety_assessment_available": False,
+        "safety_status": (
+            "Geotechnical safety assessment unavailable — no validated site-specific "
+            "engineering assessment is connected."
+        ),
     }
 
     return soil_state, agronomy_output, civil_output
@@ -104,15 +152,23 @@ class FastAPIClient:
         try:
             res = requests.get(f"{self.base_url}/health", timeout=3)
             if res.status_code == 200:
-                return res.json()
+                data = res.json()
+                data["data_state"] = DataState.LIVE
+                data["inference_connected"] = False
+                return data
 
         except Exception:
             pass
-        return {"status": "OFFLINE", "service": "Backend Disconnected"}
+        return {
+            "status": "OFFLINE",
+            "service": "Backend Disconnected",
+            "data_state": DataState.UNAVAILABLE,
+            "inference_connected": False,
+        }
 
     def fetch_gis_layer(
         self,
-        layer_type: str = "Spatial_grid_mesh",
+        layer_type: str = "spatial_grid_mesh",
         bbox: list | None = None,
         rows: int = 4,
         cols: int = 4,
@@ -141,7 +197,11 @@ class FastAPIClient:
 
         except Exception as e:
             st.error(f"API GIS Layer Fetch Error: {e!s}")
-        return {}
+        return {
+            "status": "UNAVAILABLE",
+            "data_state": DataState.UNAVAILABLE,
+            "message": "GIS layer service unavailable",
+        }
 
     def trigger_prediction(
         self,
@@ -149,7 +209,8 @@ class FastAPIClient:
         lon: float,
         depths: list | None = None,
         days: int = 7,
-        enkf: bool = True,
+        enkf: bool = False,
+        allow_demo: bool = False,
     ) -> dict[str, Any]:
         """Execute physical model prediction via POST /api/v1/predict."""
 
@@ -162,6 +223,7 @@ class FastAPIClient:
             "depth_profile_cm": depths,
             "simulation_days": days,
             "include_enkf_assimilation": enkf,
+            "allow_demo": allow_demo,
         }
 
         try:
@@ -169,12 +231,20 @@ class FastAPIClient:
                 f"{self.base_url}/api/v1/predict", json=payload, timeout=5
             )
 
-            if res.status_code == 200:
+            if res.status_code in (200, 503):
                 return res.json()
+            return {
+                "status": "ERROR",
+                "data_state": DataState.ERROR,
+                "detail": f"HTTP {res.status_code}: {res.text}",
+            }
 
         except Exception as e:
-            st.error(f"API Prediction Request Error: {e!s}")
-        return {}
+            return {
+                "status": "ERROR",
+                "data_state": DataState.ERROR,
+                "detail": f"API Prediction Request Error: {e!s}",
+            }
 
 
 @st.cache_resource

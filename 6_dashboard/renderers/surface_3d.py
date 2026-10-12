@@ -24,6 +24,7 @@ class Surface3DRenderer:
         elevation_exaggeration: float = 1.5,
         title: str = "AETHER 3D Soil Moisture & Terrain Elevation Mesh",
         colorscale: str | None = None,
+        is_demo: bool = True,
     ) -> go.Figure:
         """Generates a 3D Surface Plot layering soil predictions over DEM elevation contours.
 
@@ -32,6 +33,7 @@ class Surface3DRenderer:
             soil_parameter_matrix: 2D numpy array [H, W] representing predicted soil values.
             grid_resolution_m: Spatial resolution per grid cell in meters (default 10m).
             elevation_exaggeration: Z-axis scale factor for terrain relief visualization.
+            is_demo: When True, visibly flags visualization title with demonstration warning.
         """
 
         if elevation_matrix.shape != soil_parameter_matrix.shape:
@@ -47,6 +49,7 @@ class Surface3DRenderer:
         # Scale Z Height For Visual Relief
         Z_scaled = elevation_matrix * elevation_exaggeration
         active_colorscale = colorscale or self.default_colorscale
+        active_title = f"{title} (DEMO DATA — NOT CALIBRATED)" if is_demo and "(DEMO" not in title else title
 
         # Create Plotly 3D Surface
         fig = go.Figure(
@@ -86,7 +89,7 @@ class Surface3DRenderer:
 
         # Apply 3D Camera & Scene Layout
         fig.update_layout(
-            title=dict(text=title, x=0.5, y=0.92, xanchor="center"),
+            title=dict(text=active_title, x=0.5, y=0.92, xanchor="center"),
             autosize=True,
             margin=dict(l=20, r=20, b=20, t=50),
             scene=dict(

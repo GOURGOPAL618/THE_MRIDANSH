@@ -1,0 +1,20 @@
+{
+  "soil_type": "loam",
+  "soil_parameters": {
+    "theta_r": 0.078,
+    "theta_s": 0.43,
+    "alpha": 0.036,
+    "n": 1.56,
+    "Ks": 1.04,
+    "l": 0.5,
+    "m": 0.35897435897435903
+  },
+  "training_epochs": 120,
+  "final_composite_loss": 0.003796105273067951,
+  "final_pde_residual_loss": 1.9155946517912525e-07,
+  "unconstrained_baseline_error": 0.0013956272741779685,
+  "pinn_physics_error": 0.0003865366743411869,
+  "mass_conservation_improvement_pct": 72.3037316987905,
+  "min_moisture_bounded": 0.14308853447437286,
+  "max_moisture_bounded": 0.31785649061203003
+}

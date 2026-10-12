@@ -1,0 +1,14 @@
+{
+  "full_model": {
+    "variance": 0.02364278770983219,
+    "frobenius_divergence": 0.0
+  },
+  "no_graph_ablation": {
+    "variance": 0.035296037793159485,
+    "frobenius_divergence": 4.155050277709961
+  },
+  "no_terrain_ablation": {
+    "variance": 0.01656258851289749,
+    "frobenius_divergence": 5.227304935455322
+  }
+}

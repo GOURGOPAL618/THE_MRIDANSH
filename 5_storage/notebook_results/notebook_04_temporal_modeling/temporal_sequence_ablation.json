@@ -1,0 +1,30 @@
+{
+  "horizon_3": {
+    "sequence_length": 3,
+    "sample_count": 32,
+    "val_mse": 42.68840408325195,
+    "sar_mae": 8.957642555236816,
+    "ndvi_mae": 0.8325331211090088
+  },
+  "horizon_5": {
+    "sequence_length": 5,
+    "sample_count": 30,
+    "val_mse": 37.74245834350586,
+    "sar_mae": 8.579462051391602,
+    "ndvi_mae": 0.5829953551292419
+  },
+  "horizon_7": {
+    "sequence_length": 7,
+    "sample_count": 28,
+    "val_mse": 36.49714660644531,
+    "sar_mae": 8.430526733398438,
+    "ndvi_mae": 0.6078869700431824
+  },
+  "horizon_10": {
+    "sequence_length": 10,
+    "sample_count": 25,
+    "val_mse": 30.172168731689453,
+    "sar_mae": 7.742190361022949,
+    "ndvi_mae": 0.48068103194236755
+  }
+}

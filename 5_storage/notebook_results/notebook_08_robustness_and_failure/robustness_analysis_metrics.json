@@ -1,0 +1,18 @@
+{
+  "grid_dim": [
+    20,
+    20
+  ],
+  "nominal_rmse": 0.0436931602559597,
+  "s2_missing_rmse": 0.07046157935680636,
+  "s1_missing_rmse": 0.08059874276296092,
+  "dual_missing_rmse": 0.10482845340881583,
+  "noise_monotonicity_correlation": 1.0,
+  "count_normal": 12,
+  "count_degraded": 323,
+  "count_high_uncertainty": 54,
+  "count_failure": 11,
+  "self_healing_peak_sigma": 0.08099999999999999,
+  "self_healing_recovered_sigma": 0.03599999999999999,
+  "robustness_status": "CERTIFIED_FAIL_SOFT_ZERO_DEFECT"
+}

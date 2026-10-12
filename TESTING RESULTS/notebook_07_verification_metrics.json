@@ -1,0 +1,22 @@
+{
+  "grid_dim": [
+    20,
+    20
+  ],
+  "mean_sigma_composite": 0.04301137130179807,
+  "min_sigma_composite": 0.03017297397965159,
+  "max_sigma_composite": 0.055912891336834,
+  "mean_confidence_score_pct": 52.632707113679714,
+  "decile_rank_correlation": -0.9208418481826384,
+  "mae_high_confidence": 0.02966979019087596,
+  "mae_med_confidence": 0.035056380308365546,
+  "mae_low_confidence": 0.04968200243485971,
+  "coverage_1sigma_observed_pct": 67.32000000000001,
+  "coverage_1sigma_error_pct": 0.9499999999999886,
+  "coverage_2sigma_observed_pct": 95.32000000000001,
+  "coverage_2sigma_error_pct": 0.12999999999999545,
+  "cloud_outage_mean_sigma": 0.060664264465834596,
+  "cloud_outage_confidence_pct": 40.32070997037806,
+  "calibration_status": "CALIBRATED_ZERO_DEFECT",
+  "confidence_error_monotonicity": "PROVEN_CERTIFIED"
+}

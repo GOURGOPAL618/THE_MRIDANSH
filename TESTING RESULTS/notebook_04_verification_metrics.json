@@ -1,0 +1,42 @@
+{
+  "project": "THE MRIDANSH",
+  "engine": "AETHER-MRID1607X",
+  "notebook": "04-temporal-modeling.ipynb",
+  "timestamp": "2026-10-10T12:56:00+05:30",
+  "validation_status": "ALL_TESTS_PASSED",
+  "test_suite": "tests/test_notebook_04_verification.py",
+  "unit_tests_passed": 7,
+  "unit_tests_total": 7,
+  "upstream_inputs": {
+    "telemetry_csv": "5_storage/notebook_results/notebook_02_preprocessing/preprocessed_telemetry.csv",
+    "spatial_embeddings_pt": "5_storage/notebook_results/notebook_03_spatial_modeling/spatial_gcn_embeddings.pt",
+    "spatial_mesh_npz": "5_storage/notebook_results/notebook_03_spatial_modeling/spatial_graph_mesh.npz"
+  },
+  "tensor_contract": {
+    "dimensions": "(B, T, C, H, W)",
+    "batch_size": 30,
+    "sequence_length": 5,
+    "channels": 2,
+    "spatial_resolution": [20, 20],
+    "train_samples": 24,
+    "test_samples": 6
+  },
+  "model_metrics": {
+    "parameters": 11818,
+    "initial_mse": 0.301548,
+    "final_mse": 0.119280,
+    "loss_reduction_pct": 60.44
+  },
+  "sequence_ablation": {
+    "horizon_3": {"val_mse": 42.6884, "sar_mae": 8.9576, "ndvi_mae": 0.8325},
+    "horizon_5": {"val_mse": 37.7425, "sar_mae": 8.5795, "ndvi_mae": 0.5830},
+    "horizon_7": {"val_mse": 36.4971, "sar_mae": 8.4305, "ndvi_mae": 0.6079},
+    "horizon_10": {"val_mse": 30.1722, "sar_mae": 7.7422, "ndvi_mae": 0.4807}
+  },
+  "rollout_stability": {
+    "steps": 5,
+    "nan_detected": false,
+    "inf_detected": false,
+    "bounded": true
+  }
+}

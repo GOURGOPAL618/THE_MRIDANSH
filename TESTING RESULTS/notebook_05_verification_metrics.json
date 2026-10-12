@@ -1,0 +1,68 @@
+{
+  "notebook_id": "05",
+  "notebook_name": "05-physics-validation.ipynb",
+  "execution_timestamp": "2026-10-10T15:24:38+05:30",
+  "verification_timestamp": "2026-10-10T15:26:41+05:30",
+  "total_cells": 36,
+  "code_cells_count": 16,
+  "markdown_cells_count": 20,
+  "execution_status": "ALL_CELLS_EXECUTED_ZERO_ERRORS",
+  "unit_tests_passed": 7,
+  "unit_tests_total": 7,
+  "pass_rate_pct": 100.0,
+  "soil_characterization": {
+    "soil_class": "loam",
+    "residual_moisture_theta_r": 0.078,
+    "saturated_moisture_theta_s": 0.430,
+    "inverse_air_entry_alpha": 0.036,
+    "pore_size_distribution_n": 1.56,
+    "mualem_m": 0.358974358974359,
+    "saturated_hydraulic_conductivity_Ks_cm_hr": 1.04,
+    "pore_connectivity_l": 0.5
+  },
+  "pinn_architecture": {
+    "model_name": "PhysicsInformedNN",
+    "input_dimensions": 2,
+    "input_variables": ["depth_z_cm", "time_t_hr"],
+    "hidden_layers": 4,
+    "hidden_units_per_layer": 64,
+    "activation": "Tanh",
+    "output_dimension": 1,
+    "output_variable": "volumetric_moisture_theta",
+    "trainable_parameters": 8513
+  },
+  "training_metrics": {
+    "epochs": 120,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "grad_clip_norm": 1.0,
+    "initial_composite_loss": 0.063412,
+    "final_composite_loss": 0.003796,
+    "composite_loss_reduction_pct": 94.01,
+    "final_pde_residual_loss": 1.91559e-07
+  },
+  "physical_consistency_benchmark": {
+    "unconstrained_baseline_error": 0.00139563,
+    "pinn_physics_error": 0.00038654,
+    "residual_reduction_rate_pct": 72.30,
+    "min_moisture_pred": 0.14309,
+    "max_moisture_pred": 0.31786,
+    "negative_moisture_violation": false,
+    "supersaturation_violation": false
+  },
+  "persisted_artifacts": {
+    "checkpoints": [
+      "5_storage/checkpoints/pinn_richards_model.pt",
+      "5_storage/checkpoints/PINN_RICHARDS_MODEL_MANIFEST.md",
+      "5_storage/notebook_results/notebook_05_physics_validation/pinn_richards_model.pt",
+      "data/processed/pinn_richards_model.pt"
+    ],
+    "plots": [
+      "5_storage/notebook_results/notebook_05_physics_validation/plot_01_van_genuchten_swrc_conductivity.png",
+      "5_storage/notebook_results/notebook_05_physics_validation/plot_02_pinn_space_time_collocation_mesh.png",
+      "5_storage/notebook_results/notebook_05_physics_validation/plot_03_pinn_loss_convergence_trajectory.png",
+      "5_storage/notebook_results/notebook_05_physics_validation/plot_04_pinn_vs_unconstrained_pde_residuals.png",
+      "5_storage/notebook_results/notebook_05_physics_validation/plot_05_continuous_soil_diffusion_profile.png"
+    ]
+  }
+}

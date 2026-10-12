@@ -1,0 +1,63 @@
+{
+  "stac_version": "1.0.0",
+  "id": "AETHER_S2_S1_COMBINED_20260815_BHADRAK",
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          86.6374,
+          21.0878
+        ],
+        [
+          86.7374,
+          21.0878
+        ],
+        [
+          86.7374,
+          21.1878
+        ],
+        [
+          86.6374,
+          21.1878
+        ],
+        [
+          86.6374,
+          21.0878
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    86.6374,
+    21.0878,
+    86.7374,
+    21.1878
+  ],
+  "properties": {
+    "datetime": "2026-08-15T05:30:00Z",
+    "platform": "sentinel-2b / sentinel-1a",
+    "proj:epsg": 4326,
+    "eo:cloud_cover": 12.4,
+    "aether:processing_level": "L2A_INFRARED_STAC_V1",
+    "aether:provenance": "SYNTHETIC_SIMULATION"
+  },
+  "assets": {
+    "s1_vv": {
+      "href": "data/raw/s1_vv_20260815.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Sentinel-1 C-Band VV Backscatter"
+    },
+    "s2_ndvi": {
+      "href": "data/raw/s2_ndvi_20260815.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Sentinel-2 Normalized Difference Vegetation Index"
+    },
+    "dem": {
+      "href": "data/raw/dem_aligned_20260815.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Aligned 10m Digital Elevation Model"
+    }
+  }
+}

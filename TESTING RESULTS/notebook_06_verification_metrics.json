@@ -1,0 +1,57 @@
+{
+  "notebook_id": "06",
+  "notebook_name": "06-state-estimation.ipynb",
+  "execution_timestamp": "2026-10-10T15:46:30+05:30",
+  "verification_timestamp": "2026-10-10T15:48:13+05:30",
+  "total_cells": 33,
+  "code_cells_count": 15,
+  "markdown_cells_count": 18,
+  "execution_status": "ALL_CELLS_EXECUTED_ZERO_ERRORS",
+  "unit_tests_passed": 7,
+  "unit_tests_total": 7,
+  "pass_rate_pct": 100.0,
+  "filter_configuration": {
+    "filter_type": "Stochastic Ensemble Kalman Filter (EnKF)",
+    "ensemble_members": 50,
+    "state_dimension": 4,
+    "observation_dimension": 1,
+    "forward_operator": "H = [1.0, 0.0, 0.0, 0.0]",
+    "observation_noise_std_m3m3": 0.03,
+    "observation_noise_variance_R": 0.0009,
+    "covariance_inflation_factor": 1.08
+  },
+  "soil_state_vector": {
+    "state_names": ["theta_root", "bulk_density", "K_sat", "SOC"],
+    "units": ["m3/m3", "g/cm3", "cm/hr", "%"],
+    "prior_means": [0.2829, 1.3500, 1.0400, 1.2000],
+    "posterior_means": [0.3231, 1.3415, 1.0725, 1.2185]
+  },
+  "assimilation_validation_metrics": {
+    "pure_prediction_drift_rmse_m3m3": 0.06535,
+    "enkf_posterior_rmse_m3m3": 0.01466,
+    "state_error_reduction_pct": 77.57,
+    "root_moisture_uncertainty_reduction_pct": 42.32,
+    "bulk_density_uncertainty_reduction_pct": 5.15,
+    "hydraulic_cond_uncertainty_reduction_pct": 4.88,
+    "soc_uncertainty_reduction_pct": 3.72,
+    "spatial_2d_mean_variance_reduction_pct": 88.77,
+    "kalman_gain_trace": 0.60074,
+    "filter_stability_status": "CONVERGED_STABLE",
+    "core_question_validation": "CONFIRMED_YES_77.57_PCT_ERROR_REDUCTION"
+  },
+  "persisted_artifacts": {
+    "state_database": [
+      "5_storage/state_database/enkf_state_database.pt",
+      "5_storage/state_database/ENKF_STATE_ESTIMATION_MANIFEST.md",
+      "5_storage/notebook_results/notebook_06_state_estimation/enkf_state_database.pt",
+      "data/processed/enkf_assimilation_bundle.pt"
+    ],
+    "plots": [
+      "5_storage/notebook_results/notebook_06_state_estimation/plot_01_prior_vs_posterior_distributions.png",
+      "5_storage/notebook_results/notebook_06_state_estimation/plot_02_kalman_gain_cross_covariance.png",
+      "5_storage/notebook_results/notebook_06_state_estimation/plot_03_dynamic_trajectory_convergence.png",
+      "5_storage/notebook_results/notebook_06_state_estimation/plot_04_noise_sensitivity_sweep.png",
+      "5_storage/notebook_results/notebook_06_state_estimation/plot_05_spatial_grid_enkf_assimilation.png"
+    ]
+  }
+}

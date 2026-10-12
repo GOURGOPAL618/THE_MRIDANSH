@@ -1,0 +1,34 @@
+{
+  "project": "THE MRIDANSH",
+  "engine": "AETHER-MRID1607X",
+  "notebook": "02-preprocessing.ipynb",
+  "temporal_split_index": 28,
+  "train_sample_count": 28,
+  "test_sample_count": 7,
+  "temporal_split_date": "2026-08-31 11:17:38",
+  "scaler_bounds": {
+    "s1_vv_lee": {
+      "scaling_method": "z_score",
+      "mean": -13.77205185419778,
+      "std": 2.5271947220419686
+    },
+    "s1_vh_db": {
+      "scaling_method": "z_score",
+      "mean": -19.003860892185717,
+      "std": 2.8310980076626873
+    },
+    "dem_elevation_m": {
+      "scaling_method": "z_score",
+      "mean": 18.5,
+      "std": 1e-06
+    },
+    "ndvi_masked": {
+      "scaling_method": "min_max",
+      "min": 0.2344648045480289,
+      "max": 0.8834170452168564
+    }
+  },
+  "cloud_qc_threshold_pct": 50.0,
+  "lee_filter_window": 3,
+  "data_mode": "SYNTHETIC_SIMULATION"
+}

@@ -34,9 +34,12 @@ class SpatialRasterOverlayEngine:
             colormap_name: Folium/branca colormap name (e.g., 'YlGnBu', 'viridis', 'Spectral').
         """
 
+        # Check for empty or all-NaN matrix data safely
+        if matrix_data is None or matrix_data.size == 0 or np.all(np.isnan(matrix_data)):
+            # No valid raster pixels available; do not fabricate data
+            return folium_map
+
         import branca.colormap as cm
-        import matplotlib
-        import matplotlib.colors as mpl_colors
 
         # Extract Spatial Extent: Folium ImageOverlay Expects [[min_lat, min_lon], [max_lat, max_lon]]
         min_lon, min_lat, max_lon, max_lat = bbox
@@ -46,21 +49,30 @@ class SpatialRasterOverlayEngine:
         min_val = float(np.nanmin(matrix_data))
         max_val = float(np.nanmax(matrix_data))
 
-        # Create branca colormap for the map legend only
-        colormap = getattr(cm.linear, colormap_name).scale(min_val, max_val)
+        if min_val == max_val:
+            # Prevent zero-range colormap error
+            max_val = min_val + 1e-4
+
+        # Create branca colormap for the map legend
+        try:
+            colormap_factory = getattr(cm.linear, colormap_name)
+        except (AttributeError, TypeError):
+            colormap_factory = cm.linear.YlGnBu_09
+
+        colormap = colormap_factory.scale(min_val, max_val)
         colormap.caption = f"{layer_name} Scale"
 
-        # Normalize data to [0, 1] for matplotlib RGBA rendering
-        norm = mpl_colors.Normalize(vmin=min_val, vmax=max_val)
-        # Strip the branca suffix (e.g. 'YlGnBu_09' -> 'YlGnBu') for matplotlib lookup
-        mpl_cmap_name = colormap_name.rsplit("_", 1)[0]
-        try:
-            mpl_cmap = matplotlib.colormaps[mpl_cmap_name]
-        except KeyError:
-            mpl_cmap = matplotlib.colormaps["YlGnBu"]  # safe fallback
-
-        # Apply Colormap to normalized 2D Numpy array to produce RGBA Image Buffer
-        rgba_image = mpl_cmap(norm(matrix_data))  # shape: (H, W, 4), values in [0,1]
+        # Apply colormap to matrix producing RGBA float array
+        H, W = matrix_data.shape
+        rgba_image = np.zeros((H, W, 4), dtype=np.float32)
+        for r in range(H):
+            for c in range(W):
+                val = matrix_data[r, c]
+                if np.isnan(val) or np.isinf(val):
+                    rgba_image[r, c] = (0.0, 0.0, 0.0, 0.0)
+                else:
+                    rf, gf, bf, _ = colormap.rgba_floats_tuple(float(val))
+                    rgba_image[r, c] = (rf, gf, bf, opacity)
 
         # Mount Image Overlay to map
         folium.raster_layers.ImageOverlay(

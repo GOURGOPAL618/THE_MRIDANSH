@@ -5,6 +5,12 @@ Verifies GIS Sub-Grid Mesh Generation, GeoJSON Properties, and endpoint response
 
 import pytest
 from fastapi.testclient import TestClient
+import sys
+from pathlib import Path
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+_API_DIR = _REPO_ROOT / "6_dashboard" / "api"
+if str(_API_DIR) not in sys.path:
+    sys.path.insert(0, str(_API_DIR))
 from main import app
 
 client = TestClient(app)

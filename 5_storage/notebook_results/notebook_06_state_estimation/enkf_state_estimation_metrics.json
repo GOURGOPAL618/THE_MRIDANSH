@@ -1,0 +1,18 @@
+{
+  "num_state_variables": 4,
+  "state_names": [
+    "theta_root",
+    "bulk_density",
+    "K_sat",
+    "SOC"
+  ],
+  "ensemble_members": 50,
+  "prediction_rmse": 0.0653498895638787,
+  "enkf_posterior_rmse": 0.014658028378398772,
+  "error_reduction_pct": 77.56992632088424,
+  "root_moisture_uncertainty_reduction_pct": 42.31746245434721,
+  "bulk_density_uncertainty_reduction_pct": 5.1548668048004265,
+  "spatial_mean_variance_reduction_pct": 88.77461242675781,
+  "kalman_gain_trace": 0.6007393024801815,
+  "filter_stability_status": "CONVERGED_STABLE"
+}

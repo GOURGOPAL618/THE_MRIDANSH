@@ -1,9 +1,45 @@
-/* THE MRIDANSH (AETHER-MRID1607X) - JCC COMMAND CENTER */
+/* ==========================================================================
+   THE MRIDANSH : Earth-Observation & Soil Intelligence Workstation
+   AETHER-MRID1607X Core Engine — JCC Command Center
+   Design System: Technical Obsidian & Electric Cyan Geospatial Interface
+   ========================================================================== */
 
-/* 1. Global Padding & Scrollbar */
+/* --------------------------------------------------------------------------
+   1. Root Variables & Typography
+   -------------------------------------------------------------------------- */
+:root {
+    --mrid-bg-deep: #07090e;
+    --mrid-bg-canvas: #0c1017;
+    --mrid-bg-surface: #121722;
+    --mrid-bg-card: #161e2c;
+    --mrid-bg-card-hover: #1c2638;
+    --mrid-border: #1e293b;
+    --mrid-border-subtle: rgba(255, 255, 255, 0.08);
+    --mrid-border-active: #00f0ff;
+    --mrid-text-primary: #f8fafc;
+    --mrid-text-secondary: #94a3b8;
+    --mrid-text-muted: #64748b;
+    --mrid-accent-cyan: #00f0ff;
+    --mrid-accent-blue: #0284c7;
+    --mrid-status-live: #00ff88;
+    --mrid-status-demo: #f59e0b;
+    --mrid-status-unavail: #64748b;
+    --mrid-status-error: #ef4444;
+}
+
+/* --------------------------------------------------------------------------
+   2. Global App Layout & Scrollbar
+   -------------------------------------------------------------------------- */
+.stApp {
+    background-color: var(--mrid-bg-canvas);
+    color: var(--mrid-text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 .block-container {
-    max-width: 95% !important;
-    padding-top: 2rem !important;
+    max-width: 96% !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 3rem !important;
 }
 
 ::-webkit-scrollbar {
@@ -11,78 +47,251 @@
     height: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: transparent;
+    background: var(--mrid-bg-deep);
 }
 ::-webkit-scrollbar-thumb {
-    background: #00e5ff;
+    background: #1e293b;
     border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #b026ff;
+    background: var(--mrid-accent-cyan);
 }
 
-/* 2. Telemetry Metrics */
+/* --------------------------------------------------------------------------
+   3. Top Command Ribbon & Header
+   -------------------------------------------------------------------------- */
+.mrid-header-ribbon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--mrid-bg-surface);
+    border: 1px solid var(--mrid-border);
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-bottom: 1.5rem;
+}
+
+.mrid-title-block h1 {
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px;
+    color: var(--mrid-text-primary) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+}
+
+.mrid-title-block p {
+    font-size: 0.82rem;
+    color: var(--mrid-text-secondary);
+    margin: 2px 0 0 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. Status Badges & Pills
+   -------------------------------------------------------------------------- */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pill-live {
+    background: rgba(0, 255, 136, 0.08);
+    border: 1px solid #00ff88;
+    color: #00ff88;
+}
+
+.pill-demo {
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid #f59e0b;
+    color: #f59e0b;
+}
+
+.pill-unavail {
+    background: rgba(100, 116, 139, 0.08);
+    border: 1px solid #64748b;
+    color: #94a3b8;
+}
+
+.pill-error {
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid #ef4444;
+    color: #ef4444;
+}
+
+.status-online { color: #00ff88; font-weight: bold; }
+.status-offline { color: #ef4444; font-weight: bold; }
+.status-demo { color: #f59e0b; font-weight: bold; }
+
+/* --------------------------------------------------------------------------
+   5. Standardized KPI Telemetry Cards
+   -------------------------------------------------------------------------- */
 div[data-testid="stMetric"] {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(0, 229, 255, 0.15);
+    background: var(--mrid-bg-card);
+    border: 1px solid var(--mrid-border);
     border-radius: 6px;
-    padding: 12px 16px;
-    border-left: 3px solid #00e5ff;
-    transition: all 0.2s ease-in-out;
+    padding: 14px 18px;
+    border-left: 3px solid var(--mrid-accent-cyan);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 div[data-testid="stMetric"]:hover {
-    border-color: #00e5ff;
-    background: rgba(0, 229, 255, 0.05);
-    border-left: 3px solid #b026ff;
-    transform: translateY(-2px);
-}
-
-div[data-testid="stMetricValue"] {
-    font-family: 'Fira Code', 'Courier New', monospace !important;
-    color: #00e5ff !important;
-    font-size: 2rem !important;
+    border-color: rgba(0, 240, 255, 0.4);
+    background: var(--mrid-bg-card-hover);
+    transform: translateY(-1px);
 }
 
 div[data-testid="stMetricLabel"] {
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 0.8rem !important;
-    opacity: 0.8;
+    font-size: 0.72rem !important;
+    font-weight: 600;
+    color: var(--mrid-text-secondary) !important;
+    opacity: 0.9;
 }
 
-/* 3. Sidebar */
+div[data-testid="stMetricValue"] {
+    font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace !important;
+    color: var(--mrid-accent-cyan) !important;
+    font-size: 1.65rem !important;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+div[data-testid="stMetricDelta"] {
+    font-size: 0.75rem !important;
+    font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   6. Sidebar Workspace Controls
+   -------------------------------------------------------------------------- */
 section[data-testid="stSidebar"] {
-    border-right: 1px solid rgba(0, 229, 255, 0.1);
+    background-color: var(--mrid-bg-deep);
+    border-right: 1px solid var(--mrid-border);
 }
 
-/* 4. Headers */
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3 {
+    color: var(--mrid-text-primary) !important;
+    font-weight: 600;
+    border: none;
+    padding: 0;
+}
+
+/* --------------------------------------------------------------------------
+   7. Section Headers & Typography
+   -------------------------------------------------------------------------- */
 h1 {
-    border-bottom: 1px solid rgba(0, 229, 255, 0.2);
-    padding-bottom: 10px;
-    text-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: var(--mrid-text-primary) !important;
+    border-bottom: 1px solid var(--mrid-border);
+    padding-bottom: 8px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 h2 {
-    color: #00e5ff !important;
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    color: var(--mrid-accent-cyan) !important;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
 }
 
 h3 {
-    color: #b026ff !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    color: var(--mrid-text-primary) !important;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-/* 5. Buttons */
+/* --------------------------------------------------------------------------
+   8. Form Controls, Buttons & Inputs
+   -------------------------------------------------------------------------- */
 button[kind="primary"] {
-    border: 1px solid #00e5ff !important;
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
-    transition: all 0.2s;
+    background-color: var(--mrid-bg-surface) !important;
+    color: var(--mrid-accent-cyan) !important;
+    border: 1px solid var(--mrid-accent-cyan) !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease-in-out;
 }
 
 button[kind="primary"]:hover {
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+    background-color: rgba(0, 240, 255, 0.12) !important;
+    border-color: #38bdf8 !important;
+    color: #ffffff !important;
 }
 
-/* 6. Dividers */
+button[kind="secondary"] {
+    background-color: var(--mrid-bg-card) !important;
+    border: 1px solid var(--mrid-border) !important;
+    color: var(--mrid-text-secondary) !important;
+    border-radius: 4px !important;
+}
+
+button[kind="secondary"]:hover {
+    border-color: var(--mrid-text-secondary) !important;
+    color: var(--mrid-text-primary) !important;
+}
+
+/* --------------------------------------------------------------------------
+   9. Information Cards & Alerts
+   -------------------------------------------------------------------------- */
+div[data-testid="stAlert"] {
+    background: var(--mrid-bg-surface) !important;
+    border: 1px solid var(--mrid-border) !important;
+    border-radius: 6px !important;
+    color: var(--mrid-text-primary) !important;
+}
+
+/* --------------------------------------------------------------------------
+   10. Tabs & Accordions
+   -------------------------------------------------------------------------- */
+button[data-baseweb="tab"] {
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    color: var(--mrid-text-secondary) !important;
+    border-bottom: 2px solid transparent !important;
+    padding: 8px 16px !important;
+}
+
+button[data-baseweb="tab"][aria-selected="true"] {
+    color: var(--mrid-accent-cyan) !important;
+    border-bottom: 2px solid var(--mrid-accent-cyan) !important;
+}
+
+/* --------------------------------------------------------------------------
+   11. Data Tables & Code Elements
+   -------------------------------------------------------------------------- */
+code {
+    font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace !important;
+    background: rgba(0, 240, 255, 0.08) !important;
+    color: #38bdf8 !important;
+    padding: 2px 5px !important;
+    border-radius: 3px !important;
+    font-size: 0.85em !important;
+}
+
+/* --------------------------------------------------------------------------
+   12. Horizontal Dividers
+   -------------------------------------------------------------------------- */
 hr {
-    border-color: rgba(0, 229, 255, 0.1) !important;
+    border: none !important;
+    border-top: 1px solid var(--mrid-border) !important;
+    margin: 1.5rem 0 !important;
 }

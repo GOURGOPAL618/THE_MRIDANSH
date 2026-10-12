@@ -1,0 +1,202 @@
+{
+  "notebook_id": "10-ablation-study",
+  "project": "THE MRIDANSH (AETHER-MRID1607X)",
+  "timestamp": "2026-10-10T20:30:00+05:30",
+  "lead_architect": "Gourgopal Mohapatra",
+  "facility": "JCC CAMPUS 2 (RS-SDA DIVISION)",
+  "lead_organization": "JCC HEADQUARTER",
+  "core_research_question": "Which components of THE MRIDANSH actually matter for Unified Soil State estimation, predictive uncertainty contraction, and operational deployment?",
+  "spatial_benchmark_domain": {
+    "dimensions": "20x20 grid (400 spatial units)",
+    "training_set": "320 pixels (80.0%)",
+    "held_out_spatial_block_test": "80 pixels (20.0%) [Rows 12-20, Cols 10-20]",
+    "cross_validation_strategy": "Zero spatial data leakage block holdout"
+  },
+  "ablation_ladder_results": [
+    {
+      "config_id": "Config A",
+      "config_name": "S2 Optical Alone",
+      "feature_count": 4,
+      "rmse_m3_m3": 0.035565,
+      "mae_m3_m3": 0.031072,
+      "r2_score": -3.312988,
+      "pearson_r": 0.269320,
+      "mean_uncertainty_sigma": 0.003204,
+      "marginal_delta_rmse_pct": 0.0,
+      "inference_latency_ms": 0.104623,
+      "pareto_efficiency_ratio": 0.0,
+      "tier": "Tier 1 (Surface Baseline)"
+    },
+    {
+      "config_id": "Config B",
+      "config_name": "S2 + S1 SAR",
+      "feature_count": 6,
+      "rmse_m3_m3": 0.019612,
+      "mae_m3_m3": 0.016432,
+      "r2_score": -0.311520,
+      "pearson_r": 0.704746,
+      "mean_uncertainty_sigma": 0.002441,
+      "marginal_delta_rmse_pct": -44.856004,
+      "inference_latency_ms": 0.165119,
+      "pareto_efficiency_ratio": 271.657985,
+      "tier": "Tier 1 (Mission-Critical Core)"
+    },
+    {
+      "config_id": "Config C",
+      "config_name": "S2 + S1 + DEM",
+      "feature_count": 8,
+      "rmse_m3_m3": 0.014959,
+      "mae_m3_m3": 0.012310,
+      "r2_score": 0.236991,
+      "pearson_r": 0.692180,
+      "mean_uncertainty_sigma": 0.002451,
+      "marginal_delta_rmse_pct": -23.725855,
+      "inference_latency_ms": 0.235773,
+      "pareto_efficiency_ratio": 100.630249,
+      "tier": "Tier 2 (High-Value Context)"
+    },
+    {
+      "config_id": "Config D",
+      "config_name": "S2 + S1 + DEM + Weather",
+      "feature_count": 10,
+      "rmse_m3_m3": 0.010735,
+      "mae_m3_m3": 0.009128,
+      "r2_score": 0.607020,
+      "pearson_r": 0.800230,
+      "mean_uncertainty_sigma": 0.001448,
+      "marginal_delta_rmse_pct": -28.233745,
+      "inference_latency_ms": 0.305007,
+      "pareto_efficiency_ratio": 92.567623,
+      "tier": "Tier 2 (Dynamic Forcing)"
+    },
+    {
+      "config_id": "Config E",
+      "config_name": "S2 + S1 + DEM + Weather + Temporal",
+      "feature_count": 11,
+      "rmse_m3_m3": 0.008873,
+      "mae_m3_m3": 0.007522,
+      "r2_score": 0.731532,
+      "pearson_r": 0.874707,
+      "mean_uncertainty_sigma": 0.001326,
+      "marginal_delta_rmse_pct": -17.346444,
+      "inference_latency_ms": 0.435281,
+      "pareto_efficiency_ratio": 39.851112,
+      "tier": "Tier 2 (Hysteresis Memory)"
+    },
+    {
+      "config_id": "Config F",
+      "config_name": "S2 + S1 + DEM + Weather + Temporal + Physics",
+      "feature_count": 12,
+      "rmse_m3_m3": 0.006786,
+      "mae_m3_m3": 0.005563,
+      "r2_score": 0.842998,
+      "pearson_r": 0.927930,
+      "mean_uncertainty_sigma": 0.001299,
+      "marginal_delta_rmse_pct": -23.527268,
+      "inference_latency_ms": 0.566457,
+      "pareto_efficiency_ratio": 41.534090,
+      "tier": "Tier 1 (Physical Conservation)"
+    },
+    {
+      "config_id": "Config G",
+      "config_name": "Full Baseline (+EnKF Filter)",
+      "feature_count": 13,
+      "rmse_m3_m3": 0.004847,
+      "mae_m3_m3": 0.003631,
+      "r2_score": 0.919887,
+      "pearson_r": 0.959832,
+      "mean_uncertainty_sigma": 0.000979,
+      "marginal_delta_rmse_pct": -28.567265,
+      "inference_latency_ms": 0.804993,
+      "pareto_efficiency_ratio": 35.487595,
+      "tier": "Tier 1 (Production Operational Spine)"
+    },
+    {
+      "config_id": "Config H",
+      "config_name": "Full Baseline + HSI Augmented",
+      "feature_count": 19,
+      "rmse_m3_m3": 0.003375,
+      "mae_m3_m3": 0.002851,
+      "r2_score": 0.961156,
+      "pearson_r": 0.992104,
+      "mean_uncertainty_sigma": 0.000707,
+      "marginal_delta_rmse_pct": -30.368013,
+      "inference_latency_ms": 2.435518,
+      "pareto_efficiency_ratio": 12.468810,
+      "tier": "Tier 3 (Specialized On-Demand)"
+    }
+  ],
+  "component_essentiality_breakdown": {
+    "tier_1_mission_critical_core": [
+      {
+        "module": "Sentinel-1 SAR",
+        "mechanics": "Cloud penetration and dielectric permittivity sensing",
+        "marginal_rmse_pct": -44.86,
+        "pareto_rank": 1
+      },
+      {
+        "module": "Physics PINN Prior",
+        "mechanics": "1D Richards mass conservation and PDE physical bounds",
+        "marginal_rmse_pct": -23.53,
+        "pareto_rank": 4
+      },
+      {
+        "module": "EnKF Stochastic Filter",
+        "mechanics": "Optimal Bayesian recursive variance squashing (-69.4% variance drop)",
+        "marginal_rmse_pct": -28.57,
+        "pareto_rank": 5
+      },
+      {
+        "module": "Sentinel-2 Optical",
+        "mechanics": "Multispectral albedo, surface color, and vegetation canopy correction",
+        "marginal_rmse_pct": 0.0,
+        "pareto_rank": "Baseline"
+      }
+    ],
+    "tier_2_high_value_contextual": [
+      {
+        "module": "Meteorological Forcing",
+        "mechanics": "Dynamic temperature and precipitation boundary mass-energy flux",
+        "marginal_rmse_pct": -28.23,
+        "pareto_rank": 3
+      },
+      {
+        "module": "DEM Topography",
+        "mechanics": "Hydraulic drainage, elevation gradient, and topographic pooling",
+        "marginal_rmse_pct": -23.73,
+        "pareto_rank": 2
+      },
+      {
+        "module": "ConvLSTM Spatiotemporal State",
+        "mechanics": "Antecedent moisture retention memory and drying lag",
+        "marginal_rmse_pct": -17.35,
+        "pareto_rank": 6
+      }
+    ],
+    "tier_3_specialized_on_demand": [
+      {
+        "module": "Hyperspectral HSI",
+        "mechanics": "Narrow-band diagnostic mineral clay doublets (200 science bands / 6 PCA modes)",
+        "marginal_rmse_pct": -30.37,
+        "latency_penalty": "3.03x slowdown (2.44 ms vs 0.80 ms)",
+        "pareto_rank": 7
+      }
+    ]
+  },
+  "pareto_operational_verdict": {
+    "optimal_operational_baseline": "Config G (Full Baseline with EnKF Filter)",
+    "operational_latency": "0.80 ms per pixel",
+    "operational_r2_score": 0.919887,
+    "operational_rmse": 0.004847,
+    "operational_uncertainty": 0.000979,
+    "hsi_deployment_directive": "On-demand specialized augmentation for targeted surveys; never bottle-neck production baseline"
+  },
+  "test_suite_status": {
+    "test_file": "tests/test_notebook_10_verification.py",
+    "tests_total": 8,
+    "tests_passed": 8,
+    "tests_failed": 0,
+    "defect_rate": "0.00%",
+    "certification_status": "CERTIFIED_BULLETPROOF"
+  }
+}

@@ -1,77 +1,90 @@
-# THE_MRIDANSH/2_data_pipeline/processing/dem_processor.py
-
 import logging
-
 import numpy as np
+from pystac_client import Client
 
-from ..schemas.satellite_schema import SpatialBoundingBox
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+from schemas.satellite_schema import SpatialBoundingBox, GeospatialRasterAsset
+from preprocessing.cog_processor import COGRasterProcessor, RasterReadError
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 class DEMTerrainEngine:
-    """Digital Elevation Model (DEM) Engine for Terrain, Slope & Spatial Grid Alignment."""
+    """Digital Elevation Model (DEM) Engine for Terrain & Slope Derivation."""
 
-    def __init__(self, resolution_meters: float = 30.0):
-        self.resolution = resolution_meters
+    def __init__(self, stac_url: str = "https://earth-search.aws.element84.com/v1"):
+        self.stac_url = stac_url
+        self.cog_processor = COGRasterProcessor()
 
-    def fetch_dem_matrix(
-        self, bbox: SpatialBoundingBox, grid_shape: tuple[int, int] = (100, 100)
-    ) -> np.ndarray:
-        """Simulates/Extracts Digital Elevation Model (DEM) height array (in meters) for BBox."""
-        logging.info(
-            f"⛰️ Ingesting DEM Elevation Matrix for BBox: {bbox.bbox} | Grid: {grid_shape}"
-        )
+    def fetch_dem_asset(self, bbox: SpatialBoundingBox) -> GeospatialRasterAsset:
+        """Acquires actual DEM data (Copernicus GLO-30) from Element84 STAC."""
+        logging.info(f"🏔️ Querying COP-DEM-GLO-30 for BBox: {bbox.bbox}")
+        
+        try:
+            client = Client.open(self.stac_url)
+            search = client.search(
+                collections=['cop-dem-glo-30'],
+                bbox=list(bbox.bbox),
+                limit=1
+            )
+            items = list(search.items())
+        except Exception as e:
+            raise RuntimeError(f"DEM Source Access Error: Failed to query STAC catalog: {e}")
+            
+        if not items:
+            raise RuntimeError(f"DEM Coverage Error: No Copernicus DEM data found for bbox {bbox.bbox}")
+            
+        item = items[0]
+        if "data" not in item.assets:
+            raise RuntimeError(f"DEM Asset Error: 'data' asset missing from item {item.id}")
+            
+        href = item.assets["data"].href
+        if href.startswith("s3://"):
+            href = href.replace("s3://", "https://s3.eu-central-1.amazonaws.com/")
+        
+        import rasterio
+        try:
+            logging.info(f"📥 Downloading DEM COG: {href}")
+            with rasterio.Env(AWS_NO_SIGN_REQUEST='YES'):
+                dem_asset = self.cog_processor.read_raster_window(href, bbox=list(bbox.bbox))
+        except RasterReadError as e:
+            raise RuntimeError(f"DEM Extraction Error: Failed to read DEM raster: {e}")
+            
+        dem_asset.stac_item_id = item.id
+        return dem_asset
 
-        # Synthetic Synthetic Terrain Generation for Testing (Base elevation ~ 250m to 800m)
-        x = np.linspace(-2, 2, grid_shape[1])
-        y = np.linspace(-2, 2, grid_shape[0])
-        xx, yy = np.meshgrid(x, y)
-        elevation_matrix = 300 + 200 * np.exp(-(xx**2 + yy**2)) + 50 * np.sin(3 * xx)
-
-        return elevation_matrix.astype(np.float32)
-
-    def calculate_slope_and_aspect(
-        self, elevation_matrix: np.ndarray
-    ) -> dict[str, np.ndarray]:
-        """Calculates Slope (degrees) and Aspect (orientation) from Elevation Matrix."""
-        logging.info("📐 Computing Terrain Slope & Aspect Gradient Matrices...")
-
-        # Calculate Gradients along X and Y axes
-        dy, dx = np.gradient(elevation_matrix, self.resolution)
-
-        # Slope Calculation: arctan(sqrt(dz/dx^2 + dz/dy^2)) converted to degrees
+    def calculate_slope(self, elevation_asset: GeospatialRasterAsset) -> GeospatialRasterAsset:
+        """Derives slope (degrees) from elevation using numpy gradient geometry."""
+        logging.info("📐 Computing Terrain Slope Matrix...")
+        
+        # Check units validity (mixing degrees and meters produces invalid slope)
+        if "4326" in elevation_asset.crs.lower() or "degree" in elevation_asset.crs.lower():
+            logging.warning("⚠️ Slope derivation on a geographic CRS (degrees) produces invalid units. Reproject to UTM/metric first.")
+            
+        elev = elevation_asset.raw_array[0].astype(np.float32)
+        res_x = abs(elevation_asset.resolution[0])
+        res_y = abs(elevation_asset.resolution[1])
+        
+        dy, dx = np.gradient(elev, res_y, res_x)
+        
         slope_rad = np.arctan(np.sqrt(dx**2 + dy**2))
-        slope_deg = np.degrees(slope_rad)
-
-        # Aspect Calculation: Direction of maximum slope
-        aspect_rad = np.arctan2(-dx, dy)
-        aspect_deg = np.degrees(aspect_rad) % 360.0
-
-        logging.info(
-            f"✅ Terrain Engine Processed: Max Elevation={np.max(elevation_matrix):.1f}m | Max Slope={np.max(slope_deg):.1f}°"
+        slope_deg = np.degrees(slope_rad).astype(np.float32)
+        
+        return GeospatialRasterAsset(
+            raw_array=np.expand_dims(slope_deg, axis=0),
+            raw_dtype="float32",
+            scale_factor=1.0,
+            add_offset=0.0,
+            crs=elevation_asset.crs,
+            transform=elevation_asset.transform,
+            bounds=elevation_asset.bounds,
+            resolution=elevation_asset.resolution,
+            valid_data_mask=elevation_asset.valid_data_mask.copy(),
+            nodata_value=elevation_asset.nodata_value,
+            stac_item_id=elevation_asset.stac_item_id,
+            asset_key="derived_slope",
+            source_href=elevation_asset.source_href,
+            acquisition_datetime=elevation_asset.acquisition_datetime
         )
-
-        return {
-            "elevation": elevation_matrix,
-            "slope": slope_deg.astype(np.float32),
-            "aspect": aspect_deg.astype(np.float32),
-        }
-
-
-# Self-Test Execution Module
-if __name__ == "__main__":
-    print("\n--- Testing Day 4 DEM & Terrain Alignment Engine ---")
-
-    engine = DEMTerrainEngine(resolution_meters=30.0)
-    test_bbox = SpatialBoundingBox(bbox=(77.10, 28.50, 77.25, 28.65))
-
-    dem_grid = engine.fetch_dem_matrix(test_bbox, grid_shape=(120, 120))
-    terrain_data = engine.calculate_slope_and_aspect(dem_grid)
-
-    assert "slope" in terrain_data and "aspect" in terrain_data
-    print(
-        "\n[SUCCESS] Day 4 DEM Terrain Alignment Engine: PASSED OPERATIONAL CHECKS!\n"
-    )

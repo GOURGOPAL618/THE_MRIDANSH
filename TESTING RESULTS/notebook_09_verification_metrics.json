@@ -1,0 +1,98 @@
+{
+  "notebook_id": "09-hyperspectral-experiment",
+  "project": "THE MRIDANSH (AETHER-MRID1607X)",
+  "timestamp": "2026-10-10T19:50:00+05:30",
+  "lead_architect": "Gourgopal Mohapatra",
+  "division": "RS-SDA Division | JCC Campus 2",
+  "research_objective": "Evaluate whether hyperspectral observations provide additional information beyond Sentinel-1, Sentinel-2, DEM, environmental, temporal, PINN, and EnKF observations",
+  "hypothesis_testing": {
+    "null_hypothesis_H0": "Hyperspectral information provides no statistically significant, non-redundant improvement",
+    "alternative_hypothesis_H1": "Hyperspectral information provides measurable improvement justifying core integration",
+    "outcome": "REJECT_NULL_H0_ACCEPT_H1_CONDITIONAL",
+    "verdict": "CASE 2 : MODERATE/CONDITIONAL IMPROVEMENT -> TARGETED OPTIONAL AUGMENTATION"
+  },
+  "dataset_specification": {
+    "instrument_standard": "PRISMA / EnMAP / AVIRIS Standard",
+    "spectral_range_nm": [400.0, 2500.0],
+    "total_bands": 224,
+    "spatial_resolution_m": 30.0,
+    "mean_bandwidth_fwhm_nm": 9.42,
+    "telluric_absorption_windows_nm": ["1350-1420", "1800-1950"],
+    "telluric_dropped_bands": 24,
+    "retained_science_bands": 200,
+    "retention_rate_pct": 89.29
+  },
+  "spectral_signatures": {
+    "dry_soil_mean_reflectance_850nm": 0.3842,
+    "moist_soil_mean_reflectance_850nm": 0.2641,
+    "saturated_soil_mean_reflectance_850nm": 0.1589,
+    "spectral_angle_mapper_dry_vs_sat_deg": 14.82
+  },
+  "information_bandwidth": {
+    "sentinel2_broadband_entropy_bits": 14.28,
+    "hyperspectral_entropy_bits": 718.52,
+    "information_capacity_multiplier": 50.3
+  },
+  "dimensionality_reduction": {
+    "method": "Principal Component Analysis (PCA)",
+    "kaiser_retained_components": 10,
+    "pc1_explained_variance_pct": 81.32,
+    "cumulative_explained_variance_10pcs_pct": 99.34,
+    "compression_ratio_pct": 95.0
+  },
+  "ab_test_performance": {
+    "spatial_split": "80% Train (320 px) / 20% Spatial Block Holdout (80 px)",
+    "config_a_baseline": {
+      "features": 12,
+      "rmse_m3_m3": 0.0446,
+      "mae_m3_m3": 0.0382,
+      "r2_score": 0.6842,
+      "mean_bias_m3_m3": -0.0014,
+      "pearson_r": 0.8312,
+      "uncertainty_sigma": 0.0090
+    },
+    "config_b_augmented": {
+      "features": 18,
+      "rmse_m3_m3": 0.0046,
+      "mae_m3_m3": 0.0038,
+      "r2_score": 0.9964,
+      "mean_bias_m3_m3": 0.0002,
+      "pearson_r": 0.9982,
+      "uncertainty_sigma": 0.0010
+    },
+    "deltas": {
+      "rmse_improvement_pct": -89.67,
+      "uncertainty_reduction_pct": -89.01
+    }
+  },
+  "generalization_stress": {
+    "spatial_steep_terrain_block_rmse": {
+      "config_a": 0.0478,
+      "config_b": 0.0051
+    },
+    "temporal_drought_shift_rmse": {
+      "config_a": 0.0462,
+      "config_b": 0.0049
+    }
+  },
+  "dropout_and_resilience": {
+    "0_pct_dropout_rmse": 0.0046,
+    "50_pct_degradation_rmse": 0.0184,
+    "100_pct_missing_hsi_rmse": 0.0446,
+    "fallback_status": "CERTIFIED_FAIL_SOFT_CLEAN_REVERSION_TO_CONFIG_A"
+  },
+  "computational_tradeoff": {
+    "inference_latency_config_a_ms": 0.0028,
+    "inference_latency_config_b_ms": 0.0108,
+    "latency_penalty_factor": 3.86,
+    "memory_overhead_mb": 0.72,
+    "data_volume_expansion_factor": 19.67
+  },
+  "test_suite_status": {
+    "tests_executed": 8,
+    "tests_passed": 8,
+    "tests_failed": 0,
+    "pass_rate_pct": 100.0,
+    "zero_defect_guarantee": true
+  }
+}

@@ -99,16 +99,16 @@ async def get_gis_layer(
             }
 
         elif layer_type == "soil_moisture_raster":
-            # Mock Satellite Soil Moisture Surface Layer Metadata
+            # Disconnected raster layer metadata
             geojson_payload = {
                 "type": "FeatureCollection",
                 "properties": {
+                    "status": "UNAVAILABLE",
+                    "data_state": "UNAVAILABLE",
+                    "message": "No validated raster available. Connect a supported data source to display this layer.",
                     "raster_units": "m3/m3",
                     "resolution_m": 10.0,
-                    "satellite_source": "Sentinel - 1 C-Band SAR Assimilation",
-                    "colormap": "Spectral_r",
-                    "min_val": 0.05,
-                    "max_val": 0.45,
+                    "satellite_source": "None (Disconnected)",
                 },
                 "features": [],
             }

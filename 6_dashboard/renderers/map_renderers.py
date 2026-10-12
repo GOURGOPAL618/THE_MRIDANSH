@@ -139,18 +139,15 @@ class GISMapRenderer:
         geojson_data: Dict[str, Any],
         domain_mode: str = "agronomy",
         layer_name: str = "Soil Moisture Heatmap",
+        is_demo: bool = False,
     ) -> folium.Map:
-        """Domain-Aware Choropleth Styling Logic."""
+        """Domain-Aware Choropleth Styling Logic (Hardened against synthetic modulo data)."""
 
-        def get_domain_color(props: Dict[str, Any]) -> str:
-            # Generate deterministic moisture gradient from grid position if explicit moisture key is missing
-            moisture = props.get("moisture_m3m3")
-            if moisture is None:
-                r = props.get("row", 0)
-                c = props.get("col", 0)
-                moisture = 0.12 + ((r * 3 + c * 5) % 25) / 100.0  # Range: 0.12 to 0.36
-            if domain_mode == "agronomy":
-                # Agronomy Focus: Crop Stress & Irrigation Need
+        import numpy as np
+
+        def get_moisture_color(moisture: float, mode: str) -> str:
+            if mode == "agronomy":
+                # Agronomy Focus: Moisture range thresholds
                 if moisture < 0.16:
                     return "#FF3333"  # Dry / Stress (Red)
                 elif moisture < 0.22:
@@ -161,36 +158,99 @@ class GISMapRenderer:
                     return "#00FF66"  # Optimal (Green)
                 else:
                     return "#0099FF"  # Saturated (Blue)
-            
             else:
-                # Civil Focus: Subgrade Stability & Saturation Liquefaction Risk
+                # Civil Focus: Subgrade Stability range thresholds
                 if moisture < 0.15:
-                    return "#00FF66"     # High Bearing Capacity / Dry Subgrade (Green)
+                    return "#00FF66"  # High Bearing Capacity (Green)
                 elif moisture < 0.25:
-                    return "#FFFF00"     # Stable Moisture Range (Yellow)
+                    return "#FFFF00"  # Stable Moisture Range (Yellow)
                 elif moisture < 0.32:
-                    return "#FF9900"     # Moderate Liquefaction / Shear Loss Risk (Orange)
+                    return "#FF9900"  # Moderate Shear Loss Risk (Orange)
                 else:
-                    return "#FF0055"     # High Slope Failure / Unstable Saturation (Critical Red)
+                    return "#FF0055"  # High Saturation (Critical Red)
 
-        style_function = lambda feature: {
-            "fillColor": get_domain_color(feature.get("properties", {})),
-            "color": "#FFFFFF",
-            "weight": 1.5,
-            "fillOpacity": 0.60,
-        }
+        if not geojson_data or not isinstance(geojson_data, dict):
+            return folium_map
 
-        # Dynamic Tooltip reading actual backend payload schema
+        # Check if geojson features actually have physical moisture measurements
+        features = geojson_data.get("features", [])
+        if not features:
+            status_msg = geojson_data.get("properties", {}).get("message", "No spatial features available.")
+            display_name = f"Spatial Layer (Unavailable: {status_msg})"
+            geojson_layer = folium.GeoJson(
+                geojson_data,
+                name=display_name,
+            )
+            geojson_layer.add_to(folium_map)
+            return folium_map
+
+        has_real_moisture = any(
+            f.get("properties", {}).get("moisture_m3m3") is not None
+            for f in features if isinstance(f, dict)
+        )
+
+        def style_function(feature: Dict[str, Any]) -> Dict[str, Any]:
+            props = feature.get("properties", {})
+            raw_moisture = props.get("moisture_m3m3")
+
+            if raw_moisture is None:
+                # Neutral technical cyan styling for geometry-only grids
+                return {
+                    "fillColor": "#00f0ff",
+                    "color": "#00b4d8",
+                    "weight": 1.5,
+                    "fillOpacity": 0.04,
+                }
+
+            try:
+                m_val = float(raw_moisture)
+                if np.isnan(m_val) or not np.isfinite(m_val):
+                    return {
+                        "fillColor": "transparent",
+                        "color": "#64748b",
+                        "weight": 1.0,
+                        "fillOpacity": 0.0,
+                    }
+                return {
+                    "fillColor": get_moisture_color(m_val, domain_mode),
+                    "color": "#ffffff",
+                    "weight": 1.5,
+                    "fillOpacity": 0.55,
+                }
+            except (ValueError, TypeError):
+                return {
+                    "fillColor": "#00f0ff",
+                    "color": "#00b4d8",
+                    "weight": 1.5,
+                    "fillOpacity": 0.04,
+                }
+
+        # Dynamic Tooltip reflecting geometry or observation status
+        tooltip_fields = ["tile_id", "row", "col"]
+        tooltip_aliases = ["Tile ID:", "Grid Row:", "Grid Col:"]
+
+        if has_real_moisture:
+            tooltip_fields.append("moisture_m3m3")
+            tooltip_aliases.append("Moisture (m³/m³):")
+
         tooltip = folium.GeoJsonTooltip(
-            fields=["tile_id", "row", "col"],
-            aliases=["Tile ID:", "Row Index:", "Column Index:"],
-            style="background-color: #000; color: #00FF66; font-weight: bold; padding: 6px;",
+            fields=tooltip_fields,
+            aliases=tooltip_aliases,
+            style="background-color: #0b0e14; color: #00f0ff; font-family: monospace; font-size: 11px; padding: 6px; border: 1px solid #1e2638;",
             sticky=True,
         )
 
+        display_name = (
+            f"{layer_name} ({domain_mode.upper()})"
+            if has_real_moisture
+            else f"Computational Grid Mesh ({domain_mode.upper()} Geometry Only)"
+        )
+        if is_demo:
+            display_name += " [DEMO DATA]"
+
         geojson_layer = folium.GeoJson(
             geojson_data,
-            name=f"{layer_name} ({domain_mode.upper()})",
+            name=display_name,
             style_function=style_function,
             tooltip=tooltip,
         )
@@ -205,27 +265,76 @@ def render_heatmap_folium_map(
     zoom: int = 11,
     geojson_data: Optional[Dict[str, Any]] = None,
     domain_mode: str = "agronomy",
+    is_demo: bool = False,
+    aoi_bbox: Optional[list] = None,
 ):
-    """Bridge Helper With Multi-Domain Viewport Support (Day 33)"""
-    renderer = GISMapRenderer(default_center = (lat, lon), default_zoom = zoom)
+    """Bridge Helper With Multi-Domain Viewport Support (Industry-Grade Workstation Canvas)"""
+    renderer = GISMapRenderer(default_center=(lat, lon), default_zoom=zoom)
     f_map = renderer.create_folium_2d_map()
+
+    # Add active coordinate marker with technical styling
+    folium.CircleMarker(
+        location=[lat, lon],
+        radius=7,
+        color="#00f0ff",
+        weight=2,
+        fill=True,
+        fill_color="#00f0ff",
+        fill_opacity=0.8,
+        popup=f"Target: {lat:.4f}°N, {lon:.4f}°E",
+        tooltip="Active Target Inspection Coordinate",
+    ).add_to(f_map)
+
+    # Optional AOI bounding box overlay
+    if aoi_bbox and len(aoi_bbox) == 4:
+        min_lon, min_lat, max_lon, max_lat = aoi_bbox
+        aoi_geojson = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {"name": "Active AOI Extent Bounding Box"},
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [
+                                [min_lon, min_lat],
+                                [max_lon, min_lat],
+                                [max_lon, max_lat],
+                                [min_lon, max_lat],
+                                [min_lon, min_lat],
+                            ]
+                        ],
+                    },
+                }
+            ],
+        }
+        renderer.add_geojson_aoi_overlay(
+            f_map,
+            aoi_geojson,
+            layer_name="AOI Extent Bounding Box",
+            stroke_color="#00f0ff",
+            fill_color="#00f0ff",
+            fill_opacity=0.03,
+        )
 
     if geojson_data:
         renderer.add_soil_moisture_heatmap_overlay(
-            folium_map = f_map,
-            domain_mode = domain_mode,
-            geojson_data = geojson_data,
-            layer_name = "Domain Soil Intelligence",
+            folium_map=f_map,
+            domain_mode=domain_mode,
+            geojson_data=geojson_data,
+            layer_name="Domain Soil Intelligence",
+            is_demo=is_demo,
         )
 
-    folium.LayerControl(collapsed = False).add_to(f_map)
+    folium.LayerControl(collapsed=False).add_to(f_map)
 
     # Return st_folium click data
     return st_folium(
         f_map,
-        width = "100%",
-        height = 480,
-        key = f"day33_map_{domain_mode}",
-        returned_objects = ["last_clicked"],
+        width="100%",
+        height=520,
+        key=f"mridansh_map_{domain_mode}",
+        returned_objects=["last_clicked"],
     )
 
