@@ -6,3 +6,8 @@ from .enkf_assimilator import (
     STATE_NAMES,
     PEDOLOGICAL_CORRELATION_MATRIX,
 )
+from .conformal_uncertainty import (
+    ConformalUncertaintyEngine,
+    UncertaintyComponents,
+    ConformalCalibrationResult,
+)
