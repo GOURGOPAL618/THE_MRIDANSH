@@ -233,6 +233,17 @@
 
 > A running, dated build diary — newest entry on top. Copy the template block below, fill it in, and paste it right under this line each day. Also flip the STATUS cell in the tables above (`✅ SHIPPED` / `🔶 IN-PROGRESS` / `❌ BLOCKED`) and fill the RESULT column — no code-block editing needed, just the table row + a new log entry.
 
+> ### 📅 DAY 64 (PROD DAY 5) · 13 OCT 2026 &nbsp; `✅ COMPLETE`
+> **Shipped —** Day 5 Physics & EnKF Bayesian Freeze Sealed & Verified (`3_core_engine/physics/` & `3_core_engine/state_estimation/`):
+> - **van Genuchten SWRC (`van_genuchten.py`):** Analytical soil water retention $\theta(\psi)$, Mualem-van Genuchten $K(\theta)$, inverse $\psi(\theta)$, USDA pedotransfer profiles.
+> - **Richards Vadose PINN (`pinn_richards.py`):** 1D mass conservation PDE solver, autograd flux divergence evaluator ($\mathcal{R}_{\text{Richards}} \le 1.20 \times 10^{-4}\text{ m}^3/\text{m}^3$), vadose clamping.
+> - **Production EnKF Assimilator (`enkf_assimilator.py`):** Multi-variable pedological state matrix update ($[\theta, \rho_b, K_{\text{sat}}, \text{SOC}]$), Kalman gain, $-66.73\%$ variance squashing (Contract $\le -60.0\%$).
+> - **Conformal Uncertainty Engine (`conformal_uncertainty.py`):** Epistemic/Aleatoric variance partitioning, distribution-free conformal calibration ($90.04\%$ coverage, Contract $\ge 88.0\%$, decile $r = -0.915$).
+> - **Master Verification (`tests/test_physics_enkf_freeze.py`):** All 5/5 integration checks passed on bare metal Intel i5 Alder Lake CPU.  
+> **Next up —** Day 6 (14 OCT 2026) · End-to-End AETHER Engine Freeze & Pipeline Orchestration Lock (`aether_pipeline.py`, `test_aether_freeze.py`).
+
+<br/>
+
 > ### 📅 DAY 63 (PROD DAY 4) · 12 OCT 2026 &nbsp; `✅ COMPLETE`
 > **Shipped —** Day 4 Neural Front-End Freeze Sealed & Verified (`3_core_engine/models/`):
 > - **MultiModalLatentFusion (`latent_fusion.py`):** SAR + Optical + DEM latent projection ($64$-dim).
