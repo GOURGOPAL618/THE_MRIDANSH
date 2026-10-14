@@ -363,10 +363,10 @@ The van Genuchten (1980) Soil Water Retention Curve (SWRC) parameterizes relativ
    S_e = \frac{\theta - \theta_r}{\theta_s - \theta_r} = \left[ 1 + (\alpha |\psi|)^n \right]^{-m}
 
 Where:
-* :math:`\theta` is volumetric water content [:math:`\text{m}^3/\text{m}^3`].
-* :math:`\theta_r` is residual water content [:math:`\text{m}^3/\text{m}^3`].
-* :math:`\theta_s` is saturated water content (effective porosity) [:math:`\text{m}^3/\text{m}^3`].
-* :math:`\alpha` is an empirical scaling parameter related to air-entry suction [:math:`1/\text{cm}`].
+* :math:`\theta` is volumetric water content [m³/m³].
+* :math:`\theta_r` is residual water content [m³/m³].
+* :math:`\theta_s` is saturated water content (effective porosity) [m³/m³].
+* :math:`\alpha` is an empirical scaling parameter related to air-entry suction [1/cm].
 * :math:`n` is the pore-size distribution index (:math:`n > 1`).
 * :math:`m` is the Mualem constraint parameter:
 
@@ -389,19 +389,19 @@ The pore water pressure head :math:`\psi` in unsaturated vadose zones is strictl
 
 3.2 Mualem Unsaturated Hydraulic Conductivity
 ---------------------------------------------
-Unsaturated hydraulic conductivity :math:`K(\theta)` [:math:`\text{cm/hr}`] is derived from Mualem's (1976)
+Unsaturated hydraulic conductivity :math:`K(\theta)` [cm/hr] is derived from Mualem's (1976)
 integral relative permeability formulation:
 
 .. math::
 
    K(\theta) = K_s \cdot S_e^l \left[ 1 - \left( 1 - S_e^{1/m} \right)^m \right]^2
 
-Where :math:`K_s` is saturated hydraulic conductivity [:math:`\text{cm/hr}`] and :math:`l = 0.5` represents
+Where :math:`K_s` is saturated hydraulic conductivity [cm/hr] and :math:`l = 0.5` represents
 pore connectivity and tortuosity.
 
 3.3 Differential Water Capacity Function
 ----------------------------------------
-The specific moisture capacity :math:`C(\psi) = \frac{d\theta}{d\psi}` is the derivative of the SWRC:
+The specific moisture capacity :math:`C(\psi) = d\theta/d\psi` is the derivative of the SWRC:
 
 .. math::
 
@@ -485,13 +485,13 @@ Monotonicity :math:`q_{10} \le q_{90}` is guaranteed across all pixels.
    :header-rows: 1
 
    * - USDA Texture Class
-     - :math:`\theta_r` [:math:`\text{m}^3/\text{m}^3`]
-     - :math:`\theta_s` [:math:`\text{m}^3/\text{m}^3`]
-     - :math:`\alpha` [:math:`1/\text{cm}`]
-     - :math:`n` [-]
-     - :math:`m` [-]
-     - :math:`K_s` [:math:`\text{cm/hr}`]
-     - Porosity :math:`\phi`
+     - θ_r [m³/m³]
+     - θ_s [m³/m³]
+     - α [1/cm]
+     - n [-]
+     - m [-]
+     - K_s [cm/hr]
+     - Porosity φ
    * - **Sand**
      - 0.045
      - 0.430
