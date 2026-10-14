@@ -1,0 +1,27 @@
+{
+  "latency_ms": 340.7688000006601,
+  "ms_per_pixel": 0.08319550781266116,
+  "submillisecond_status": "PASSED",
+  "lock_verified": true,
+  "operational_regime": "NOMINAL",
+  "sar_weight": 1.0,
+  "optical_weight": 1.0,
+  "cloud_fraction": 0.0,
+  "soil_texture": "loam",
+  "pde_residual_rms": 0.0014555089874193072,
+  "enkf_variance_reduction_pct": -64.00000000000001,
+  "conformal_nominal_coverage": 90.0,
+  "batch_size": 1,
+  "spatial_shape": [
+    64,
+    64
+  ],
+  "volumetric_moisture_stats": {
+    "mean": 0.29791730642318726,
+    "min": 0.22008903324604034,
+    "max": 0.3766864538192749
+  },
+  "suction_head_mean_cm": -52.86404037475586,
+  "conductivity_mean_cm_hr": 0.012457501143217087,
+  "conformal_uncertainty_mean": 0.012999997474253178
+}

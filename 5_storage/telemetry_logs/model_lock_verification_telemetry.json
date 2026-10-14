@@ -1,0 +1,46 @@
+{
+  "status": "SEALED_PASSED",
+  "verified_at": "2026-10-14T14:32:21.054917+00:00",
+  "project_root": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH",
+  "total_artifacts": 4,
+  "passed_count": 4,
+  "failed_count": 0,
+  "artifacts": {
+    "pinn_richards_model": {
+      "name": "PINN Richards Physical Infiltration Neural Network",
+      "path": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\5_storage\\checkpoints\\pinn_richards_model.pt",
+      "status": "VERIFIED_SEALED",
+      "expected_hash": "de1cd19c9993f0b35b4612c89d6b92a0553f95d5adaab695264d1be92b697e42",
+      "computed_hash": "de1cd19c9993f0b35b4612c89d6b92a0553f95d5adaab695264d1be92b697e42",
+      "byte_size": 55877,
+      "match": true
+    },
+    "enkf_state_database": {
+      "name": "EnKF Sequential State Estimation Database",
+      "path": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\5_storage\\state_database\\enkf_state_database.pt",
+      "status": "VERIFIED_SEALED",
+      "expected_hash": "e525676287aab7769da5516c55de1820ae1a77c173f8180fc4937188b770f4ba",
+      "computed_hash": "e525676287aab7769da5516c55de1820ae1a77c173f8180fc4937188b770f4ba",
+      "byte_size": 16181,
+      "match": true
+    },
+    "uncertainty_registry": {
+      "name": "Conformal Bayesian Uncertainty Registry",
+      "path": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\5_storage\\registry\\uncertainty_registry.pt",
+      "status": "VERIFIED_SEALED",
+      "expected_hash": "452c9da84a61d1d136e17ef47ebe2159b15a246c81b99aa53dcd0ad1e2efaeef",
+      "computed_hash": "452c9da84a61d1d136e17ef47ebe2159b15a246c81b99aa53dcd0ad1e2efaeef",
+      "byte_size": 40379,
+      "match": true
+    },
+    "final_scientific_audit": {
+      "name": "Final Master Scientific Audit Certified Checkpoint",
+      "path": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\5_storage\\checkpoints\\final_scientific_audit_checkpoint.pt",
+      "status": "VERIFIED_SEALED",
+      "expected_hash": "c3afec5540c17405b621b3926aba48394c543de26f669f3bbb7bc27afbceb4e7",
+      "computed_hash": "c3afec5540c17405b621b3926aba48394c543de26f669f3bbb7bc27afbceb4e7",
+      "byte_size": 2889,
+      "match": true
+    }
+  }
+}
