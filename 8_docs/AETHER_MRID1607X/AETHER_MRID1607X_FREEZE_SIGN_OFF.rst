@@ -75,7 +75,7 @@ THE MRIDANSH (AETHER-MRID1607X) - Master Unified Engine Freeze & Design Specific
 ----------------------------------
 
 .. list-table:: Historical Revision Ledger
-   :widths: 10 15 20 55
+   :widths: 10 18 22 50
    :header-rows: 1
 
    * - Version
@@ -84,39 +84,39 @@ THE MRIDANSH (AETHER-MRID1607X) - Master Unified Engine Freeze & Design Specific
      - Engineering Scope & Verification Milestone
    * - ``0.1``
      - 2026-08-31
-     - G. Mohapatra
+     - Gouragopal Mohapatra
      - Initial repository conception, exploratory Earth observation pipeline prototyping, data schema formulation.
    * - ``0.2``
      - 2026-09-15
-     - G. Mohapatra
+     - Gouragopal Mohapatra
      - Spatial graph modeling, terrain elevation slope-aspect processing, and spatial autocorrelation analysis.
    * - ``0.3``
      - 2026-09-30
-     - G. Mohapatra
+     - Gouragopal Mohapatra
      - Temporal recurrent modeling, sliding-window sequence preprocessing, ConvLSTM hydrological recession tracking.
    * - ``0.4``
      - 2026-10-08
-     - G. Mohapatra
+     - Gouragopal Mohapatra
      - Physics-informed neural network (PINN) validation; 1D Richards equation autograd derivation and van Genuchten solvers.
    * - ``0.5``
      - 2026-10-10
-     - G. Mohapatra
+     - Gouragopal Mohapatra
      - Completion of 12-Notebook Research Lifecycle; Century Master Test Suite (100/100 PASSED across 8 Pillars).
    * - ``1.0``
      - 2026-10-11
-     - G. Mohapatra
+     - Gouragopal Mohapatra
      - Formal Release ``v2.0.0`` live; architectural separation of research notebooks (``1_notebooks_sandbox/``) from production codebase.
    * - ``1.1``
      - 2026-10-12
-     - G. Mohapatra
+     - Gouragopal Mohapatra
      - **Prod Day 4 Freeze**: Extraction and verification of Neural Front-End modules (``MultiModalLatentFusion``, ``SpatiotemporalBackbone``, ``DynamicDropoutHandler``). Commit ``0840898``.
    * - ``1.2``
      - 2026-10-13
-     - G. Mohapatra
+     - Gouragopal Mohapatra
      - **Prod Day 5 Freeze**: Extraction and verification of Vadose Physics and Bayesian components (``VanGenuchtenEngine``, ``RichardsPINN``, ``EnsembleKalmanFilterAssimilator``, ``ConformalUncertaintyEngine``). Commit ``d71b4fa``.
    * - ``2.0``
      - 2026-10-14
-     - G. Mohapatra
+     - Gouragopal Mohapatra
      - **Prod Day 6 Grand Milestone**: Complete unification of all 7 subsystems into ``AETHER_MRID1607X_Engine``, implementation of SHA-256 ``model_lock.py``, sub-millisecond execution audit (:math:`0.003945\text{ ms/pixel}`), and 10/10 operational test certification. Commits ``9e89409`` & ``5081df7``.
 
 0.3 Applicable & Reference Documents
@@ -160,7 +160,7 @@ THE MRIDANSH (AETHER-MRID1607X) - Master Unified Engine Freeze & Design Specific
      - Capillary Conduction of Liquids Through Porous Mediums
    * - **[R8]**
      - Raissi, M., Perdikaris, P., et al. (2019)
-     - J. Computational Physics, Vol. 378
+     - Journal of Computational Physics, Vol. 378
      - Physics-Informed Neural Networks: A Deep Learning Framework for Solving PDEs
    * - **[R9]**
      - Evensen, G. (2003)
