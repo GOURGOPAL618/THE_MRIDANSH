@@ -1,0 +1,17 @@
+{
+  "spatial_resolution_m": 10.0,
+  "patch_pixels": "64x64",
+  "ground_footprint_m": "640.0m x 640.0m",
+  "crs": "EPSG:32645",
+  "spatial_bounds": {
+    "min_x": 420000.0,
+    "min_y": 2240000.0,
+    "max_x": 420640.0,
+    "max_y": 2240640.0
+  },
+  "sar_raw_enl": 1.7565476807379032,
+  "sar_filtered_enl": 3.101710411813258,
+  "sar_enl_improvement": 1.7657991558249468,
+  "cloud_fraction_pct": 16.448974609375,
+  "timestamp": "2026-10-15T15:26:36Z"
+}
