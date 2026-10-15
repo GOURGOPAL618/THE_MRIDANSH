@@ -9,9 +9,9 @@
     "max_x": 420640.0,
     "max_y": 2240640.0
   },
-  "sar_raw_enl": 1.7565476807379032,
-  "sar_filtered_enl": 3.101710411813258,
-  "sar_enl_improvement": 1.7657991558249468,
-  "cloud_fraction_pct": 16.448974609375,
-  "timestamp": "2026-10-15T15:26:36Z"
+  "sar_raw_enl": 1.724021634753652,
+  "sar_filtered_enl": 3.0279498493433787,
+  "sar_enl_improvement": 1.7563293802725664,
+  "cloud_fraction_pct": 15.0390625,
+  "timestamp": "2026-10-15T18:42:53Z"
 }
