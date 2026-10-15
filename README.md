@@ -254,32 +254,45 @@
 
 ```
 THE_MRIDANSH/
-├── 1_notebooks_sandbox/     # Heavy Compute Research (Kaggle Dedicated)
-│   ├── 01_data_ingestion.ipynb        # [PHASE 3 · WK2] STAC / Sentinel-1-2 / DEM / weather / metadata
-│   ├── 02_preprocessing.ipynb         # [PHASE 3 · WK2] Cloud masking, SAR/optical QC, normalization
-│   ├── 03_spatial_modeling.ipynb      # [PHASE 3 · WK2] Terrain features, graph construction, GCN
-│   ├── 04_temporal_modeling.ipynb     # [PHASE 3 · WK2] Time-series construction, ConvLSTM
-│   ├── 05_physics_validation.ipynb    # [PHASE 3 · WK3] Richards/Darcy constraints, PINN
-│   ├── 06_state_estimation.ipynb      # [ROADMAP] EnKF, observation update, state reconstruction
-│   ├── 07_uncertainty_analysis.ipynb  # [ROADMAP] Ensemble variance, confidence, calibration
-│   ├── 08_robustness_failure_analysis.ipynb  # [ROADMAP] Deliberate stress & failure testing
-│   ├── 09_hyperspectral_experiment.ipynb     # [ROADMAP] HSI as an experimental modality
-│   ├── 10_ablation_study.ipynb               # [ROADMAP] Which components actually matter
-│   ├── 11_generalization_baseline_eval.ipynb # [ROADMAP] Spatial/temporal generalization + baselines
-│   └── 12_final_scientific_audit.ipynb       # [ROADMAP] Final evidence, limitations & lock
-├── 2_data_pipeline/         # Multi-modal Satellite Ingestion & Fusion
-│   └── stac_client.py       # [PHASE 2] Copernicus / ISRO Bhuvan / Landsat STAC connectors
-├── 3_core_engine/           # AETHER Scientific PINN + EnKF Core
-├── 4_domain_translators/    # Soil State to Agri/Civil Translations
-├── 5_storage/               # Local Databases, Artifacts & Checkpoints
-├── 6_dashboard/             # Streamlit Interactive UI Viewports
-│   └── renderers/
-│       ├── map_renderers.py # [PHASE 2] Mapbox / Folium GIS Layer Engine
-│       └── gis_viewport/    # [PHASE 3 · WK1] Interactive GIS Mapping & Overlay Sync
-├── 7_config/                # System Level Variables & Envs
-├── api/                     # [PHASE 2] FastAPI Async Backend
-│   └── main.py
-└── tests/                   # Automated Unit & Integration Tests
+├── 1_notebooks_sandbox/                # Heavy Compute Research (Notebooks 01 → 12, Kaggle Dedicated)
+│   ├── 01_data_ingestion.ipynb         # STAC / Sentinel-1-2 / DEM / weather / metadata
+│   ├── 02_preprocessing.ipynb          # Cloud masking, SAR/optical QC, normalization
+│   ├── 03_spatial_modeling.ipynb       # Terrain features, graph construction, GCN
+│   ├── 04_temporal_modeling.ipynb      # Time-series construction, ConvLSTM
+│   ├── 05_physics_validation.ipynb     # Richards/Darcy constraints, PINN
+│   ├── 06_state_estimation.ipynb       # EnKF, observation update, state reconstruction
+│   ├── 07_uncertainty_analysis.ipynb   # Ensemble variance, confidence, calibration
+│   ├── 08_robustness_failure_analysis.ipynb # Deliberate stress & failure testing
+│   ├── 09_hyperspectral_experiment.ipynb # HSI as an experimental modality
+│   ├── 10_ablation_study.ipynb         # Component contribution ablation
+│   ├── 11_generalization_baseline_eval.ipynb # Spatial/temporal generalization + baselines
+│   └── 12_final_scientific_audit.ipynb # Final evidence, limitations & lock
+├── 2_data_pipeline/                    # Multi-Modal Satellite Ingestion & Radiometric Preprocessing
+│   ├── ingestion/                      # Real-world Sentinel-1/2, STAC client, resilience caching
+│   └── preprocessing/                  # Raster processors, reprojection, normalization
+├── 3_core_engine/                      # AETHER-MRID1607X Monolithic Central Physics & State Engine
+│   ├── models/                         # Latent fusion, spatiotemporal backbone, dropout handler
+│   ├── physics/                        # van Genuchten SWRC, Richards vadose PINN
+│   ├── state_estimation/               # Bayesian Ensemble Kalman Filter (EnKF) assimilator
+│   ├── uncertainty/                    # Conformal uncertainty calibration engine
+│   └── aether_engine.py                # Frozen monolithic engine entrypoint (DO-178C Level-A)
+├── 4_domain_translators/               # Agronomic & Geotechnical Domain Translators (Irrigation & Trafficability)
+├── 5_storage/                          # State Databases, Registry Manifests, Model Checkpoints
+├── 6_dashboard/                        # Streamlit Interactive Real-Time GIS Viewport & Layer Renderers
+├── 7_config/                           # System Constants, Sensor Specs & Operational Configurations
+├── 8_docs/                             # Aerospace Flight Sign-Off Pack, Technical Memoranda & ICDs
+├── 9_spaceborne_operational_campaign/  # 🔴 [CURRENT RUNNING · ACTIVE 5-DAY OPERATIONAL FLIGHT CAMPAIGN]
+│   ├── 1_telemetry_raw/                # Spaceborne raw telemetry granules (S1 SAR, S2 Optical, DEM)
+│   ├── 2_harmonized_tensors/           # 10m UTM coordinate-aligned tensor bundles (.pt)
+│   ├── 3_ground_truth/                 # In-situ ground truth probe observations & collocation matrices
+│   ├── 4_execution_engine/             # Multi-sensor ingestors, Refined Lee calibrators & telemetry runners
+│   ├── 5_paper_artifacts/              # Publication figures, LaTeX benchmark tables & charts
+│   └── 6_daily_flight_logs/            # Flight certification daily mission logs (Day 07 → Day 11)
+├── data/                               # Local Processed Tensors, Scaler Manifests & Graph Meshes
+├── Kaggle Notebook Editor_files/       # Kaggle Interactive Session Assets
+├── NOTEBOOK OUTPUT/                    # Kaggle Run Artifacts & Generated Figures
+├── TESTING RESULTS/                    # Automated Test Execution Reports & Metrics
+└── tests/                              # Automated Unit & Integration Test Suites (349/349 Passing)
 ```
 
 ---
