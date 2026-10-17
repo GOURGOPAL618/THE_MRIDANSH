@@ -129,7 +129,9 @@ def execute_day08_telemetry_handshake() -> Dict[str, Any]:
     scene = generate_day08_spaceborne_scene(height=128, width=128)
 
     # 3. Process SAR: DN to sigma-0 dB & Refined Lee Despeckling
-    sar_out = sar_cal.process_dual_pol_sar(scene["raw_s1_vv"], scene["raw_s1_vh"])
+    sar_out = sar_cal.process_dual_pol_sar(
+        scene["raw_s1_vv"], scene["raw_s1_vh"], calibration_factor=float(np.sqrt(1000.0))
+    )
     sar_db = sar_out["sar_db"]
     enl_before = sar_out["raw_enl"]
     enl_after = sar_out["filtered_enl"]
