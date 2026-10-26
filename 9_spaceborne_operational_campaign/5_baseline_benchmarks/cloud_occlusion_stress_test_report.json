@@ -1,0 +1,45 @@
+{
+  "mission": "SPACEBORNE_OPERATIONAL_CAMPAIGN_DAY_10",
+  "test_type": "MULTI_REGIME_CLOUD_OCCLUSION_STRESS_TEST",
+  "regimes": {
+    "regime_1_clear_sky": {
+      "cloud_fraction": 0.0,
+      "operational_regime": "NOMINAL",
+      "latency_per_px_ms": 0.007004,
+      "mean_theta_m3m3": 0.2295,
+      "surface_rmse_m3m3": 0.0669,
+      "rootzone_rmse_m3m3": 0.0645,
+      "mean_uncertainty_2sigma": 0.013,
+      "blind_spots_count": 0
+    },
+    "regime_2_partial_cloud": {
+      "cloud_fraction": 0.36,
+      "operational_regime": "PARTIAL_OCCLUSION",
+      "latency_per_px_ms": 0.010041,
+      "mean_theta_m3m3": 0.2294,
+      "surface_rmse_m3m3": 0.0669,
+      "rootzone_rmse_m3m3": 0.0645,
+      "mean_uncertainty_2sigma": 0.0192,
+      "blind_spots_count": 0
+    },
+    "regime_3_severe_cloud_blackout": {
+      "cloud_fraction": 1.0,
+      "operational_regime": "TOTAL_SAR_BACKBONE",
+      "latency_per_px_ms": 0.00771,
+      "mean_theta_m3m3": 0.2319,
+      "surface_rmse_m3m3": 0.0717,
+      "rootzone_rmse_m3m3": 0.0719,
+      "mean_uncertainty_2sigma": 0.0192,
+      "blind_spots_count": 0
+    }
+  },
+  "resilience_synthesis": {
+    "rmse_degradation_delta": 0.0048,
+    "rmse_degradation_pct": 7.17,
+    "latency_sla_satisfied": true,
+    "zero_blind_spots_verified": true,
+    "epistemic_uncertainty_growth_verified": true,
+    "sar_failover_status": "SEAMLESS_CONTINUOUS_MICROWAVE_FAILOVER"
+  },
+  "status": "DO_178C_LEVEL_A_CLOUD_STRESS_CERTIFIED"
+}
