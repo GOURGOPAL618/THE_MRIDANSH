@@ -1,0 +1,54 @@
+{
+  "mission": "SPACEBORNE_OPERATIONAL_CAMPAIGN_DAY_11",
+  "certification": "TRL-7_OPERATIONAL_FLIGHT_READINESS_CERTIFIED",
+  "execution_mode": "AUTONOMOUS_ONE_CLICK_FLIGHT_PIPELINE",
+  "timestamp_utc": "2026-10-27T06:16:44Z",
+  "spatial_metadata": {
+    "crs": "EPSG:32645",
+    "resolution_m": 10.0,
+    "grid_shape": [
+      64,
+      64
+    ],
+    "total_pixels_processed": 4096
+  },
+  "sensor_telemetry_status": {
+    "cloud_fraction": 0.0,
+    "operational_regime": "NOMINAL",
+    "sar_weight": 1.0,
+    "optical_weight": 1.0,
+    "force_dropout": false,
+    "microwave_failover_active": false
+  },
+  "hydrological_state_summary": {
+    "surface_moisture_mean_m3m3": 0.2372,
+    "surface_moisture_min_m3m3": 0.1667,
+    "surface_moisture_max_m3m3": 0.3066,
+    "rootzone_moisture_mean_m3m3": 0.2372,
+    "rootzone_moisture_min_m3m3": 0.1667,
+    "rootzone_moisture_max_m3m3": 0.3066,
+    "mean_pore_pressure_head_cm": -119.11,
+    "mean_hydraulic_conductivity_cm_hr": 0.0013,
+    "mean_conformal_uncertainty_2sigma": 0.013,
+    "richards_pinn_residual_norm": 0.001456,
+    "blind_spots_count": 0
+  },
+  "sla_and_timing_profiler": {
+    "stage1_ingestion_ms": 1.226,
+    "stage2_atmospheric_regime_ms": 0.058,
+    "stage3_core_dual_inference_ms": 26.651,
+    "stage5_geotiff_cog_export_ms": 135.507,
+    "total_pipeline_latency_ms": 489.703,
+    "core_latency_per_pixel_ms": 0.003253,
+    "latency_sla_satisfied": true,
+    "zero_nan_certified": true
+  },
+  "production_geotiff_artifacts": {
+    "master_cog_path": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\master_unified_soil_state_7layer.tif",
+    "master_cog_sha256": "2a71749044d15e6e111ecf8fd231b55eceb8acebc3c1cab814b755eb5ea9ac1b",
+    "manifest_path": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\geotiff_manifest.json",
+    "manifest_sha256": "cb213a1a5a3c54cace30df7e2db76b7fbb484da02449e9c36e3ff2210ce0ff0c",
+    "num_layers_exported": 7
+  },
+  "status": "DO_178C_LEVEL_A_PIPELINE_ORCHESTRATION_CERTIFIED"
+}

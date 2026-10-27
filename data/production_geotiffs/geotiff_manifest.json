@@ -22,8 +22,9 @@
     "dimensions": "64x64",
     "spatial_resolution_m": 10.0,
     "crs": "EPSG:32645",
-    "file_size_bytes": 54364,
-    "sha256": "0da9da22dbdf49d4b1a1ca682d5ad22b0235c817ea1b9ce37ccbb5f1fe9c0221",
+    "file_size_bytes": 54152,
+    "sha256": "2a71749044d15e6e111ecf8fd231b55eceb8acebc3c1cab814b755eb5ea9ac1b",
+    "viewer_status": "LOCKED_BY_QGIS_PRESERVED",
     "status": "DO_178C_LEVEL_A_COG_EXPORT_CERTIFIED"
   },
   "individual_layers": {
@@ -32,44 +33,44 @@
       "filepath": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\theta_surface_10m.tif",
       "units": "m3/m3",
       "dtype": "float32",
-      "file_size_bytes": 16107,
-      "sha256": "b5298e0b741fcf899c23160a0826ec50da69239650706105913eb4f5b6b82a67",
-      "mean_val": 0.2284,
-      "min_val": 0.1069,
-      "max_val": 0.3058
+      "file_size_bytes": 16101,
+      "sha256": "b833e1e6542f0b1b6843187d635687f1487524ec089e338fc1720899fd6db96f",
+      "mean_val": 0.2372,
+      "min_val": 0.1667,
+      "max_val": 0.3066
     },
     "theta_rootzone": {
       "filename": "theta_rootzone_10m.tif",
       "filepath": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\theta_rootzone_10m.tif",
       "units": "m3/m3",
       "dtype": "float32",
-      "file_size_bytes": 16111,
-      "sha256": "a21fd94fe523f4bcb4858733cb85da98a612ec78c06b124cbceafc7647588209",
-      "mean_val": 0.2284,
-      "min_val": 0.1069,
-      "max_val": 0.3058
+      "file_size_bytes": 16105,
+      "sha256": "a3815ef28b80d5f0f3bedbcfde1fc3634856aadd0b0f96b654832d2050988a67",
+      "mean_val": 0.2372,
+      "min_val": 0.1667,
+      "max_val": 0.3066
     },
     "pore_pressure_head": {
       "filename": "pore_pressure_head_10m.tif",
       "filepath": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\pore_pressure_head_10m.tif",
       "units": "cm",
       "dtype": "float32",
-      "file_size_bytes": 16723,
-      "sha256": "b7909c92262a8c2f5f41fd9df43a130d0b25aaa5e1f637aa6504f7fbd9763c69",
-      "mean_val": -172.9682,
-      "min_val": -13415.0742,
-      "max_val": -46.4837
+      "file_size_bytes": 16663,
+      "sha256": "6c9b626567459fa672c836c2dc7f21ee48863f6e17ca07d55bb1891d7514ad8c",
+      "mean_val": -119.1118,
+      "min_val": -413.121,
+      "max_val": -46.0268
     },
     "hydraulic_conductivity": {
       "filename": "hydraulic_conductivity_10m.tif",
       "filepath": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\hydraulic_conductivity_10m.tif",
       "units": "cm/hr",
       "dtype": "float32",
-      "file_size_bytes": 17031,
-      "sha256": "787e56c94047de71ba592af174337803ac600b1234fa093d07f6bd32955d8e7b",
-      "mean_val": 0.001,
+      "file_size_bytes": 17085,
+      "sha256": "014fdc8b4cd686e06adf7e0d15ee387d42cbf965dd4a710bb7a1e03d65912e27",
+      "mean_val": 0.0013,
       "min_val": 0.0,
-      "max_val": 0.013
+      "max_val": 0.0134
     },
     "conformal_uncertainty_2sigma": {
       "filename": "conformal_uncertainty_2sigma_10m.tif",
@@ -80,7 +81,8 @@
       "sha256": "95441111c2b8a83794f6be90632f76c4756825062adbed3e9e23129c6737c136",
       "mean_val": 0.013,
       "min_val": 0.013,
-      "max_val": 0.013
+      "max_val": 0.013,
+      "viewer_status": "LOCKED_BY_QGIS_PRESERVED"
     },
     "pde_residual_norm": {
       "filename": "pde_residual_norm_10m.tif",
