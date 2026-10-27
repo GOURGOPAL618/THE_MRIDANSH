@@ -303,8 +303,10 @@ THE_MRIDANSH/
 │   ├── 3_ground_truth/                 # In-situ ground truth probe observations & collocation matrices
 │   ├── 4_execution_engine/             # Multi-sensor ingestors, Refined Lee calibrators & telemetry runners
 │   ├── 5_baseline_benchmarks/          # Classical models, WCM, OLS & cloud occlusion stress reports
-│   ├── 5_paper_artifacts/              # Publication figures, LaTeX benchmark tables & charts
-│   └── 6_daily_flight_logs/            # Flight certification daily mission logs (Day 07 → Day 11)
+│   ├── 6_daily_flight_logs/            # Flight certification daily mission logs (Day 07 → Day 11)
+│   ├── 7_production_geotiffs/          # Production 10m GeoTIFF rasters & 7-layer Master COG stack
+│   └── 8_paper_artifacts/              # Publication figures, LaTeX benchmark tables & charts
+
 ├── data/                               # Local Processed Tensors, Scaler Manifests & Graph Meshes
 ├── Kaggle Notebook Editor_files/       # Kaggle Interactive Session Assets
 ├── NOTEBOOK OUTPUT/                    # Kaggle Run Artifacts & Generated Figures

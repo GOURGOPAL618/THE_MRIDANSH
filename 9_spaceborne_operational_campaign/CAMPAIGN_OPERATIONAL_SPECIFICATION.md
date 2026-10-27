@@ -25,8 +25,10 @@
 ├── 2_harmonized_tensors/     ➔ Co-registered, speckle-filtered, 10m UTM pixel-aligned tensor stacks
 ├── 3_ground_truth/           ➔ In-situ field probe measurements (ISMN / Indian soil hydrological stations)
 ├── 4_execution_engine/       ➔ Pipeline ingestion runners & AETHER-MRID1607X operational drivers
-├── 5_paper_artifacts/        ➔ Production GeoTIFF raster stacks, Pareto curves, validation plots for IEEE paper
-└── 6_daily_flight_logs/      ➔ Daily formal technical logs (Day 7, Day 8, Day 9, Day 10, Day 11)
+├── 5_baseline_benchmarks/    ➔ Classical empirical baselines (OLS, WCM) & cloud stress test reports
+├── 6_daily_flight_logs/      ➔ Daily formal technical logs (Day 7, Day 8, Day 9, Day 10, Day 11)
+├── 7_production_geotiffs/    ➔ Production 10m GeoTIFF rasters & 7-layer Master Cloud-Optimized GeoTIFF (COG)
+└── 8_paper_artifacts/        ➔ Pareto curves, IEEE validation plots, LaTeX benchmark tables
 ```
 
 ---
