@@ -1,0 +1,109 @@
+{
+  "mission": "SPACEBORNE_OPERATIONAL_CAMPAIGN_DAY_11",
+  "certification": "TRL-7 OPERATIONAL FLIGHT READINESS",
+  "subsystem": "PRODUCTION_GEOTIFF_AND_COG_EXPORTER",
+  "spatial_metadata": {
+    "crs": "EPSG:32645",
+    "bounds_utm45n": {
+      "min_x": 420000.0,
+      "min_y": 2240000.0,
+      "max_x": 420640.0,
+      "max_y": 2240640.0
+    },
+    "pixel_size_m": 10.0,
+    "raster_rows": 64,
+    "raster_cols": 64,
+    "total_pixels": 4096
+  },
+  "master_cog_stack": {
+    "filename": "master_unified_soil_state_7layer.tif",
+    "filepath": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\master_unified_soil_state_7layer.tif",
+    "num_bands": 7,
+    "dimensions": "64x64",
+    "spatial_resolution_m": 10.0,
+    "crs": "EPSG:32645",
+    "file_size_bytes": 54364,
+    "sha256": "0da9da22dbdf49d4b1a1ca682d5ad22b0235c817ea1b9ce37ccbb5f1fe9c0221",
+    "status": "DO_178C_LEVEL_A_COG_EXPORT_CERTIFIED"
+  },
+  "individual_layers": {
+    "theta_surface": {
+      "filename": "theta_surface_10m.tif",
+      "filepath": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\theta_surface_10m.tif",
+      "units": "m3/m3",
+      "dtype": "float32",
+      "file_size_bytes": 16107,
+      "sha256": "b5298e0b741fcf899c23160a0826ec50da69239650706105913eb4f5b6b82a67",
+      "mean_val": 0.2284,
+      "min_val": 0.1069,
+      "max_val": 0.3058
+    },
+    "theta_rootzone": {
+      "filename": "theta_rootzone_10m.tif",
+      "filepath": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\theta_rootzone_10m.tif",
+      "units": "m3/m3",
+      "dtype": "float32",
+      "file_size_bytes": 16111,
+      "sha256": "a21fd94fe523f4bcb4858733cb85da98a612ec78c06b124cbceafc7647588209",
+      "mean_val": 0.2284,
+      "min_val": 0.1069,
+      "max_val": 0.3058
+    },
+    "pore_pressure_head": {
+      "filename": "pore_pressure_head_10m.tif",
+      "filepath": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\pore_pressure_head_10m.tif",
+      "units": "cm",
+      "dtype": "float32",
+      "file_size_bytes": 16723,
+      "sha256": "b7909c92262a8c2f5f41fd9df43a130d0b25aaa5e1f637aa6504f7fbd9763c69",
+      "mean_val": -172.9682,
+      "min_val": -13415.0742,
+      "max_val": -46.4837
+    },
+    "hydraulic_conductivity": {
+      "filename": "hydraulic_conductivity_10m.tif",
+      "filepath": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\hydraulic_conductivity_10m.tif",
+      "units": "cm/hr",
+      "dtype": "float32",
+      "file_size_bytes": 17031,
+      "sha256": "787e56c94047de71ba592af174337803ac600b1234fa093d07f6bd32955d8e7b",
+      "mean_val": 0.001,
+      "min_val": 0.0,
+      "max_val": 0.013
+    },
+    "conformal_uncertainty_2sigma": {
+      "filename": "conformal_uncertainty_2sigma_10m.tif",
+      "filepath": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\conformal_uncertainty_2sigma_10m.tif",
+      "units": "m3/m3",
+      "dtype": "float32",
+      "file_size_bytes": 1903,
+      "sha256": "95441111c2b8a83794f6be90632f76c4756825062adbed3e9e23129c6737c136",
+      "mean_val": 0.013,
+      "min_val": 0.013,
+      "max_val": 0.013
+    },
+    "pde_residual_norm": {
+      "filename": "pde_residual_norm_10m.tif",
+      "filepath": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\pde_residual_norm_10m.tif",
+      "units": "m3/m3",
+      "dtype": "float32",
+      "file_size_bytes": 1892,
+      "sha256": "9d33cfbf80c18a6543fb513d950570aa0e1fc4562c5af50a7e5322db99a43ab3",
+      "mean_val": 0.0015,
+      "min_val": 0.0015,
+      "max_val": 0.0015
+    },
+    "hydrological_anomaly_flags": {
+      "filename": "hydrological_anomaly_flags_10m.tif",
+      "filepath": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\7_production_geotiffs\\hydrological_anomaly_flags_10m.tif",
+      "units": "bitmask",
+      "dtype": "int32",
+      "file_size_bytes": 1897,
+      "sha256": "0ddff00214c2ccf4d8df801ab926114ebd7b4911080a3e9a572b984e3d9da8f5",
+      "mean_val": 16.0,
+      "min_val": 16.0,
+      "max_val": 16.0
+    }
+  },
+  "status": "DO_178C_LEVEL_A_GEOTIFF_MANIFEST_CERTIFIED"
+}
