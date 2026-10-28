@@ -1,0 +1,68 @@
+{
+  "mission": "THE MRIDANSH - Phase 4 Agronomy Translator",
+  "day": "Day 12",
+  "date": "2026-10-28",
+  "standards": [
+    "FAO-56",
+    "DO-178C-Level-A"
+  ],
+  "crop_evaluated": "Winter / Spring Wheat",
+  "soil_texture": "silt_loam",
+  "grid_shape": [
+    64,
+    64
+  ],
+  "total_pixels": 4096,
+  "runtime_performance": {
+    "total_execution_ms": 1.614,
+    "latency_ms_per_pixel": 0.000394,
+    "sla_limit_ms_per_pixel": 0.01,
+    "sla_margin_factor": 25.4,
+    "sla_status": "PASSED"
+  },
+  "canopy_phenology": {
+    "mean_ndvi": 0.4781,
+    "min_ndvi": 0.2052,
+    "max_ndvi": 0.7782,
+    "mean_fractional_cover_fc": 0.5047,
+    "mean_root_depth_zr_m": 0.5842,
+    "min_root_depth_zr_m": 0.1993,
+    "max_root_depth_zr_m": 1.0618
+  },
+  "hydraulic_reservoir": {
+    "mean_taw_mm": 116.84,
+    "mean_raw_mm": 64.26,
+    "soil_fc": 0.33,
+    "soil_wp": 0.13,
+    "depletion_fraction_p": 0.55
+  },
+  "dual_crop_coefficients": {
+    "mean_kcb_transpiration": 0.6295,
+    "mean_ke_evaporation": 0.2423,
+    "mean_kc_potential": 0.8718
+  },
+  "vadose_depletion_and_stress": {
+    "mean_root_depletion_dr_mm": 53.5,
+    "max_root_depletion_dr_mm": 128.79,
+    "mean_water_stress_ks": 0.9937,
+    "mean_crop_water_stress_index_cwsi": 0.0063,
+    "stress_regimes_pct": {
+      "no_stress_cwsi_zero": 95.83,
+      "mild_stress_cwsi_under_035": 3.91,
+      "moderate_stress_cwsi_035_to_070": 0.27,
+      "severe_stress_cwsi_over_070": 0.0
+    }
+  },
+  "evapotranspiration_fluxes": {
+    "reference_et0_mm_day": 4.8,
+    "mean_etc_actual_mm_day": 4.167,
+    "mean_transpiration_deficit_mm_day": 0.017
+  },
+  "verification_contracts": {
+    "AGRI-01": "PASSED (Mathematical Boundedness Ks, CWSI in [0, 1])",
+    "AGRI-02": "PASSED (Hydraulic Invariants & Mass Balance RAW <= TAW)",
+    "AGRI-03": "PASSED (0 NaNs, 0 Infs across 4,096 pixels)",
+    "AGRI-04": "PASSED (Biological Monotonicity Zr, Kcb with fc)",
+    "AGRI-05": "PASSED (Latency SLA < 0.010 ms/pixel)"
+  }
+}
