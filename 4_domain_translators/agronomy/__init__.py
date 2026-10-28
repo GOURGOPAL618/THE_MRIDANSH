@@ -8,10 +8,25 @@ from .soil_water_reservoir import (
     SoilWaterReservoirEngine,
     USDA_TEXTURE_PROPERTIES,
 )
+from .dynamic_phenology import (
+    PhenologyState,
+    DynamicPhenologyEngine,
+)
+from .fao56_dual_kc import (
+    DualKcOutput,
+    FAO56DualKcEngine,
+)
 
 __all__ = [
+    # Phase 1: Soil Hydraulics & Reservoir
     "SoilHydraulicProperties",
     "AvailableWaterReservoir",
     "SoilWaterReservoirEngine",
     "USDA_TEXTURE_PROPERTIES",
+    
+    # Phase 2: Dynamic Phenology & Dual Kc
+    "PhenologyState",
+    "DynamicPhenologyEngine",
+    "DualKcOutput",
+    "FAO56DualKcEngine",
 ]
