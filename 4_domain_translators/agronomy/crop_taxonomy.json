@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "standard": "FAO-56 Irrigation and Drainage Paper No. 56",
+    "authors": "Allen, Pereira, Raes, Smith (1998)",
+    "description": "Agronomic crop growth parameters, soil water depletion fractions (p), and rooting depths for precision agriculture translation.",
+    "version": "1.0.0-TRL7"
+  },
+  "crops": {
+    "rice_paddy": {
+      "common_name": "Paddy Rice",
+      "scientific_name": "Oryza sativa",
+      "p_depletion_fraction": 0.20,
+      "rooting_depth_min_m": 0.10,
+      "rooting_depth_max_m": 0.50,
+      "kcb_initial": 1.05,
+      "kcb_mid": 1.15,
+      "kcb_end": 0.90,
+      "critical_depletion_note": "Extremely sensitive to vadose tension; requires standing water or near-saturation (>0.90 FC) in vegetative phase."
+    },
+    "wheat": {
+      "common_name": "Winter / Spring Wheat",
+      "scientific_name": "Triticum aestivum",
+      "p_depletion_fraction": 0.55,
+      "rooting_depth_min_m": 0.15,
+      "rooting_depth_max_m": 1.10,
+      "kcb_initial": 0.15,
+      "kcb_mid": 1.10,
+      "kcb_end": 0.25,
+      "critical_depletion_note": "Critical water stress sensitive at crown root initiation, flowering, and grain filling."
+    },
+    "maize": {
+      "common_name": "Maize / Corn",
+      "scientific_name": "Zea mays",
+      "p_depletion_fraction": 0.55,
+      "rooting_depth_min_m": 0.15,
+      "rooting_depth_max_m": 1.20,
+      "kcb_initial": 0.15,
+      "kcb_mid": 1.15,
+      "kcb_end": 0.35,
+      "critical_depletion_note": "Severe yield penalty if stress occurs during silking and pollination window."
+    },
+    "sugarcane": {
+      "common_name": "Sugarcane",
+      "scientific_name": "Saccharum officinarum",
+      "p_depletion_fraction": 0.65,
+      "rooting_depth_min_m": 0.20,
+      "rooting_depth_max_m": 1.50,
+      "kcb_initial": 0.30,
+      "kcb_mid": 1.20,
+      "kcb_end": 0.60,
+      "critical_depletion_note": "Deep root system, high drought tolerance, but requires sustained high water throughput for biomass expansion."
+    },
+    "cotton": {
+      "common_name": "Upland Cotton",
+      "scientific_name": "Gossypium hirsutum",
+      "p_depletion_fraction": 0.65,
+      "rooting_depth_min_m": 0.20,
+      "rooting_depth_max_m": 1.30,
+      "kcb_initial": 0.15,
+      "kcb_mid": 1.15,
+      "kcb_end": 0.50,
+      "critical_depletion_note": "Taproot system extracts moisture from deep subsoil; sensitive to boll shed under severe stress."
+    },
+    "pulses_chickpea": {
+      "common_name": "Chickpea / Gram",
+      "scientific_name": "Cicer arietinum",
+      "p_depletion_fraction": 0.45,
+      "rooting_depth_min_m": 0.15,
+      "rooting_depth_max_m": 0.80,
+      "kcb_initial": 0.20,
+      "kcb_mid": 1.00,
+      "kcb_end": 0.30,
+      "critical_depletion_note": "Sensitive to waterlogging (hypoxia); moderate drought resistance."
+    },
+    "mustard_oilseed": {
+      "common_name": "Mustard / Rapeseed",
+      "scientific_name": "Brassica juncea",
+      "p_depletion_fraction": 0.50,
+      "rooting_depth_min_m": 0.15,
+      "rooting_depth_max_m": 0.90,
+      "kcb_initial": 0.20,
+      "kcb_mid": 1.05,
+      "kcb_end": 0.35,
+      "critical_depletion_note": "Critical moisture needed at flowering and siliqua development."
+    },
+    "potato": {
+      "common_name": "Potato",
+      "scientific_name": "Solanum tuberosum",
+      "p_depletion_fraction": 0.35,
+      "rooting_depth_min_m": 0.15,
+      "rooting_depth_max_m": 0.60,
+      "kcb_initial": 0.15,
+      "kcb_mid": 1.10,
+      "kcb_end": 0.70,
+      "critical_depletion_note": "Shallow rooting system; highly sensitive to moisture fluctuations during tuber bulking."
+    },
+    "default_generic_crop": {
+      "common_name": "Generic Reference Field Crop",
+      "scientific_name": "Agro-ecosystem generic",
+      "p_depletion_fraction": 0.50,
+      "rooting_depth_min_m": 0.15,
+      "rooting_depth_max_m": 1.00,
+      "kcb_initial": 0.20,
+      "kcb_mid": 1.10,
+      "kcb_end": 0.40,
+      "critical_depletion_note": "Standard FAO-56 mid-latitude baseline crop."
+    }
+  }
+}

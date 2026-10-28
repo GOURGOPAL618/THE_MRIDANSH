@@ -48,3 +48,9 @@ __pycache__/
 *.html
 test_map_*.html
 map/
+
+# QGIS Auxiliary XML Files
+*.aux.xml
+
+# Protected Local Planning Documents
+5_DAY_REAL_WORLD_VALIDATION_PLAN.txt
