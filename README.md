@@ -5,7 +5,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,20:0a0e27,45:1a1a3e,55:2d0a3e,80:0a0e27,100:000000&height=320&section=header&text=THE%20MRIDANSH&fontSize=80&fontColor=00e5ff&animation=fadeIn&fontAlignY=35&desc=AETHER-MRID1607X%20%E2%80%A2%20UNIFIED%20SOIL%20STATE%20ESTIMATION%20SYSTEM&descAlignY=55&descSize=17&descColor=8a8fb5" width="100%"/>
 
 
-<img src="https://readme-typing-svg.demolab.com/?lines=%3E+PHASE+1+%3A+CORE+CONSTRUCTION+%E2%80%94+COMPLETE;%3E+PHASE+2+%3A+LIVE+PIPELINES+%2B+GIS+%2B+API+%E2%80%94+COMPLETE;%3E+PHASE+3+%3A+WEEK+1+GIS+MAPPING+%E2%80%94+COMPLETE;%3E+PHASE+3+%3A+WEEK+2+DATA+%2B+SPATIOTEMPORAL+CORE+%E2%80%94+INITIATED;%3E+DAILY+TELEMETRY+SYNC+%3A+ENABLED;JAGANNATH+COMMAND+CENTER+%7C+JCC+HEADQUARTERS&font=Fira+Code&size=19&duration=2400&pause=700&color=00E5FF&center=true&vCenter=true&width=980&height=70" />
+<img src="https://readme-typing-svg.demolab.com/?lines=%3E+PHASE+1..3+%3A+CORE+%2B+PIPELINES+%2B+GIS+%E2%80%94+COMPLETE;%3E+SPACEBORNE+CAMPAIGN+%3A+TRL-7+FLIGHT+CERTIFIED;%3E+PHASE+4+%3A+DAY+12+AGRONOMY+TRANSLATOR+%E2%80%94+CERTIFIED;%3E+DAILY+TELEMETRY+SYNC+%3A+ENABLED;JAGANNATH+COMMAND+CENTER+%7C+JCC+HEADQUARTERS&font=Fira+Code&size=19&duration=2400&pause=700&color=00E5FF&center=true&vCenter=true&width=980&height=70" />
 
 <br/>
 
@@ -13,10 +13,17 @@
 <img height="34" src="https://img.shields.io/badge/PHASE%201-COMPLETED-00ffab?style=for-the-badge&labelColor=000000"/>
 <img height="34" src="https://img.shields.io/badge/PHASE%202-COMPLETED-00ffab?style=for-the-badge&labelColor=000000"/>
 <img height="34" src="https://img.shields.io/badge/PHASE%203-COMPLETED-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/SPACEBORNE%20CAMPAIGN-DAY%2010%20CERTIFIED%20%E2%80%A2%2020%2F20%20TESTS-00ffab?style=for-the-badge&labelColor=000000"/>
+<img height="34" src="https://img.shields.io/badge/SPACEBORNE%20CAMPAIGN-TRL--7%20FLIGHT%20CERTIFIED%20%E2%80%A2%2025%2F25%20TESTS-00ffab?style=for-the-badge&labelColor=000000"/>
+<img height="34" src="https://img.shields.io/badge/FLIGHT%20RELEASE-v0.7.0--TRL7-ff2079?style=for-the-badge&labelColor=000000"/>
 <img height="34" src="https://img.shields.io/badge/CENTURY%20TESTS-100%2F100%20PASSED%20(ZERO%20DEFECTS)-00e5ff?style=for-the-badge&labelColor=000000"/>
 <img height="34" src="https://img.shields.io/badge/CORE%20ENGINE-AETHER--MRID1607X-ff2079?style=for-the-badge&labelColor=000000"/>
 <img height="34" src="https://img.shields.io/badge/COMMAND%20CENTER-JCC-00ffab?style=for-the-badge&labelColor=000000"/>
+
+<br/><br/>
+
+<img height="36" src="https://img.shields.io/badge/PHASE%204%20%C2%B7%20AGRONOMY-DAY%2012%20FAO--56%20CROP%20HYDRAULICS%20CERTIFIED%20%E2%80%A2%205%2F5%20TESTS-00ffab?style=for-the-badge&labelColor=000000"/>
+<img height="36" src="https://img.shields.io/badge/WATER%20STRESS%20CORE-CWSI%20%26%20VADOSE%20TRANSPIRATION%20DEFICIT%20LOCKED-ffb700?style=for-the-badge&labelColor=000000"/>
+<img height="36" src="https://img.shields.io/badge/EXECUTION%20SLA-0.000094%20ms%2Fpixel%20%E2%80%A2%20106x%20SAFETY%20MARGIN-00e5ff?style=for-the-badge&labelColor=000000"/>
 
 <br/><br/>
 
