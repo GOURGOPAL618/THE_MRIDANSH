@@ -1,0 +1,61 @@
+{
+  "mission": "THE MRIDANSH - Phase 4 Agronomy Translator",
+  "crs": "EPSG:32645",
+  "bounds": {
+    "min_x": 420000.0,
+    "min_y": 2240000.0,
+    "max_x": 420640.0,
+    "max_y": 2240640.0
+  },
+  "resolution_m": 10.0,
+  "grid_dimensions": [
+    64,
+    64
+  ],
+  "crop_species": "Winter Wheat",
+  "soil_texture": "Silt Loam",
+  "rasters": {
+    "crop_water_stress_index": {
+      "filename": "crop_water_stress_index_10m.tif",
+      "description": "FAO-56 Crop Water Stress Index (CWSI)",
+      "units": "dimensionless [0.0, 1.0]",
+      "sha256": "01a38f7f1faeca29f63f52de47ec964d938a13d0ed900e341df775a4ba69d2ce",
+      "min": 0.0,
+      "mean": 0.006336066871881485,
+      "max": 0.42603981494903564
+    },
+    "root_zone_depletion": {
+      "filename": "root_zone_depletion_dr_10m.tif",
+      "description": "Root-Zone Vadose Water Depletion (Dr)",
+      "units": "mm",
+      "sha256": "1869693e1751788cbf51ee6fd92c39458e0b940943610e9e7387ba27c3fc07e5",
+      "min": 9.27216911315918,
+      "mean": 53.49787139892578,
+      "max": 128.79315185546875
+    },
+    "irrigation_prescription_l_ha": {
+      "filename": "precision_irrigation_prescription_liters_per_ha_10m.tif",
+      "description": "Precision Variable-Rate Irrigation (VRI) Prescription",
+      "units": "Liters / Hectare",
+      "sha256": "06539f3cf735760a8b99917e73e67f3986381ed8cc0f7920b25ffc81a9e96277",
+      "min": 0.0,
+      "mean": 29599.390625,
+      "max": 1431035.0
+    },
+    "conformal_risk_envelope_l_ha": {
+      "filename": "irrigation_conformal_risk_envelope_10m.tif",
+      "description": "Conformal 2-Sigma Decision-Risk Envelope (Half-Width)",
+      "units": "Liters / Hectare",
+      "sha256": "5b895a2e5370f15122cf9f7c101aef9bc804ca6fa7ca763fa44fe69552902bc5",
+      "min": 0.0,
+      "mean": 219606.9375,
+      "max": 828766.5
+    },
+    "master_agronomic_vri_4layer": {
+      "filename": "master_agronomic_vri_4layer_10m.tif",
+      "description": "Master 4-Layer Agronomic VRI Prescription COG Stack",
+      "bands_count": 4,
+      "sha256": "9204adab2f4f07d04557b2a5e6bf641ebf64d852a81cbb933cacc296e5a1a72d"
+    }
+  }
+}

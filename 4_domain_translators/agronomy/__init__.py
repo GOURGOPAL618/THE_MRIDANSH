@@ -32,6 +32,13 @@ from .irrigation_prescription import (
     LITERS_PER_HA_PER_MM,
     LITERS_PER_10M_PIXEL_PER_MM,
 )
+from .conformal_risk_dispatcher import (
+    ConformalIrrigationDispatch,
+    ConformalRiskDispatcher,
+)
+from .agronomic_geotiff_exporter import (
+    AgronomicGeoTIFFExporter,
+)
 
 __all__ = [
     # Phase 1: Soil Hydraulics & Reservoir
@@ -51,7 +58,7 @@ __all__ = [
     "CropWaterStressEngine",
     "AgronomicStateVector",
     "AgronomyDomainEngine",
-    
+
     # Day 13 Phase 1: Precision Variable-Rate Irrigation
     "IrrigationStrategy",
     "IrrigationSystemType",
@@ -59,4 +66,9 @@ __all__ = [
     "PrecisionIrrigationEngine",
     "LITERS_PER_HA_PER_MM",
     "LITERS_PER_10M_PIXEL_PER_MM",
+    
+    # Day 13 Phase 2: Conformal Risk Dispatch & GeoTIFF Exporter
+    "ConformalIrrigationDispatch",
+    "ConformalRiskDispatcher",
+    "AgronomicGeoTIFFExporter",
 ]
