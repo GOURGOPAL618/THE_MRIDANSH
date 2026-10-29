@@ -24,6 +24,14 @@ from .agronomy_domain_engine import (
     AgronomicStateVector,
     AgronomyDomainEngine,
 )
+from .irrigation_prescription import (
+    IrrigationStrategy,
+    IrrigationSystemType,
+    IrrigationPrescriptionMap,
+    PrecisionIrrigationEngine,
+    LITERS_PER_HA_PER_MM,
+    LITERS_PER_10M_PIXEL_PER_MM,
+)
 
 __all__ = [
     # Phase 1: Soil Hydraulics & Reservoir
@@ -37,10 +45,18 @@ __all__ = [
     "DynamicPhenologyEngine",
     "DualKcOutput",
     "FAO56DualKcEngine",
-    
+
     # Phase 3: Stress Mechanics & Monolithic Engine
     "WaterStressOutput",
     "CropWaterStressEngine",
     "AgronomicStateVector",
     "AgronomyDomainEngine",
+    
+    # Day 13 Phase 1: Precision Variable-Rate Irrigation
+    "IrrigationStrategy",
+    "IrrigationSystemType",
+    "IrrigationPrescriptionMap",
+    "PrecisionIrrigationEngine",
+    "LITERS_PER_HA_PER_MM",
+    "LITERS_PER_10M_PIXEL_PER_MM",
 ]
