@@ -135,14 +135,15 @@ class SoilMechanicsCoreEngine:
         van Genuchten analytical suction inversion:
         psi = (1 / alpha) * (Se^(-1/m) - 1)^(1/n) in cm H2O, converted to kPa.
         """
-        se_arr = np.asarray(se, dtype=np.float32)
-        m = 1.0 - (1.0 / max(1.001, n))
+        se_arr = np.clip(np.asarray(se, dtype=np.float64), 1e-4, 1.0)
+        m = 1.0 - (1.0 / max(1.001, float(n)))
         
-        # Guard against zero/negative base
+        # Guard against overflow in float32 by computing in float64 and clipping
         inv_se = np.power(se_arr, -1.0 / m)
+        inv_se = np.clip(inv_se, 1.0, 1e12)
         term = np.maximum(0.0, inv_se - 1.0)
         
-        suction_cm = (1.0 / max(1e-4, alpha_1_cm)) * np.power(term, 1.0 / n)
+        suction_cm = (1.0 / max(1e-4, float(alpha_1_cm))) * np.power(term, 1.0 / float(n))
         suction_kpa = suction_cm * CM_H2O_TO_KPA
         
         # Bounded between 0.0 kPa (full saturation) and MAX_SUCTION_KPA (residual)

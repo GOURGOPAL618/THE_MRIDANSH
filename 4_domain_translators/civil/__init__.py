@@ -7,10 +7,24 @@ from .soil_mechanics_core import (
     FredlundShearResult,
     StratificationProfile,
 )
+from .ground_stability_engine import (
+    GroundStabilityEngine,
+    FoundationBearingResult,
+    BearingCapacityFactors,
+)
+from .slope_stability_engine import (
+    SlopeStabilityEngine,
+    SlopeStabilityResult,
+)
 
 __all__ = [
     "SoilMechanicsCoreEngine",
     "GeotechnicalParameters",
     "FredlundShearResult",
     "StratificationProfile",
+    "GroundStabilityEngine",
+    "FoundationBearingResult",
+    "BearingCapacityFactors",
+    "SlopeStabilityEngine",
+    "SlopeStabilityResult",
 ]
