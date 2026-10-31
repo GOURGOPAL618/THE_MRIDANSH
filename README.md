@@ -421,9 +421,16 @@ THE_MRIDANSH/
 │   ├── 7_production_geotiffs/          # Production 10m GeoTIFF rasters & 7-layer Master COG stack
 │   └── 8_paper_artifacts/              # Publication figures, LaTeX benchmark tables & charts
 ├── 10_domain_certification_dossiers/   # ✅ [AEROSPACE CERTIFICATION DOSSIERS & RESEARCH MANUSCRIPTS]
-│   └── 1_agriculture_translator/       # Complete Agriculture Domain Certification Pack (1000+ Lines)
-│       ├── AGRICULTURE_DOMAIN_TRANSLATOR_DOSSIER.md      # 1,040-Line Unfiltered Markdown Dossier
-│       └── AGRICULTURE_DOMAIN_TRANSLATOR_MANUSCRIPT.tex  # 1,086-Line Formal Academic LaTeX Manuscript
+│   ├── 1_agriculture_translator/       # Complete Agriculture Domain Certification Pack (1000+ Lines)
+│   │   ├── AGRICULTURE_DOMAIN_TRANSLATOR_DOSSIER.md      # 1,040-Line Unfiltered Markdown Dossier
+│   │   └── AGRICULTURE_DOMAIN_TRANSLATOR_MANUSCRIPT.tex  # 1,086-Line Formal Academic LaTeX Manuscript
+│   └── 2_civil_translator/             # Complete Civil & Geotechnical Domain Certification Pack (1000+ Lines)
+│       ├── CIVIL_DOMAIN_TRANSLATOR_DOSSIER.md            # 1,010-Line Unfiltered Markdown Dossier
+│       └── CIVIL_DOMAIN_TRANSLATOR_MANUSCRIPT.tex        # 1,011-Line Formal Academic LaTeX Manuscript
+├── 11_simulation_test_campaign/        # 🚜 [CROSS-DOMAIN AGRO-CIVIL PADDY NURSERY SIMULATION CAMPAIGN]
+│   ├── CROSS_DOMAIN_AGRO_CIVIL_SIMULATION_REPORT.md      # Strict Unfiltered Simulation Report & Audit
+│   ├── run_simulation.py                                 # Autonomous Simulation Execution Runner
+│   └── simulation_telemetry_results.json                 # Serialized Simulation Benchmark Telemetry
 
 ├── data/                               # Local Processed Tensors, Scaler Manifests & Graph Meshes
 ├── Kaggle Notebook Editor_files/       # Kaggle Interactive Session Assets

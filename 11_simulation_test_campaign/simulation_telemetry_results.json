@@ -1,0 +1,111 @@
+{
+  "metadata": {
+    "mission": "THE MRIDANSH (AETHER-MRID1607X)",
+    "command": "Jagannath Command Center (JCC) - Campus 2 (RS-SDA Division)",
+    "commander": "Gouragopal Mohapatra (GOURGOPAL618)",
+    "campaign": "Cross-Domain Agro-Civil Simulation Campaign",
+    "timestamp": "2026-10-31T19:22:16Z"
+  },
+  "scenarios": [
+    {
+      "scenario": "Scenario 1: Bone Dry Baseline",
+      "water_applied_mm": 0.0,
+      "mean_moisture": 0.2401,
+      "water_status": "DEFICIENT",
+      "mean_rut_depth_cm": 1.5,
+      "max_rut_depth_cm": 1.5,
+      "mobility_status": "SMOOTH_TILLAGE",
+      "mean_seedling_damage_index": 0.0,
+      "safe_nursery_area_pct": 100.0,
+      "damaged_nursery_area_pct": 0.0,
+      "recommended_optimal_water_mm": 12.5,
+      "advisory_bulletin": "[SHABHASH] 0mm paani bilkul sahi hai! Tractor sirf 1.5 cm dhasega (Safe limit <= 5cm). Nursery bed me 100% tandurast chara ugega aur jadhein safe rahengi."
+    },
+    {
+      "scenario": "Scenario 2: Insufficient Pre-Soak",
+      "water_applied_mm": 5.0,
+      "mean_moisture": 0.2581,
+      "water_status": "DEFICIENT",
+      "mean_rut_depth_cm": 1.5,
+      "max_rut_depth_cm": 1.5,
+      "mobility_status": "SMOOTH_TILLAGE",
+      "mean_seedling_damage_index": 0.0,
+      "safe_nursery_area_pct": 100.0,
+      "damaged_nursery_area_pct": 0.0,
+      "recommended_optimal_water_mm": 12.5,
+      "advisory_bulletin": "[SHABHASH] 5mm paani bilkul sahi hai! Tractor sirf 1.5 cm dhasega (Safe limit <= 5cm). Nursery bed me 100% tandurast chara ugega aur jadhein safe rahengi."
+    },
+    {
+      "scenario": "Scenario 3: Goldilocks Zone (Optimal)",
+      "water_applied_mm": 12.0,
+      "mean_moisture": 0.2833,
+      "water_status": "OPTIMAL",
+      "mean_rut_depth_cm": 1.5,
+      "max_rut_depth_cm": 1.5,
+      "mobility_status": "SMOOTH_TILLAGE",
+      "mean_seedling_damage_index": 0.0,
+      "safe_nursery_area_pct": 100.0,
+      "damaged_nursery_area_pct": 0.0,
+      "recommended_optimal_water_mm": 12.5,
+      "advisory_bulletin": "[SHABHASH] 12mm paani bilkul sahi hai! Tractor sirf 1.5 cm dhasega (Safe limit <= 5cm). Nursery bed me 100% tandurast chara ugega aur jadhein safe rahengi."
+    },
+    {
+      "scenario": "Scenario 4: Heavy Over-Irrigation",
+      "water_applied_mm": 45.0,
+      "mean_moisture": 0.4021,
+      "water_status": "OPTIMAL",
+      "mean_rut_depth_cm": 9.56,
+      "max_rut_depth_cm": 18.87,
+      "mobility_status": "EXCESSIVE_SINKAGE",
+      "mean_seedling_damage_index": 0.4605,
+      "safe_nursery_area_pct": 9.91,
+      "damaged_nursery_area_pct": 39.77,
+      "recommended_optimal_water_mm": 12.5,
+      "advisory_bulletin": "[KHATRA] 45mm paani zyada hai! Mitti kado banne se tractor 9.6 cm gehra dhas raha hai (Safe limit <= 5cm), jisse 39.8% chare ki jadhein toot jayengi! SALAHA: Paani kam karke exactly 12mm karein taaki tractor smooth joti kare aur beej 100% surakshit uge."
+    },
+    {
+      "scenario": "Scenario 5: Typical Uncontrolled Flood",
+      "water_applied_mm": 75.0,
+      "mean_moisture": 0.4499,
+      "water_status": "SATURATED_ANOXIA",
+      "mean_rut_depth_cm": 18.87,
+      "max_rut_depth_cm": 18.87,
+      "mobility_status": "BOGGED_QUAGMIRE",
+      "mean_seedling_damage_index": 1.0,
+      "safe_nursery_area_pct": 0.0,
+      "damaged_nursery_area_pct": 100.0,
+      "recommended_optimal_water_mm": 12.5,
+      "advisory_bulletin": "[KHATRA] 75mm paani zyada hai! Mitti kado banne se tractor 18.9 cm gehra dhas raha hai (Safe limit <= 5cm), jisse 100.0% chare ki jadhein toot jayengi! SALAHA: Paani kam karke exactly 12mm karein taaki tractor smooth joti kare aur beej 100% surakshit uge."
+    }
+  ],
+  "spaceborne_flight_telemetry": {
+    "scene_name": "Kendrapara Coastal Alluvial Delta",
+    "spatial_crs": "EPSG:32645 (WGS 84 / UTM Zone 45N)",
+    "total_pixels": 4096,
+    "total_hectares": 40.96,
+    "baseline_moisture_mean": 0.2401,
+    "elevation_range_m": [
+      0.389,
+      0.94
+    ],
+    "slope_mean_deg": 0.05,
+    "optimal_prescribed_water_mm": 12.5,
+    "water_saved_liters_per_hectare": 630000.0
+  },
+  "monte_carlo_precursor": {
+    "num_trials": 50,
+    "wall_time_ms": 479.42,
+    "ms_per_trial": 9.588,
+    "projected_1000_trials_seconds": 9.59,
+    "mean_rut_depth_cm": 8.55,
+    "p95_rut_depth_cm": 18.67,
+    "mean_damage_index": 0.4063,
+    "p95_damage_index": 0.9965,
+    "bogged_chassis_prob_pct": 48.0,
+    "severe_damage_prob_pct": 50.0,
+    "recommended_safe_water_envelope_mm": [
+      12.5,
+      12.5
+    ]
+  }
+}
