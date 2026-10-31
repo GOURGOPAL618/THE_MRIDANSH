@@ -1,5 +1,6 @@
 # THE MRIDANSH - CIVIL & GEOTECHNICAL DOMAIN TRANSLATOR
 # Module: 4_domain_translators/civil/__init__.py
+# Subsystem 05 of AETHER-MRID1607X Core Engine
 
 from .soil_mechanics_core import (
     SoilMechanicsCoreEngine,
@@ -16,6 +17,16 @@ from .slope_stability_engine import (
     SlopeStabilityEngine,
     SlopeStabilityResult,
 )
+from .scenario_simulator import (
+    DynamicScenarioSimulator,
+    HeavyRainfallSimulationResult,
+    VehicleMobilitySimulationResult,
+    FloodLiquefactionSimulationResult,
+)
+from .drainage_intelligence import (
+    DrainageIntelligenceEngine,
+    DrainageIntelligenceResult,
+)
 
 __all__ = [
     "SoilMechanicsCoreEngine",
@@ -27,4 +38,10 @@ __all__ = [
     "BearingCapacityFactors",
     "SlopeStabilityEngine",
     "SlopeStabilityResult",
+    "DynamicScenarioSimulator",
+    "HeavyRainfallSimulationResult",
+    "VehicleMobilitySimulationResult",
+    "FloodLiquefactionSimulationResult",
+    "DrainageIntelligenceEngine",
+    "DrainageIntelligenceResult",
 ]
