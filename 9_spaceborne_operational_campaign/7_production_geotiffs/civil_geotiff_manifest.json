@@ -1,0 +1,69 @@
+{
+  "mission": "THE_MRIDANSH",
+  "subsystem": "05_CIVIL_GEOTECHNICAL_DOMAIN_TRANSLATOR",
+  "crs": "EPSG:32645",
+  "bounds": {
+    "min_x": 420000.0,
+    "min_y": 2240000.0,
+    "max_x": 420640.0,
+    "max_y": 2240640.0
+  },
+  "pixel_resolution_m": 10.0,
+  "dimensions": {
+    "rows": 64,
+    "cols": 64
+  },
+  "single_band_geotiffs": {
+    "allowable_bearing_capacity_kpa": {
+      "file": "allowable_bearing_capacity_10m.tif",
+      "sha256": "29ba31fb98198d7a6785e61a19171ecb12a5402e27c6116048ed920463138755",
+      "size_kb": 16.77,
+      "description": "Eurocode 7 / IS 1904 Allowable Foundation Bearing Capacity (FS=3.0)",
+      "units": "kPa",
+      "min": 553.9310913085938,
+      "max": 806.0311889648438,
+      "mean": 613.8250122070312
+    },
+    "slope_factor_of_safety": {
+      "file": "slope_factor_of_safety_10m.tif",
+      "sha256": "b9f3530cdb2777e564748461954493126d1ac3bd56561e231dc4b984e2723a5e",
+      "size_kb": 1.73,
+      "description": "Copernicus DEM-Coupled Infinite Slope Factor of Safety (Taylor-Duncan)",
+      "units": "dimensionless ratio",
+      "min": 10.0,
+      "max": 10.0,
+      "mean": 10.0
+    },
+    "topographic_wetness_index": {
+      "file": "topographic_wetness_index_10m.tif",
+      "sha256": "52bf7da607554061e0649ef4b2605317349f3841b945aff9cc9b8fd6d3eda4a2",
+      "size_kb": 16.59,
+      "description": "Beven-Kirkby Topographic Wetness Index (TWI)",
+      "units": "dimensionless [2.0, 20.0]",
+      "min": 8.739951133728027,
+      "max": 10.197541236877441,
+      "mean": 9.383267402648926
+    },
+    "vehicle_mobility_tier": {
+      "file": "vehicle_mobility_tier_10m.tif",
+      "sha256": "43ed79e1d833479b3874b09db82a6bc55ac200b219b71b9058eb94dadd9e93d7",
+      "size_kb": 1.73,
+      "description": "NATO / USACE Composite Off-Road Vehicle Mobility Tier (0=NoGo, 3=AllGo)",
+      "units": "categorical code [0, 3]",
+      "min": 3.0,
+      "max": 3.0,
+      "mean": 3.0
+    }
+  },
+  "master_4layer_cog": {
+    "file": "master_geotechnical_civil_4layer_10m.tif",
+    "sha256": "b9129a23080b3149ba1e2bf88d3286b1a7985796f7651f9db60bf034029f2587",
+    "size_kb": 29.03,
+    "bands": [
+      "allowable_bearing_capacity_kpa",
+      "slope_factor_of_safety",
+      "topographic_wetness_index",
+      "vehicle_mobility_tier"
+    ]
+  }
+}

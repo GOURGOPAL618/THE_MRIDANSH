@@ -27,6 +27,13 @@ from .drainage_intelligence import (
     DrainageIntelligenceEngine,
     DrainageIntelligenceResult,
 )
+from .conformal_geotechnical_risk import (
+    ConformalGeotechnicalRiskDispatcher,
+    ConformalGeotechnicalRiskDispatch,
+)
+from .civil_geotiff_exporter import (
+    CivilGeoTIFFExporter,
+)
 
 __all__ = [
     "SoilMechanicsCoreEngine",
@@ -44,4 +51,7 @@ __all__ = [
     "FloodLiquefactionSimulationResult",
     "DrainageIntelligenceEngine",
     "DrainageIntelligenceResult",
+    "ConformalGeotechnicalRiskDispatcher",
+    "ConformalGeotechnicalRiskDispatch",
+    "CivilGeoTIFFExporter",
 ]
