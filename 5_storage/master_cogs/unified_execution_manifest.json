@@ -1,0 +1,21 @@
+{
+  "system": "THE MRIDANSH (AETHER-MRID1607X)",
+  "timestamp_utc": "2026-11-02T17:58:52.236938+00:00",
+  "crs": "EPSG:32645",
+  "bounds": [
+    420000.0,
+    2240000.0,
+    420640.0,
+    2240640.0
+  ],
+  "exported_rasters": {
+    "master_unified_soil_state": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\5_storage\\master_cogs\\master_unified_soil_state.tif",
+    "master_agronomy_vri": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\5_storage\\master_cogs\\master_agronomy_vri.tif",
+    "master_civil_geotech": "D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\5_storage\\master_cogs\\master_civil_geotech.tif"
+  },
+  "sha256_hashes": {
+    "master_unified_soil_state": "a23b5414cc9fa5e0fab8511b05e51d3d373a80f552073c41bcc87a3fdd3369cf",
+    "master_agronomy_vri": "adafc22089a54b424072ef5d1881371716b3fc88837f75395ba0a151627c3ed9",
+    "master_civil_geotech": "9d4d6385b1cc50220b8b5bd137f49c18d770e8af10523947c93dbd8f9f2f2505"
+  }
+}
