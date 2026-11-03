@@ -142,7 +142,7 @@ class GISMapRenderer:
         }
 
         geojson_layer = folium.GeoJson(
-            geojson_data, name=layer_name, style_function=style_function
+            geojson_data, name=layer_name, style_function=style_function, interactive=False
         )
 
         geojson_layer.add_to(folium_map)
