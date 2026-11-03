@@ -1,18 +1,21 @@
 /* ==========================================================================
    THE MRIDANSH : Earth-Observation & Soil Intelligence Workstation
-   AETHER-MRID1607X Core Engine — JCC Command Center
-   Design System: Technical Obsidian & Electric Cyan Geospatial Interface
+   AETHER-MRID1607X Core Engine — Jagannath Command Center (JCC Campus 2)
+   Design System: Aerospace Command Center & Electric Cyan Glassmorphism
+   Typography: Plus Jakarta Sans (UI) & JetBrains Mono (Telemetry/Data)
    ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
 /* --------------------------------------------------------------------------
-   1. Root Variables & Typography
+   1. Design Tokens & Root Variables
    -------------------------------------------------------------------------- */
 :root {
-    --mrid-bg-deep: #07090e;
-    --mrid-bg-canvas: #0c1017;
-    --mrid-bg-surface: #121722;
-    --mrid-bg-card: #161e2c;
-    --mrid-bg-card-hover: #1c2638;
+    --mrid-bg-deep: #070a11;
+    --mrid-bg-canvas: #090d16;
+    --mrid-bg-surface: #0e1524;
+    --mrid-bg-card: #131c2e;
+    --mrid-bg-card-hover: #18233a;
     --mrid-border: #1e293b;
     --mrid-border-subtle: rgba(255, 255, 255, 0.08);
     --mrid-border-active: #00f0ff;
@@ -22,24 +25,60 @@
     --mrid-accent-cyan: #00f0ff;
     --mrid-accent-blue: #0284c7;
     --mrid-status-live: #00ff88;
-    --mrid-status-demo: #f59e0b;
-    --mrid-status-unavail: #64748b;
+    --mrid-status-warn: #f59e0b;
     --mrid-status-error: #ef4444;
 }
 
 /* --------------------------------------------------------------------------
-   2. Global App Layout & Scrollbar
+   2. Typography Enforcement (Strict Modern Sans-Serif Overrides)
+   -------------------------------------------------------------------------- */
+html, body, [class*="css"], .stApp, .stMarkdown, p, span, div, h1, h2, h3, h4, h5, h6, label, button, input, select, textarea {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Monospace font strictly for code, metrics, coordinates */
+code, kbd, samp, pre, .mono-data, .font-mono, div[data-testid="stMetricValue"] {
+    font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
+    font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+/* Clean code tags */
+code {
+    background: rgba(0, 240, 255, 0.08) !important;
+    color: #38bdf8 !important;
+    border: 1px solid rgba(0, 240, 255, 0.2) !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    font-size: 0.88em !important;
+    font-weight: 500 !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. Global App Layout & Streamlit Cleanups
    -------------------------------------------------------------------------- */
 .stApp {
     background-color: var(--mrid-bg-canvas);
     color: var(--mrid-text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .block-container {
-    max-width: 96% !important;
-    padding-top: 1.5rem !important;
-    padding-bottom: 3rem !important;
+    max-width: 98% !important;
+    padding-top: 1rem !important;
+    padding-bottom: 2.5rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+/* Hide Default Streamlit Header Fluff */
+header[data-testid="stHeader"] {
+    background: rgba(9, 13, 22, 0.8) !important;
+    backdrop-filter: blur(8px);
+}
+
+#MainMenu, footer {
+    visibility: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -58,233 +97,460 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. Top Command Ribbon & Header
+   4. Mission Command Header Bar (Glassmorphic Cockpit)
    -------------------------------------------------------------------------- */
-.mrid-header-ribbon {
+.mrid-master-header {
+    background: linear-gradient(135deg, rgba(14, 21, 36, 0.95) 0%, rgba(10, 14, 23, 0.98) 100%);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 12px;
+    padding: 16px 24px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45), 0 0 15px rgba(0, 240, 255, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--mrid-bg-surface);
-    border: 1px solid var(--mrid-border);
-    border-radius: 8px;
-    padding: 12px 20px;
-    margin-bottom: 1.5rem;
+    gap: 20px;
 }
 
-.mrid-title-block h1 {
-    font-size: 1.6rem !important;
-    font-weight: 700 !important;
-    letter-spacing: -0.5px;
-    color: var(--mrid-text-primary) !important;
+.mrid-brand-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.mrid-logo-frame {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 240, 255, 0.4);
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #060911;
+    flex-shrink: 0;
+}
+
+.mrid-logo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mrid-title-group h1 {
+    font-size: 1.65rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em;
+    color: #ffffff !important;
     margin: 0 !important;
     padding: 0 !important;
-    border-bottom: none !important;
+    border: none !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.mrid-title-block p {
-    font-size: 0.82rem;
-    color: var(--mrid-text-secondary);
-    margin: 2px 0 0 0 !important;
+.mrid-engine-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace !important;
+    letter-spacing: 0.05em;
+    color: #00f0ff;
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    padding: 3px 8px;
+    border-radius: 5px;
+    text-transform: uppercase;
 }
 
-/* --------------------------------------------------------------------------
-   4. Status Badges & Pills
-   -------------------------------------------------------------------------- */
+.mrid-title-group p {
+    font-size: 0.84rem;
+    color: #94a3b8;
+    margin: 4px 0 0 0 !important;
+    font-weight: 500;
+}
+
+.mrid-brand-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.mrid-jcc-frame {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    border: 2px solid rgba(245, 158, 11, 0.4);
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #060911;
+    flex-shrink: 0;
+}
+
+.mrid-jcc-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mrid-badges-cluster {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+}
+
+.mrid-badge-row {
+    display: flex;
+    gap: 8px;
+}
+
+/* Status Badges */
 .status-pill {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.75rem;
-    font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace;
-    font-weight: 600;
+    font-size: 0.74rem;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-weight: 700;
     padding: 4px 10px;
-    border-radius: 4px;
+    border-radius: 6px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
 }
 
 .pill-live {
-    background: rgba(0, 255, 136, 0.08);
+    background: rgba(0, 255, 136, 0.1);
     border: 1px solid #00ff88;
     color: #00ff88;
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.15);
 }
 
-.pill-demo {
-    background: rgba(245, 158, 11, 0.08);
-    border: 1px solid #f59e0b;
-    color: #f59e0b;
+.pill-cyan {
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid #00f0ff;
+    color: #00f0ff;
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.15);
 }
 
-.pill-unavail {
-    background: rgba(100, 116, 139, 0.08);
-    border: 1px solid #64748b;
-    color: #94a3b8;
+.pill-purple {
+    background: rgba(165, 180, 252, 0.1);
+    border: 1px solid #a5b4fc;
+    color: #c7d2fe;
 }
-
-.pill-error {
-    background: rgba(239, 68, 68, 0.08);
-    border: 1px solid #ef4444;
-    color: #ef4444;
-}
-
-.status-online { color: #00ff88; font-weight: bold; }
-.status-offline { color: #ef4444; font-weight: bold; }
-.status-demo { color: #f59e0b; font-weight: bold; }
 
 /* --------------------------------------------------------------------------
-   5. Standardized KPI Telemetry Cards
+   5. Telemetry Strip (Unified Horizontal Ribbon)
    -------------------------------------------------------------------------- */
-div[data-testid="stMetric"] {
-    background: var(--mrid-bg-card);
+.mrid-telemetry-strip {
+    background: #0e1524;
     border: 1px solid var(--mrid-border);
-    border-radius: 6px;
-    padding: 14px 18px;
-    border-left: 3px solid var(--mrid-accent-cyan);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 8px;
+    padding: 10px 18px;
+    margin-bottom: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-div[data-testid="stMetric"]:hover {
-    border-color: rgba(0, 240, 255, 0.4);
-    background: var(--mrid-bg-card-hover);
-    transform: translateY(-1px);
+.mrid-strip-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
 }
 
-div[data-testid="stMetricLabel"] {
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.72rem !important;
+.mrid-strip-label {
+    color: #64748b;
     font-weight: 600;
-    color: var(--mrid-text-secondary) !important;
-    opacity: 0.9;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
 }
 
-div[data-testid="stMetricValue"] {
-    font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace !important;
-    color: var(--mrid-accent-cyan) !important;
-    font-size: 1.65rem !important;
-    font-weight: 700;
-    margin-top: 4px;
-}
-
-div[data-testid="stMetricDelta"] {
-    font-size: 0.75rem !important;
-    font-weight: 500;
+.mrid-strip-value {
+    color: #f8fafc;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.84rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* --------------------------------------------------------------------------
    6. Sidebar Workspace Controls
    -------------------------------------------------------------------------- */
 section[data-testid="stSidebar"] {
-    background-color: var(--mrid-bg-deep);
-    border-right: 1px solid var(--mrid-border);
+    background-color: var(--mrid-bg-deep) !important;
+    border-right: 1px solid var(--mrid-border) !important;
 }
 
-section[data-testid="stSidebar"] h1,
-section[data-testid="stSidebar"] h2,
-section[data-testid="stSidebar"] h3 {
-    color: var(--mrid-text-primary) !important;
-    font-weight: 600;
-    border: none;
-    padding: 0;
+section[data-testid="stSidebar"] .block-container {
+    padding-top: 1.2rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+.sidebar-brand-card {
+    background: linear-gradient(180deg, #101726 0%, #0a0e18 100%);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.sidebar-logos-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
+.sidebar-logo-item {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1.5px solid rgba(0, 240, 255, 0.4);
+    background: #060911;
+}
+
+.sidebar-logo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sidebar-logo-item.jcc {
+    border-color: rgba(245, 158, 11, 0.4);
+}
+
+.sidebar-brand-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+
+.sidebar-brand-tagline {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #00f0ff;
+    margin: 2px 0 0 0;
+}
+
+.sidebar-brand-org {
+    font-size: 0.64rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+}
+
+.sidebar-section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #38bdf8;
+    margin: 1.1rem 0 0.5rem 0;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* --------------------------------------------------------------------------
-   7. Section Headers & Typography
+   7. Standardized KPI Telemetry Cards
+   -------------------------------------------------------------------------- */
+div[data-testid="stMetric"] {
+    background: var(--mrid-bg-card);
+    border: 1px solid var(--mrid-border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    border-left: 4px solid var(--mrid-accent-cyan);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+}
+
+div[data-testid="stMetric"]:hover {
+    border-color: rgba(0, 240, 255, 0.45);
+    background: var(--mrid-bg-card-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 240, 255, 0.1);
+}
+
+div[data-testid="stMetricLabel"] {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.74rem !important;
+    font-weight: 600;
+    color: var(--mrid-text-secondary) !important;
+}
+
+div[data-testid="stMetricValue"] {
+    font-family: 'JetBrains Mono', monospace !important;
+    color: #ffffff !important;
+    font-size: 1.7rem !important;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+div[data-testid="stMetricDelta"] {
+    font-size: 0.76rem !important;
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   8. Section Headers & Typography
    -------------------------------------------------------------------------- */
 h1 {
-    font-size: 1.5rem !important;
+    font-size: 1.45rem !important;
     font-weight: 700 !important;
     color: var(--mrid-text-primary) !important;
-    border-bottom: 1px solid var(--mrid-border);
-    padding-bottom: 8px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
 }
 
 h2 {
     font-size: 1.25rem !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     color: var(--mrid-accent-cyan) !important;
-    margin-top: 1.25rem;
-    margin-bottom: 0.75rem;
 }
 
 h3 {
     font-size: 1.05rem !important;
     font-weight: 600 !important;
-    color: var(--mrid-text-primary) !important;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
+    color: #f1f5f9 !important;
 }
 
 /* --------------------------------------------------------------------------
-   8. Form Controls, Buttons & Inputs
+   9. Buttons & Interactive Controls
    -------------------------------------------------------------------------- */
-button[kind="primary"] {
-    background-color: var(--mrid-bg-surface) !important;
-    color: var(--mrid-accent-cyan) !important;
-    border: 1px solid var(--mrid-accent-cyan) !important;
-    border-radius: 4px !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.5px;
-    transition: all 0.2s ease-in-out;
-}
-
-button[kind="primary"]:hover {
-    background-color: rgba(0, 240, 255, 0.12) !important;
-    border-color: #38bdf8 !important;
-    color: #ffffff !important;
-}
-
-button[kind="secondary"] {
-    background-color: var(--mrid-bg-card) !important;
-    border: 1px solid var(--mrid-border) !important;
-    color: var(--mrid-text-secondary) !important;
-    border-radius: 4px !important;
-}
-
-button[kind="secondary"]:hover {
-    border-color: var(--mrid-text-secondary) !important;
-    color: var(--mrid-text-primary) !important;
-}
-
-/* --------------------------------------------------------------------------
-   9. Information Cards & Alerts
-   -------------------------------------------------------------------------- */
-div[data-testid="stAlert"] {
-    background: var(--mrid-bg-surface) !important;
-    border: 1px solid var(--mrid-border) !important;
+div.stButton > button[kind="primary"],
+div.stButton > button {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.12) 0%, rgba(2, 132, 199, 0.25) 100%) !important;
+    color: #00f0ff !important;
+    border: 1px solid #00f0ff !important;
     border-radius: 6px !important;
-    color: var(--mrid-text-primary) !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.06em;
+    padding: 10px 16px !important;
+    transition: all 0.2s ease-in-out !important;
+    box-shadow: 0 2px 10px rgba(0, 240, 255, 0.15) !important;
+}
+
+div.stButton > button:hover {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.25) 0%, rgba(2, 132, 199, 0.4) 100%) !important;
+    color: #ffffff !important;
+    border-color: #38bdf8 !important;
+    box-shadow: 0 4px 18px rgba(0, 240, 255, 0.35) !important;
+    transform: translateY(-1px);
 }
 
 /* --------------------------------------------------------------------------
    10. Tabs & Accordions
    -------------------------------------------------------------------------- */
 button[data-baseweb="tab"] {
-    font-size: 0.88rem !important;
-    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
     color: var(--mrid-text-secondary) !important;
     border-bottom: 2px solid transparent !important;
-    padding: 8px 16px !important;
+    padding: 10px 20px !important;
+    letter-spacing: 0.02em;
 }
 
 button[data-baseweb="tab"][aria-selected="true"] {
-    color: var(--mrid-accent-cyan) !important;
-    border-bottom: 2px solid var(--mrid-accent-cyan) !important;
+    color: #00f0ff !important;
+    border-bottom: 2px solid #00f0ff !important;
+    background: rgba(0, 240, 255, 0.04);
 }
 
 /* --------------------------------------------------------------------------
-   11. Data Tables & Code Elements
+   11. Sector Inspection Glassmorphic Card
    -------------------------------------------------------------------------- */
-code {
-    font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace !important;
-    background: rgba(0, 240, 255, 0.08) !important;
-    color: #38bdf8 !important;
-    padding: 2px 5px !important;
-    border-radius: 3px !important;
-    font-size: 0.85em !important;
+.mrid-inspector-card {
+    background: #0e1524;
+    border: 1px solid var(--mrid-border);
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.mrid-inspector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mrid-inspector-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mrid-pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00ff88;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00ff88;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    50% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+.mrid-inspect-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.82rem;
+}
+
+.mrid-inspect-row:last-child {
+    border-bottom: none;
+}
+
+.mrid-inspect-label {
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.mrid-inspect-val {
+    color: #f8fafc;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* --------------------------------------------------------------------------
@@ -292,6 +558,6 @@ code {
    -------------------------------------------------------------------------- */
 hr {
     border: none !important;
-    border-top: 1px solid var(--mrid-border) !important;
-    margin: 1.5rem 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    margin: 1.25rem 0 !important;
 }

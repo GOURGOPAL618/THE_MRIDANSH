@@ -44,16 +44,7 @@ class GISMapRenderer:
             tiles=None,  # We manually add base layers below
         )
 
-        # 1. Base layer; Open streetMap Standard
-        folium.TileLayer(
-            tiles="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            attr="&copy; OpenStreetMap contributors",
-            name="OpenStreetMap",
-            overlay=False,
-            control=True,
-        ).add_to(m)
-
-        # 2. Base Layer: Esri World Imagery (Satellite)
+        # 1. Primary Base Layer: Esri World Imagery (Satellite - Default View)
         folium.TileLayer(
             tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
             attr="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
@@ -62,7 +53,16 @@ class GISMapRenderer:
             control=True,
         ).add_to(m)
 
-        # 1. Primary Base Layer: Esri Dark Canvas (Watermark Free & High Contrast)
+        # 2. Secondary Base Layer: OpenStreetMap Standard
+        folium.TileLayer(
+            tiles="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            attr="&copy; OpenStreetMap contributors",
+            name="OpenStreetMap",
+            overlay=False,
+            control=True,
+        ).add_to(m)
+
+        # 3. Tertiary Base Layer: Esri Dark Canvas
         folium.TileLayer(
             tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
             attr="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ",
@@ -71,23 +71,6 @@ class GISMapRenderer:
             control=True,
         ).add_to(m)
 
-        # 2. Secondary Base Layer: Esri World Imagery (Satellite View)
-        folium.TileLayer(
-            tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-            attr="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
-            name="Esri Satellite Imagery",
-            overlay=False,
-            control=True,
-        ).add_to(m)
-
-        # 3. Tertiary Base Layer: OpenStreetMap Standard
-        folium.TileLayer(
-            tiles="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            attr="&copy; OpenStreetMap contributors",
-            name="OpenStreetMap",
-            overlay=False,
-            control=True,
-        ).add_to(m)
 
         # Add Fullscreen Plugin Control
         plugins.Fullscreen(
@@ -327,7 +310,7 @@ def render_heatmap_folium_map(
             is_demo=is_demo,
         )
 
-    folium.LayerControl(collapsed=False).add_to(f_map)
+    folium.LayerControl(collapsed=True).add_to(f_map)
 
     # Return st_folium click data
     return st_folium(
