@@ -27,6 +27,9 @@ for path in [str(ROOT_DIR), str(DASHBOARD_DIR)]:
         sys.path.insert(0, path)
 
 from renderers.chart_renderers import plot_moisture_depth_profile
+import importlib
+import renderers.map_renderers
+importlib.reload(renderers.map_renderers)
 from renderers.map_renderers import render_heatmap_folium_map
 from renderers.surface_3d import Surface3DRenderer
 from runtime_cache import (
@@ -304,7 +307,7 @@ def main():
     map_col, inspect_col = st.columns([7, 3])
 
     with map_col:
-        # Render Interactive Folium Map (Esri Satellite view is default)
+        # Render Interactive Folium Map (Google Maps Hybrid view is default)
         map_output = render_heatmap_folium_map(
             lat=st.session_state.selected_lat,
             lon=st.session_state.selected_lon,
@@ -359,7 +362,7 @@ def main():
                 <span class="mrid-inspect-val" style="color:#38bdf8;">Group C (Wetland Basin)</span>
             </div>
             <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.78rem; color: #94a3b8; line-height: 1.5;">
-                💡 <b>Click anywhere on the satellite canvas</b> to dynamically relocate and compute live subsurface hydrology for that field coordinate.
+                💡 <b>Use the Search Box (🔍 top-left of map)</b> to find any village, block, district or address, or <b>click directly on any field</b> to compute live subsurface hydrology.
             </div>
         </div>
         """

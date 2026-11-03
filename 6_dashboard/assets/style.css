@@ -63,18 +63,22 @@ code {
     color: var(--mrid-text-primary);
 }
 
-.block-container {
+/* Ensure the main block starts cleanly BELOW Streamlit's fixed top header */
+.block-container,
+div[data-testid="stAppViewContainer"] > section.main .block-container,
+.main .block-container {
     max-width: 98% !important;
-    padding-top: 1rem !important;
+    padding-top: 4.85rem !important;
     padding-bottom: 2.5rem !important;
     padding-left: 2rem !important;
     padding-right: 2rem !important;
 }
 
-/* Hide Default Streamlit Header Fluff */
+/* Make Streamlit top header non-intrusive & transparent */
 header[data-testid="stHeader"] {
-    background: rgba(9, 13, 22, 0.8) !important;
-    backdrop-filter: blur(8px);
+    background: transparent !important;
+    backdrop-filter: none !important;
+    height: 3.5rem !important;
 }
 
 #MainMenu, footer {
@@ -554,10 +558,26 @@ button[data-baseweb="tab"][aria-selected="true"] {
 }
 
 /* --------------------------------------------------------------------------
-   12. Horizontal Dividers
+   12. Horizontal Dividers & Leaflet Controls
    -------------------------------------------------------------------------- */
 hr {
     border: none !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     margin: 1.25rem 0 !important;
+}
+
+/* Leaflet Geocoder Search Control Styling */
+.leaflet-control-geocoder {
+    border-radius: 6px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(0, 240, 255, 0.3) !important;
+    overflow: hidden;
+}
+
+.leaflet-control-geocoder input {
+    color: #0f172a !important;
+    font-size: 0.85rem !important;
+    padding: 6px 10px !important;
+    border: none !important;
+    outline: none !important;
 }

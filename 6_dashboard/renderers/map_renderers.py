@@ -44,25 +44,52 @@ class GISMapRenderer:
             tiles=None,  # We manually add base layers below
         )
 
-        # 1. Primary Base Layer: Esri World Imagery (Satellite - Default View)
+        # 1. Primary Default Layer: Google Maps Hybrid (Satellite Imagery + Village/Road Names)
         folium.TileLayer(
-            tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-            attr="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
-            name="Esri Satellite Imagery",
+            tiles="https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+            attr="Google Maps &copy; 2026",
+            name="Google Maps Hybrid (Satellite + Roads)",
             overlay=False,
             control=True,
         ).add_to(m)
 
-        # 2. Secondary Base Layer: OpenStreetMap Standard
+        # 2. Google Maps Pure Satellite
+        folium.TileLayer(
+            tiles="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+            attr="Google Maps &copy; 2026",
+            name="Google Maps Satellite (Pure)",
+            overlay=False,
+            control=True,
+        ).add_to(m)
+
+        # 3. Google Maps Terrain / Topography
+        folium.TileLayer(
+            tiles="https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
+            attr="Google Maps &copy; 2026",
+            name="Google Maps Terrain",
+            overlay=False,
+            control=True,
+        ).add_to(m)
+
+        # 4. Esri World Imagery (High-Res Aerial)
+        folium.TileLayer(
+            tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+            attr="Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics",
+            name="Esri World Satellite",
+            overlay=False,
+            control=True,
+        ).add_to(m)
+
+        # 5. OpenStreetMap Standard
         folium.TileLayer(
             tiles="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             attr="&copy; OpenStreetMap contributors",
-            name="OpenStreetMap",
+            name="OpenStreetMap Standard",
             overlay=False,
             control=True,
         ).add_to(m)
 
-        # 3. Tertiary Base Layer: Esri Dark Canvas
+        # 6. Esri Dark Canvas (Technical Theme)
         folium.TileLayer(
             tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
             attr="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ",
@@ -71,6 +98,13 @@ class GISMapRenderer:
             control=True,
         ).add_to(m)
 
+        # Add Instant Geocoder Search Box (Search any village, town, or district)
+        plugins.Geocoder(
+            collapsed=False,
+            position="topleft",
+            add_marker=True,
+            zoom=13,
+        ).add_to(m)
 
         # Add Fullscreen Plugin Control
         plugins.Fullscreen(
@@ -82,7 +116,7 @@ class GISMapRenderer:
 
         # Add Measure Control Tool for GIS distance/area measurement
         plugins.MeasureControl(
-            position="topleft",
+            position="bottomleft",
             primary_length_unit="meters",
             primary_area_unit="sqmeters",
         ).add_to(m)
@@ -317,7 +351,7 @@ def render_heatmap_folium_map(
         f_map,
         width="100%",
         height=520,
-        key=f"mridansh_map_{domain_mode}",
+        key=f"mridansh_google_hybrid_map_{domain_mode}_v4",
         returned_objects=["last_clicked"],
     )
 
