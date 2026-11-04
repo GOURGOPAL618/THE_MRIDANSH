@@ -955,75 +955,68 @@ def main():
         st.plotly_chart(fig_3d, use_container_width=True)
 
     # ------------------------------------------------------------------------------------------------------------------
-    # FOOTER: NASA / SPACEX AEROSPACE MISSION CONTROL & LEGAL SPECIFICATION
+    # FOOTER: JAGANNATH COMMAND CENTER (JCC) OFFICIAL COPYRIGHT & MISSION SPECIFICATION
     # ------------------------------------------------------------------------------------------------------------------
     st.markdown("---")
-    footer_html = f"""
-    <footer class="mrid-aerospace-footer">
-        <div class="mrid-footer-inner">
-            <div class="mrid-footer-top">
-                <div class="mrid-footer-brand">
-                    <div class="mrid-footer-logos">
-                        <div class="mrid-footer-logo-frame">
-                            <img src="data:image/jpeg;base64,{project_logo_b64}" alt="Project Logo" />
-                        </div>
-                        <div class="mrid-footer-logo-frame jcc">
-                            <img src="data:image/jpeg;base64,{jcc_logo_b64}" alt="JCC Logo" />
-                        </div>
-                    </div>
-                    <div>
-                        <div class="mrid-footer-title">THE MRIDANSH <span style="color:#00f0ff; font-weight:400;">// AETHER-MRID1607X CORE</span></div>
-                        <div class="mrid-footer-subtitle">Autonomous Earth-Observation Subsurface Hydrology & Geotechnical Soil Intelligence</div>
-                    </div>
-                </div>
-                <div class="mrid-footer-badges">
-                    <span class="mrid-footer-pill pill-live">● TRL-7 OPERATIONAL</span>
-                    <span class="mrid-footer-pill pill-cert">RTCA DO-178C LEVEL-A</span>
-                    <span class="mrid-footer-pill pill-cert">ISO 19115 GIS / FAO-56</span>
-                    <span class="mrid-footer-pill pill-cert">EUROCODE 7 COMPLIANT</span>
-                </div>
-            </div>
-
-            <div class="mrid-footer-specs-grid">
-                <div class="mrid-footer-spec">
-                    <span class="mrid-footer-spec-label">🛰️ SPACEBORNE CONSTELLATION</span>
-                    <span class="mrid-footer-spec-val">Copernicus Sentinel-1 SAR (C-band VV/VH) & Sentinel-2 MSI (10m) • GLO-30 DEM</span>
-                </div>
-                <div class="mrid-footer-spec">
-                    <span class="mrid-footer-spec-label">⚡ CENTRAL PHYSICS ENGINE</span>
-                    <span class="mrid-footer-spec-val">Richards-1D PDE Vadose Hydrodynamics • EnKF Bayesian Assimilation • 0.0063 ms/px</span>
-                </div>
-                <div class="mrid-footer-spec">
-                    <span class="mrid-footer-spec-label">🛡️ CRYPTOGRAPHIC AIRWORTHINESS</span>
-                    <span class="mrid-footer-spec-val">SHA-256 Flight Provenance Verification • Zero-Mockup Deterministic Flight Bus</span>
-                </div>
-                <div class="mrid-footer-spec">
-                    <span class="mrid-footer-spec-label">🏛️ MISSION COMMAND AUTHORITY</span>
-                    <span class="mrid-footer-spec-val">Jagannath Command Center (JCC) — Campus 2 (Remote Sensing & Spatial Data Analytics Division)</span>
-                </div>
-            </div>
-
-            <div class="mrid-footer-divider"></div>
-
-            <div class="mrid-footer-bottom">
-                <div class="mrid-footer-copy">
-                    <p style="margin:0 0 4px 0; font-weight:600; color:#f8fafc; font-size:0.82rem; letter-spacing:0.02em;">
-                        © 2026 THE MRIDANSH · LEAD SYSTEMS ARCHITECT & MISSION COMMANDER: <span style="color:#00f0ff;">GOURAGOPAL MOHAPATRA</span>. ALL RIGHTS RESERVED.
-                    </p>
-                    <p style="margin:0; font-size:0.75rem; color:#64748b; line-height:1.5;">
-                        Formulated in accordance with NASA JPL Horizons & ESA Copernicus Earth-Observation telemetry protocols. Developed under Jagannath Command Center (JCC Campus 2) Mission Directives. Unauthorized extraction, reverse engineering, or redistribution of physical PDE cores is strictly prohibited.
-                    </p>
-                </div>
-                <div class="mrid-footer-links">
-                    <span class="mrid-footer-tag">FROM ORBIT TO ROOT</span>
-                    <span class="mrid-footer-tag">AEROSPACE GRADE</span>
-                    <span class="mrid-footer-tag">JCC RS-SDA</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-    """
-    st.markdown(footer_html, unsafe_allow_html=True)
+    footer_elements = [
+        '<div class="mrid-aerospace-footer">',
+        '<div class="mrid-footer-inner">',
+        '<div class="mrid-footer-top">',
+        '<div class="mrid-footer-brand">',
+        '<div class="mrid-footer-logos">',
+        f'<div class="mrid-footer-logo-frame"><img src="data:image/jpeg;base64,{project_logo_b64}" alt="Project Logo" /></div>',
+        f'<div class="mrid-footer-logo-frame jcc"><img src="data:image/jpeg;base64,{jcc_logo_b64}" alt="JCC Logo" /></div>',
+        '</div>',
+        '<div>',
+        '<div class="mrid-footer-title">THE MRIDANSH <span style="color:#00f0ff; font-weight:400;">// AETHER-MRID1607X CORE</span></div>',
+        '<div class="mrid-footer-subtitle">Autonomous Earth-Observation Subsurface Hydrology & Geotechnical Soil Intelligence</div>',
+        '</div>',
+        '</div>',
+        '<div class="mrid-footer-badges">',
+        '<span class="mrid-footer-pill pill-live">● TRL-7 OPERATIONAL</span>',
+        '<span class="mrid-footer-pill pill-cert">RTCA DO-178C LEVEL-A</span>',
+        '<span class="mrid-footer-pill pill-cert">JCC CAMPUS 1 • RS-SDA</span>',
+        '<span class="mrid-footer-pill pill-cert">SOIL INTELLIGENCE DIRECTIVE</span>',
+        '</div>',
+        '</div>',
+        '<div class="mrid-footer-specs-grid">',
+        '<div class="mrid-footer-spec">',
+        '<span class="mrid-footer-spec-label">🛰️ REMOTE SENSING CONSTELLATION</span>',
+        '<span class="mrid-footer-spec-val">Spaceborne Synthetic Aperture Radar (C-band SAR) & Optical Multispectral (10m) • High-Res Digital Elevation</span>',
+        '</div>',
+        '<div class="mrid-footer-spec">',
+        '<span class="mrid-footer-spec-label">⚡ CENTRAL PHYSICS ENGINE</span>',
+        '<span class="mrid-footer-spec-val">Richards-1D Continuous Hydrodynamics • Bayesian Ensemble Kalman Filter (EnKF) • 0.0063 ms/px</span>',
+        '</div>',
+        '<div class="mrid-footer-spec">',
+        '<span class="mrid-footer-spec-label">🛡️ CRYPTOGRAPHIC AIRWORTHINESS</span>',
+        '<span class="mrid-footer-spec-val">SHA-256 Deterministic Provenance Verification • Zero-Mockup Physical In-Memory Flight Bus</span>',
+        '</div>',
+        '<div class="mrid-footer-spec">',
+        '<span class="mrid-footer-spec-label">🏛️ INSTITUTIONAL MISSION AUTHORITY</span>',
+        '<span class="mrid-footer-spec-val">Jagannath Command Center (JCC) — Campus 1 (Remote Sensing & Spatial Data Analytics Division)</span>',
+        '</div>',
+        '</div>',
+        '<div class="mrid-footer-divider"></div>',
+        '<div class="mrid-footer-bottom">',
+        '<div class="mrid-footer-copy">',
+        '<p style="margin:0 0 4px 0; font-weight:700; color:#f8fafc; font-size:0.84rem; letter-spacing:0.02em;">',
+        '© 2026 THE MRIDANSH · LEAD SYSTEMS ARCHITECT & MISSION COMMANDER: <span style="color:#00f0ff;">GOURAGOPAL MOHAPATRA</span>. ALL RIGHTS RESERVED.',
+        '</p>',
+        '<p style="margin:0; font-size:0.76rem; color:#94a3b8; line-height:1.5;">',
+        'Developed and operated strictly under <b>Jagannath Command Center (JCC) & JCC Campus 1 (RS - SDA Division)</b> Mission Directives. All computational hydrology algorithms, terramechanics formulations, and deterministic flight bus architectures are proprietary assets of JCC. Unauthorized extraction, reverse engineering, or commercial exploitation is strictly prohibited.',
+        '</p>',
+        '</div>',
+        '<div class="mrid-footer-links">',
+        '<span class="mrid-footer-tag">FROM ORBIT TO ROOT</span>',
+        '<span class="mrid-footer-tag">JCC CAMPUS 1</span>',
+        '<span class="mrid-footer-tag">RS-SDA DIVISION</span>',
+        '</div>',
+        '</div>',
+        '</div>',
+        '</div>'
+    ]
+    st.markdown("".join(footer_elements), unsafe_allow_html=True)
 
 
 if __name__ == "__main__":

@@ -115,7 +115,7 @@ header[data-testid="stHeader"] {
     height: 3.5rem !important;
 }
 
-#MainMenu, footer {
+#MainMenu, footer:not(.mrid-aerospace-footer) {
     visibility: hidden;
 }
 
@@ -676,6 +676,9 @@ hr {
    Aerospace Mission Control Footer (NASA / SpaceX Glassmorphism)
    ========================================================================== */
 .mrid-aerospace-footer {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     margin-top: 3rem;
     padding: 24px 28px;
     background: linear-gradient(180deg, rgba(14, 21, 36, 0.85) 0%, rgba(7, 10, 17, 0.98) 100%);
