@@ -1,7 +1,7 @@
 """
 THE MRIDANSH : Interactive 2D/3D GIS Map Rendering Engine (Day 18)
-Integrates Folium and Mapbox GL JS configurations for dynamic spatial raster overlays,
-AOI polygon boundaries, and soil moisture surface maps.
+Integrates Folium with Permanent Google Maps Hybrid Tiles,
+AOI polygon boundaries, Measure Controls, Geocoder, and Draw Toolbar.
 """
 
 from typing import Any, Dict, Optional, Tuple
@@ -12,18 +12,13 @@ from streamlit_folium import st_folium
 
 
 class GISMapRenderer:
-    """Interactive GIS Map Rendering Engine for 2D/3D spatial visualizations."""
+    """Interactive GIS Map Rendering Engine with Permanent Google Maps Hybrid Imagery."""
 
     def __init__(
         self,
-        default_center: tuple[float, float] = (20.2961, 85.8245),
+        default_center: Tuple[float, float] = (20.5000, 86.4200),
         default_zoom: int = 12,
     ):
-        """Initializes Renderer with default center coordinates (Latitude, Longitude) and zoom level.
-
-        Default center: Bhubaneswar Corridor [20.2961 N, 85.8245 E]
-        """
-
         self.default_center = default_center
         self.default_zoom = default_zoom
 
@@ -32,28 +27,21 @@ class GISMapRenderer:
         center: Optional[Tuple[float, float]] = None,
         zoom: Optional[int] = None,
     ) -> folium.Map:
-        """Generates an interactive 2D Folium Map with multiple base tiles and layer controls."""
+        """Generates an interactive 2D Folium Map with permanent Google Maps Hybrid base."""
         map_center = center or self.default_center
         map_zoom = zoom or self.default_zoom
 
-        # Base map Initialization
+        # Permanent Base map Initialization: Google Maps Hybrid (Satellite + Roads/Villages)
         m = folium.Map(
             location=map_center,
             zoom_start=map_zoom,
             control_scale=True,
-            tiles=None,  # We manually add base layers below
+            tiles="https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+            attr="Google Maps Hybrid &copy; 2026",
+            name="Google Maps Hybrid",
         )
 
-        # 1. Primary Default Layer: Google Maps Hybrid (Satellite Imagery + Village/Road Names)
-        folium.TileLayer(
-            tiles="https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
-            attr="Google Maps &copy; 2026",
-            name="Google Maps Hybrid (Satellite + Roads)",
-            overlay=False,
-            control=True,
-        ).add_to(m)
-
-        # 2. Google Maps Pure Satellite
+        # Optional Alternate Layer: Google Maps Pure Satellite
         folium.TileLayer(
             tiles="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
             attr="Google Maps &copy; 2026",
@@ -62,43 +50,7 @@ class GISMapRenderer:
             control=True,
         ).add_to(m)
 
-        # 3. Google Maps Terrain / Topography
-        folium.TileLayer(
-            tiles="https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
-            attr="Google Maps &copy; 2026",
-            name="Google Maps Terrain",
-            overlay=False,
-            control=True,
-        ).add_to(m)
-
-        # 4. Esri World Imagery (High-Res Aerial)
-        folium.TileLayer(
-            tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-            attr="Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics",
-            name="Esri World Satellite",
-            overlay=False,
-            control=True,
-        ).add_to(m)
-
-        # 5. OpenStreetMap Standard
-        folium.TileLayer(
-            tiles="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            attr="&copy; OpenStreetMap contributors",
-            name="OpenStreetMap Standard",
-            overlay=False,
-            control=True,
-        ).add_to(m)
-
-        # 6. Esri Dark Canvas (Technical Theme)
-        folium.TileLayer(
-            tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-            attr="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ",
-            name="Esri Dark Canvas",
-            overlay=False,
-            control=True,
-        ).add_to(m)
-
-        # Add Instant Geocoder Search Box (Search any village, town, or district)
+        # Add Instant Geocoder Search Box
         plugins.Geocoder(
             collapsed=False,
             position="topleft",
@@ -119,6 +71,38 @@ class GISMapRenderer:
             position="bottomleft",
             primary_length_unit="meters",
             primary_area_unit="sqmeters",
+        ).add_to(m)
+
+        # Add Folium Draw Toolbar (Polygon & Rectangle for Farm Boundary Delineation)
+        plugins.Draw(
+            export=False,
+            position="topleft",
+            filename="mridansh_farm_boundary.geojson",
+            draw_options={
+                "polyline": False,
+                "polygon": {
+                    "allowIntersection": False,
+                    "showArea": True,
+                    "shapeOptions": {
+                        "color": "#00e5ff",
+                        "weight": 3,
+                        "fillColor": "#00e5ff",
+                        "fillOpacity": 0.25,
+                    },
+                },
+                "circle": False,
+                "rectangle": {
+                    "shapeOptions": {
+                        "color": "#00e5ff",
+                        "weight": 3,
+                        "fillColor": "#00e5ff",
+                        "fillOpacity": 0.25,
+                    },
+                },
+                "circlemarker": False,
+                "marker": False,
+            },
+            edit_options={"edit": True, "remove": True},
         ).add_to(m)
 
         return m
@@ -146,146 +130,20 @@ class GISMapRenderer:
         )
 
         geojson_layer.add_to(folium_map)
-
-        return folium_map
-
-
-    def add_soil_moisture_heatmap_overlay(
-        self,
-        folium_map: folium.Map,
-        geojson_data: Dict[str, Any],
-        domain_mode: str = "agronomy",
-        layer_name: str = "Soil Moisture Heatmap",
-        is_demo: bool = False,
-    ) -> folium.Map:
-        """Domain-Aware Choropleth Styling Logic (Hardened against synthetic modulo data)."""
-
-        import numpy as np
-
-        def get_moisture_color(moisture: float, mode: str) -> str:
-            if mode == "agronomy":
-                # Agronomy Focus: Moisture range thresholds
-                if moisture < 0.16:
-                    return "#FF3333"  # Dry / Stress (Red)
-                elif moisture < 0.22:
-                    return "#FF9900"  # Low (Orange)
-                elif moisture < 0.28:
-                    return "#FFFF00"  # Medium (Yellow)
-                elif moisture < 0.34:
-                    return "#00FF66"  # Optimal (Green)
-                else:
-                    return "#0099FF"  # Saturated (Blue)
-            else:
-                # Civil Focus: Subgrade Stability range thresholds
-                if moisture < 0.15:
-                    return "#00FF66"  # High Bearing Capacity (Green)
-                elif moisture < 0.25:
-                    return "#FFFF00"  # Stable Moisture Range (Yellow)
-                elif moisture < 0.32:
-                    return "#FF9900"  # Moderate Shear Loss Risk (Orange)
-                else:
-                    return "#FF0055"  # High Saturation (Critical Red)
-
-        if not geojson_data or not isinstance(geojson_data, dict):
-            return folium_map
-
-        # Check if geojson features actually have physical moisture measurements
-        features = geojson_data.get("features", [])
-        if not features:
-            status_msg = geojson_data.get("properties", {}).get("message", "No spatial features available.")
-            display_name = f"Spatial Layer (Unavailable: {status_msg})"
-            geojson_layer = folium.GeoJson(
-                geojson_data,
-                name=display_name,
-            )
-            geojson_layer.add_to(folium_map)
-            return folium_map
-
-        has_real_moisture = any(
-            f.get("properties", {}).get("moisture_m3m3") is not None
-            for f in features if isinstance(f, dict)
-        )
-
-        def style_function(feature: Dict[str, Any]) -> Dict[str, Any]:
-            props = feature.get("properties", {})
-            raw_moisture = props.get("moisture_m3m3")
-
-            if raw_moisture is None:
-                # Neutral technical cyan styling for geometry-only grids
-                return {
-                    "fillColor": "#00f0ff",
-                    "color": "#00b4d8",
-                    "weight": 1.5,
-                    "fillOpacity": 0.04,
-                }
-
-            try:
-                m_val = float(raw_moisture)
-                if np.isnan(m_val) or not np.isfinite(m_val):
-                    return {
-                        "fillColor": "transparent",
-                        "color": "#64748b",
-                        "weight": 1.0,
-                        "fillOpacity": 0.0,
-                    }
-                return {
-                    "fillColor": get_moisture_color(m_val, domain_mode),
-                    "color": "#ffffff",
-                    "weight": 1.5,
-                    "fillOpacity": 0.55,
-                }
-            except (ValueError, TypeError):
-                return {
-                    "fillColor": "#00f0ff",
-                    "color": "#00b4d8",
-                    "weight": 1.5,
-                    "fillOpacity": 0.04,
-                }
-
-        # Dynamic Tooltip reflecting geometry or observation status
-        tooltip_fields = ["tile_id", "row", "col"]
-        tooltip_aliases = ["Tile ID:", "Grid Row:", "Grid Col:"]
-
-        if has_real_moisture:
-            tooltip_fields.append("moisture_m3m3")
-            tooltip_aliases.append("Moisture (m³/m³):")
-
-        tooltip = folium.GeoJsonTooltip(
-            fields=tooltip_fields,
-            aliases=tooltip_aliases,
-            style="background-color: #0b0e14; color: #00f0ff; font-family: monospace; font-size: 11px; padding: 6px; border: 1px solid #1e2638;",
-            sticky=True,
-        )
-
-        display_name = (
-            f"{layer_name} ({domain_mode.upper()})"
-            if has_real_moisture
-            else f"Computational Grid Mesh ({domain_mode.upper()} Geometry Only)"
-        )
-        if is_demo:
-            display_name += " [DEMO DATA]"
-
-        geojson_layer = folium.GeoJson(
-            geojson_data,
-            name=display_name,
-            style_function=style_function,
-            tooltip=tooltip,
-        )
-
-        geojson_layer.add_to(folium_map)
         return folium_map
 
 
 def render_heatmap_folium_map(
-    lat: float = 20.2961,
-    lon: float = 85.8245,
-    zoom: int = 11,
+    lat: float = 20.5000,
+    lon: float = 86.4200,
+    zoom: int = 12,
     geojson_data: Optional[Dict[str, Any]] = None,
     domain_mode: str = "agronomy",
     is_demo: bool = False,
     aoi_bbox: Optional[list] = None,
+    user_polygon: Optional[list] = None,
 ):
-    """Bridge Helper With Multi-Domain Viewport Support (Industry-Grade Workstation Canvas)"""
+    """Bridge Helper with Permanent Google Maps Hybrid & Drawing Support."""
     renderer = GISMapRenderer(default_center=(lat, lon), default_zoom=zoom)
     f_map = renderer.create_folium_2d_map()
 
@@ -335,23 +193,26 @@ def render_heatmap_folium_map(
             fill_opacity=0.03,
         )
 
-    if geojson_data:
-        renderer.add_soil_moisture_heatmap_overlay(
-            folium_map=f_map,
-            domain_mode=domain_mode,
-            geojson_data=geojson_data,
-            layer_name="Domain Soil Intelligence",
-            is_demo=is_demo,
-        )
+    # Overlay user-drawn polygon if actively selected
+    if user_polygon and len(user_polygon) >= 3:
+        poly_latlon = [[pt[1], pt[0]] for pt in user_polygon]
+        folium.Polygon(
+            locations=poly_latlon,
+            color="#00ff88",
+            weight=3,
+            fill=True,
+            fill_color="#00e5ff",
+            fill_opacity=0.28,
+            popup="Active Custom Farm Boundary",
+            tooltip="Active Farm Polygon",
+        ).add_to(f_map)
 
     folium.LayerControl(collapsed=True).add_to(f_map)
 
-    # Return st_folium click data
+    # Stable st_folium call: fixed key & no restrictive returned_objects filter
     return st_folium(
         f_map,
         width="100%",
-        height=520,
-        key=f"mridansh_google_hybrid_map_{domain_mode}_v4",
-        returned_objects=["last_clicked"],
+        height=540,
+        key="mridansh_permanent_google_hybrid_canvas",
     )
-

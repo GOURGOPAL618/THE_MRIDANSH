@@ -128,6 +128,8 @@ def main():
         st.session_state.applied_water_slider = 20.0
     if "active_aoi_name" not in st.session_state:
         st.session_state.active_aoi_name = "Kendrapara Coastal Delta, Odisha (Mission Flight Scene)"
+    if "user_drawn_polygon" not in st.session_state:
+        st.session_state.user_drawn_polygon = None
 
     # Initial telemetry state initialized dynamically below
 
@@ -179,6 +181,7 @@ def main():
                 st.session_state.selected_lon = p["lon"]
                 st.session_state.active_bbox = p["bbox"]
                 st.session_state.mission_cache = None
+                st.session_state.user_drawn_polygon = None
 
         if selected_aoi_name in AOI_PRESETS:
             preset = AOI_PRESETS[selected_aoi_name]
@@ -374,7 +377,30 @@ def main():
     map_col, inspect_col = st.columns([7, 3])
 
     with map_col:
-        # Render Interactive Folium Map (Google Maps Hybrid view is default)
+        # Tool Mode Switcher: Point Inspection vs Draw Farm Boundary
+        mode_col1, mode_col2 = st.columns([6, 4])
+        with mode_col1:
+            active_map_tool = st.radio(
+                "GIS Canvas Tool:",
+                ["📍 Point Inspection (Click Target)", "⬡ Draw Farm Boundary (Zonal Mode)"],
+                horizontal=True,
+                label_visibility="collapsed",
+                key="gis_canvas_tool_radio",
+            )
+        is_draw_mode = "Draw" in active_map_tool
+
+        if is_draw_mode:
+            st.markdown(
+                """
+                <div style="margin-bottom:8px; padding:6px 12px; background:rgba(0,255,136,0.06); border:1px solid rgba(0,255,136,0.25); border-radius:6px; font-size:0.8rem; color:#f8fafc; display:flex; align-items:center; gap:8px;">
+                    <span>✍️</span>
+                    <span><b>Drawing Mode Active:</b> Click corners around your field. Click the first corner again to close the polygon. <i>(Zero page-refresh interruptions!)</i></span>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+        # Render Interactive Folium Map with Permanent Google Maps Hybrid Tiles
         map_output = render_heatmap_folium_map(
             lat=st.session_state.selected_lat,
             lon=st.session_state.selected_lon,
@@ -383,32 +409,106 @@ def main():
             domain_mode="agronomy",
             is_demo=False,
             aoi_bbox=st.session_state.active_bbox,
+            user_polygon=st.session_state.user_drawn_polygon,
         )
 
-        # Handle Click Event to update coordinate
-        if map_output and map_output.get("last_clicked"):
-            clicked = map_output["last_clicked"]
-            new_lat = round(clicked["lat"], 4)
-            new_lon = round(clicked["lng"], 4)
-            if new_lat != st.session_state.selected_lat or new_lon != st.session_state.selected_lon:
-                st.session_state.selected_lat = new_lat
-                st.session_state.selected_lon = new_lon
+        # --------------------------------------------------------------------------------------------------------------
+        # EVENT ROUTING (ISOLATED BY TOOL MODE TO PREVENT UNWANTED PAGE RERUNS)
+        # --------------------------------------------------------------------------------------------------------------
+        if is_draw_mode:
+            active_drawing = map_output.get("last_active_drawing") if map_output else None
+            all_drawings = map_output.get("all_drawings") if map_output else None
 
-                # If user clicked outside current bounding box, dynamically shift the 40.96 ha box to center on new khet!
-                b = st.session_state.active_bbox
-                if not (b[0] <= new_lon <= b[2] and b[1] <= new_lat <= b[3]):
-                    d = 0.04
-                    st.session_state.active_bbox = [round(new_lon - d, 4), round(new_lat - d, 4), round(new_lon + d, 4), round(new_lat + d, 4)]
+            # Only fires when polygon is officially completed/closed by user!
+            if active_drawing and isinstance(active_drawing, dict):
+                geom = active_drawing.get("geometry", {})
+                geom_type = geom.get("type")
+                if geom_type in ["Polygon", "Rectangle"]:
+                    raw_coords = geom.get("coordinates", [])
+                    if raw_coords and len(raw_coords[0]) >= 3:
+                        new_poly = [(round(float(pt[0]), 6), round(float(pt[1]), 6)) for pt in raw_coords[0]]
+                        if st.session_state.user_drawn_polygon != new_poly:
+                            st.session_state.user_drawn_polygon = new_poly
+                            # Center target coordinates at farm distinct centroid
+                            distinct_pts = new_poly[:-1] if (len(new_poly) > 1 and new_poly[0] == new_poly[-1]) else new_poly
+                            c_lon = float(np.mean([pt[0] for pt in distinct_pts]))
+                            c_lat = float(np.mean([pt[1] for pt in distinct_pts]))
+                            st.session_state.selected_lat = round(c_lat, 4)
+                            st.session_state.selected_lon = round(c_lon, 4)
+                            st.rerun()
+
+            # Handle drawing deletion via the trash icon in toolbar
+            elif all_drawings == [] and st.session_state.user_drawn_polygon is not None:
+                st.session_state.user_drawn_polygon = None
                 st.rerun()
 
+        else:
+            # Point Inspection Mode: Handle click-to-query coordinate
+            if map_output and map_output.get("last_clicked"):
+                clicked = map_output["last_clicked"]
+                new_lat = round(clicked["lat"], 4)
+                new_lon = round(clicked["lng"], 4)
+                if new_lat != st.session_state.selected_lat or new_lon != st.session_state.selected_lon:
+                    st.session_state.selected_lat = new_lat
+                    st.session_state.selected_lon = new_lon
+
+                    # If user clicked outside current bounding box, dynamically shift the 40.96 ha box
+                    b = st.session_state.active_bbox
+                    if not (b[0] <= new_lon <= b[2] and b[1] <= new_lat <= b[3]):
+                        d = 0.04
+                        st.session_state.active_bbox = [round(new_lon - d, 4), round(new_lat - d, 4), round(new_lon + d, 4), round(new_lat + d, 4)]
+                    st.rerun()
+
+        # Live Farm Boundary Status Strip below Map
+        if st.session_state.user_drawn_polygon:
+            n_vertices = len(st.session_state.user_drawn_polygon)
+            st.markdown(
+                f"""
+                <div class="mrid-farm-badge">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#00ff88; box-shadow:0 0 10px #00ff88;"></span>
+                        <span style="color:#f8fafc; font-size:0.88rem; font-weight:700;">
+                            🎯 Custom Farm Boundary Active: <span style="color:#00e5ff;">{n_vertices} Vertices Locked</span>
+                        </span>
+                    </div>
+                    <span style="color:#00ff88; font-size:0.78rem; font-weight:600; background:rgba(0,255,136,0.1); padding:2px 8px; border-radius:4px; border:1px solid rgba(0,255,136,0.3);">ZONAL READY</span>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+            col_reset, col_info = st.columns([4, 6])
+            with col_reset:
+                if st.button("🗑️ Clear Boundary (Return to Point Target)", use_container_width=True, key="clear_farm_poly_btn"):
+                    st.session_state.user_drawn_polygon = None
+                    st.rerun()
+            with col_info:
+                st.caption("Custom farm polygon locked in memory. Ready for Step 4 Subsystem 10 extraction.")
+        else:
+            st.markdown(
+                """
+                <div style="margin-top:8px; padding:8px 12px; background:rgba(0,229,255,0.04); border:1px solid rgba(0,229,255,0.15); border-radius:6px; font-size:0.8rem; color:#94a3b8; display:flex; align-items:center; gap:8px;">
+                    <span>📐</span>
+                    <span><b>Draw Your Field:</b> Click the <b>Polygon (⬡)</b> or <b>Rectangle (▭)</b> tool on the top-left of the map to trace your exact farm boundary.</span>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
     with inspect_col:
+        target_badge_html = '<span style="font-size:0.72rem; color:#00ff88; background:rgba(0,255,136,0.15); border:1px solid rgba(0,255,136,0.4); padding:2px 8px; border-radius:4px; font-weight:700;">FARM POLYGON ACTIVE</span>' if st.session_state.user_drawn_polygon else '<span style="font-size:0.72rem; color:#00f0ff; background:rgba(0,240,255,0.1); border:1px solid rgba(0,240,255,0.3); padding:2px 8px; border-radius:4px; font-weight:700;">ACTIVE TARGET</span>'
+        target_mode_desc = f"Closed Farm Polygon ({len(st.session_state.user_drawn_polygon)} Vertices)" if st.session_state.user_drawn_polygon else "Single Point Coordinate"
+
         inspector_card_html = f"""
         <div class="mrid-inspector-card">
             <div class="mrid-inspector-header">
                 <div class="mrid-inspector-title">
                     <span class="mrid-pulse-dot"></span> Field Inspection Telemetry
                 </div>
-                <span style="font-size:0.72rem; color:#00f0ff; background:rgba(0,240,255,0.1); border:1px solid rgba(0,240,255,0.3); padding:2px 8px; border-radius:4px; font-weight:700;">ACTIVE TARGET</span>
+                {target_badge_html}
+            </div>
+            <div class="mrid-inspect-row">
+                <span class="mrid-inspect-label">Telemetry Mode</span>
+                <span class="mrid-inspect-val" style="color:#00ff88;">{target_mode_desc}</span>
             </div>
             <div class="mrid-inspect-row">
                 <span class="mrid-inspect-label">Target Latitude</span>

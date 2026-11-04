@@ -581,3 +581,54 @@ hr {
     border: none !important;
     outline: none !important;
 }
+
+
+/* --------------------------------------------------------------------------
+   13. Leaflet Draw Toolbar & Farm Boundary Alerts
+   -------------------------------------------------------------------------- */
+.leaflet-draw-toolbar {
+    margin-top: 10px !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(0, 229, 255, 0.4) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+}
+
+.leaflet-draw-toolbar a {
+    background-color: #0e1524 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #00e5ff !important;
+}
+
+.leaflet-draw-toolbar a:hover {
+    background-color: #18233a !important;
+    color: #38bdf8 !important;
+}
+
+.leaflet-draw-actions {
+    background-color: #0e1524 !important;
+    border: 1px solid rgba(0, 229, 255, 0.3) !important;
+    border-radius: 4px !important;
+}
+
+.leaflet-draw-actions li a {
+    background-color: #0e1524 !important;
+    color: #f8fafc !important;
+    font-size: 0.78rem !important;
+}
+
+.leaflet-draw-actions li a:hover {
+    background-color: #0284c7 !important;
+    color: #ffffff !important;
+}
+
+.mrid-farm-badge {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.08), rgba(0, 255, 136, 0.08));
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 10px;
+}
