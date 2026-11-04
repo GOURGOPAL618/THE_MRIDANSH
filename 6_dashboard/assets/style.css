@@ -38,6 +38,40 @@ html, body, [class*="css"], .stApp, .stMarkdown, p, span, div, h1, h2, h3, h4, h
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Material Symbols & Icon Integrity (Preserve Ligature Glyphs & Prevent Text Leaks) */
+.material-symbols-rounded,
+.material-symbols-outlined,
+.material-symbols-sharp,
+[class*="material-symbols"],
+[class*="material-icons"],
+[data-testid*="stIcon"],
+[data-testid="stIconMaterial"],
+span[data-testid="stIconMaterial"],
+button[data-testid="stSidebarCollapseButton"] span,
+button[data-testid="collapsedControl"] span {
+    font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', 'Material Icons' !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+    direction: ltr !important;
+    -webkit-font-feature-settings: 'liga' 1 !important;
+    font-feature-settings: 'liga' 1 !important;
+}
+
+/* Eliminate redundant Streamlit sidebar header gap & collapse button text leak */
+div[data-testid="stSidebarHeader"],
+button[data-testid="stSidebarCollapseButton"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 /* Monospace font strictly for code, metrics, coordinates */
 code, kbd, samp, pre, .mono-data, .font-mono, div[data-testid="stMetricValue"] {
     font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
@@ -105,11 +139,12 @@ header[data-testid="stHeader"] {
    -------------------------------------------------------------------------- */
 .mrid-master-header {
     background: linear-gradient(135deg, rgba(14, 21, 36, 0.95) 0%, rgba(10, 14, 23, 0.98) 100%);
-    border: 1px solid rgba(0, 240, 255, 0.2);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-top: 2px solid #00f0ff !important;
     border-radius: 12px;
     padding: 16px 24px;
     margin-bottom: 1rem;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45), 0 0 15px rgba(0, 240, 255, 0.05);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45), 0 0 18px rgba(0, 240, 255, 0.08);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -298,20 +333,24 @@ section[data-testid="stSidebar"] {
     border-right: 1px solid var(--mrid-border) !important;
 }
 
+section[data-testid="stSidebar"] div[data-testid="stSidebarContent"],
+section[data-testid="stSidebar"] div[data-testid="stSidebarUserContent"],
 section[data-testid="stSidebar"] .block-container {
-    padding-top: 1.2rem !important;
+    padding-top: 1.4rem !important;
     padding-left: 1rem !important;
     padding-right: 1rem !important;
 }
 
 .sidebar-brand-card {
     background: linear-gradient(180deg, #101726 0%, #0a0e18 100%);
-    border: 1px solid rgba(0, 240, 255, 0.25);
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    border-top: 2px solid #00f0ff !important;
     border-radius: 10px;
     padding: 14px;
+    margin-top: 1.35rem !important;
     margin-bottom: 1.2rem;
     text-align: center;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45), 0 0 14px rgba(0, 240, 255, 0.1);
 }
 
 .sidebar-logos-row {
