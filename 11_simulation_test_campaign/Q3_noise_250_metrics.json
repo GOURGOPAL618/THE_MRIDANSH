@@ -1,0 +1,46 @@
+{
+  "quadrant": "Q3_SENSOR_NOISE_DROPOUT",
+  "seed": 16073,
+  "total_trials": 250,
+  "passed_trials": 250,
+  "success_rate_pct": 100.0,
+  "execution_wall_time_seconds": 0.378,
+  "average_ms_per_trial": 1.51,
+  "sar_anomaly_telemetry": {
+    "WETTING_SURGE": 66,
+    "RAPID_DESICCATION": 8,
+    "NORMAL_DRIFT": 176
+  },
+  "optical_cloud_dropouts_count": 125,
+  "optical_cloud_dropout_rate_pct": 50.0,
+  "statistical_moments": {
+    "assimilated_theta": {
+      "mean": 0.2552,
+      "std": 0.0351,
+      "min": 0.154,
+      "max": 0.3378
+    },
+    "kalman_condition_number_kappa": {
+      "mean": 818.23,
+      "max": 1709.03,
+      "min": 398.45,
+      "threshold_ceiling": 1000000.0,
+      "condition_safety_margin": 585.1
+    },
+    "minimum_eigenvalue_lambda": {
+      "mean": 0.000176,
+      "min": 9.7e-05,
+      "threshold_floor": 1e-09
+    },
+    "mass_conservation_drift_m3_m3": {
+      "mean": 0.0,
+      "max": 0.0,
+      "threshold_ceiling": 0.0001
+    }
+  },
+  "forensics_summary": {
+    "super_additive_synergy_count": 4,
+    "clamping_boundary_hits": 0,
+    "zero_drift_count": 250
+  }
+}

@@ -24,7 +24,10 @@ TRANSLATORS_DIR = REPO_ROOT / "4_domain_translators"
 CIVIL_DIR = TRANSLATORS_DIR / "civil"
 AGRI_DIR = TRANSLATORS_DIR / "agronomy"
 
-for p in [REPO_ROOT, TRANSLATORS_DIR, CIVIL_DIR, AGRI_DIR]:
+CORE_DIR = REPO_ROOT / "3_core_engine"
+STATE_DIR = CORE_DIR / "state_estimation"
+
+for p in [REPO_ROOT, TRANSLATORS_DIR, CIVIL_DIR, AGRI_DIR, CORE_DIR, STATE_DIR]:
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
 
@@ -33,6 +36,7 @@ from temporal_hydrodynamics import DailyWeatherForcing, TemporalHydrodynamicEngi
 from civil.slope_stability_engine import SlopeStabilityEngine
 from civil.soil_mechanics_core import SoilMechanicsCoreEngine
 from civil.ground_stability_engine import GroundStabilityEngine
+from enkf_assimilator import EnsembleKalmanFilterAssimilator
 
 logger = logging.getLogger("MRIDANSH.MonteCarlo1000")
 if not logger.handlers:
@@ -108,6 +112,7 @@ class PlanetaryMonteCarloEngine:
         self.ground_engine = GroundStabilityEngine(soil_engine=self.soil_engine)
         self.slope_engine = SlopeStabilityEngine(soil_engine=self.soil_engine)
         self.coupled_sim = CoupledAgroCivilSimulator()
+        self.enkf_assimilator = EnsembleKalmanFilterAssimilator(num_ensembles=50, obs_noise_std=0.03)
 
     # ------------------------------------------------------------------------------------------------------------------
     # PHASE 1: QUADRANT 1 - HYPER-ARID DROUGHT STRESS (TRIALS 001 - 250)
@@ -668,7 +673,308 @@ class PlanetaryMonteCarloEngine:
         return summary_metrics
 
 
+    # ------------------------------------------------------------------------------------------------------------------
+    # PHASE 3: QUADRANT 3 - SENSOR NOISE, OPTICAL CLOUD DROPOUT & SAR ANOMALIES (TRIALS 501 - 750)
+    # ------------------------------------------------------------------------------------------------------------------
+    def execute_phase_3_noise(self) -> Dict[str, Any]:
+        """
+        Executes Phase 3 (Trials 501-750) under Seed 16073.
+        Evaluates Sentinel-1 C-band SAR speckle noise (+/- 4.5 dB), 80-100% optical cloud dropout,
+        and EnKF Kalman filter error covariance conditioning (kappa < 10^6, lambda_min > 10^-9).
+        """
+        print("\n" + "=" * 90)
+        print("  JCC CAMPUS 2 (RS-SDA) - EXECUTING PHASE 3: QUADRANT 3 (TRIALS 501 - 750)")
+        print("  TARGET REGIME: SENSOR NOISE, OPTICAL DROPOUT & KALMAN STABILITY | SEED: 16073")
+        print("=" * 90)
+
+        rng = np.random.default_rng(SEED_QUADRANT_3)
+        t_start = time.perf_counter()
+
+        trials_results: List[QuadrantTrialResult] = []
+        forensics_log: List[ForensicAuditTelemetry] = []
+
+        soil_pool = ["sand", "sandy_loam", "silt_loam", "clay_loam", "clay"]
+        crop_pool = ["paddy", "wheat", "maize", "mustard", "pulses"]
+
+        # Trajectory recording tensor: [250, 10_days]
+        theta_trajectories = np.zeros((NUM_TRIALS_PER_QUADRANT, 10), dtype=np.float32)
+        sar_anomaly_counts = {"WETTING_SURGE": 0, "RAPID_DESICCATION": 0, "NORMAL_DRIFT": 0}
+        cloud_dropout_count = 0
+
+        for i in range(NUM_TRIALS_PER_QUADRANT):
+            t_trial_0 = time.perf_counter()
+
+            soil_type = soil_pool[i % len(soil_pool)]
+            crop_type = crop_pool[i % len(crop_pool)]
+            params = self.soil_engine.get_parameters(soil_type)
+
+            # 1. Stochastic Prior State
+            theta_init = float(rng.uniform(params.theta_res + 0.08, params.theta_sat - 0.08))
+
+            # 2. Inject Spaceborne Multi-Modal Noise Regimes
+            # Optical Cloud Obscuration: 80% to 100% cloud cover
+            cloud_fraction = float(rng.uniform(0.80, 1.00))
+            is_optical_dropout = bool(cloud_fraction >= 0.90)  # Complete cloud blockage
+            if is_optical_dropout:
+                cloud_dropout_count += 1
+
+            # Synthetic SAR Backscatter Delta (dB): Normal vs Extreme Speckle/RFI Noise
+            # RFI / extreme speckle injected in 25% of observations
+            if i % 4 == 0:
+                sar_delta_sigma_db = float(rng.uniform(2.5, 4.5)) if i % 2 == 0 else float(rng.uniform(-4.5, -2.0))
+            else:
+                sar_delta_sigma_db = float(rng.normal(0.0, 1.2))
+
+            # SAR Anomaly Categorization via Subsystem 07 rules
+            if sar_delta_sigma_db > 2.5:
+                anomaly_cat = "WETTING_SURGE"
+            elif sar_delta_sigma_db < -2.0:
+                anomaly_cat = "RAPID_DESICCATION"
+            else:
+                anomaly_cat = "NORMAL_DRIFT"
+            sar_anomaly_counts[anomaly_cat] += 1
+
+            # 3. Stochastic Atmospheric Forcing across 9 transition days
+            daily_forcing: List[DailyWeatherForcing] = [
+                DailyWeatherForcing(
+                    et0_mm_day=float(rng.uniform(2.5, 6.5)),
+                    precipitation_mm_day=float(rng.choice([0.0, 0.0, 5.0, 12.0])),
+                    t2m_celsius=float(rng.uniform(26.0, 35.0)),
+                    wind_speed_ms=float(rng.uniform(1.5, 4.5)),
+                    relative_humidity_pct=float(rng.uniform(55.0, 85.0)),
+                    runoff_fraction_cn=0.15,
+                )
+                for _ in range(9)
+            ]
+
+            # 4. Hydrodynamic Propagation Background Run
+            soil_engine_instance = TemporalHydrodynamicEngine(
+                z_active_m=0.25,
+                theta_res=params.theta_res,
+                theta_wp=params.theta_res + 0.30 * (params.theta_sat - params.theta_res),
+                theta_fc=params.theta_res + 0.65 * (params.theta_sat - params.theta_res),
+                theta_sat=params.theta_sat,
+                k_sat_mm_day=params.permeability_m_s * 86400.0 * 1000.0,
+            )
+
+            init_field = np.full((16, 16), theta_init, dtype=np.float32)
+            trajectory = soil_engine_instance.forecast_trajectory(
+                theta_anchor=init_field,
+                weather_schedule=daily_forcing,
+            )
+
+            # Record trajectory before Kalman assimilation
+            theta_trajectories[i, 0] = theta_init
+            for step_idx, step in enumerate(trajectory.daily_steps):
+                theta_trajectories[i, step_idx + 1] = step.mean_theta
+
+            theta_background = float(trajectory.final_mean_theta)
+
+            # 5. Stochastic EnKF Multi-Variable Assimilation under Noise
+            # Generate Prior Ensemble in R^{4 x 50}
+            x_prior, cov_prior = self.enkf_assimilator.generate_prior_ensemble(
+                num_members=50,
+                seed=int(SEED_QUADRANT_3 + i)
+            )
+
+            # Overwrite prior root moisture with physics background state
+            x_prior[0, :] = np.clip(
+                theta_background + rng.normal(0.0, 0.015, size=50),
+                params.theta_res,
+                params.theta_sat
+            )
+
+            # Synthetic Spaceborne Observation with Injected SAR Noise Spike
+            # Sensitivity: ~35 dB per unit theta
+            sar_nudge = sar_delta_sigma_db / 35.0
+            noisy_observation = float(np.clip(
+                theta_background + sar_nudge + rng.normal(0.0, 0.03),
+                params.theta_res,
+                params.theta_sat
+            ))
+
+            # Inflate observation noise covariance R if optical dropout occurs
+            obs_noise_variance = (0.05 ** 2) if is_optical_dropout else (0.03 ** 2)
+
+            enkf_res = self.enkf_assimilator.assimilate(
+                x_prior=x_prior,
+                observation=noisy_observation,
+                obs_cov=np.array([[obs_noise_variance]], dtype=np.float64),
+                seed=int(SEED_QUADRANT_3 + i)
+            )
+
+            theta_assimilated = float(enkf_res['posterior_mean'][0])
+            p_posterior = enkf_res['posterior_covariance_P_a']
+
+            # 6. Strict Kalman Invariants: Eigenvalue and Condition Number
+            eigenvalues = np.linalg.eigvalsh(p_posterior)
+            lambda_min = float(np.min(eigenvalues))
+            lambda_max = float(np.max(eigenvalues))
+            kappa = float(lambda_max / max(lambda_min, 1e-12))
+
+            condition_pass = bool(kappa < 1e6 and lambda_min > 1e-9)
+
+            # 7. Mass Conservation Check on Background Vadose State
+            total_flux_exchange_mm = sum(
+                (s.infiltrated_rain_mm - (s.et_actual_mm + s.drainage_mm))
+                for s in trajectory.daily_steps
+            )
+            total_water_gain_volumetric = (theta_background - theta_init) * 250.0
+            mass_drift = abs(total_water_gain_volumetric - total_flux_exchange_mm) / 250.0
+            mass_pass = bool(mass_drift <= 1e-4)
+
+            # 8. Physical Bounding Invariant on Assimilated Moisture
+            bounds_pass = bool(
+                params.theta_res <= theta_assimilated <= params.theta_sat and
+                not math.isnan(theta_assimilated) and
+                not math.isinf(theta_assimilated)
+            )
+
+            # 9. Coupled Geotechnical & Agronomic Response
+            theta_fc_approx = float(params.theta_res + 0.65 * (params.theta_sat - params.theta_res))
+            cwsi = float(np.clip(1.0 - (theta_assimilated / max(theta_fc_approx, 0.15)), 0.0, 1.0))
+            deficit_mm = float(max(0.0, (theta_fc_approx - theta_assimilated) * 250.0))
+
+            slope_res = self.slope_engine.compute_slope_stability(
+                slope_deg=np.full((5, 5), 8.0, dtype=np.float32),
+                theta_rz=np.full((5, 5), theta_assimilated, dtype=np.float32),
+                soil_class=soil_type,
+            )
+            mean_fos = float(slope_res.mean_factor_of_safety)
+            pore_pressure = float(np.mean(slope_res.pore_water_pressure_kpa))
+
+            bearing_cap = self.ground_engine.compute_bearing_capacity(
+                theta_rz=np.full((5, 5), theta_assimilated, dtype=np.float32),
+                soil_class=soil_type,
+            )
+            q_allow = float(np.mean(bearing_cap.q_allow_kpa))
+            rut_cm = float(max(1.2, 1.5 + 20.5 * math.pow(max(0.0, 1.0 - (q_allow / 180.0)), 0.85)))
+
+            all_invariants_met = (
+                condition_pass and
+                mass_pass and
+                bounds_pass and
+                not math.isnan(q_allow) and
+                not math.isnan(mean_fos)
+            )
+
+            t_trial_end = time.perf_counter()
+            exec_ms = (t_trial_end - t_trial_0) * 1000.0
+
+            # 10. Forensic Audit Logging
+            clamping = bool(theta_assimilated <= params.theta_res + 1e-4 or theta_assimilated >= params.theta_sat - 1e-4)
+            synergy = bool(enkf_res['variance_reduction_pct'] < -40.0 and condition_pass)
+
+            forensic_entry = ForensicAuditTelemetry(
+                code_integrity_passed=bounds_pass,
+                mass_conservation_drift=mass_drift,
+                clamping_detected=clamping,
+                is_super_additive_synergy=synergy,
+                condition_number=kappa,
+                min_eigenvalue=lambda_min,
+            )
+            forensics_log.append(forensic_entry)
+
+            trial_record = QuadrantTrialResult(
+                trial_id=500 + i + 1,
+                quadrant="Q3_SENSOR_NOISE_DROPOUT",
+                seed=SEED_QUADRANT_3,
+                soil_class=soil_type,
+                crop_name=crop_type,
+                initial_theta=round(theta_init, 4),
+                final_theta=round(theta_assimilated, 4),
+                cwsi=round(cwsi, 4),
+                irrigation_deficit_mm=round(deficit_mm, 2),
+                pore_pressure_kpa=round(pore_pressure, 2),
+                factor_of_safety_slope=round(mean_fos, 2),
+                landslide_hazard_triggered=bool(mean_fos < 1.0),
+                tractor_rut_depth_cm=round(rut_cm, 2),
+                bearing_capacity_kpa=round(q_allow, 2),
+                seedling_damage_index=0.0,
+                mass_drift_m3_m3=round(mass_drift, 6),
+                condition_number_kappa=round(kappa, 2),
+                min_eigenvalue_lambda=round(lambda_min, 8),
+                execution_time_ms=round(exec_ms, 2),
+                invariants_passed=all_invariants_met,
+            )
+            trials_results.append(trial_record)
+
+        t_elapsed = time.perf_counter() - t_start
+
+        # Compute Statistical Moments across Phase 3
+        final_thetas = [r.final_theta for r in trials_results]
+        kappas = [r.condition_number_kappa for r in trials_results]
+        lambdas = [r.min_eigenvalue_lambda for r in trials_results]
+        drifts = [r.mass_drift_m3_m3 for r in trials_results]
+        passed_count = sum(1 for r in trials_results if r.invariants_passed)
+
+        summary_metrics = {
+            "quadrant": "Q3_SENSOR_NOISE_DROPOUT",
+            "seed": SEED_QUADRANT_3,
+            "total_trials": NUM_TRIALS_PER_QUADRANT,
+            "passed_trials": passed_count,
+            "success_rate_pct": round((passed_count / NUM_TRIALS_PER_QUADRANT) * 100.0, 2),
+            "execution_wall_time_seconds": round(t_elapsed, 3),
+            "average_ms_per_trial": round((t_elapsed / NUM_TRIALS_PER_QUADRANT) * 1000.0, 2),
+            "sar_anomaly_telemetry": sar_anomaly_counts,
+            "optical_cloud_dropouts_count": cloud_dropout_count,
+            "optical_cloud_dropout_rate_pct": round((cloud_dropout_count / NUM_TRIALS_PER_QUADRANT) * 100.0, 2),
+            "statistical_moments": {
+                "assimilated_theta": {
+                    "mean": round(float(np.mean(final_thetas)), 4),
+                    "std": round(float(np.std(final_thetas)), 4),
+                    "min": round(float(np.min(final_thetas)), 4),
+                    "max": round(float(np.max(final_thetas)), 4),
+                },
+                "kalman_condition_number_kappa": {
+                    "mean": round(float(np.mean(kappas)), 2),
+                    "max": round(float(np.max(kappas)), 2),
+                    "min": round(float(np.min(kappas)), 2),
+                    "threshold_ceiling": 1000000.0,
+                    "condition_safety_margin": round(1000000.0 / float(np.max(kappas)), 1),
+                },
+                "minimum_eigenvalue_lambda": {
+                    "mean": round(float(np.mean(lambdas)), 6),
+                    "min": round(float(np.min(lambdas)), 6),
+                    "threshold_floor": 1e-9,
+                },
+                "mass_conservation_drift_m3_m3": {
+                    "mean": round(float(np.mean(drifts)), 8),
+                    "max": round(float(np.max(drifts)), 8),
+                    "threshold_ceiling": 0.0001,
+                },
+            },
+            "forensics_summary": {
+                "super_additive_synergy_count": sum(1 for f in forensics_log if f.is_super_additive_synergy),
+                "clamping_boundary_hits": sum(1 for f in forensics_log if f.clamping_detected),
+                "zero_drift_count": sum(1 for f in forensics_log if f.mass_conservation_drift < 1e-6),
+            },
+        }
+
+        # Save Phase 3 results
+        metrics_file = self.output_dir / "Q3_noise_250_metrics.json"
+        with open(metrics_file, "w", encoding="utf-8") as f:
+            json.dump(summary_metrics, f, indent=2)
+
+        tensor_file = self.output_dir / "Q3_noise_250_trajectories.npy"
+        np.save(tensor_file, theta_trajectories)
+
+        print(f"\n[PHASE 3 COMPLETE] 250 Trials Processed in {t_elapsed:.2f}s ({summary_metrics['average_ms_per_trial']} ms/trial)")
+        print(f" -> Invariant Qualification Rate: {summary_metrics['success_rate_pct']}% ({passed_count}/{NUM_TRIALS_PER_QUADRANT} PASS)")
+        print(f" -> Optical Cloud Dropout Trials: {cloud_dropout_count}/{NUM_TRIALS_PER_QUADRANT} ({summary_metrics['optical_cloud_dropout_rate_pct']}%)")
+        print(f" -> SAR Anomaly Distribution: Wetting={sar_anomaly_counts['WETTING_SURGE']}, Desiccation={sar_anomaly_counts['RAPID_DESICCATION']}, Normal={sar_anomaly_counts['NORMAL_DRIFT']}")
+        print(f" -> Mean Assimilated Moisture (θ): {summary_metrics['statistical_moments']['assimilated_theta']['mean']} m3/m3")
+        print(f" -> Max Kalman Condition Number κ(P): {summary_metrics['statistical_moments']['kalman_condition_number_kappa']['max']} (Ceiling: 1,000,000 - Margin: {summary_metrics['statistical_moments']['kalman_condition_number_kappa']['condition_safety_margin']}x)")
+        print(f" -> Minimum Eigenvalue λ_min(P): {summary_metrics['statistical_moments']['minimum_eigenvalue_lambda']['min']} (Floor: 1e-9)")
+        print(f" -> Max Richards Mass Drift: {summary_metrics['statistical_moments']['mass_conservation_drift_m3_m3']['max']} m3/m3 (Threshold: 0.0001)")
+        print(f" -> Artifacts Exported: {metrics_file.name}, {tensor_file.name}")
+        print("=" * 90)
+
+        return summary_metrics
+
+
 if __name__ == "__main__":
     engine = PlanetaryMonteCarloEngine()
     engine.execute_phase_1_drought()
     engine.execute_phase_2_deluge()
+    engine.execute_phase_3_noise()
