@@ -1,87 +1,58 @@
  
 <div align="center">
 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,15:050814,35:0a1128,55:1c0a35,75:002b49,90:050814,100:000000&height=340&section=header&text=THE%20MRIDANSH&fontSize=85&fontColor=00f2fe&animation=fadeIn&fontAlignY=33&desc=AETHER-MRID1607X%20%E2%80%A2%20PLANETARY%20HYDRO-TERRAMORPHIC%20ENGINE&descAlignY=54&descSize=18&descColor=4facfe" width="100%"/>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,20:0a0e27,45:1a1a3e,55:2d0a3e,80:0a0e27,100:000000&height=320&section=header&text=THE%20MRIDANSH&fontSize=80&fontColor=00e5ff&animation=fadeIn&fontAlignY=35&desc=AETHER-MRID1607X%20%E2%80%A2%20UNIFIED%20SOIL%20STATE%20ESTIMATION%20SYSTEM&descAlignY=55&descSize=17&descColor=8a8fb5" width="100%"/>
-
-
-<img src="https://readme-typing-svg.demolab.com/?lines=%3E+PHASE+1..3+%3A+CORE+%2B+PIPELINES+%2B+GIS+%E2%80%94+COMPLETE;%3E+SPACEBORNE+CAMPAIGN+%3A+TRL-7+FLIGHT+CERTIFIED;%3E+AGRONOMY+TRANSLATOR+%3A+10%2F10+CONTRACTS+CERTIFIED;%3E+CIVIL+TRANSLATOR+%3A+15%2F15+CONTRACTS+CERTIFIED;%3E+COUPLED+AGRO-CIVIL+%3A+PADDY+NURSERY+SIMULATOR;JAGANNATH+COMMAND+CENTER+%7C+JCC+HEADQUARTERS&font=Fira+Code&size=19&duration=2400&pause=700&color=00E5FF&center=true&vCenter=true&width=980&height=70" />
+<img src="https://readme-typing-svg.demolab.com/?lines=%3E+PLANETARY+MONTE+CARLO+CAMPAIGN+%3A+1%2C000%2F1%2C000+TRIALS+QUALIFIED+(100%25);%3E+SPACEBORNE+MISSION+%3A+TRL-7+FLIGHT+CERTIFIED+%E2%80%A2+DO-178C+STANDARDS;%3E+DUAL-DOMAIN+INTELLIGENCE+%3A+AGRONOMY+VRI+%2B+CIVIL+TERRAMECHANICS;%3E+VADOSE+HYDRODYNAMICS+%3A+ZERO+RICHARDS+MASS+DRIFT+(%3C10%E2%81%BB%E2%81%B6);%3E+KALMAN+COVARIANCE+%3A+585X+SAFETY+MARGIN+(%CE%BA%3C1709+%E2%89%AA+10%E2%81%B6);JAGANNATH+COMMAND+CENTER+%7C+JCC+CAMPUS+2+(RS-SDA+DIVISION)&font=Fira+Code&size=19&duration=2400&pause=700&color=00F2FE&center=true&vCenter=true&width=1000&height=70" />
 
 <br/>
 
-<img height="34" src="https://img.shields.io/badge/STATUS-AUDITED%20%26%20CERTIFIED-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/PHASE%201-COMPLETED-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/PHASE%202-COMPLETED-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/PHASE%203-COMPLETED-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/SPACEBORNE%20CAMPAIGN-TRL--7%20FLIGHT%20CERTIFIED%20%E2%80%A2%2025%2F25%20TESTS-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/FLIGHT%20RELEASE-v0.7.0--TRL7-ff2079?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/CENTURY%20TESTS-100%2F100%20PASSED%20(ZERO%20DEFECTS)-00e5ff?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/CORE%20ENGINE-AETHER--MRID1607X-ff2079?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/COMMAND%20CENTER-JCC-00ffab?style=for-the-badge&labelColor=000000"/>
+<!-- ROW 1: MISSION AUTHORITY, TRL STATUS & ENGINE IDENTITY (DEEP SPACE NEON CYAN & VIOLET) -->
+<a href="#-01--mission-description"><img height="38" src="https://img.shields.io/badge/MISSION%20AUTHORITY-COMMANDER%20GOURAGOPAL%20MOHAPATRA%20(GOURGOPAL618)-00f2fe?style=for-the-badge&logo=spacex&logoColor=00f2fe&labelColor=050814"/></a>
+<a href="#-01--mission-description"><img height="38" src="https://img.shields.io/badge/COMMAND%20SANCTUM-JCC%20CAMPUS%202%20(RS--SDA%20DIVISION)-7f00ff?style=for-the-badge&logo=nasa&logoColor=7f00ff&labelColor=050814"/></a>
+<a href="#-01--mission-description"><img height="38" src="https://img.shields.io/badge/FLIGHT%20CORE-AETHER--MRID1607X-ff007f?style=for-the-badge&logo=atom&logoColor=ff007f&labelColor=050814"/></a>
 
 <br/><br/>
 
-<img height="36" src="https://img.shields.io/badge/PHASE%204%20%C2%B7%20AGRONOMY-DAYS%2012--13%20AGRICULTURE%20TRANSLATOR%20CERTIFIED%20%E2%80%A2%2010%2F10%20TESTS-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="36" src="https://img.shields.io/badge/PRECISION%20VRI%20CORE-%2B96.68%25%20WATER%20SAVINGS%20%E2%80%A2%20CONFORMAL%202--SIGMA%20RISK-ffb700?style=for-the-badge&labelColor=000000"/>
-<img height="36" src="https://img.shields.io/badge/AEROSPACE%20DOSSIERS-1%2C040--LINE%20MD%20%2B%201%2C086--LINE%20LATEX%20SEALED-00e5ff?style=for-the-badge&labelColor=000000"/>
+<!-- ROW 2: 1,000-TRIAL PLANETARY MONTE CARLO STRESS CAMPAIGN (LONG SPACE GLOW BADGES) -->
+<a href="11_simulation_test_campaign/documentation/MONTE_CARLO_PLANETARY_CERTIFICATION.md"><img height="38" src="https://img.shields.io/badge/PLANETARY%20MONTE%20CARLO-1%2C000%20%2F%201%2C000%20TRIALS%20PERFECTLY%20QUALIFIED%20(100.0%25%20PASS)-00f2fe?style=for-the-badge&logo=checkmarx&logoColor=00f2fe&labelColor=050814"/></a>
+<a href="11_simulation_test_campaign/documentation/MONTE_CARLO_PLANETARY_CERTIFICATION.md"><img height="38" src="https://img.shields.io/badge/SHA--256%20SEAL-2cad3c797a3e5a48444f8ea31150bd0f2b0304ee6bd662001dc61d2733936305-ff007f?style=for-the-badge&logo=lock&logoColor=ff007f&labelColor=050814"/></a>
 
 <br/><br/>
 
-<img height="36" src="https://img.shields.io/badge/PHASE%204%20%C2%B7%20CIVIL-DAYS%2014--15%20CIVIL%20TRANSLATOR%20CERTIFIED%20%E2%80%A2%2015%2F15%20TESTS-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="36" src="https://img.shields.io/badge/PHASE%205%20%C2%B7%20UNIFIED%20PIPELINE-DAY%2016%20MASTER%20ORCHESTRATOR%20%E2%80%A2%208%2F8%20TESTS-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="36" src="https://img.shields.io/badge/THROUGHPUT-0.0063%20MS%2FPIXEL%20%E2%80%A2%204X%20DO--178C%20MARGIN-00e5ff?style=for-the-badge&labelColor=000000"/>
-<img height="36" src="https://img.shields.io/badge/FOUNDATION%20BEARING-MEYERHOF--HANSEN%20%E2%80%A2%20EUROCODE%207%20FS%E2%89%A53.0-ffb700?style=for-the-badge&labelColor=000000"/>
-<img height="36" src="https://img.shields.io/badge/COUPLED%20SIMULATION-PADDY%20NURSERY%20TERRAMECHANICS%20%E2%80%A2%20GOLDILOCKS%20WATER-ff2079?style=for-the-badge&labelColor=000000"/>
-<img height="36" src="https://img.shields.io/badge/AEROSPACE%20DOSSIERS-1%2C010--LINE%20MD%20%2B%201%2C011--LINE%20LATEX%20SEALED-00e5ff?style=for-the-badge&labelColor=000000"/>
+<!-- ROW 3: QUADRANT 1 TO QUADRANT 4 DEEP TELEMETRY (AEROSPACE GRADIENTS) -->
+<a href="11_simulation_test_campaign/figures/"><img height="36" src="https://img.shields.io/badge/QUADRANT%201%20%C2%B7%20DROUGHT-250%2F250%20PASS%20%E2%80%A2%20MONOTONIC%20DESICCATION%20%E2%80%A2%20ZERO%20MASS%20DRIFT-ff7700?style=for-the-badge&logo=sun&logoColor=ff7700&labelColor=050814"/></a>
+<a href="11_simulation_test_campaign/figures/"><img height="36" src="https://img.shields.io/badge/QUADRANT%202%20%C2%B7%20DELUGE-250%2F250%20PASS%20%E2%80%A2%2080%25%20SATURATION%20CEILING%20%E2%80%A2%206%20LANDSLIDE%20TRIGGERS-00d2ff?style=for-the-badge&logo=cloud-rain&logoColor=00d2ff&labelColor=050814"/></a>
 
 <br/><br/>
 
-<img height="36" src="https://img.shields.io/badge/SUBSYSTEM%2010%20%C2%B7%20ZONAL%20ANALYTICS-4%2F4%20CONTRACTS%20CERTIFIED%20%E2%80%A2%20DO--178C%20LEVEL--A-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="36" src="https://img.shields.io/badge/ZONAL%20EXTRACTION%20LATENCY-0.752%20MS%20%E2%80%A2%20VECTORIZED%20RAY--CAST-00e5ff?style=for-the-badge&labelColor=000000"/>
-<img height="36" src="https://img.shields.io/badge/COCKPIT%20UI%2FUX-STREAMLIT%20%2B%20GOOGLE%20MAPS%20HYBRID%20%E2%80%A2%20MODERN%20JARS-ff2079?style=for-the-badge&labelColor=000000"/>
+<a href="11_simulation_test_campaign/figures/"><img height="36" src="https://img.shields.io/badge/QUADRANT%203%20%C2%B7%20NOISE%20%26%20SAR-250%2F250%20PASS%20%E2%80%A2%2050%25%20CLOUD%20DROPOUT%20FALLBACK%20%E2%80%A2%20%CE%BA(P)%20%3C%201709-b000ff?style=for-the-badge&logo=radar&logoColor=b000ff&labelColor=050814"/></a>
+<a href="11_simulation_test_campaign/figures/"><img height="36" src="https://img.shields.io/badge/QUADRANT%204%20%C2%B7%20LIQUEFACTION-250%2F250%20PASS%20%E2%80%A2%2045%20KN%20TRACTOR%20%E2%80%A2%20100%25%20IMMOBILIZATION%20ALERT-e0004d?style=for-the-badge&logo=truck&logoColor=e0004d&labelColor=050814"/></a>
 
 <br/><br/>
 
-<img height="34" src="https://img.shields.io/badge/PHASE%202%20CYCLE-16%20DAYS%20%E2%9C%94-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/PHASE%203%20WEEK%201-6%20DAYS%20%E2%9C%94-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/PHASE%203%20WEEK%202-8%20DAYS-ffb700?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/PHASE%203%20WEEK%203-7%20DAYS-ffb700?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/PHASE%203%20WEEK%204-4%20DAYS-ffb700?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/PYTHON-3.10%2B-00e5ff?style=for-the-badge&logo=python&logoColor=00e5ff&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/BACKEND-FASTAPI-00ffab?style=for-the-badge&logo=fastapi&logoColor=00ffab&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/GIS-MAPBOX%20%2B%20FOLIUM-b026ff?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/DASHBOARD-STREAMLIT-ff2079?style=for-the-badge&logo=streamlit&logoColor=ff2079&labelColor=000000"/>
+<!-- ROW 4: NUMERICAL INVARIANTS & STANDARDS (DO-178C LEVEL-A PRINCIPLES & EUROCODE 7) -->
+<a href="11_simulation_test_campaign/documentation/MONTE_CARLO_PLANETARY_CERTIFICATION.md"><img height="36" src="https://img.shields.io/badge/VERIFICATION%20STANDARD-RTCA%20DO--178C%20LEVEL--A%20PRINCIPLES-00f2fe?style=for-the-badge&logo=aerospace&logoColor=00f2fe&labelColor=050814"/></a>
+<a href="11_simulation_test_campaign/documentation/MONTE_CARLO_PLANETARY_CERTIFICATION.md"><img height="36" src="https://img.shields.io/badge/GEOTECHNICAL%20STANDARD-EUROCODE%207%20%E2%80%A2%20TAYLOR--DUNCAN%20%26%20MEYERHOF-7f00ff?style=for-the-badge&logo=google-earth&logoColor=7f00ff&labelColor=050814"/></a>
+<a href="11_simulation_test_campaign/documentation/MONTE_CARLO_PLANETARY_CERTIFICATION.md"><img height="36" src="https://img.shields.io/badge/KALMAN%20CONDITION%20MARGIN-585.1X%20SAFETY%20FACTOR%20(%CE%BA%20%3D%201709.0%20%E2%89%AA%2010%E2%81%B6)-00ffab?style=for-the-badge&logo=shield&logoColor=00ffab&labelColor=050814"/></a>
 
 <br/><br/>
 
-<img height="34" src="https://img.shields.io/badge/SATELLITES-SENTINEL%201%20%2F%202-00e5ff?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/DATA%20SOURCE-ISRO%20BHUVAN-ff2079?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/DATA%20SOURCE-LANDSAT-b026ff?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/COVERAGE-GLOBAL-ffb700?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/LICENSE-PROPRIETARY-b026ff?style=for-the-badge&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/CI-PASSING-00ffab?style=for-the-badge&logo=github&logoColor=00ffab&labelColor=000000"/>
-<img height="34" src="https://img.shields.io/badge/PRODUCTION-LIVE-ff2079?style=for-the-badge&labelColor=000000"/>
+<!-- ROW 5: RESEARCH ARTIFACTS & MULTI-FORMAT PUBLICATIONS -->
+<a href="11_simulation_test_campaign/figures/"><img height="34" src="https://img.shields.io/badge/RESEARCH%20PLOTS-3%20MULTI--PANEL%20FIGURES%20(600%20DPI%20PNG%20%2B%20VECTOR%20PDF)-00f2fe?style=for-the-badge&logo=adobe-acrobat-reader&logoColor=00f2fe&labelColor=050814"/></a>
+<a href="11_simulation_test_campaign/documentation/"><img height="34" src="https://img.shields.io/badge/DOSSIER%20DISTRIBUTION-MARKDOWN%20%2B%20IEEE%20LATEX%20%2B%20SPHINX%20RST-b000ff?style=for-the-badge&logo=latex&logoColor=b000ff&labelColor=050814"/></a>
+<a href="11_simulation_test_campaign/documentation/MONTE_CARLO_PLANETARY_CERTIFICATION.md"><img height="34" src="https://img.shields.io/badge/BENCHMARK%20THROUGHPUT-1.16%20MS%20%2F%20TRIAL%20%E2%80%A2%201.162S%20WALL%20CLOCK-00ffab?style=for-the-badge&logo=speedtest&logoColor=00ffab&labelColor=050814"/></a>
 
 <br/><br/>
 
-<img height="30" src="https://img.shields.io/badge/CORE%20METHOD-PHYSICS--INFORMED%20NEURAL%20NETWORK-00e5ff?style=for-the-badge&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/CORE%20METHOD-ENSEMBLE%20KALMAN%20FILTER-ff2079?style=for-the-badge&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/DOMAIN-AGRONOMY-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/DOMAIN-CIVIL%20ENGINEERING-b026ff?style=for-the-badge&labelColor=000000"/>
+<!-- ROW 6: SATELLITE CONSTELLATIONS & TECH STACK -->
+<img height="32" src="https://img.shields.io/badge/SATELLITE%20CONSTELLATIONS-SENTINEL--1%20SAR%20%2B%20SENTINEL--2%20MSI%20%2B%20LANDSAT--9-00f2fe?style=for-the-badge&logo=satellite&logoColor=00f2fe&labelColor=050814"/>
+<img height="32" src="https://img.shields.io/badge/GROUND%20OBSERVATION-ISRO%20BHUVAN%20%2B%20DEM%20%2B%20ERA5%20AGROMET-ff007f?style=for-the-badge&logo=planetscale&logoColor=ff007f&labelColor=050814"/>
+<img height="32" src="https://img.shields.io/badge/PYTHON-3.10%2B%20%E2%80%A2%20PYTORCH%20%E2%80%A2%20FASTAPI%20%E2%80%A2%20STREAMLIT-7f00ff?style=for-the-badge&logo=python&logoColor=00f2fe&labelColor=050814"/>
 
 <br/><br/>
 
-<img height="30" src="https://img.shields.io/badge/STACK-NUMPY-00e5ff?style=for-the-badge&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/STACK-PANDAS-00ffab?style=for-the-badge&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/STACK-PYTORCH-ff2079?style=for-the-badge&logo=pytorch&logoColor=ff2079&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/STACK-SCIKIT--LEARN-b026ff?style=for-the-badge&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/STACK-XARRAY-ffb700?style=for-the-badge&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/STACK-RASTERIO-00e5ff?style=for-the-badge&labelColor=000000"/>
-<img height="30" src="https://img.shields.io/badge/STACK-GEOPANDAS-00ffab?style=for-the-badge&labelColor=000000"/>
-
-<br/><br/>
-
-**🌐 Official Production Link:** [the-mridansh-official-website.vercel.app](https://the-mridansh-official-website.vercel.app/)
+**🌐 Official JCC Production Sanctum:** [the-mridansh-official-website.vercel.app](https://the-mridansh-official-website.vercel.app/)
 
 </div>
 
