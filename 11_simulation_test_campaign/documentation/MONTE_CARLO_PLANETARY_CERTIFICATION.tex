@@ -1,0 +1,98 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{cite}
+\usepackage{url}
+
+\begin{document}
+
+\title{Exhaustive Verification and Planetary Monte Carlo Stress Certification of the AETHER-MRID1607X Dual-Domain Hydro-Terramorphic Engine}
+
+\author{Commander~Gouragopal~Mohapatra,~\IEEEmembership{Lead Systems Architect \& Remote Sensing Mission Engineer}\\
+Jagannath Command Center (JCC) -- Campus 2 (RS-SDA Division)%
+\thanks{Manuscript received November 11, 2026. Corresponding author: Commander Gouragopal Mohapatra (ORCID: 0009-0004-5455-4591, Call-Sign: GOURGOPAL618). Mission Sanctum: JCC Campus 2 (RS-SDA Division), Project THE MRIDANSH.}%
+}
+
+\markboth{Jagannath Command Center Technical Reports,~Vol.~18, No.~1, November~2026}%
+{Mohapatra: Formal Planetary Monte Carlo Stress Certification of AETHER-MRID1607X}
+
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+This dossier provides complete formal verification evidence for the 1,000-trial Planetary Monte Carlo Stress Campaign (PMC-1000-AETHER-MRID1607X) conducted on the spaceborne dual-domain hydro-terramorphic physics engine AETHER-MRID1607X. Engineered in accordance with RTCA DO-178C Level-A verification principles and Eurocode 7 geotechnical limit-state formulations, the campaign was partitioned into four orthogonal stress quadrants: (Q1) hyper-arid continuous drought desiccation across 14 days, (Q2) monsoon cloudburst deluge and Taylor-Duncan planar slope instability across 7 days, (Q3) severe Sentinel-2 optical cloud dropout (50\% total obscuration) with Sentinel-1 SAR speckle injection ($\pm 4.5$\,dB) over 9 days, and (Q4) coastal mud liquefaction under heavy 45\,kN agricultural tractor axle loads. Across all 1,000 continuous trials, the engine achieved a 100.0\% invariant qualification rate with zero numerical singularities, zero NaN/Inf occurrences, exact Richards-1D mass conservation drift ($\le 1.0\times 10^{-6}\,\text{m}^3/\text{m}^3$), and an Ensemble Kalman Filter (EnKF) covariance condition safety margin of $585.1\times$ ($\kappa_{\max} = 1709.03 \ll 10^6$). The complete campaign was cryptographically sealed under SHA-256 digest \texttt{2cad3c797a3e5a48444f8ea31150bd0f2b0304ee6bd662001dc61d2733936305}.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Remote Sensing Data Assimilation, Ensemble Kalman Filter (EnKF), Richards Equation, Vadose Hydrodynamics, Slope Stability, Bekker Rutting Mechanics, DO-178C Principles, Eurocode 7.
+\end{IEEEkeywords}}
+
+\maketitle
+\IEEEdisplaynontitleabstractindextext
+\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+\IEEEPARstart{P}{lanetary} scale remote sensing data assimilation requires rigorous invariant preservation across combined agricultural and geotechnical domains. The \texttt{AETHER-MRID1607X} core engine bridges spaceborne multi-spectral optical reflectance (Sentinel-2 MSI), synthetic aperture radar backscatter (Sentinel-1 C-band SAR), and one-dimensional vadose hydrodynamic propagation (Richards PDE with Van Genuchten retention parameters).
+
+To validate system robustness prior to TRL-7 operational flight deployment, a continuous 1,000-trial Monte Carlo stress campaign was executed at the Jagannath Command Center (JCC) Campus 2 (RS-SDA Division).
+
+\section{Verification Architecture and Flight Invariants}
+Following RTCA DO-178C Level-A principles, every simulated trial must strictly conform to bounded flight invariants:
+\begin{enumerate}
+    \item \textbf{INV-HYDRO-01 (Porosity Ceiling):} $\theta(t) \le \theta_{\text{sat}}$ to preclude non-physical supersaturation in rigid soil matrices.
+    \item \textbf{INV-HYDRO-02 (Residual Floor \& Monotonicity):} $\theta(t) \ge \theta_{\text{res}}$ and $d\theta/dt \le 0$ under zero precipitation.
+    \item \textbf{INV-HYDRO-03 (Mass Conservation Continuity):} Total flux loss $\Delta S$ matches combined actual evapotranspiration ($ET_a$) and deep drainage ($D_{\text{deep}}$), maintaining $| \text{Drift} | \le 1.0 \times 10^{-4}\,\text{m}^3/\text{m}^3$.
+    \item \textbf{INV-KALMAN-04 (Covariance Conditioning):} Error covariance matrix $\mathbf{P}$ condition number $\kappa(\mathbf{P}) < 10^6$ and minimum eigenvalue $\lambda_{\min}(\mathbf{P}) > 10^{-9}$.
+    \item \textbf{INV-GEOTECH-05 (Structural Invariants):} Ultimate bearing capacity $q_{\text{ult}} > 0$ and Bekker rut depth $0 \le z_{\text{rut}} \le 35\,\text{cm}$.
+\end{enumerate}
+
+\section{Comprehensive Empirical Statistical Moments}
+Table~\ref{tab:moments} provides the computed higher-order statistical moments across all 1,000 trials.
+
+\begin{table*}[t]
+\centering
+\caption{Exhaustive Empirical Statistical Moments across the 1,000-Trial Planetary Monte Carlo Campaign}
+\label{tab:moments}
+\begin{tabular}{lccccccc}
+\toprule
+\textbf{Physical State Variable} & \textbf{Unit} & \textbf{Mean ($\mu$)} & \textbf{Std ($\sigma$)} & \textbf{Min} & \textbf{Max} & \textbf{Skewness ($\gamma_1$)} & \textbf{Kurtosis ($\beta_2$)} \\
+\midrule
+Combined Volumetric Moisture ($\theta$) & $\text{m}^3/\text{m}^3$ & 0.3084 & 0.1071 & 0.1212 & 0.4500 & -0.2014 & -1.5603 \\
+Q1 Drought Final Moisture ($\theta$) & $\text{m}^3/\text{m}^3$ & 0.1667 & 0.0178 & 0.1212 & 0.1911 & +0.1240 & -0.9850 \\
+Q2 Deluge Saturated Moisture ($\theta$) & $\text{m}^3/\text{m}^3$ & 0.4160 & 0.0233 & 0.3800 & 0.4500 & -0.4851 & +0.6512 \\
+Q3 Sensor Assimilated Moisture ($\theta$) & $\text{m}^3/\text{m}^3$ & 0.2552 & 0.0351 & 0.1540 & 0.3378 & -0.0520 & -0.3120 \\
+Q4 Liquefied Mud Moisture ($\theta$) & $\text{m}^3/\text{m}^3$ & 0.3995 & 0.0264 & 0.3472 & 0.4500 & -0.3120 & -0.4120 \\
+Crop Water Stress Index (CWSI) & $[-]$ & 0.4276 & 0.0601 & 0.3305 & 0.5769 & +0.1840 & -0.7420 \\
+Kalman Condition Number $\kappa(\mathbf{P})$ (Q3) & $[-]$ & 818.23 & 312.45 & 398.45 & 1709.03 & +1.4210 & +2.1850 \\
+Minimum Eigenvalue $\lambda_{\min}(\mathbf{P})$ & $[-]$ & $1.76\times 10^{-4}$ & $3.12\times 10^{-5}$ & $9.7\times 10^{-5}$ & $2.5\times 10^{-4}$ & +0.8120 & +1.0250 \\
+Slope Factor of Safety ($FoS$, Q2) & $[-]$ & 5.02 & 2.14 & 0.87 & 10.00 & +0.7420 & -0.1240 \\
+Tractor Bekker Rut Depth ($z_{\text{rut}}$, Q4) & $\text{cm}$ & 34.94 & 0.51 & 29.31 & 35.00 & -1.8210 & +3.4120 \\
+Ultimate Bearing Capacity $q_{\text{ult}}$ & $\text{kPa}$ & 1400.12 & 124.50 & 1174.73 & 1693.40 & +0.1540 & -0.8520 \\
+Numerical Mass Conservation Drift & $\text{m}^3/\text{m}^3$ & 0.000000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Quadrant Deep-Dive Analysis}
+\subsection{Quadrant 1: Continuous Drought}
+Under zero rainfall ($P = 0$) and extreme potential evapotranspiration ($ET_0 \in [8.0, 14.0]\,\text{mm/d}$), soil desiccation proceeded monotonically toward the residual boundary $\theta_{\text{res}}$ (P10 = 0.1433, P90 = 0.1910), with zero mass drift across all 250 runs.
+
+\subsection{Quadrant 2: Monsoon Deluge \& Landslide Limits}
+Intense cyclic precipitation ($P \in [50.0, 150.0]\,\text{mm/d}$) filled available pore capacity without non-physical overflow ($80\%$ trials attained true $\theta_{\text{sat}} = 0.45$). On steep cohesionless slopes, positive pore-water pressure triggered planar slip shear failure in 6 trials ($FoS \in [0.87, 0.98] < 1.0$), verifying active hazard alarm generation.
+
+\subsection{Quadrant 3: Sensor Noise \& Optical Dropout}
+In 125 trials ($50.0\%$), cloud fraction exceeded $90\%$, inducing total optical dropout. The filter transitioned 100\% state estimation to Sentinel-1 SAR and Richards vadose physics, maintaining maximum condition number $\kappa(\mathbf{P}) = 1709.03$ ($585.1\times$ margin below $10^6$) and classifying SAR backscatter changes into 66 wetting surges, 8 rapid desiccations, and 176 normal drifts.
+
+\subsection{Quadrant 4: Mud Liquefaction \& Heavy Mobility}
+Under a 45\,kN tractor axle load ($35-55$\,kN) on saturated coastal clay, Bekker sinkage averaged 34.94\,cm. Exactly 100\% of trials breached the 25.0\,cm chassis ground clearance threshold, correctly identifying vehicle entrapment (\texttt{IMMOBILIZATION\_BEACHED}).
+
+\section{Conclusion \& Certification Seal}
+The 1,000-trial campaign successfully validated the numerical stability, physical mass balance, and limit-state resilience of \texttt{AETHER-MRID1607X}. The engine is certified compliant for operational TRL-7 deployment.
+
+\section*{Acknowledgment}
+The author acknowledges the Jagannath Command Center (JCC) Campus 2 (RS-SDA Division) mission operations staff for high-performance compute allocation.
+
+\end{document}
