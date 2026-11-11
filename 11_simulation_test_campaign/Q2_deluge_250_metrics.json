@@ -4,8 +4,8 @@
   "total_trials": 250,
   "passed_trials": 250,
   "success_rate_pct": 100.0,
-  "execution_wall_time_seconds": 0.259,
-  "average_ms_per_trial": 1.04,
+  "execution_wall_time_seconds": 0.222,
+  "average_ms_per_trial": 0.89,
   "statistical_moments": {
     "final_theta": {
       "mean": 0.416,

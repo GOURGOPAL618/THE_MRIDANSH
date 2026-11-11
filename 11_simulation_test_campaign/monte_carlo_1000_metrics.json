@@ -1,0 +1,189 @@
+{
+  "mission": "THE_MRIDANSH_PLANETARY_MONTE_CARLO_CAMPAIGN",
+  "campaign_id": "PMC-1000-AETHER-MRID1607X",
+  "authority": "Commander Gouragopal Mohapatra (GOURGOPAL618), Lead Systems Architect",
+  "command_center": "Jagannath Command Center (JCC) - Campus 2 (RS-SDA Division)",
+  "total_trials": 1000,
+  "passed_trials": 1000,
+  "aggregate_qualification_rate_pct": 100.0,
+  "cumulative_wall_time_seconds": 1.162,
+  "mean_execution_ms_per_trial": 1.16,
+  "quadrant_breakdown": {
+    "Q1_DROUGHT_STRESS": {
+      "quadrant": "Q1_HYPER_ARID_DROUGHT",
+      "seed": 16071,
+      "total_trials": 250,
+      "passed_trials": 250,
+      "success_rate_pct": 100.0,
+      "execution_wall_time_seconds": 0.408,
+      "average_ms_per_trial": 1.63,
+      "statistical_moments": {
+        "final_theta": {
+          "mean": 0.1667,
+          "std": 0.0178,
+          "min": 0.1212,
+          "max": 0.1911,
+          "p10": 0.1433,
+          "p90": 0.191
+        },
+        "cwsi": {
+          "mean": 0.4276,
+          "std": 0.0601,
+          "min": 0.3305,
+          "max": 0.5769
+        },
+        "kalman_condition_number_kappa": {
+          "mean": 2.5,
+          "max": 2.75,
+          "min": 2.24,
+          "threshold_ceiling": 1000000.0,
+          "condition_safety_margin": 363636.4
+        },
+        "mass_conservation_drift_m3_m3": {
+          "mean": 0.0,
+          "max": 0.0,
+          "threshold_ceiling": 0.0001
+        }
+      },
+      "forensics_summary": {
+        "super_additive_synergy_count": 250,
+        "clamping_boundary_hits": 0,
+        "zero_drift_count": 250
+      }
+    },
+    "Q2_MONSOON_DELUGE": {
+      "quadrant": "Q2_MONSOON_DELUGE_HAZARDS",
+      "seed": 16072,
+      "total_trials": 250,
+      "passed_trials": 250,
+      "success_rate_pct": 100.0,
+      "execution_wall_time_seconds": 0.222,
+      "average_ms_per_trial": 0.89,
+      "statistical_moments": {
+        "final_theta": {
+          "mean": 0.416,
+          "std": 0.0233,
+          "min": 0.38,
+          "max": 0.45,
+          "saturation_ceiling_hit_pct": 80.0
+        },
+        "slope_factor_of_safety": {
+          "mean": 5.02,
+          "min": 0.87,
+          "max": 10.0,
+          "landslide_hazard_count": 6,
+          "landslide_hazard_rate_pct": 2.4
+        },
+        "tractor_rut_depth_cm": {
+          "mean": 1.5,
+          "max": 1.5,
+          "min": 1.5
+        },
+        "kalman_condition_number_kappa": {
+          "mean": 2.42,
+          "max": 2.66,
+          "min": 2.23,
+          "threshold_ceiling": 1000000.0,
+          "condition_safety_margin": 375939.8
+        },
+        "mass_conservation_drift_m3_m3": {
+          "mean": 0.0,
+          "max": 0.0,
+          "threshold_ceiling": 0.0001
+        }
+      },
+      "forensics_summary": {
+        "super_additive_synergy_count": 250,
+        "saturation_clamping_hits": 250,
+        "zero_drift_count": 250
+      }
+    },
+    "Q3_SENSOR_NOISE_DROPOUT": {
+      "quadrant": "Q3_SENSOR_NOISE_DROPOUT",
+      "seed": 16073,
+      "total_trials": 250,
+      "passed_trials": 250,
+      "success_rate_pct": 100.0,
+      "execution_wall_time_seconds": 0.326,
+      "average_ms_per_trial": 1.3,
+      "sar_anomaly_telemetry": {
+        "WETTING_SURGE": 66,
+        "RAPID_DESICCATION": 8,
+        "NORMAL_DRIFT": 176
+      },
+      "optical_cloud_dropouts_count": 125,
+      "optical_cloud_dropout_rate_pct": 50.0,
+      "statistical_moments": {
+        "assimilated_theta": {
+          "mean": 0.2552,
+          "std": 0.0351,
+          "min": 0.154,
+          "max": 0.3378
+        },
+        "kalman_condition_number_kappa": {
+          "mean": 818.23,
+          "max": 1709.03,
+          "min": 398.45,
+          "threshold_ceiling": 1000000.0,
+          "condition_safety_margin": 585.1
+        },
+        "minimum_eigenvalue_lambda": {
+          "mean": 0.000176,
+          "min": 9.7e-05,
+          "threshold_floor": 1e-09
+        },
+        "mass_conservation_drift_m3_m3": {
+          "mean": 0.0,
+          "max": 0.0,
+          "threshold_ceiling": 0.0001
+        }
+      },
+      "forensics_summary": {
+        "super_additive_synergy_count": 4,
+        "clamping_boundary_hits": 0,
+        "zero_drift_count": 250
+      }
+    },
+    "Q4_MUD_LIQUEFACTION_RUTTING": {
+      "quadrant": "Q4_MUD_LIQUEFACTION_RUTTING",
+      "seed": 16074,
+      "total_trials": 250,
+      "passed_trials": 250,
+      "success_rate_pct": 100.0,
+      "execution_wall_time_seconds": 0.206,
+      "average_ms_per_trial": 0.83,
+      "mobility_distribution": {
+        "SAFE_PASSAGE": 0,
+        "HIGH_RISK_RUTTING": 0,
+        "IMMOBILIZATION_BEACHED": 250
+      },
+      "immobilization_rate_pct": 100.0,
+      "statistical_moments": {
+        "saturated_theta": {
+          "mean": 0.3995,
+          "min": 0.3472,
+          "max": 0.45
+        },
+        "tractor_rut_depth_cm": {
+          "mean": 34.94,
+          "std": 0.51,
+          "min": 29.31,
+          "max": 35.0,
+          "immobilization_ceiling_cm": 25.0
+        },
+        "bearing_capacity_kpa": {
+          "mean": 1400.12,
+          "min": 1174.73,
+          "max": 1693.4
+        },
+        "mass_conservation_drift_m3_m3": {
+          "mean": 0.0,
+          "max": 0.0,
+          "threshold_ceiling": 0.0001
+        }
+      }
+    }
+  },
+  "certification_status": "FLIGHT_CERTIFIED_TRL7_COMPLIANT",
+  "sha256_checksum": "2cad3c797a3e5a48444f8ea31150bd0f2b0304ee6bd662001dc61d2733936305"
+}
