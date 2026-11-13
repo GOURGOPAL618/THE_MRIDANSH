@@ -6,7 +6,8 @@ from pathlib import Path
 import numpy as np
 import torch
 
-repo_root = Path(__file__).resolve().parent.parent
+_scripts_dir = Path(__file__).resolve().parent
+repo_root = _scripts_dir.parent.parent if _scripts_dir.name == "scripts" else _scripts_dir.parent
 translators_dir = repo_root / "4_domain_translators"
 civil_dir = translators_dir / "civil"
 
@@ -22,7 +23,8 @@ def main():
     print("=" * 80)
     
     sim = CoupledAgroCivilSimulator()
-    output_dir = Path(__file__).resolve().parent
+    output_dir = _scripts_dir.parent / "simulation_data" / "master_campaign"
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     # Load spaceborne flight telemetry
     bundle_path = repo_root / "9_spaceborne_operational_campaign" / "2_harmonized_tensors" / "s1_s2_dem_era5_harmonized_bundle.pt"

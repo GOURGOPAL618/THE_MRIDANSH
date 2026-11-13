@@ -19,7 +19,8 @@ from typing import Any, Dict, List, Optional, Tuple
 import numpy as np
 
 # Ensure repository root and translators directories are on sys.path
-REPO_ROOT = Path(__file__).resolve().parent.parent
+_SCRIPTS_DIR = Path(__file__).resolve().parent
+REPO_ROOT = _SCRIPTS_DIR.parent.parent if _SCRIPTS_DIR.name == "scripts" else _SCRIPTS_DIR.parent
 TRANSLATORS_DIR = REPO_ROOT / "4_domain_translators"
 CIVIL_DIR = TRANSLATORS_DIR / "civil"
 AGRI_DIR = TRANSLATORS_DIR / "agronomy"
