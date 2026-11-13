@@ -120,7 +120,7 @@ def generate_figure_1():
     ax2.set_ylabel(r"Cumulative Probability $P(K \leq \kappa)$")
     ax2.legend(loc="lower right", framealpha=0.9)
 
-    ax2.annotate(r"DO-178C Safety Margin: $585.1\times$",
+    ax2.annotate(r"Flight Safety Margin: $585.1\times$",
                  xy=(1709.03, 0.85), xytext=(2e4, 0.65),
                  arrowprops=dict(facecolor='black', shrink=0.08, width=1.5, headwidth=8),
                  fontsize=10, bbox=dict(boxstyle="round,pad=0.3", fc="#ffffcc", ec="#cc9900", lw=1.2))
@@ -280,7 +280,7 @@ def generate_latex_captions_and_manifest():
 % JAGANNATH COMMAND CENTER (JCC) - CAMPUS 2 (RS-SDA DIVISION)
 % RESEARCH FIGURE CAPTIONS - 1,000-TRIAL PLANETARY MONTE CARLO STRESS CAMPAIGN
 % Lead Systems Architect: Commander Gouragopal Mohapatra (GOURGOPAL618)
-% Core Engine: AETHER-MRID1607X | DO-178C Level-A Invariant Standard
+% Core Engine: AETHER-MRID1607X | Flight Safety Invariant Standard
 % ====================================================================================================
 
 \begin{figure*}[t]

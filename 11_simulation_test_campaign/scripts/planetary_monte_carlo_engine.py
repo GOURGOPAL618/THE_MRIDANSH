@@ -1,7 +1,7 @@
 # THE MRIDANSH - UNIFIED PHYSICS CORE & MULTI-DOMAIN TEST CAMPAIGN
 # Module: 11_simulation_test_campaign/planetary_monte_carlo_engine.py
 # Subsystem: Mission Day 18 - 1,000-Trial Planetary Monte Carlo Stress Campaign
-# Standards: RTCA DO-178C Level-A Verification Principles / Eurocode 7 / FAO-56 / USACE TM 5-818-1
+# Standards: Aerospace Flight Safety Invariant Principles / Eurocode 7 / FAO-56 / USACE TM 5-818-1
 # Lead Systems Architect: Gouragopal Mohapatra (JCC Campus 2, RS-SDA Division)
 
 from __future__ import annotations
@@ -101,7 +101,7 @@ class QuadrantTrialResult:
 class PlanetaryMonteCarloEngine:
     """
     High-Performance In-Memory Vectorized Engine executing the 1,000-Trial Planetary Stress Campaign.
-    Designed under RTCA DO-178C Level-A verification invariants and Eurocode 7 limit states.
+    Designed under aerospace flight safety verification invariants and Eurocode 7 limit states.
     """
 
     def __init__(self, output_dir: Optional[Path] = None):
