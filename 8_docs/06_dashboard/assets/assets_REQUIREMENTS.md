@@ -1,4 +1,4 @@
-# Subsystem 06: Mission Cockpit Design System & Styling Specification (`6_dashboard/assets`)
+# Subsystem 06: Mission Cockpit Design System, Styling & Visual Evidence Specification (`6_dashboard/assets`)
 ## Central Engine: AETHER-MRID1607X
 ### Mission Facility: JCC CAMPUS 2 (RS-SDA DIVISION)
 ### Author & Lead Architect: Gourgopal Mohapatra
@@ -8,45 +8,57 @@
 
 ## 1. Executive Overview & Subsystem Mandate
 
-The `6_dashboard/assets/` directory houses the core visual identity, design tokens, and user interface styling architecture for the **AETHER-MRID1607X** Mission Cockpit (`6_dashboard/app.py`). Encapsulated within the comprehensive 842-line `style.css` stylesheet (22.5 KB), this subsystem defines an **Aerospace Command Center Glassmorphism Design System** engineered for high-consequence situational awareness, geospatial clarity, and multi-domain decision intelligence.
+The `6_dashboard/assets/` directory houses the core visual identity, design tokens, stylesheet architecture, and authoritative visual telemetry evidence suite for the **AETHER-MRID1607X** Mission Cockpit (`6_dashboard/cockpit/app.py`). This subsystem encompasses two complementary architectural assets:
 
-The primary mandate of the assets subsystem is to enforce deterministic visual ergonomics across all cockpit viewports, overcoming default web framework constraints. It achieves this by standardizing dual-tier typography (`Plus Jakarta Sans` for interface controls and `JetBrains Mono` for telemetry numbers), compensating for top-bar viewport clipping, skinning interactive Leaflet.draw GIS tools, and rendering farmer advisory cards (`[SHABHASH]` vs `[KHATRA]`) with zero layout jitter.
+1. **Aerospace Glassmorphic Design System (`style.css`)**: An 842-line stylesheet (22.5 KB) defining high-contrast dark-mode command center tokens, dual-tier typography (`Plus Jakarta Sans` for interface controls and `JetBrains Mono` for telemetry values), Streamlit 4.85rem top-bar layout compensation, and custom Folium Leaflet.draw skinning.
+2. **Operational Cockpit Visual Telemetry Evidence Suite (`cockpit_screenshots/`)**: A gallery of 5 Full HD (1080p, 1917x1078) 32-bit RGBA screenshots and accompanying manifest (`SCREENSHOTS_MANIFEST.md`), providing mathematically verified visual proof of live spaceborne telemetry, cadastre farm boundary extraction, interactive satellite map rendering, and Kisan War Room advisory bulletins for the Master Engineering Monograph and aerospace technical presentations.
 
 ```
-       +--------------------------------------------------------------+
-       |             AEROSPACE COCKPIT STYLING ARCHITECTURE           |
-       |                (6_dashboard/assets/style.css)                |
-       +------------------------------+-------------------------------+
-                                      |
-         +----------------------------+----------------------------+
-         |                            |                            |
-         v                            v                            v
-[1. DESIGN TOKENS]           [2. DUAL TYPOGRAPHY]         [3. STREAMLIT OVERRIDES]
-• Deep Obsidian (#070a11)    • Plus Jakarta Sans (UI)     • .block-container (4.85rem)
-• Electric Cyan (#00f0ff)    • JetBrains Mono (Telemetry) • Menu/Footer Suppression
-• Live Status (#00ff88)      • Font Smoothing & Kerning   • Custom Scrollbars
-         |                            |                            |
-         +----------------------------+----------------------------+
-                                      |
-         +----------------------------+----------------------------+
-         |                                                         |
-         v                                                         v
-[4. HUD & GLASS CARDS]                                     [5. GIS & LEAFLET DRAW]
-• .mrid-master-header (Dual Logos)                         • .leaflet-draw-toolbar
-• .kpi-card & Hover Glows                                  • Cyan Technical Vector Polygons
-• Kisan War Room Alert Badges                              • Mode Switcher Pill Styles
+       +-------------------------------------------------------------------------+
+       |             SUBSYSTEM 06 DESIGN SYSTEM & VISUAL ASSETS                  |
+       |                      (6_dashboard/assets/)                              |
+       +------------------------------------+------------------------------------+
+                                            |
+         +----------------------------------+----------------------------------+
+         |                                                                     |
+         v                                                                     v
++---------------------------------------+             +---------------------------------------+
+|  AEROSPACE STYLESHEET (style.css)     |             |  VISUAL EVIDENCE SUITE                |
+|  • Deep Obsidian Canvas (#070a11)     |             |  (cockpit_screenshots/)               |
+|  • Electric Cyan Accent (#00f0ff)     |             |  • SCREEN-01: Header & Flight Scene   |
+|  • Plus Jakarta Sans / JetBrains Mono |             |  • SCREEN-02: Step 2 Telemetry HUD    |
+|  • Streamlit Menu/Footer Suppression  |             |  • SCREEN-03: Zonal Cadastre Deficit  |
+|  • Glassmorphic KPI Cards & Hover Glow|             |  • SCREEN-04: Google Hybrid GIS Map   |
+|  • Leaflet.draw Drawing Toolbar Skin  |             |  • SCREEN-05: Kisan War Room Advisory |
++---------------------------------------+             +---------------------------------------+
 ```
 
 ---
 
-## 2. Design System Tokens & Root Color Palette
+## 2. Subsystem File Inventory & Manifest
 
-The visual design system is anchored in `:root` CSS custom properties establishing high contrast ratios against dark satellite imagery:
+The assets subsystem comprises the core CSS stylesheet and the certified visual evidence repository:
+
+| File Path | File Size | Classification | Key Architectural Role |
+|:---|:---:|:---|:---|
+| **`6_dashboard/assets/style.css`** | 22.5 KB | CSS Stylesheet (842 lines) | Glassmorphism design tokens, root color variables, dual typography rules, Streamlit top-bar padding overrides, and Leaflet.draw styling. |
+| **`6_dashboard/assets/cockpit_screenshots/SCREENSHOTS_MANIFEST.md`** | 2.3 KB | Gallery Manifest | Index of verified Full HD 1080p telemetry captures with authority credentials, resolution specs, and technical monograph usage directives. |
+| **`01_cockpit_top_header_and_scene_selector.png`** | 276.6 KB | Visual Asset (`SCREEN-01`) | Full HD capture of Master Aerospace Header, JCC insignias, multi-modal Sentinel-1/2 status, and Step 1 Scene coordinates. |
+| **`02_step2_telemetry_hud_metrics.png`** | 288.4 KB | Visual Asset (`SCREEN-02`) | Full HD capture of Step 2 Physical Telemetry HUD displaying real-time field moments ($\mu$, Min, Max, $\sigma$, $P_{10}$, $P_{90}$, 40.96 ha AOI). |
+| **`03_farm_boundary_and_water_prescription.png`** | 441.5 KB | Visual Asset (`SCREEN-03`) | Full HD capture of Step 3 & 4 Zonal cadastre extraction, polygon drawing, acreage determination, and volumetric water deficit ($L/	ext{field}$). |
+| **`04_interactive_google_maps_satellite_viewport.png`**| 1.44 MB | Visual Asset (`SCREEN-04`) | Full HD capture of Google Maps Hybrid satellite basemap over Kendrapara coastal delta with cyan technical vector cadastre overlay. |
+| **`05_kisan_war_room_advisory_bulletin.png`** | 1.24 MB | Visual Asset (`SCREEN-05`) | Full HD capture of Kisan War Room advisory card (`[SHABHASH]`), Bekker tractor rut depth ($z_{	ext{rut}}$), and SHA-256 provenance hash. |
+
+---
+
+## 3. Design System Tokens & Root Color Palette
+
+Anchored within `:root` CSS custom properties, the design system establishes deterministic contrast ratios ($>4.5:1$ for WCAG AA compliance, $>7:1$ for high-consequence aerospace readability):
 
 | Variable Identifier | Color Hex / Value | Semantic Role | Accessibility Contrast Ratio |
 |:---|:---:|:---|:---:|
-| `--mrid-bg-deep` | `#070a11` | Deep obsidian background for full viewport. | N/A (Base Canvas) |
-| `--mrid-bg-canvas` | `#090d16` | Main application canvas background. | Base Canvas |
+| `--mrid-bg-deep` | `#070a11` | Deep obsidian canvas background. | Canvas Base |
+| `--mrid-bg-canvas` | `#090d16` | Main application canvas background. | Base Canvas Tier 1 |
 | `--mrid-bg-surface` | `#0e1524` | Elevated control panels and sidebars. | Surface Tier 1 |
 | `--mrid-bg-card` | `#131c2e` | Glassmorphic KPI cards and telemetry containers. | Surface Tier 2 |
 | `--mrid-border` | `#1e293b` | Structural container borders. | Subtle Separation |
@@ -61,96 +73,83 @@ The visual design system is anchored in `:root` CSS custom properties establishi
 
 ---
 
-## 3. Detailed Breakdown of the 13 Styling Sections
+## 4. Visual Telemetry Evidence Suite (`cockpit_screenshots/`)
 
-`style.css` is structured into 13 modular sections governing every graphical aspect of the cockpit:
+The 5 Full HD visual assets provide verified empirical proof of the live operational workstation in production, verified under Level-A Mission Verification Standards:
 
-### 3.1 Section 1: Design Tokens & Root Variables (Lines 11–32)
-Declares the institutional CSS variables ensuring global color synchronization across Streamlit native widgets, custom HTML components, and Plotly charts.
+```
++---------------------------------------------------------------------------------------------------+
+| Asset: SCREEN-01 (01_cockpit_top_header_and_scene_selector.png)                                    |
+| Resolution: 1917 x 1078 | Bit Depth: 32-bit RGBA | SHA-256: 31b3ebb869db16342850b1150259790e...   |
+| Featured Telemetry: JCC Insignia, SAR C-band / Optical Status, Step 1 Scene Selector BBox         |
++---------------------------------------------------------------------------------------------------+
+| Asset: SCREEN-02 (02_step2_telemetry_hud_metrics.png)                                             |
+| Resolution: 1917 x 1076 | Bit Depth: 32-bit RGBA | SHA-256: 7f0f81ad6aa719c71d3cb4a359ff4ddb...   |
+| Featured Telemetry: Step 2 HUD, Mean Moisture μ=29.5%, Min, Max, σ, P10, P90, AOI 40.96 ha        |
++---------------------------------------------------------------------------------------------------+
+| Asset: SCREEN-03 (03_farm_boundary_and_water_prescription.png)                                    |
+| Resolution: 1917 x 1078 | Bit Depth: 32-bit RGBA | SHA-256: b371a12cdc3eda5bb083871f6c31a566...   |
+| Featured Telemetry: Steps 3 & 4 Cadastre Polygon Extraction, Farm Acreage, Water Deficit (L/field)|
++---------------------------------------------------------------------------------------------------+
+| Asset: SCREEN-04 (04_interactive_google_maps_satellite_viewport.png)                              |
+| Resolution: 1917 x 1078 | Bit Depth: 32-bit RGBA | SHA-256: 3d6231d601e470b1b24d03e1c8e7b566...   |
+| Featured Telemetry: 10m Google Maps Hybrid Base, Kendrapara Delta, Cyan Vector AOI Polygon Overlay|
++---------------------------------------------------------------------------------------------------+
+| Asset: SCREEN-05 (05_kisan_war_room_advisory_bulletin.png)                                        |
+| Resolution: 1917 x 1078 | Bit Depth: 32-bit RGBA | SHA-256: 7dd76a6e3eb915737a8c7a8e9e41ad81...   |
+| Featured Telemetry: Farmer Advisory [SHABHASH], Bekker Tractor Rut Depth z_rut, SHA-256 Digest   |
++---------------------------------------------------------------------------------------------------+
+```
 
-### 3.2 Section 2: Typography Enforcement (Lines 34–68)
-* **Google Fonts Import:** Fetches `Plus Jakarta Sans` (weights 300..800) and `JetBrains Mono` (weights 400..700).
-* **Global Rule:** Injects `font-family: 'Plus Jakarta Sans', sans-serif !important;` across all standard HTML elements, `.stApp`, and markdown containers.
-* **Monospace Rule:** Binds `font-family: 'JetBrains Mono', monospace !important;` to telemetry values, raw sensor inputs, coordinates, and latency indicators.
-
-### 3.3 Section 3: Global App Layout & Streamlit Cleanups (Lines 70–130)
-* **Top-Padding Compensation:** Enforces `.block-container { padding-top: 4.85rem !important; }` to eliminate header bar clipping under custom fixed banners.
-* **Streamlit Chrome Suppression:** Hides default Streamlit menu `#MainMenu`, header decorations, and default footer, replacing them with institutional Aerospace headers.
-
-### 3.4 Section 4: Mission Command Header Bar (Lines 132–230)
-* `.mrid-master-header`: Glassmorphic header container with blur backdrop filter (`backdrop-filter: blur(12px)`).
-* **Dual Logo Architecture:** Left frame hosts the Project Insignia, while right frame mounts the institutional JCC Campus 2 insignia.
-* **Status Badges:** Integrates `.status-pill`, `.pill-live` (pulsing green indicator), `.pill-cyan`, and `.pill-purple`.
-
-### 3.5 Section 5: Telemetry Strip (Lines 232–295)
-Renders the horizontal flight telemetry ribbon displaying real-time FPS, inference latency ($	ext{ms/px}$), EnKF convergence status, and active satellite constellation badges.
-
-### 3.6 Section 6: Sidebar Workspace Controls (Lines 297–370)
-Customizes Streamlit sidebar components: dark glassmorphic card styling, cyan slider handles, styled radio toggles, and high-visibility file upload dropzones.
-
-### 3.7 Section 7: Standardized KPI Telemetry Cards (Lines 372–465)
-Defines `.kpi-card` containers:
-* 1px solid border (`--mrid-border`) transitioning to `--mrid-accent-cyan` on `:hover`.
-* Smooth CSS translateY elevation (`transform: translateY(-2px);`).
-* Dedicated sub-containers for numerical value (`.kpi-value`), physical units (`.kpi-unit`), and status delta badges.
-
-### 3.8 Section 8: Section Headers & Typography (Lines 467–515)
-Standardizes sub-headings, section icons, and gradient underline bars separating analytical viewports.
-
-### 3.9 Section 9: Buttons & Interactive Controls (Lines 517–580)
-Skins Streamlit primary and secondary buttons:
-* Primary: Cyan background with deep obsidian text and subtle outer glow (`box-shadow: 0 0 15px rgba(0, 240, 255, 0.3)`).
-* Secondary: Ghost outline with cyan hover borders.
-
-### 3.10 Section 10: Tabs & Accordions (Lines 582–645)
-Overhauls `.stTabs`:
-* Eliminates default red Streamlit indicators in favor of an animated electric cyan bottom border.
-* Unselected tabs rendered in `--mrid-text-secondary`, transitioning to bold `--mrid-text-primary` on active selection.
-
-### 3.11 Section 11: Sector Inspection Glassmorphic Card (Lines 647–710)
-Renders the floating farm boundary inspection panel in the GIS viewport, formatting acreage badges, centroid coordinates, and zonal telemetry.
-
-### 3.12 Section 12: Horizontal Dividers & Leaflet Controls (Lines 712–765)
-Customizes subtle horizontal separators and repositions Leaflet zoom controls to prevent overlap with telemetry cards.
-
-### 3.13 Section 13: Leaflet Draw Toolbar & Farm Alerts (Lines 767–842)
-* **Leaflet.draw Skinning:** Skins polygon and rectangle drawing buttons with cyan border highlights and active drawing states.
-* **Farmer Advisory Bulletins:**
-  * `.badge-shabhash`: Green alert banner (`#00ff88`) for safe tillage and optimal pre-soak moisture.
-  * `.badge-khatra`: Pulsing red hazard banner (`#ef4444`) for critical bogging hazard and seedling submergence risk.
+### 4.1 Publication & Presentation Evidence Roles
+1. **Master Engineering Monograph (30+ Pages):** The 5 captures serve as unassailable, high-fidelity empirical figures substantiating user interface compliance, real-time spatial calculations, and field-tested cadastre polygons.
+2. **Aerospace Ultra-Level Slide Deck (20 Slides .pptx):** Extracted at native 1080p for dark-theme widescreen slide figures with high visual impact.
 
 ---
 
-## 4. Brutal Engineering Disclosures ("Ek Ek Dhappa")
+## 5. Brutally Honest Engineering Disclosures ("Ek Ek Dhappa")
 
-In alignment with institutional engineering transparency guidelines, the following visual compromises, browser quirks, and DOM coupling vulnerabilities are formally disclosed:
+In strict conformance with aerospace transparent disclosure standards, the technical trade-offs and display constraints in `6_dashboard/assets/` are disclosed:
 
-1. **Brute-Force `!important` Streamlit DOM Overrides:**
-   * *Problem:* Streamlit injects deeply nested, dynamically generated class names (e.g. `[class*="st-emotion-cache"]`) that override external CSS rules.
-   * *Workaround:* `style.css` relies heavily on `!important` declarations across 60+ selectors to guarantee font family and padding enforcement.
-   * *Risk:* Upgrading Streamlit minor versions can alter internal HTML wrapper hierarchies, potentially neutralizing specific card or button selectors.
-2. **External Cloud Font Network Dependency:**
-   * *Problem:* Lines 8–9 import Google Fonts via `@import url('https://fonts.googleapis.com/...')`.
-   * *Failure Mode:* On air-gapped defense networks, remote server environments, or field laptops operating without internet connectivity, the font import will silently fail.
-   * *Mitigation:* A robust fallback stack is defined (`-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`), but typography will degrade to standard system fonts.
-3. **Hardcoded Top-Padding Compensation (`4.85rem`):**
-   * *Problem:* `.block-container` top-padding is hardcoded to `4.85rem` to offset the fixed mission command header.
-   * *Impact:* If banner content wraps onto two lines on mobile screens or small browser windows, the header bar will overlap the top telemetry cards.
-4. **Third-Party Leaflet.draw Class Coupling:**
-   * *Problem:* Section 13 overrides third-party Leaflet CSS classes (e.g. `.leaflet-draw-toolbar a`).
-   * *Impact:* Any breaking change in Folium or `leaflet-draw` plugin DOM structuring will silently break toolbar styling, reverting to standard default gray Leaflet buttons.
+### Dhappa 1: Streamlit Hardcoded Top-Bar DOM Injection
+* **Compromise:** Streamlit's base CSS injects a mandatory `4.85rem` top margin on `.block-container` to reserve space for the default header bar.
+* **Workaround:** `style.css` forcibly overrides `.block-container { padding-top: 4.85rem !important; }` and hides `header[data-testid="stHeader"]`.
+* **Fragility:** If a future Streamlit minor release modifies the DOM selector `header[data-testid="stHeader"]`, the top bar will reappear and cause layout jitter.
+
+### Dhappa 2: Fixed Full HD Resolution Capture (1917 x 1078)
+* **Compromise:** The cockpit screenshots in `cockpit_screenshots/` were captured on a standard 1080p display with specific browser chrome dimensions ($1917 \times 1078$ pixels).
+* **Limitation:** On 4K High-DPI displays or mobile viewports, responsive typography (`rem` / `vw`) rescales container elements, producing slight visual reflow compared to these static reference captures.
+
+### Dhappa 3: Lossy Web Font Network Fallbacks
+* **Compromise:** `style.css` imports Google Fonts (`Plus Jakarta Sans` and `JetBrains Mono`) via `@import url(...)`.
+* **Failure Mode:** In air-gapped, tactical field environments without external internet connectivity, the browser cannot fetch Google Fonts and falls back to system `sans-serif` and `monospace`, degrading telemetry kerning.
+
+### Dhappa 4: Leaflet Drawing Toolbar CSS Specificity Hacks
+* **Compromise:** Leaflet.draw renders within an isolated Leaflet container whose default styles use aggressive `!important` flags.
+* **Workaround:** `style.css` requires ultra-high specificity CSS selectors (`.leaflet-draw-toolbar a`, `.leaflet-draw-actions`) to override default white square icons with electric cyan and dark glass borders.
+
+### Dhappa 5: PNG Raster Storage Overhead vs Scalable Vector Assets
+* **Compromise:** `cockpit_screenshots/` stores raster PNGs totaling $\approx 3.7\text{ MB}$ inside the Git repository.
+* **Trade-off:** Chose high-fidelity lossless PNGs over compressed WebP or SVG to ensure pixel-for-pixel mathematical auditability during formal review, despite repository size footprint.
 
 ---
 
-## 5. Traceable Subsystem Requirements Matrix
+## 6. Traceable Functional Requirements
 
-| Requirement ID | Verification Type | Target Specification / Bound | Status |
-|:---|:---:|:---|:---:|
-| **REQ-DASH-AST-01** | Visual / Inspection | Typography must enforce `Plus Jakarta Sans` across all UI and controls. | **VERIFIED** |
-| **REQ-DASH-AST-02** | Visual / Inspection | Telemetry numbers and coordinates must render in `JetBrains Mono`. | **VERIFIED** |
-| **REQ-DASH-AST-03** | Layout | Top-padding compensation must eliminate viewport clipping (`padding-top: 4.85rem`). | **VERIFIED** |
-| **REQ-DASH-AST-04** | Branding | Dual logo frames must render Project and JCC Campus 2 insignia cleanly. | **VERIFIED** |
-| **REQ-DASH-AST-05** | Contrast | Primary text against dark backgrounds must satisfy WCAG AA ($> 4.5:1$). | **VERIFIED** (16.2:1) |
-| **REQ-DASH-AST-06** | GIS Controls | Leaflet.draw toolbar must feature cyan active focus and drawing modes. | **VERIFIED** |
-| **REQ-DASH-AST-07** | Farmer Alerts | Advisory alerts must render distinct `.badge-shabhash` and `.badge-khatra` styles. | **VERIFIED** |
-| **REQ-DASH-AST-08** | Performance | Stylesheet file size must remain $< 30.0\ 	ext{KB}$ to ensure zero render lag. | **VERIFIED** (22.5 KB) |
+| Requirement ID | Verification Type | Target Module | Technical Specification |
+|:---|:---:|:---:|:---|
+| **`REQ-DASH-ASSET-01`** | Visual Inspection | `assets/style.css` | Stylesheet shall enforce dual-tier typography (`Plus Jakarta Sans` UI, `JetBrains Mono` telemetry) with antialiased font smoothing. |
+| **`REQ-DASH-ASSET-02`** | Layout Test | `assets/style.css` | `.block-container` shall compensate for top-bar layout clipping with `4.85rem` padding and suppress default menu/footer. |
+| **`REQ-DASH-ASSET-03`** | Contrast Audit | `assets/style.css` | Root design tokens shall guarantee WCAG AA contrast ratio ($>4.5:1$) for all text and KPI card elements. |
+| **`REQ-DASH-ASSET-04`** | Component Test | `assets/style.css` | Leaflet.draw toolbar controls shall be skinned with obsidian backgrounds (`#0e1524`) and active cyan borders (`#00f0ff`). |
+| **`REQ-DASH-ASSET-05`** | Fidelity Audit | `cockpit_screenshots/` | All 5 cockpit screenshots shall maintain Full HD 1080p resolution ($1917 \times 1078$ nominal) and 32-bit RGBA color profile. |
+| **`REQ-DASH-ASSET-06`** | Provenance Test | `cockpit_screenshots/` | `SCREENSHOTS_MANIFEST.md` shall accurately index each asset ID (`SCREEN-01` to `SCREEN-05`) with its SHA-256 cryptographic digest. |
+| **`REQ-DASH-ASSET-07`** | Telemetry Audit | `cockpit_screenshots/` | `SCREEN-02` and `SCREEN-05` shall display verifiable field telemetry ($\mu=29.5\%$, $z_{\text{rut}}$, `[SHABHASH]`) matching engine states. |
+| **`REQ-DASH-ASSET-08`** | Evidence Trace | `cockpit_screenshots/` | Visual assets shall integrate cleanly as publication figures in the 30+ page Master Monograph and 20-slide PPTX deck. |
+
+---
+
+## 7. Safety, Verification & Operational Guidelines
+
+1. **Aerospace Visual Ergonomics**: Telemetry numbers must remain readable under direct sunlight or low-light command center conditions without glare.
+2. **Immutable Provenance**: Screenshot files must not be edited or lossily compressed; any re-capture must update `SCREENSHOTS_MANIFEST.md` with new SHA-256 hashes.
