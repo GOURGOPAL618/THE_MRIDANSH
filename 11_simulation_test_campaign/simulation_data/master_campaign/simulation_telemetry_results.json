@@ -4,7 +4,7 @@
     "command": "Jagannath Command Center (JCC) - Campus 2 (RS-SDA Division)",
     "commander": "Gouragopal Mohapatra (GOURGOPAL618)",
     "campaign": "Cross-Domain Agro-Civil Simulation Campaign",
-    "timestamp": "2026-11-13T07:29:11Z"
+    "timestamp": "2026-11-13T14:34:56Z"
   },
   "scenarios": [
     {
@@ -94,9 +94,9 @@
   },
   "monte_carlo_precursor": {
     "num_trials": 50,
-    "wall_time_ms": 533.76,
-    "ms_per_trial": 10.675,
-    "projected_1000_trials_seconds": 10.68,
+    "wall_time_ms": 788.08,
+    "ms_per_trial": 15.762,
+    "projected_1000_trials_seconds": 15.76,
     "mean_rut_depth_cm": 8.55,
     "p95_rut_depth_cm": 18.67,
     "mean_damage_index": 0.4063,

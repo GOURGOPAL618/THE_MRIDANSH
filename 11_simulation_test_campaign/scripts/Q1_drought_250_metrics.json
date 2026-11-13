@@ -1,0 +1,42 @@
+{
+  "quadrant": "Q1_HYPER_ARID_DROUGHT",
+  "seed": 16071,
+  "total_trials": 250,
+  "passed_trials": 250,
+  "success_rate_pct": 100.0,
+  "execution_wall_time_seconds": 0.388,
+  "average_ms_per_trial": 1.55,
+  "statistical_moments": {
+    "final_theta": {
+      "mean": 0.1667,
+      "std": 0.0178,
+      "min": 0.1212,
+      "max": 0.1911,
+      "p10": 0.1433,
+      "p90": 0.191
+    },
+    "cwsi": {
+      "mean": 0.4276,
+      "std": 0.0601,
+      "min": 0.3305,
+      "max": 0.5769
+    },
+    "kalman_condition_number_kappa": {
+      "mean": 2.5,
+      "max": 2.75,
+      "min": 2.24,
+      "threshold_ceiling": 1000000.0,
+      "condition_safety_margin": 363636.4
+    },
+    "mass_conservation_drift_m3_m3": {
+      "mean": 0.0,
+      "max": 0.0,
+      "threshold_ceiling": 0.0001
+    }
+  },
+  "forensics_summary": {
+    "super_additive_synergy_count": 250,
+    "clamping_boundary_hits": 0,
+    "zero_drift_count": 250
+  }
+}

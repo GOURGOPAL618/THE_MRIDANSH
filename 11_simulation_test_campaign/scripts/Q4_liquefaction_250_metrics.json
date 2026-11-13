@@ -1,0 +1,39 @@
+{
+  "quadrant": "Q4_MUD_LIQUEFACTION_RUTTING",
+  "seed": 16074,
+  "total_trials": 250,
+  "passed_trials": 250,
+  "success_rate_pct": 100.0,
+  "execution_wall_time_seconds": 0.214,
+  "average_ms_per_trial": 0.86,
+  "mobility_distribution": {
+    "SAFE_PASSAGE": 0,
+    "HIGH_RISK_RUTTING": 0,
+    "IMMOBILIZATION_BEACHED": 250
+  },
+  "immobilization_rate_pct": 100.0,
+  "statistical_moments": {
+    "saturated_theta": {
+      "mean": 0.3995,
+      "min": 0.3472,
+      "max": 0.45
+    },
+    "tractor_rut_depth_cm": {
+      "mean": 34.94,
+      "std": 0.51,
+      "min": 29.31,
+      "max": 35.0,
+      "immobilization_ceiling_cm": 25.0
+    },
+    "bearing_capacity_kpa": {
+      "mean": 1400.12,
+      "min": 1174.73,
+      "max": 1693.4
+    },
+    "mass_conservation_drift_m3_m3": {
+      "mean": 0.0,
+      "max": 0.0,
+      "threshold_ceiling": 0.0001
+    }
+  }
+}
