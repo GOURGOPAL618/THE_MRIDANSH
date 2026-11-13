@@ -2,7 +2,7 @@
 ## CRITICAL ENGINEERING LIMITATIONS, OPERATIONAL BOUNDARIES & FAILURE MODES (Q1 & Q2)
 **Document Designation:** `JCC-DOC-DAY18-Q1-Q2-LIMITATIONS`  
 **Mission Phase:** Mission Day 18 · 1,000-Trial Planetary Monte Carlo Stress Campaign (Part 1: Trials 001 – 500)  
-**Engineering Directives:** RTCA DO-178C Level-A Verification Principles / Eurocode 7 (EN 1997-1) / FAO-56 / USACE TM 5-818-1  
+**Engineering Directives:** AEROSPACE SAFETY-CRITICAL INVARIANT PRINCIPLES Verification Principles / Eurocode 7 (EN 1997-1) / FAO-56 / USACE TM 5-818-1  
 **Lead Systems Architect & Mission Flight Director:** Gouragopal Mohapatra (`GOURGOPAL618`)  
 **Sanctum:** Jagannath Command Center (JCC) — Campus 2 (RS-SDA Division)  
 **Status:** `VERIFIED_PHYSICAL_BOUNDARIES_AND_LIMITATIONS_DOSSIER`  

@@ -3,7 +3,7 @@
 **Mission Authority:** Commander Gouragopal Mohapatra (`GOURGOPAL618`), Lead Systems Architect & Remote Sensing Mission Engineer  
 **Institutional Sanctum:** Jagannath Command Center (JCC) — Campus 2 (RS-SDA Division)  
 **Campaign Identifier:** `PMC-1000-AETHER-MRID1607X`  
-**Certification Standard:** Engineered in accordance with RTCA DO-178C Level-A verification principles and Eurocode 7 limit-state formulations  
+**Certification Standard:** Engineered in accordance with AEROSPACE SAFETY-CRITICAL INVARIANT PRINCIPLES verification principles and Eurocode 7 limit-state formulations  
 **Cryptographic SHA-256 Digest:** `2cad3c797a3e5a48444f8ea31150bd0f2b0304ee6bd662001dc61d2733936305`  
 **Operational Status:** `FLIGHT_CERTIFIED_TRL7_COMPLIANT`  
 **Execution Timestamp:** 2026-11-11T20:50:00+05:30  
@@ -29,7 +29,7 @@ A continuous, deterministic 1,000-trial Planetary Monte Carlo stress campaign wa
 
 ---
 
-## 2. Invariant Architecture & Verification Standards (DO-178C Principles)
+## 2. Invariant Architecture & Verification Standards (Flight Invariant Principles)
 
 All 1,000 trials were evaluated against five mandatory flight-grade invariant assertions:
 
@@ -156,9 +156,9 @@ All primary campaign tensors, metrics, visual assets, and documentation are cryp
 
 ---
 
-## 6. Formal Certification & DO-178C Compliance Seal
+## 6. Formal Certification & Flight Invariant Compliance Seal
 
-I hereby certify that the 1,000-trial Planetary Monte Carlo Stress Campaign (`PMC-1000-AETHER-MRID1607X`) has executed in full accordance with **RTCA DO-178C Level-A verification principles and Eurocode 7 geotechnical limit-state formulations**.
+I hereby certify that the 1,000-trial Planetary Monte Carlo Stress Campaign (`PMC-1000-AETHER-MRID1607X`) has executed in full accordance with **AEROSPACE SAFETY-CRITICAL INVARIANT PRINCIPLES verification principles and Eurocode 7 geotechnical limit-state formulations**.
 
 The core hydro-terramorphic algorithms of `AETHER-MRID1607X` exhibit deterministic stability, zero numerical singularities, strict mass conservation, and robust sensor-failure degradation resilience.
 

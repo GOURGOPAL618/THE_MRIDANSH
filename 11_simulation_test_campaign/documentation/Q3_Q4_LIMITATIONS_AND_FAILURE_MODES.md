@@ -73,11 +73,11 @@ While both quadrants achieved a **100.0% Invariant Qualification Rate** (250/250
 
 ---
 
-## 5. Certification Summary & DO-178C Invariant Statement
+## 5. Certification Summary & Flight Invariant Statement
 
 1. **Numerical Continuity:** Across all 500 trials in Q3 and Q4, zero `NaN`, zero `Inf`, and zero mathematical exceptions occurred.
 2. **Mass Balance Conservation:** Richards-1D soil moisture vadose propagation achieved zero mass drift ($\Delta\theta_{\text{drift}} \le 1.0 \times 10^{-6}\text{ m}^3/\text{m}^3$) across all simulated flux regimes.
-3. **Operational Directive:** The engineering models in `AETHER-MRID1607X` provide conservative, physics-sound predictions suitable for operational deployment under RTCA DO-178C Level-A verification standards and Eurocode 7 geotechnical limit states.
+3. **Operational Directive:** The engineering models in `AETHER-MRID1607X` provide conservative, physics-sound predictions suitable for operational deployment under AEROSPACE SAFETY-CRITICAL INVARIANT PRINCIPLES verification standards and Eurocode 7 geotechnical limit states.
 
 ---
 **Document Status:** Sealed & Certified  

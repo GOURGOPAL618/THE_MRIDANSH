@@ -6,7 +6,7 @@ JCC CAMPUS 2 (RS-SDA DIVISION) — EXHAUSTIVE VERIFICATION DOSSIER
 :Mission Authority: Commander Gouragopal Mohapatra (``GOURGOPAL618``), Lead Systems Architect & Remote Sensing Mission Engineer
 :Command Center: Jagannath Command Center (JCC) — Campus 2 (RS-SDA Division)
 :Campaign Identifier: ``PMC-1000-AETHER-MRID1607X``
-:Certification Standard: Engineered in accordance with RTCA DO-178C Level-A verification principles and Eurocode 7 limit-state formulations
+:Certification Standard: Engineered in accordance with AEROSPACE SAFETY-CRITICAL INVARIANT PRINCIPLES verification principles and Eurocode 7 limit-state formulations
 :SHA-256 Checksum: ``2cad3c797a3e5a48444f8ea31150bd0f2b0304ee6bd662001dc61d2733936305``
 :Operational Status: ``FLIGHT_CERTIFIED_TRL7_COMPLIANT``
 :Timestamp: 2026-11-11T20:50:00+05:30
@@ -38,7 +38,7 @@ Master Verification Summary
 Flight-Grade Invariant Matrix
 =============================
 
-.. list-table:: Invariant Verification Matrix (RTCA DO-178C Level-A Principles)
+.. list-table:: Invariant Verification Matrix (AEROSPACE SAFETY-CRITICAL INVARIANT PRINCIPLES Principles)
    :widths: 20 40 20 20
    :header-rows: 1
 

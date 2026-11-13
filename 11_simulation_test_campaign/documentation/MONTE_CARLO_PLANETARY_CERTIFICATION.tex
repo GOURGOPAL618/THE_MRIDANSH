@@ -23,11 +23,11 @@ Jagannath Command Center (JCC) -- Campus 2 (RS-SDA Division)%
 
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-This dossier provides complete formal verification evidence for the 1,000-trial Planetary Monte Carlo Stress Campaign (PMC-1000-AETHER-MRID1607X) conducted on the spaceborne dual-domain hydro-terramorphic physics engine AETHER-MRID1607X. Engineered in accordance with RTCA DO-178C Level-A verification principles and Eurocode 7 geotechnical limit-state formulations, the campaign was partitioned into four orthogonal stress quadrants: (Q1) hyper-arid continuous drought desiccation across 14 days, (Q2) monsoon cloudburst deluge and Taylor-Duncan planar slope instability across 7 days, (Q3) severe Sentinel-2 optical cloud dropout (50\% total obscuration) with Sentinel-1 SAR speckle injection ($\pm 4.5$\,dB) over 9 days, and (Q4) coastal mud liquefaction under heavy 45\,kN agricultural tractor axle loads. Across all 1,000 continuous trials, the engine achieved a 100.0\% invariant qualification rate with zero numerical singularities, zero NaN/Inf occurrences, exact Richards-1D mass conservation drift ($\le 1.0\times 10^{-6}\,\text{m}^3/\text{m}^3$), and an Ensemble Kalman Filter (EnKF) covariance condition safety margin of $585.1\times$ ($\kappa_{\max} = 1709.03 \ll 10^6$). The complete campaign was cryptographically sealed under SHA-256 digest \texttt{2cad3c797a3e5a48444f8ea31150bd0f2b0304ee6bd662001dc61d2733936305}.
+This dossier provides complete formal verification evidence for the 1,000-trial Planetary Monte Carlo Stress Campaign (PMC-1000-AETHER-MRID1607X) conducted on the spaceborne dual-domain hydro-terramorphic physics engine AETHER-MRID1607X. Engineered in accordance with AEROSPACE SAFETY-CRITICAL INVARIANT PRINCIPLES verification principles and Eurocode 7 geotechnical limit-state formulations, the campaign was partitioned into four orthogonal stress quadrants: (Q1) hyper-arid continuous drought desiccation across 14 days, (Q2) monsoon cloudburst deluge and Taylor-Duncan planar slope instability across 7 days, (Q3) severe Sentinel-2 optical cloud dropout (50\% total obscuration) with Sentinel-1 SAR speckle injection ($\pm 4.5$\,dB) over 9 days, and (Q4) coastal mud liquefaction under heavy 45\,kN agricultural tractor axle loads. Across all 1,000 continuous trials, the engine achieved a 100.0\% invariant qualification rate with zero numerical singularities, zero NaN/Inf occurrences, exact Richards-1D mass conservation drift ($\le 1.0\times 10^{-6}\,\text{m}^3/\text{m}^3$), and an Ensemble Kalman Filter (EnKF) covariance condition safety margin of $585.1\times$ ($\kappa_{\max} = 1709.03 \ll 10^6$). The complete campaign was cryptographically sealed under SHA-256 digest \texttt{2cad3c797a3e5a48444f8ea31150bd0f2b0304ee6bd662001dc61d2733936305}.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Remote Sensing Data Assimilation, Ensemble Kalman Filter (EnKF), Richards Equation, Vadose Hydrodynamics, Slope Stability, Bekker Rutting Mechanics, DO-178C Principles, Eurocode 7.
+Remote Sensing Data Assimilation, Ensemble Kalman Filter (EnKF), Richards Equation, Vadose Hydrodynamics, Slope Stability, Bekker Rutting Mechanics, Flight Invariant Principles, Eurocode 7.
 \end{IEEEkeywords}}
 
 \maketitle
@@ -40,7 +40,7 @@ Remote Sensing Data Assimilation, Ensemble Kalman Filter (EnKF), Richards Equati
 To validate system robustness prior to TRL-7 operational flight deployment, a continuous 1,000-trial Monte Carlo stress campaign was executed at the Jagannath Command Center (JCC) Campus 2 (RS-SDA Division).
 
 \section{Verification Architecture and Flight Invariants}
-Following RTCA DO-178C Level-A principles, every simulated trial must strictly conform to bounded flight invariants:
+Following AEROSPACE SAFETY-CRITICAL INVARIANT PRINCIPLES principles, every simulated trial must strictly conform to bounded flight invariants:
 \begin{enumerate}
     \item \textbf{INV-HYDRO-01 (Porosity Ceiling):} $\theta(t) \le \theta_{\text{sat}}$ to preclude non-physical supersaturation in rigid soil matrices.
     \item \textbf{INV-HYDRO-02 (Residual Floor \& Monotonicity):} $\theta(t) \ge \theta_{\text{res}}$ and $d\theta/dt \le 0$ under zero precipitation.
