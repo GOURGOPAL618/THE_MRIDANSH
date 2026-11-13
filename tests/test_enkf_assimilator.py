@@ -162,3 +162,8 @@ def run_enkf_assimilator_verification():
 
 if __name__ == "__main__":
     run_enkf_assimilator_verification()
+
+
+def test_test_enkf_assimilator_verification():
+    """Pytest discovery wrapper for test_enkf_assimilator."""
+    run_enkf_assimilator_verification()

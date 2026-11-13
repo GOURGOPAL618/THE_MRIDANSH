@@ -151,3 +151,8 @@ def run_conformal_uncertainty_verification():
 
 if __name__ == "__main__":
     run_conformal_uncertainty_verification()
+
+
+def test_test_conformal_uncertainty_verification():
+    """Pytest discovery wrapper for test_conformal_uncertainty."""
+    run_conformal_uncertainty_verification()

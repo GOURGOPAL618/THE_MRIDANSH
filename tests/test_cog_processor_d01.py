@@ -109,7 +109,7 @@ def test_cog_processor():
     if os.path.exists(fixture_path):
         os.remove(fixture_path)
         
-    print("\\n✅ All acceptance criteria met. D01 is closed.")
+    print("\\n[SUCCESS] All acceptance criteria met. D01 is closed.")
 
 if __name__ == "__main__":
     test_cog_processor()

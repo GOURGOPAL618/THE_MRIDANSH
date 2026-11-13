@@ -159,3 +159,8 @@ def run_test_suite():
 
 if __name__ == "__main__":
     run_test_suite()
+
+
+def test_test_day4_temporal_backbone_verification():
+    """Pytest discovery wrapper for test_day4_temporal_backbone."""
+    run_test_suite()

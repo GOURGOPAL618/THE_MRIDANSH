@@ -148,3 +148,8 @@ def run_van_genuchten_verification():
 
 if __name__ == "__main__":
     run_van_genuchten_verification()
+
+
+def test_test_van_genuchten_verification():
+    """Pytest discovery wrapper for test_van_genuchten."""
+    run_van_genuchten_verification()

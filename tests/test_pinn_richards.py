@@ -154,3 +154,8 @@ def run_pinn_richards_verification():
 
 if __name__ == "__main__":
     run_pinn_richards_verification()
+
+
+def test_test_pinn_richards_verification():
+    """Pytest discovery wrapper for test_pinn_richards."""
+    run_pinn_richards_verification()

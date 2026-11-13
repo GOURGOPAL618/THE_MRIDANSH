@@ -1,0 +1,762 @@
+{
+  "start_time": "2026-11-13T20:49:07.896483",
+  "total_files": 63,
+  "files_passed": 63,
+  "files_failed": 0,
+  "total_tests": 426,
+  "tests_passed": 426,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+  "total_duration_s": 175.09,
+  "groups": {
+    "1_Core_Engine_and_Physics": {
+      "files_count": 20,
+      "files_passed": 20,
+      "files_failed": 0,
+      "tests_run": 85,
+      "duration_s": 58.08,
+      "records": [
+        {
+          "file": "tests/test_aether_freeze.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 3.31,
+          "output_snippet": "....\n=================================================================\n   AETHER-MRID1607X SUB-MILLISECOND LATENCY AUDIT BENCHMARK\n=================================================================\n  Scene Dimensions:          64 x 64 (4,096 spatial pixels)\n  Benchmark Iterations:      50 runs (after 10 warm-up runs)\n  Mean Total Latency:        14.3428 ms\n  Median Latency:            14.5399 ms\n  95th Percentile Latency:   16.6523 ms\n  Per-Pixel Latency:         0.003502 ms/pixel\n  Target Latency Envelope:   <= 1.000000 ms/pixel (Operational SLA)\n  Benchmark Status:          PASSED (Sub-millisecond verified)\n=================================================================\n.\n5 passed in 2.54s\n"
+        },
+        {
+          "file": "tests/test_van_genuchten.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 1.81,
+          "output_snippet": "-0.004746135324239731, -0.0004947493434883654, -3.710907913045958e-05]\n  -> Analytical Capacity C(psi):        [0.007765988353639841, 0.004746135324239731, 0.0004947492852807045, 3.710907913045958e-05]\n  -> Max Difference (|grad| vs C(psi)): 4.66e-10\n>>> [PASS] CHECK 4 : PyTorch Differentiability & Autograd Verified\n\n[CHECK 5] Profiling All 5 USDA Soil Catalog Textures...\n  -> [SANDY_LOAM] theta(100cm) = 0.1218 m3/m3 | K(theta) = 0.000190 cm/hr (Ks=4.42)\n  -> [LOAM      ] theta(100cm) = 0.2421 m3/m3 | K(theta) = 0.001413 cm/hr (Ks=1.04)\n  -> [SILT_LOAM ] theta(100cm) = 0.3297 m3/m3 | K(theta) = 0.002932 cm/hr (Ks=0.45)\n  -> [CLAY      ] theta(100cm) = 0.3654 m3/m3 | K(theta) = 0.000841 cm/hr (Ks=0.2)\n  -> [SAND      ] theta(100cm) = 0.0493 m3/m3 | K(theta) = 0.000001 cm/hr (Ks=29.7)\n>>> [PASS] CHECK 5 : Multi-Texture Physical Catalog Verified\n\n[CHECK 6] Testing Ariane-5 Extreme Float Singularity Protection...\n  -> Ingested Extreme Suctions: [0.0, 1e-15, 1e-09, 1000000000.0, 1000000000000.0]\n  -> Resulting Moistures:       [0.41, 0.41, 0.41, 0.065, 0.065]\n  -> Resulting Conductivities:  [4.413632, 4.413632, 4.413632, 0.0, 0.0]\n  -> Non-finite elements (NaN/Inf): 0\n>>> [PASS] CHECK 6 : Ariane-5 Extreme Float Guardrails Verified\n\n================================================================================\n    ALL 6 / 6 CHECKS PASSED : SPRINT 5.1 (VAN GENUCHTEN) IS SEALED!   \n================================================================================\n.\n1 passed in 1.15s\n"
+        },
+        {
+          "file": "tests/test_richards_engine_d03.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 6,
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 1.8,
+          "output_snippet": "\\n--- T-RP-01: Valid inputs produce documented shapes ---\n[PASS] T-RP-01: Correctly maintained exact structural topology.\n.\\n--- T-RP-02: Invalid dimensions fail explicitly ---\n[PASS] T-RP-02: Explicitly trapped rank-1 tensors unable to form a spatial gradient.\n.\\n--- T-RP-03: CPU execution produces finite results ---\n[PASS] T-RP-03: Handled boundary saturation values with stable numerics.\n.\\n--- T-RP-04: Autograd produces finite, nonzero gradients ---\n[PASS] T-RP-04: Confirmed physical model maintains a mathematically valid backward autograd graph.\n.\\n--- T-RP-05: Simple physical behavior / invariant ---\n[PASS] T-RP-05: Verified invariant: uniform moisture gradient yields zero Darcian flux.\n.\\n--- T-RP-06: API compatibility ---\n[PASS] T-RP-06: Verified 100% dictionary key contract compatibility.\n.\n6 passed in 1.15s\n"
+        },
+        {
+          "file": "tests/test_pinn_richards.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.37,
+          "output_snippet": "rder Autograd Continuity (d_theta/dt, d_theta/dz, dq/dz)...\n  -> Sample Depths:    [10.0, 50.0, 100.0] cm\n  -> Sample Times:     [6.0, 24.0, 48.0] hrs\n  -> Downward Flux q:  [-0.001826, -0.000544, -0.000137] cm/hr\n  -> PDE Residual R:   [-0.00139364, 0.00016275, -4.257e-05] m3/m3 per hr\n>>> [PASS] CHECK 3 : Autograd Derivatives Non-Zero, Continuous & Finite\n\n[CHECK 4] Auditing 1D Richards PDE Mass Conservation Residual...\n  -> Certified Checkpoint PDE Loss: 1.9156e-07 (Benchmark Target: <= 1.20e-04)\n  -> Interior Vadose Evaluation:    100 space-time coordinates\n  -> Mean Absolute PDE Residual:    3.9728e-04 m3/m3\n  -> RMS Mass Conservation Error:   5.0640e-04 m3/m3\n  -> Notebook 12 Contract Limit:    <= 1.00e-03 m3/m3\n>>> [PASS] CHECK 4 : 1D Richards Mass Conservation Verified (Residual <= 1.00e-03 m3/m3)\n\n[CHECK 5] Verifying Physical Bounds Enforcement & Unphysical Penalization...\n  -> Multi-Objective Loss Output: total=7.471409e-07, pde=7.471409e-07\n  -> Raw Unbounded Input:  [-0.20000000298023224, 0.019999999552965164, 0.25, 0.5, 0.949999988079071]\n  -> Clamped Vadose State: [0.05000000074505806, 0.05000000074505806, 0.25, 0.44999998807907104, 0.44999998807907104]\n>>> [PASS] CHECK 5 : Vadose Bounds Clamping & Loss Enforced\n\n================================================================================\n    ALL 5 / 5 CHECKS PASSED : SPRINT 5.2 (PINN RICHARDS) IS SEALED!   \n================================================================================\n.\n1 passed in 1.51s\n"
+        },
+        {
+          "file": "tests/test_enkf_assimilator.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.22,
+          "output_snippet": "Generated with Physical Bounding\n\n[CHECK 3] Executing Analysis Update with Satellite Observation...\n  -> Satellite Observation:    0.3300 m3/m3\n  -> Prior Moisture Mean:      0.2774 m3/m3 (Var: 0.001354)\n  -> Posterior Moisture Mean:  0.3096 m3/m3 (Var: 0.000557)\n  -> Kalman Gain Vector K:     [0.600472918884142, -0.4847062875346287, 2.0553881901238222, 0.526958651974986]\n  -> Moisture Var Reduction:   -58.86%\n>>> [PASS] CHECK 3 : Analysis Assimilation & Dimensionality Verified\n\n[CHECK 4] Verifying Cross-Variable Information Propagation...\n  -> K_gain [theta_root]   = +0.6005 (Positive: pulls state toward observation)\n  -> K_gain [bulk_density] = -0.4847 (Negative: structural compaction loosens with moisture)\n  -> K_gain [K_sat]        = +2.0554 (Positive: permeability tracks moisture recharge)\n>>> [PASS] CHECK 4 : Pedological Cross-Variable Covariance Propagation Verified\n\n[CHECK 5] Benchmarking 2D GIS Spatial Raster Grid Assimilation...\n  -> Spatial Grid Dimensions:  20 x 20 (400 cells)\n  -> Prior Uniform State:      0.2500 m3/m3\n  -> Satellite Observed State: 0.3200 m3/m3\n  -> Posterior Assimilated:    0.2948 m3/m3\n  -> Grid Variance Reduction:  -64.00%\n>>> [PASS] CHECK 5 : 2D GIS Spatial Raster Grid Assimilation Passed\n\n================================================================================\n    ALL 5 / 5 CHECKS PASSED : SPRINT 5.3 (ENKF ASSIMILATOR) IS SEALED!   \n================================================================================\n.\n1 passed in 1.38s\n"
+        },
+        {
+          "file": "tests/test_enkf_filter_d04.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 1.97,
+          "output_snippet": ".\\n--- T-EKF-01: Valid ensemble + observation produce correctly shaped outputs ---\n[PASS] T-EKF-01: Correct shapes produced for (N_state=36, N_ens=10).\n.\\n--- T-EKF-02: Different state sizes work without fixed-dim assumptions ---\n[PASS] T-EKF-02: Engine handles arbitrary grid sizes without hardcoded 120\u00d7120.\n.\\n--- T-EKF-03: Invalid shapes fail explicitly ---\n[PASS] T-EKF-03: All invalid dimension cases raise ValueError explicitly.\n.\\n--- T-EKF-04: Non-finite inputs fail explicitly ---\n[PASS] T-EKF-04: NaN and Inf inputs are caught before matrix ops.\n.\\n--- T-EKF-05: Zero-innovation case: posterior == prior mean ---\n[PASS] T-EKF-05: Posterior mean 0.3000 ~= prior 0.3 under zero innovation.\n.\\n--- T-EKF-06: Same RNG seed yields identical results ---\n[PASS] T-EKF-06: Seeded RNG produces byte-identical posterior means.\n.\\n--- T-EKF-07: Legacy spatial-grid API preserved ---\n[PASS] T-EKF-07: assimilate_spatial_grid returns (H, W) posterior, all keys present.\n.\n8 passed in 1.28s\n"
+        },
+        {
+          "file": "tests/test_physics_enkf_freeze.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.86,
+          "output_snippet": "ual:  5.0640e-04 m3/m3\n>>> [PASS] VERIFICATION 2 : 1D Richards Vadose PINN Mass Conservation Sealed\n\n[VERIFICATION 3] Auditing Production EnKF Assimilator & Variance Squashing...\n  -> Certified Prior Variance:   0.001354\n  -> Certified Post Variance:    0.000451\n  -> Variance Squashing Ratio:   -66.73% (Pillar 4 Contract <= -60.0%)\n  -> Active Assimilation Gain K: [0.6005, -0.4847, 2.0554, 0.527]\n>>> [PASS] VERIFICATION 3 : Production EnKF Variance Squashing Sealed\n\n[VERIFICATION 4] Auditing Conformal Uncertainty & Decile Monotonicity...\n  -> Empirical Coverage (90% Nom): 90.04% (Pillar 5 Contract >= 88.0%)\n  -> Calibrated Quantile q_hat:    1.6752\n  -> Decile Error Correlation r:   -0.9150 (Benchmark <= -0.90)\n  -> High vs Low Confidence MAE:   0.0297 vs 0.0497 m3/m3\n>>> [PASS] VERIFICATION 4 : Conformal Uncertainty & Reliability Sealed\n\n[VERIFICATION 5] Benchmarking End-to-End Day 5 State Estimation Pipeline...\n  -> PINN Prior Root-Zone Moisture: 0.2371 m3/m3\n  -> Satellite Sensor Observation:  0.3150 m3/m3\n  -> EnKF Assimilated State:        0.2848 m3/m3 (Sigma: 0.0196)\n  -> Conformal Prediction Interval: [0.2519, 0.3176] m3/m3 (90% Confidence)\n>>> [PASS] VERIFICATION 5 : End-to-End Physics + EnKF + Conformal Pipeline Passed\n\n================================================================================\n    ALL 5 / 5 OPERATIONAL VERIFICATIONS PASSED : DAY 5 IS SEALED!   \n================================================================================\n.\n1 passed in 1.97s\n"
+        },
+        {
+          "file": "tests/test_conformal_uncertainty.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.03,
+          "output_snippet": "27.1%\n  -> Max Variance Conservation Error: 8.67e-19 (Threshold: < 1.00e-10)\n>>> [PASS] CHECK 2 : Exact Epistemic & Aleatoric Variance Conservation Verified\n\n[CHECK 3] Auditing Pillar 5 Conformal Calibration Coverage (Nominal 90%)...\n  -> Calibration Sample Count:   2500\n  -> Nominal Target Coverage:    90.0%\n  -> Empirical Achieved Coverage: 90.04% (Contract Target: >= 88.0%)\n  -> Calibrated Quantile q_hat:  1.6752\n  -> Mean Interval Width s_width: 0.1441 m3/m3\n>>> [PASS] CHECK 3 : Pillar 5 Conformal Coverage Benchmark Verified (>= 88.0%)\n\n[CHECK 4] Verifying Decile Monotonicity (High Confidence ==> Lower Error)...\n  -> Decile Error Correlation r: -0.9150 (Benchmark Contract <= -0.90)\n  -> High Confidence MAE:        0.0297 m3/m3\n  -> Medium Confidence MAE:      0.0351 m3/m3\n  -> Low Confidence MAE:         0.0497 m3/m3\n>>> [PASS] CHECK 4 : Decile Monotonicity Strictly Confirmed (r <= -0.90)\n\n[CHECK 5] Testing Physical Clamping on Conformal Interval Predictions...\n  -> Point Estimates: [0.06, 0.25, 0.44]\n  -> Lower Intervals: [0.05, 0.21, 0.33999999999999997] (Clamped min: >= 0.05)\n  -> Upper Intervals: [0.16, 0.29, 0.45] (Clamped max: <= 0.45)\n>>> [PASS] CHECK 5 : Physical Clamping Strictly Enforced on All Intervals\n\n================================================================================\n    ALL 5 / 5 CHECKS PASSED : SPRINT 5.4 (CONFORMAL UNCERTAINTY) IS SEALED!   \n================================================================================\n.\n1 passed in 1.29s\n"
+        },
+        {
+          "file": "tests/test_day4_temporal_backbone.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 6.03,
+          "output_snippet": "rch.Size([1, 64, 32, 32]))\n>>> [PASS] TEST 4.2.2 : Dynamic Sequence Horizon Verified (Zero Hardcoding)\n\n[TEST 4.2.3] Verifying Numerical Determinism & State Isolation...\n  -> Discrepancy between consecutive forward passes: 0.00000000\n>>> [PASS] TEST 4.2.3 : Determinism & State Isolation Verified (Zero Memory Leak)\n\n[TEST 4.2.4] Verifying Backpropagation Through Time (BPTT)...\n  -> Total Gradient L2 Norm across 5 timesteps: 0.3265\n>>> [PASS] TEST 4.2.4 : BPTT Gradient Flow Verified (Stable & Bounded)\n\n[TEST 4.2.5] Verifying Autoregressive Multi-Step Rollout...\n  -> Forecast Step t+1: Shape torch.Size([1, 64, 64, 64]) | State Delta Magnitude: 201.8201\n  -> Forecast Step t+2: Shape torch.Size([1, 64, 64, 64]) | State Delta Magnitude: 391.1071\n  -> Forecast Step t+3: Shape torch.Size([1, 64, 64, 64]) | State Delta Magnitude: 571.1265\n>>> [PASS] TEST 4.2.5 : Autoregressive Multi-Step Rollout Verified (Non-Divergent)\n\n[TEST 4.2.6] Benchmarking Spatiotemporal Forward Latency...\n  -> Full Sequence Latency (T=5, 64x64): 96.905 ms \u00b1 8.219 ms\n  -> Per-Timestep Latency: 19.381 ms / step\n  -> Per-Pixel Full Latency: 0.023658 ms / pixel\n  -> Throughput: 42,268 pixels / second\n>>> [PASS] TEST 4.2.6 : Execution Latency Benchmark Passed\n\n================================================================================\n   ALL 6 / 6 OPERATIONAL TESTS PASSED FOR SPRINT 4.2 (TEMPORAL BACKBONE)    \n================================================================================\n.\n1 passed in 5.11s\n"
+        },
+        {
+          "file": "tests/test_day4_latent_fusion.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 3.25,
+          "output_snippet": "================================================================================\n      AETHER-MRID1607X : SPRINT 4.1 MULTI-MODAL LATENT FUSION VERIFICATION\n================================================================================\n\n[TEST 4.1.1] Verifying Tensor Shape Integrity...\n  -> Single scene (1, 64, 64, 64): PASS | Latent Channels: 64\n  -> Batched scenes (4, 64, 32, 32): PASS\n>>> [PASS] TEST 4.1.1 : Shape Integrity Verified (Zero Dimensional Collapse)\n\n[TEST 4.1.2] Verifying End-to-End Gradient Flow...\n>>> [PASS] TEST 4.1.2 : Gradient Flow & Differentiability Verified\n\n[TEST 4.1.3] Verifying 100% Optical Cloud Occlusion Fallback...\n  -> SAR Boost Factor Active: 1.25x\n>>> [PASS] TEST 4.1.3 : 100% Cloud Occlusion Resilience Verified (Zero Blind Spots)\n\n[TEST 4.1.4] Verifying Numerical Determinism...\n  -> Maximum discrepancy between identical runs: 0.00000000\n>>> [PASS] TEST 4.1.4 : Numerical Determinism Verified (Zero Drift)\n\n[TEST 4.1.5] Benchmarking Forward Pass Execution Latency...\n  -> Scene Latency (64x64): 11.728 ms \u00b1 1.691 ms\n  -> Per-Pixel Latency: 0.002863 ms / pixel\n  -> Throughput: 349,247 pixels / second\n>>> [PASS] TEST 4.1.5 : Execution Latency Benchmark Passed\n\n================================================================================\n   ALL 5 / 5 OPERATIONAL TESTS PASSED FOR SPRINT 4.1 (LATENT FUSION MANIFOLD)  \n================================================================================\n.\n1 passed in 2.29s\n"
+        },
+        {
+          "file": "tests/test_day4_dropout_handler.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.21,
+          "output_snippet": "S] TEST 4.3.1 : Nominal Regime Correctly Classified\n\n[TEST 4.3.2] Verifying 100% Cloud Occlusion Trigger...\n  -> Regime: TOTAL_SAR_BACKBONE | Optical Suppressed: True | SAR Boost: 1.25x\n>>> [PASS] TEST 4.3.2 : 100% Cloud Occlusion Trigger & SAR Switch Verified\n\n[TEST 4.3.3] Verifying Notebook 08/12 Benchmark Error Bound (RMSE <= 0.00712 m3/m3)...\n  -> Measured Cloud Occlusion Residual RMSE: 0.00712 m\u00b3/m\u00b3\n  -> Contract Benchmark: RMSE <= 0.00712 m\u00b3/m\u00b3 [VERIFIED]\n>>> [PASS] TEST 4.3.3 : Calibrated Empirical RMSE Bound Verified\n\n[TEST 4.3.4] Verifying Smooth Dynamic Transitions across Cloud Sweep...\n  -> Cloud 000%: Regime=NOMINAL            | W_opt=1.00 | W_sar=1.00\n  -> Cloud 025%: Regime=PARTIAL_OCCLUSION  | W_opt=0.75 | W_sar=1.06\n  -> Cloud 050%: Regime=PARTIAL_OCCLUSION  | W_opt=0.50 | W_sar=1.12\n  -> Cloud 075%: Regime=PARTIAL_OCCLUSION  | W_opt=0.25 | W_sar=1.19\n  -> Cloud 100%: Regime=TOTAL_SAR_BACKBONE | W_opt=0.00 | W_sar=1.25\n>>> [PASS] TEST 4.3.4 : Continuous Transition without Discontinuities Verified\n\n[TEST 4.3.5] Verifying Fault Tolerance against Corrupted Optical Feed...\n  -> Corrupted Optical Feed Ingested: Output NaNs = 0 | Safe Fallback Engaged\n>>> [PASS] TEST 4.3.5 : Fault Tolerance & NaN Shielding Verified\n\n================================================================================\n  ALL 5 / 5 OPERATIONAL TESTS PASSED FOR SPRINT 4.3 (DROPOUT HANDLER)  \n================================================================================\n.\n1 passed in 1.34s\n"
+        },
+        {
+          "file": "tests/test_spatial_temporal_encoder_d02.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 6,
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.33,
+          "output_snippet": "\\n--- T-NN-01: Snapshot representation support (T=1) ---\n[PASS] T-NN-01: Successfully executed 5-channel snapshot with T=1.\n.\\n--- T-NN-02: Configurable shape propagation ---\n[PASS] T-NN-02: Output tensor matches exact (B, feature_dim, H, W) specification.\n.\\n--- T-NN-03: Finite Forward Pass ---\n[PASS] T-NN-03: Model preserves finite numerics through GRU and CNN blocks.\n.\\n--- T-NN-04: Autograd Backpropagation ---\n[PASS] T-NN-04: Confirmed nonzero finite gradients mapped to CNN and GRU parameters.\n.\\n--- T-NN-05: Strict Data Contract Execution ---\n[PASS] T-NN-05: Strict dimensionality traps properly enforce (B, T, C, H, W) geometry.\n.\\n--- T-NN-06: Deterministic execution constraints ---\n[PASS] T-NN-06: Deterministic execution verified across bounded seeds.\n.\n6 passed in 1.53s\n"
+        },
+        {
+          "file": "tests/test_core_trainer_d06.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 9,
+          "passed": 9,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 3.64,
+          "output_snippet": ".........\n9 passed in 2.50s\n"
+        },
+        {
+          "file": "tests/test_satellite_fusion_d08.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.79,
+          "output_snippet": "\\n--- T-MOD-01: All expected modalities present and valid ---\n[PASS] T-MOD-01: Fusion proceeds normally. Provenance and masks preserved.\n\\n--- T-MOD-02: One modality absent ---\n[PASS] T-MOD-02: Absent input correctly raises MissingModalityError without fabricating arrays.\n\\n--- T-MOD-03: Modality present but entirely invalid ---\n[PASS] T-MOD-03: 100% NoData input safely rejected with InvalidModalityError.\n\\n--- T-MOD-04: Incompatible spatial grids ---\n[PASS] T-MOD-04: Misaligned grid securely raises GridMismatchError before fusion.\n\\n--- T-MOD-05: Output records used modalities and preserves validity ---\n[PASS] T-MOD-05: Provenance dictionary fully tracks all valid input items and bounding masks.\n\\n--- T-MOD-06: Optional DEM modalities omitted safely ---\n[PASS] T-MOD-06: DEM is safely optional. Retrieval physics still strictly aligns to channels 0, 3, 4.\n\\n[OK] All D08 Acceptance Criteria Met. Fusion engine strictly regulates modalities.\n.\n1 passed in 0.18s\n"
+        },
+        {
+          "file": "tests/test_insitu_collocation_and_baselines.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.76,
+          "output_snippet": ".....\n5 passed in 1.91s\n"
+        },
+        {
+          "file": "tests/test_realworld_engine_validation.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 3.68,
+          "output_snippet": ".....\n5 passed in 2.56s\n"
+        },
+        {
+          "file": "tests/test_day11_operational_orchestration.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 3.85,
+          "output_snippet": ".....\n============================== warnings summary ===============================\ntests/test_day11_operational_orchestration.py::TestDay11OperationalOrchestration::test_soc_21_geotiff_georeference_and_affine_transform\ntests/test_day11_operational_orchestration.py::TestDay11OperationalOrchestration::test_soc_22_7layer_cog_band_semantics_and_zero_nan\ntests/test_day11_operational_orchestration.py::TestDay11OperationalOrchestration::test_soc_23_autonomous_pipeline_orchestration_and_latency_sla\ntests/test_day11_operational_orchestration.py::TestDay11OperationalOrchestration::test_soc_24_multi_pass_satellite_stream_simulation\ntests/test_day11_operational_orchestration.py::TestDay11OperationalOrchestration::test_soc_25_cumulative_campaign_flight_seals_and_readiness\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\rasterio\\transform.py:189: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication\n    return Affine.translation(west, north) * Affine.scale(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n5 passed, 5 warnings in 2.53s\n"
+        },
+        {
+          "file": "tests/test_domain_contracts_d02.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.66,
+          "output_snippet": "........\n8 passed in 0.11s\n"
+        },
+        {
+          "file": "tests/test_domain_system_audit_d06.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 18,
+          "passed": 18,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.63,
+          "output_snippet": "..................\n18 passed in 0.17s\n"
+        },
+        {
+          "file": "tests/test_encoder_freeze.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 9.88,
+          "output_snippet": "Output: torch.Size([1, 64, 64, 64])\n>>> [PASS] VERIFICATION 1 : Zero-Dimensional Collapse Strictly Verified (Exact B x 64 x 64 x 64)\n\n[VERIFICATION 2] Verifying Multi-Batch Spatial Scaling Invariance (B=4, H=64, W=64)...\n  -> Batched Scenes Output: torch.Size([4, 64, 64, 64])\n>>> [PASS] VERIFICATION 2 : Multi-Batch Scaling Verified (4 x 64 x 64 x 64)\n\n[VERIFICATION 3] Verifying Latent Channel Rank & Diversity (No Dead Channels)...\n  -> Total Active Latent Channels: 64 / 64\n  -> Dead Channels: 0\n  -> Channel Variance Range: [0.007058, 0.687884]\n>>> [PASS] VERIFICATION 3 : Full Channel Rank Conservation Verified (64/64 Active)\n\n[VERIFICATION 4] Verifying End-to-End 100% Optical Cloud Occlusion Fallback...\n  -> Corrupted Optical Feed Ingested across all 5 timesteps.\n  -> Output Output NaNs = 0 | Shape: torch.Size([1, 64, 64, 64]) [100% Preserved]\n>>> [PASS] VERIFICATION 4 : 100% Cloud Occlusion Fallback Verified (Zero Blind Spots)\n\n[VERIFICATION 5] Benchmarking End-to-End Day 4 Pipeline Latency...\n  -> End-to-End Full Pipeline Latency (T=5, 64x64): 217.688 ms \u00b1 37.637 ms\n  -> Per-Pixel Latency: 0.053146 ms / pixel\n  -> Pipeline Throughput: 18,816 pixels / second\n>>> [PASS] VERIFICATION 5 : Pipeline Latency Benchmark Passed\n\n================================================================================\n    ALL 5 / 5 OPERATIONAL VERIFICATIONS PASSED : DAY 4 ENCODER IS SEALED!   \n================================================================================\n.\n1 passed in 8.93s\n"
+        }
+      ]
+    },
+    "2_Domain_Translators_Agronomy_and_Civil": {
+      "files_count": 9,
+      "files_passed": 9,
+      "files_failed": 0,
+      "tests_run": 89,
+      "duration_s": 29.78,
+      "records": [
+        {
+          "file": "tests/test_agronomy_translator_d03.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.75,
+          "output_snippet": ".................\n17 passed in 0.20s\n"
+        },
+        {
+          "file": "tests/test_day12_agronomy_translator.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.2,
+          "output_snippet": ".....\n5 passed in 1.37s\n"
+        },
+        {
+          "file": "tests/test_day13_precision_irrigation.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.1,
+          "output_snippet": ".....\n5 passed in 1.38s\n"
+        },
+        {
+          "file": "tests/test_civil_translator_d04.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 18,
+          "passed": 18,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.54,
+          "output_snippet": "..................\n18 passed in 0.13s\n"
+        },
+        {
+          "file": "tests/test_day14_civil_translator.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.16,
+          "output_snippet": "....\n[BENCHMARK] Mean Civil Combined Latency: 0.000146 ms/pixel (68.3x Faster than SLA)\n.\n5 passed in 1.41s\n"
+        },
+        {
+          "file": "tests/test_day15_civil_translator.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.17,
+          "output_snippet": ".....\n============================== warnings summary ===============================\ntests/test_day15_civil_translator.py::TestDay15CivilDomainTranslator::test_civil_06_rainfall_surge_and_bearing_degradation\ntests/test_day15_civil_translator.py::TestDay15CivilDomainTranslator::test_civil_07_vehicle_mobility_class_hierarchy\ntests/test_day15_civil_translator.py::TestDay15CivilDomainTranslator::test_civil_08_flood_seepage_and_critical_gradient\ntests/test_day15_civil_translator.py::TestDay15CivilDomainTranslator::test_civil_09_conformal_risk_ordering_invariant\ntests/test_day15_civil_translator.py::TestDay15CivilDomainTranslator::test_civil_10_e2e_spaceborne_latency_and_geotiff_export\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\rasterio\\transform.py:189: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication\n    return Affine.translation(west, north) * Affine.scale(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n5 passed, 5 warnings in 1.42s\n"
+        },
+        {
+          "file": "tests/test_coupled_agro_civil_simulation.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.33,
+          "output_snippet": ".....\n5 passed in 1.61s\n"
+        },
+        {
+          "file": "tests/test_agronomy_viewport_d03.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 13,
+          "passed": 13,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 4.48,
+          "output_snippet": "hread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n.....warning: in the working copy of 'tests/test_dashboard_integrity_d02.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_gis_spatial_mesh_d05.py', LF will be replaced by CRLF the next time Git touches it\n.\n----------------------------------------------------------------------\nRan 13 tests in 0.304s\n\nOK\n..\n============================== warnings summary ===============================\ntests/test_agronomy_viewport_d03.py::TestAgronomyViewportD03::test_12_existing_task_02_integrity_tests_pass\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\ntests/test_agronomy_viewport_d03.py::TestAgronomyViewportD03::test_12_existing_task_02_integrity_tests_pass\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\starlette\\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.\n    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n13 passed, 2 warnings in 3.23s\n"
+        },
+        {
+          "file": "tests/test_civil_viewport_d04.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 16,
+          "passed": 16,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 13.05,
+          "output_snippet": "hread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:50:26.362 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:50:26.362 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:50:26.362 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:50:26.362 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:50:26.362 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:50:26.362 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:50:26.362 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:50:26.362 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:50:26.362 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:50:26.362 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:50:26.362 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n....\n16 passed in 11.68s\n"
+        }
+      ]
+    },
+    "3_Data_Pipeline_and_Ingestion": {
+      "files_count": 7,
+      "files_passed": 7,
+      "files_failed": 0,
+      "tests_run": 28,
+      "duration_s": 27.95,
+      "records": [
+        {
+          "file": "tests/test_sentinel_ingestor_d03.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 6.69,
+          "output_snippet": "\\n--- Running T-STAC-01: Mocked STAC response ---\n[PASS] T-STAC-01: Metadata and HREFs correctly mapped without hardcoding.\n.\\n--- Running T-STAC-02: BBox and date parameter passing ---\n[PASS] T-STAC-02: BBox and date parameters safely bridged.\n.\\n--- Running T-STAC-03: Empty results and missing assets ---\n[PASS] T-STAC-03: Missing items yield empty arrays; No mock substitution.\n.\\n--- Running T-STAC-04: Live metadata query ---\n[PASS] T-STAC-04: Live query succeeded. Found 6 items (e.g. S2A_45QUC_20230127_0_L2A)\n.\n4 passed in 5.93s\n"
+        },
+        {
+          "file": "tests/test_realworld_satellite_ingestion.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.4,
+          "output_snippet": ".....\n5 passed in 1.63s\n"
+        },
+        {
+          "file": "tests/test_dem_processor_d02.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 6,
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 8.65,
+          "output_snippet": "\n[PASS] T-DEM-02: Output accurately adheres to GeospatialRasterAsset schema.\n.\\n--- T-DEM-03: Failure handling ---\n[PASS] T-DEM-03: Unavailable sources and missing coverage safely abort without synthetic data.\n.\\n--- T-DEM-04: Slope derivation ---\n[PASS] T-DEM-04: Deterministic 45-degree ramp cleanly calculates correctly using np.gradient.\n.\\n--- T-DEM-05: Provenance ---\n[PASS] T-DEM-05: Stac ID propagates gracefully into derived slope arrays.\n.\\n--- T-DEM-06: Optional integration ---\n[PASS] T-DEM-06: 4-modality fusion continues cleanly without DEM dependency.\n.\n============================== warnings summary ===============================\ntests/test_dem_processor_d02.py::TestDEMProcessorD02::test_tdem_06_optional_integration\ntests/test_dem_processor_d02.py::TestDEMProcessorD02::test_tdem_06_optional_integration\ntests/test_dem_processor_d02.py::TestDEMProcessorD02::test_tdem_06_optional_integration\ntests/test_dem_processor_d02.py::TestDEMProcessorD02::test_tdem_06_optional_integration\ntests/test_dem_processor_d02.py::TestDEMProcessorD02::test_tdem_06_optional_integration\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\2_data_pipeline\\preprocessing\\raster_processor.py:50: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication\n    target_transform = Affine.translation(min_x, max_y) * Affine.scale(res_x, -res_y)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n6 passed, 5 warnings in 7.86s\n"
+        },
+        {
+          "file": "tests/test_dem_weather_coupling.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.43,
+          "output_snippet": "....================================================================================\n  THE MRIDANSH : DAY 08 SPACEBORNE 4-SOURCE OPERATIONAL TELEMETRY RUNNER       \n  MISSION: TRL-6 TO TRL-7 OPERATIONAL FLIGHT READINESS CERTIFICATION           \n================================================================================\n\n[STEP 1] 4-Source Multi-Modal Harmonization (10m UTM 45N):\n  \u2022 Sentinel-1 SAR (VV, VH calibrated dB) : Shape [1, 2, 64, 64]\n  \u2022 Sentinel-2 Optical (B2, B3, B4, B8)   : Shape [1, 4, 64, 64]\n  \u2022 Copernicus DEM (Elev, Slope, Asp, TWI): Shape [1, 4, 64, 64]\n  \u2022 ERA5-Land Weather (Rain, Temp, VPD)   : Shape [1, 3, 64, 64]\n\n[STEP 2] Executing Forward Handshake on AETHER-MRID1607X Monolithic Engine:\n  \u2022 Monolithic Inference Latency  : 10.9531 ms (0.002674 ms/pixel)\n  \u2022 Volumetric Soil Moisture (\u03b8)  : Mean 0.2401 m\u00b3/m\u00b3 (Range: [0.1807, 0.2890])\n  \u2022 Matric Pore Pressure (\u03c8)      : Mean -110.08 cm\n  \u2022 Conformal Uncertainty (2\u03c3)    : \u00b10.0192 m\u00b3/m\u00b3\n  \u2022 Richards PDE Residual Norm    : 1.455509e-03 m\u00b3/m\u00b3\n  \u2022 Anomaly Detection Flag        : True\n  \u2022 Mission Assurance Level-A Integrity     : VERIFIED (Zero NaNs, Zero Infs)\n\n[STEP 3] Serialized 4-Modality Flight Artifact:\n  \u2022 File : s1_s2_dem_era5_harmonized_bundle.pt (964.96 KB)\n  \u2022 Path : D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\9_spaceborne_operational_campaign\\2_harmonized_tensors\\s1_s2_dem_era5_harmonized_bundle.pt\n.\n5 passed in 1.68s\n"
+        },
+        {
+          "file": "tests/test_raster_processor_d06.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.67,
+          "output_snippet": "\\n--- Running T-FIX-02: Deterministic Reprojection ---\n[PASS] T-FIX-02: CRS, dimensions, transform aligned correctly. Continuous resampling (Bilinear) worked.\n\\n--- Running T-MASK-01: Mask and nodata propagation ---\n[PASS] T-MASK-01: Invalid pixels correctly masked using Nearest resampling.\n\\n--- Running T-ERR-01: Invalid target grid ---\n[PASS] T-ERR-01: Invalid grids safely raise GridAlignmentError with no fabricated data.\n\\n[OK] All D06 Acceptance criteria met. Raster reprojection is operational.\n.\n============================== warnings summary ===============================\ntests/test_raster_processor_d06.py::test_raster_processor_d06\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\tests\\test_raster_processor_d06.py:29: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication\n    src_transform = Affine.translation(300000.0, 4000000.0) * Affine.scale(10.0, -10.0)\n\ntests/test_raster_processor_d06.py::test_raster_processor_d06\ntests/test_raster_processor_d06.py::test_raster_processor_d06\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\2_data_pipeline\\preprocessing\\raster_processor.py:50: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication\n    target_transform = Affine.translation(min_x, max_y) * Affine.scale(res_x, -res_y)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n1 passed, 3 warnings in 0.26s\n"
+        },
+        {
+          "file": "tests/test_cog_processor_d01.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.67,
+          "output_snippet": "x multiplication\n    return Affine.translation(west, north) * Affine.scale(xsize, -ysize)\n\ntests/test_cog_processor_d01.py::test_cog_processor\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\rasterio\\windows.py:360: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication\n    x, y = transform * (window.col_off or 0.0, window.row_off or 0.0)\n\ntests/test_cog_processor_d01.py::test_cog_processor\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\rasterio\\windows.py:361: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication\n    return Affine.translation(\n\ntests/test_cog_processor_d01.py::test_cog_processor\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\rasterio\\windows.py:387: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication\n    left, bottom = transform * (col_min, row_max)\n\ntests/test_cog_processor_d01.py::test_cog_processor\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\rasterio\\windows.py:388: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication\n    right, top = transform * (col_max, row_min)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n1 passed, 5 warnings in 0.27s\n"
+        },
+        {
+          "file": "tests/test_pipeline_orchestrator_d04.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 6,
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 6.44,
+          "output_snippet": "\\n--- T-ORCH-01: Successful orchestration ---\n[PASS] T-ORCH-01: Full deterministic execution path reached fusion successfully.\n.\\n--- T-ORCH-02: Missing required modality ---\n[PASS] T-ORCH-02: Missing required STAC results blocks execution cleanly.\n.\\n--- T-ORCH-03: Optional DEM absent ---\n[PASS] T-ORCH-03: Handled in T-ORCH-01, 5-channel fusion succeeds natively without DEM.\n.\\n--- T-ORCH-04: Grid mismatch handling ---\n[PASS] T-ORCH-04: Alignment/read failures strictly raise errors and block fusion.\n.\\n--- T-ORCH-05: Provenance preservation ---\n[PASS] T-ORCH-05: Source IDs propagated into final tensor provenance.\n.\\n--- T-ORCH-06: Error propagation ---\n[PASS] T-ORCH-06: Validation errors are strictly propagated upward.\n.\n============================== warnings summary ===============================\ntests/test_pipeline_orchestrator_d04.py: 10 warnings\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\2_data_pipeline\\preprocessing\\raster_processor.py:50: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication\n    target_transform = Affine.translation(min_x, max_y) * Affine.scale(res_x, -res_y)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n6 passed, 10 warnings in 5.67s\n"
+        }
+      ]
+    },
+    "4_GIS_Viewports_and_Dashboard": {
+      "files_count": 8,
+      "files_passed": 8,
+      "files_failed": 0,
+      "tests_run": 67,
+      "duration_s": 22.19,
+      "records": [
+        {
+          "file": "tests/test_gis_pipeline.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 2,
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.73,
+          "output_snippet": "..\n============================== warnings summary ===============================\nmridansh_env\\Lib\\site-packages\\fastapi\\testclient.py:1\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\nmridansh_env\\Lib\\site-packages\\starlette\\testclient.py:53\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\starlette\\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.\n    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n2 passed, 2 warnings in 0.30s\n"
+        },
+        {
+          "file": "tests/test_gis_spatial_mesh_d05.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 28,
+          "passed": 28,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 3.49,
+          "output_snippet": "\n2026-11-13 20:51:06.993 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:51:06.993 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:51:07.008 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:51:07.008 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:51:07.008 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:51:07.008 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:51:07.008 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n........2026-11-13 20:51:07.124 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:51:07.125 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:51:07.125 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:51:07.125 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:51:07.126 No runtime found, using MemoryCacheStorageManager\n...........\n28 passed in 2.54s\n"
+        },
+        {
+          "file": "tests/test_step3_drawing_tool.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 3,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.13,
+          "output_snippet": "2026-11-13 20:51:09.656 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n...\n3 passed in 1.40s\n"
+        },
+        {
+          "file": "tests/test_step4_cockpit_zonal_integration.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 3,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.86,
+          "output_snippet": "...\n3 passed in 0.15s\n"
+        },
+        {
+          "file": "tests/test_zonal_field_extractor.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.65,
+          "output_snippet": "...\n[BENCHMARK] Zonal Extraction Mean: 0.859 ms, Median: 0.862 ms (SLA: < 2.0 ms median / < 5.0 ms max)\n.\n4 passed in 0.13s\n"
+        },
+        {
+          "file": "tests/test_dashboard_integrity_d02.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 13,
+          "passed": 13,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 4.57,
+          "output_snippet": "an be ignored when running in bare mode.\n2026-11-13 20:51:15.213 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:51:15.213 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n.....warning: in the working copy of 'tests/test_dashboard_integrity_d02.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_gis_spatial_mesh_d05.py', LF will be replaced by CRLF the next time Git touches it\n.\n============================== warnings summary ===============================\nmridansh_env\\Lib\\site-packages\\fastapi\\testclient.py:1\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\nmridansh_env\\Lib\\site-packages\\starlette\\testclient.py:53\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\starlette\\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.\n    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n13 passed, 2 warnings in 3.38s\n"
+        },
+        {
+          "file": "tests/test_full_dashboard_suite.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 6,
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 5.61,
+          "output_snippet": " use `width='content'`.\n2026-11-13 20:51:20.711 Please replace `use_container_width` with `width`.\n\n`use_container_width` will be removed after 2025-12-31.\n\nFor `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n\n[PASS] Successfully verified crop switching across paddy, wheat, and maize.\n.2026-11-13 20:51:20.722 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n2026-11-13 20:51:21.008 Please replace `use_container_width` with `width`.\n\n`use_container_width` will be removed after 2025-12-31.\n\nFor `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n2026-11-13 20:51:21.021 Please replace `use_container_width` with `width`.\n\n`use_container_width` will be removed after 2025-12-31.\n\nFor `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n2026-11-13 20:51:21.034 Please replace `use_container_width` with `width`.\n\n`use_container_width` will be removed after 2025-12-31.\n\nFor `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n\n[PASS] Footer verified: zero raw code blocks, 100% strict JCC Campus 1 & Commander branding.\n.\n[PASS] CSS stylesheet verified with all aerospace UI classes present.\n.\n[PASS] Physical Engine Subsystem 10: 96 pixels, 462.14 ha, 0.0 L, Rut 1.80 cm, SHA-256: 0b1b543c368c39c4...\n.\n6 passed in 4.55s\n"
+        },
+        {
+          "file": "tests/test_phase1_grand_data_to_dashboard.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 4.15,
+          "output_snippet": "bility\n  [OK] Step 4 [Richards PDE]: Computed Water Flux & Loss Penalty: 0.015392\n  [OK] Step 5 [EnKF Filter]: Assimilated Posterior Mean Moisture: 0.2726 m3/m3\n  [OK] Step 6 [Translators]: Agronomy Moisture: 0.2726 m3/m3 | Civil Bearing: 150.52 kPa\n  [OK] Step 7 [Dashboard]: Folium Map Rendered & /api/v1/predict 200 OK Response Verified\n===========================================================================\n [OK] GRAND PHASE 1 UNBROKEN JOURNEY FULLY PROVED & CERTIFIED! \n===========================================================================\n.\n============================== warnings summary ===============================\nmridansh_env\\Lib\\site-packages\\fastapi\\testclient.py:1\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\nmridansh_env\\Lib\\site-packages\\starlette\\testclient.py:53\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\starlette\\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.\n    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n8 passed, 2 warnings in 3.05s\n"
+        }
+      ]
+    },
+    "5_Notebook_Verification_Dossiers": {
+      "files_count": 12,
+      "files_passed": 12,
+      "files_failed": 0,
+      "tests_run": 88,
+      "duration_s": 22.47,
+      "records": [
+        {
+          "file": "tests/test_notebook_01_verification.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 6,
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.84,
+          "output_snippet": "......\n6 passed in 0.38s\n"
+        },
+        {
+          "file": "tests/test_notebook_02_verification.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 6,
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.92,
+          "output_snippet": "......\n6 passed in 0.38s\n"
+        },
+        {
+          "file": "tests/test_notebook_03_verification.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.29,
+          "output_snippet": ".......\n7 passed in 1.48s\n"
+        },
+        {
+          "file": "tests/test_notebook_04_verification.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.05,
+          "output_snippet": ".......\n7 passed in 1.28s\n"
+        },
+        {
+          "file": "tests/test_notebook_05_verification.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.21,
+          "output_snippet": ".......\n7 passed in 1.44s\n"
+        },
+        {
+          "file": "tests/test_notebook_06_verification.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 1.94,
+          "output_snippet": ".......\n7 passed in 1.24s\n"
+        },
+        {
+          "file": "tests/test_notebook_07_verification.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 1.94,
+          "output_snippet": "........\n8 passed in 1.24s\n"
+        },
+        {
+          "file": "tests/test_notebook_08_verification.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.13,
+          "output_snippet": "........\n8 passed in 1.34s\n"
+        },
+        {
+          "file": "tests/test_notebook_09_verification.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 1.94,
+          "output_snippet": "........\n8 passed in 1.25s\n"
+        },
+        {
+          "file": "tests/test_notebook_10_verification.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.18,
+          "output_snippet": "........\n8 passed in 1.47s\n"
+        },
+        {
+          "file": "tests/test_notebook_11_verification.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 1.98,
+          "output_snippet": "........\n8 passed in 1.25s\n"
+        },
+        {
+          "file": "tests/test_notebook_12_verification.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.05,
+          "output_snippet": "........\n8 passed in 1.32s\n"
+        }
+      ]
+    },
+    "6_Grand_Integration_and_System_Closure": {
+      "files_count": 7,
+      "files_passed": 7,
+      "files_failed": 0,
+      "tests_run": 69,
+      "duration_s": 14.58,
+      "records": [
+        {
+          "file": "tests/test_core_integration_d05.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 14,
+          "passed": 14,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.55,
+          "output_snippet": "..............\n14 passed in 1.66s\n"
+        },
+        {
+          "file": "tests/test_domain_integration_d05.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 18,
+          "passed": 18,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.58,
+          "output_snippet": "..................\n18 passed in 0.15s\n"
+        },
+        {
+          "file": "tests/test_phase2_integration.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 0,
+          "passed": 0,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.87,
+          "output_snippet": ".============================================================\n [**] STARTING MRIDANSH PHASE 2 END-TO-END SYSTEM AUDIT \n============================================================\n\n[1/4] Auditing Root & Health Endpoints...\n  \u2713 Health Telemetry Status: ONLINE | Service: THE MRIDANSH Async REST Backend\n\n[2/4] Auditing /api/v1/status Subsystem Endpoint...\n  \u2713 V1 Subsystem: ONLINE | Active Routes: 3\n\n[3/4] Auditing POST /api/v1/predict (Hardened Scientific Integrity Gate)...\n  \u2713 Richards-EnKF Physics Output Validated | Execution Time: 0.0001s\n\n[4/4] Auditing GET /api/v1/gis/layer (Sub-Grid Tiler Engine)...\n  \u2713 GIS Sub-Grid Mesh GeoJSON Validated | Received Polygons: 16\n\n==================================================================================\n [OK] PHASE 2 AUDIT PASSED: ALL 4 REST PIPELINE ENDPOINTS VERIFIED \n==================================================================================\n"
+        },
+        {
+          "file": "tests/test_day16_unified_pipeline.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.52,
+          "output_snippet": "........\n============================== warnings summary ===============================\ntests/test_day16_unified_pipeline.py::TestDay16UnifiedPipeline::test_pipe_04_triple_cog_geospatial_alignment\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\rasterio\\transform.py:189: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication\n    return Affine.translation(west, north) * Affine.scale(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n8 passed, 1 warning in 1.75s\n"
+        },
+        {
+          "file": "tests/test_model_lock.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 0.45,
+          "output_snippet": ".....\n5 passed in 0.04s\n"
+        },
+        {
+          "file": "tests/test_grand_system_audit.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 4.68,
+          "output_snippet": " 0.273 m3/m3\n  [OK] Step 3 & 4 [Translators]: Agronomy Moisture: 0.273 | Civil Bearing: 150.5 kPa\n  [OK] Step 5 [Dashboard Metrics]: Verified Units, Conversion & Strictly UNAVAILABLE Safety Metrics\n  [OK] Step 6 [Renderers]: Folium Map Canvas & Plotly Depth Profile Verified\n  [OK] Step 7 [REST API]: Telemetry & Physics REST Ingress Verified\n======================================================================\n [OK] GRAND END-TO-END PIPELINE AUDIT PASSED: ZERO BREACHES DETECTED \n======================================================================\n.\n============================== warnings summary ===============================\nmridansh_env\\Lib\\site-packages\\fastapi\\testclient.py:1\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\nmridansh_env\\Lib\\site-packages\\starlette\\testclient.py:53\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\starlette\\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.\n    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n12 passed, 2 warnings in 3.45s\n"
+        },
+        {
+          "file": "tests/test_grand_phase1_phase2_full_pipeline.py",
+          "status": "PASSED",
+          "returncode": 0,
+          "tests_run": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "duration_s": 2.93,
+          "output_snippet": "............\n============================== warnings summary ===============================\nmridansh_env\\Lib\\site-packages\\fastapi\\testclient.py:1\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\nmridansh_env\\Lib\\site-packages\\starlette\\testclient.py:53\n  D:\\JAGANNATH_CODE_SANCTUM\\JCC CAMPUS 2 (RS-SDA DIVISION)\\THE_MRIDANSH\\mridansh_env\\Lib\\site-packages\\starlette\\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.\n    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n12 passed, 2 warnings in 2.00s\n"
+        }
+      ]
+    }
+  },
+  "end_time": "2026-11-13T20:52:02.982454",
+  "pass_percentage": 100.0
+}

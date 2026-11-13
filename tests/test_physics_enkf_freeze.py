@@ -222,3 +222,8 @@ def run_physics_enkf_freeze_verification():
 
 if __name__ == "__main__":
     run_physics_enkf_freeze_verification()
+
+
+def test_test_physics_enkf_freeze_verification():
+    """Pytest discovery wrapper for test_physics_enkf_freeze."""
+    run_physics_enkf_freeze_verification()
