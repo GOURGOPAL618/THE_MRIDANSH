@@ -40,6 +40,14 @@ from runtime_cache import (
     simulate_live_tractor_tilling,
 )
 
+# ----------------------------------------------------------------------------------------------------------------------
+# SYSTEM ARCHITECTURAL CONTRACTS & SCIENTIFIC SPECIFICATIONS (TASK 02 - TASK 05)
+# • Domain Workspaces: Agronomy & Soil Health | Civil & Geotechnical Stability
+# • GIS Mesh Layers: Overlay Computational Sub-Grid Mesh | Overlay AOI Boundary Box
+# • Operational Integrity: LIVE INFERENCE DISCONNECTED | Standalone UI (Disconnected)
+# • High-Speed Flight Core: AETHER-MRID1607X (Zero-Latency In-Memory Physics Bus)
+# ----------------------------------------------------------------------------------------------------------------------
+
 
 def get_zonal_extractor():
     """Dynamically loads and returns Subsystem 10 ZonalFieldExtractor singleton."""

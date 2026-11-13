@@ -4,10 +4,12 @@ Integrates Folium with Permanent Google Maps Hybrid Tiles,
 AOI polygon boundaries, Measure Controls, Geocoder, and Draw Toolbar.
 """
 
+import math
 from typing import Any, Dict, Optional, Tuple
 
 import folium
 from folium import plugins
+import numpy as np
 from streamlit_folium import st_folium
 
 
@@ -129,6 +131,94 @@ class GISMapRenderer:
             geojson_data, name=layer_name, style_function=style_function, interactive=False
         )
 
+        geojson_layer.add_to(folium_map)
+        return folium_map
+
+
+    def add_soil_moisture_heatmap_overlay(
+        self,
+        folium_map: folium.Map,
+        geojson_data: Optional[Dict[str, Any]] = None,
+        is_demo: bool = False,
+        layer_name: Optional[str] = None,
+    ) -> folium.Map:
+        """Overlays soil moisture choropleth / grid mesh with strict truth & integrity labeling."""
+        if not geojson_data or not isinstance(geojson_data, dict):
+            return folium_map
+
+        features = geojson_data.get("features", [])
+        if not features:
+            return folium_map
+
+        # Detect if features contain physical measurements
+        has_measurements = False
+        for feat in features:
+            props = feat.get("properties", {})
+            for k in ["moisture_m3m3", "volumetric_moisture", "soil_moisture"]:
+                if k in props and props[k] is not None:
+                    val = props[k]
+                    try:
+                        if not np.isnan(float(val)):
+                            has_measurements = True
+                            break
+                    except (ValueError, TypeError):
+                        pass
+            if has_measurements:
+                break
+
+        # Determine explicit truthful layer name
+        if not has_measurements:
+            resolved_layer_name = "Spatial Grid Mesh (Geometry Only)"
+        else:
+            resolved_layer_name = layer_name or "Soil Moisture (m³/m³)"
+
+        if is_demo and "[DEMO DATA]" not in resolved_layer_name:
+            resolved_layer_name = f"{resolved_layer_name} [DEMO DATA]"
+
+        def style_function(feature):
+            props = feature.get("properties", {})
+            val = None
+            for k in ["moisture_m3m3", "volumetric_moisture", "soil_moisture"]:
+                if k in props and props[k] is not None:
+                    try:
+                        v = float(props[k])
+                        if not np.isnan(v):
+                            val = v
+                            break
+                    except (ValueError, TypeError):
+                        pass
+
+            if val is None or not has_measurements:
+                return {
+                    "fillColor": "#00000000",
+                    "color": "#00e5ff" if not is_demo else "#e0a800",
+                    "weight": 1.5,
+                    "fillOpacity": 0.0,
+                }
+
+            # Moisture colormap: dry (amber) -> optimal (green) -> saturated (blue)
+            if val < 0.20:
+                color = "#d73027"
+            elif val < 0.30:
+                color = "#fdae61"
+            elif val < 0.38:
+                color = "#1a9850"
+            else:
+                color = "#2b83ba"
+
+            return {
+                "fillColor": color,
+                "color": "#ffffff",
+                "weight": 1.0,
+                "fillOpacity": 0.65,
+            }
+
+        geojson_layer = folium.GeoJson(
+            geojson_data,
+            name=resolved_layer_name,
+            style_function=style_function,
+            interactive=True,
+        )
         geojson_layer.add_to(folium_map)
         return folium_map
 
