@@ -2,7 +2,7 @@
 # Module: 4_domain_translators/temporal_hydrodynamics.py
 # Subsystem 07: Temporal Hydrodynamic Continuity Engine
 # Architecture: Continuous Vadose Evaporative Drying, Hydraulic Drainage & SAR Multi-Temporal Anomaly Fusion
-# Standards: FAO-56 / Van Genuchten Vadose Hydraulics / WMO-No. 168 / RTCA DO-178C Level-A
+# Standards: FAO-56 / Van Genuchten Vadose Hydraulics / WMO-No. 168 / Mission Assurance Level-A
 # Lead Systems Architect: Gouragopal Mohapatra (JCC Campus 2, RS-SDA Division)
 
 from __future__ import annotations
@@ -127,7 +127,7 @@ class TemporalHydrodynamicEngine:
     using a continuous 1D Richards-bucket mass conservation model combined with
     multi-temporal SAR anomaly assimilation.
     
-    Complies with RTCA DO-178C Level-A safety and real-time execution invariants.
+    Complies with Mission Assurance Level-A safety and real-time execution invariants.
     """
 
     def __init__(
@@ -236,7 +236,7 @@ class TemporalHydrodynamicEngine:
         theta_next = theta_arr + delta_theta
         theta_next = np.clip(theta_next, self.theta_res, self.theta_sat)
 
-        # DO-178C Invariant: Strict Monotonicity under Dry Weather (P = 0)
+        # Mission Assurance Level-A Invariant: Strict Monotonicity under Dry Weather (P = 0)
         # If precipitation is zero and ET0 > 0, moisture must strictly not increase.
         monotonic_decrease = True
         if weather.precipitation_mm_day == 0.0 and weather.et0_mm_day > 0.0:
@@ -271,7 +271,7 @@ class TemporalHydrodynamicEngine:
             weather_schedule: List of DailyWeatherForcing for each day of the forecast.
             
         Returns:
-            TemporalTrajectory with daily states, telemetry, and DO-178C audit.
+            TemporalTrajectory with daily states, telemetry, and Mission Assurance Level-A audit.
         """
         t_start = time.perf_counter()
 
@@ -309,7 +309,7 @@ class TemporalHydrodynamicEngine:
         final_mean = float(np.mean(theta_current))
         net_loss_mm = (anchor_mean - final_mean) * self.z_active_m * 1000.0
 
-        # Run DO-178C Contract Checks
+        # Run Mission Assurance Level-A Contract Checks
         contracts = self._verify_contracts(theta_anchor, daily_steps, weather_schedule, t_elapsed_ms)
 
         return TemporalTrajectory(
@@ -392,7 +392,7 @@ class TemporalHydrodynamicEngine:
         weather_schedule: List[DailyWeatherForcing],
         execution_time_ms: float,
     ) -> Dict[str, bool]:
-        """Verify DO-178C Level-A safety invariants across trajectory."""
+        """Verify Mission Assurance Level-A safety invariants across trajectory."""
         contracts: Dict[str, bool] = {}
 
         # 1. Finite numbers check (PIPE-03 invariant)

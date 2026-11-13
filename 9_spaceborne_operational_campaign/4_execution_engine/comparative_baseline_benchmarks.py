@@ -3,7 +3,7 @@ THE MRIDANSH : CLASSICAL COMPARATIVE BASELINE BENCHMARK SUITE
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 09
 Subsystem: 9_spaceborne_operational_campaign/4_execution_engine/comparative_baseline_benchmarks.py
-Standards: CEOS-WGCV Protocol, IEEE TGRS Validation Benchmarks, DO-178C Level-A
+Standards: CEOS-WGCV Protocol, IEEE TGRS Validation Benchmarks, Mission Assurance Level-A
 
 Functionality:
 1. Classical Naive Optical Regression Baseline (Carlson & Ripley / Sellers 1995):
@@ -221,7 +221,7 @@ class BaselineBenchmarkEngine:
     def run_benchmark(self, matrix_csv_path: Path) -> Dict[str, Any]:
         """
         Loads collocated matrix, trains baselines, evaluates performance,
-        and certifies DO-178C Level-A deterministic outputs.
+        and certifies Mission Assurance Level-A deterministic outputs.
         """
         df = pd.read_csv(str(matrix_csv_path))
 

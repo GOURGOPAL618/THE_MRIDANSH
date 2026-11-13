@@ -2,7 +2,7 @@
 ## FLIGHT LOG DAY 17: SUBSYSTEM 10 ARBITRARY FARM BOUNDARY INTEGRATION, AEROSPACE COCKPIT TELEMETRY & JCC CAMPUS 1 CERTIFICATION
 **Mission Date:** Day 86 · 04 NOV 2026  
 **Subsystems:** `4_domain_translators/zonal_field_extractor.py`, `6_dashboard/app.py`, `6_dashboard/assets/style.css`, `tests/test_full_dashboard_suite.py`  
-**Engineering Directives:** RTCA DO-178C Level-A / OGC Simple Features / WGS 84 UTM 45N (EPSG:32645) / FAO-56 / USACE TM 5-818-1 / Bekker Terramechanics  
+**Engineering Directives:** Mission Assurance Level-A / OGC Simple Features / WGS 84 UTM 45N (EPSG:32645) / FAO-56 / USACE TM 5-818-1 / Bekker Terramechanics  
 **Mission Commander:** Gouragopal Mohapatra (`GOURGOPAL618`), Lead Systems Architect & Remote Sensing Mission Engineer  
 **Sanctum:** Jagannath Command Center (JCC) — Campus 2 (RS-SDA Division)  
 **Status:** `DAY_17_COCKPIT_ZONAL_ANALYTICS_CERTIFIED_TRL7`  
@@ -18,7 +18,7 @@
    CORE ENGINE   : AETHER-MRID1607X (PHYSICS-GUIDED MULTI-MODAL CORE)
    TAGLINE       : "FROM ORBIT TO ROOT"
    TARGET SCENE  : KENDRAPARA COASTAL DELTA (EPSG:32645) & ODISHA REGIONAL BASINS
-   VERIFICATION  : RTCA DO-178C LEVEL-A (16/16 ZERO-DEFECT PASS IN 6.89s)
+   VERIFICATION  : PLANETARY MISSION ASSURANCE LEVEL-A (16/16 ZERO-DEFECT PASS IN 6.89s)
    COMPUTE SLA   : < 0.8 ms RAY-CASTING RASTERIZATION / 0.0063 ms/px PHYSICAL TENSOR BUS
    BRANDING      : STRICT JCC & JCC CAMPUS 1 (RS-SDA DIVISION) MISSION DIRECTIVES
 ========================================================================================================================
@@ -37,7 +37,7 @@ Day 17 delivers three major engineering milestones:
 2. **Aerospace Cockpit Zonal Coupling (Step 3 & Step 4):** Connected interactive Leaflet drawing tools in `6_dashboard/app.py` to the in-memory flight bus. The Telemetry HUD dynamically switches from single-point coordinates to farm-wide zonal distributions, and the Kisan War Room computes field-specific total volumetric irrigation prescriptions (Litres) and Bekker tractor rut depth ($z_{\text{rut}}$) backed by a 64-character SHA-256 provenance hash.
 3. **Aerospace Glassmorphic Mission Footer & UI Defect Elimination:** Solved a critical Markdown indentation code-block rendering quirk, eliminated sidebar glyph text leaks, enforced crisp unclipped borders, and locked all copyright and mission control attribution strictly to **Jagannath Command Center (JCC) & JCC Campus 1 (RS - SDA Division)** and **GOURAGOPAL MOHAPATRA**.
 
-The entire integration was verified via `tests/test_full_dashboard_suite.py` and Subsystem 10 suites under **RTCA DO-178C Level-A standards, achieving 16/16 test passes in 6.89 seconds**.
+The entire integration was verified via `tests/test_full_dashboard_suite.py` and Subsystem 10 suites under **Mission Assurance Level-A standards, achieving 16/16 test passes in 6.89 seconds**.
 
 ---
 
@@ -70,7 +70,7 @@ The entire integration was verified via `tests/test_full_dashboard_suite.py` and
                     └──────────────────────┬──────────────────────┘
                                            │
                                            ▼
-                 [DO-178C Level-A SHA-256 Deterministic Provenance Serialization]
+                 [Mission Assurance Level-A SHA-256 Deterministic Provenance Serialization]
 ```
 
 #### A. Shoelace Geodesic Metric Area Projection
@@ -101,7 +101,7 @@ $$\text{Total Water Required (Litres)} = \overline{\text{Deficit}}_{\text{root}}
  ┌──────────────────────────────────────┐  ┌────────────────────────────────────────────────────────────────────────┐
  │ 🛰️ SIDEBAR MISSION FLIGHT DECK      │  │ 🌐 MASTER HEADER & REAL-TIME TELEMETRY HUD                             │
  │ • Project & JCC Logos                │  │ • THE MRIDANSH // AETHER-MRID1607X CORE                               │
- │ • Mission Target AOI (4 Basins)      │  │ • Status: TRL-7 OPERATIONAL · 0.0063 ms/px · RTCA DO-178C LEVEL-A      │
+ │ • Mission Target AOI (4 Basins)      │  │ • Status: TRL-7 OPERATIONAL · 0.0063 ms/px · PLANETARY MISSION ASSURANCE LEVEL-A      │
  │ • Coordinate / Drawing Mode Toggle   │  │ • Active Metadata: WGS 84 / UTM 45N · Anchor Pass Day +0              │
  │ • Crop Variety (Paddy, Wheat, Maize) │  └────────────────────────────────────────────────────────────────────────┘
  │ • Temporal Drying Horizon Slider     │  ┌────────────────────────────────────────────────────────────────────────┐
@@ -119,7 +119,7 @@ $$\text{Total Water Required (Litres)} = \overline{\text{Deficit}}_{\text{root}}
                                            │ 🌾 STEP 3: DUAL WORKSPACES (WAR ROOM & GEOTECH)                        │
                                            │ • Tab 1: Kisan War Room (Litres, Tala Gachha, Bekker Rut Sinkage)      │
                                            │ • Tab 2: Geotechnical Stability (USACE Off-Road & 3D Plotly WebGL Mesh)│
-                                           │ • SHA-256 Provenance Banner: DO-178C LEVEL-A VERIFIED                  │
+                                           │ • SHA-256 Provenance Banner: MISSION ASSURANCE LEVEL-A VERIFIED                  │
                                            └────────────────────────────────────────────────────────────────────────┘
                                            ┌────────────────────────────────────────────────────────────────────────┐
                                            │ 🏛️ MISSION CONTROL FOOTER (GLASSMORPHISM)                              │
@@ -134,7 +134,7 @@ $$\text{Total Water Required (Litres)} = \overline{\text{Deficit}}_{\text{root}}
 
 ```
 ========================================================================================================================
-                          RTCA DO-178C LEVEL-A VERIFICATION AUDIT CERTIFICATE
+                          PLANETARY MISSION ASSURANCE LEVEL-A VERIFICATION AUDIT CERTIFICATE
 ========================================================================================================================
  Suites: tests/test_full_dashboard_suite.py
          tests/test_step4_cockpit_zonal_integration.py

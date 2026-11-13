@@ -183,7 +183,7 @@ class GroundStabilityEngine:
     @staticmethod
     def assert_invariants(q_ult: np.ndarray, q_allow: np.ndarray, fs: float) -> None:
         """
-        DO-178C Level-A Invariants:
+        Mission Assurance Level-A Invariants:
         1. Non-negativity: q_ult > 0, q_allow > 0
         2. Strict Factor of Safety Identity: q_ult / q_allow == fs
         3. Zero NaNs and Zero Infs

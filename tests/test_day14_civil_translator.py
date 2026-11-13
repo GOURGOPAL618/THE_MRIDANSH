@@ -6,7 +6,7 @@ Contracts Verified:
   [CIVIL-02] Monotonicity of Meyerhof-Hansen Bearing Capacity Factors (Nc, Nq, Ngamma).
   [CIVIL-03] Slope Stability Flat Ground Limit (beta -> 0 => FS >= 1.5) & Hazard Zonation.
   [CIVIL-04] Spaceborne Flight Bundle Numerical Integrity (4,096 pixels, 0 NaNs, 0 Infs).
-  [CIVIL-05] Real-Time Processing Latency Performance (< 0.010 ms/pixel DO-178C SLA).
+  [CIVIL-05] Real-Time Processing Latency Performance (< 0.010 ms/pixel Deterministic SLA).
 """
 
 import sys
@@ -30,7 +30,7 @@ from slope_stability_engine import SlopeStabilityEngine
 
 
 class TestDay14CivilDomainTranslator:
-    """Formal RTCA DO-178C Level-A Verification Suite for Civil Domain Translator Phase 2."""
+    """Formal Mission Assurance Level-A Verification Suite for Civil Domain Translator Phase 2."""
 
     @pytest.fixture(autouse=True)
     def setup_engines(self):
@@ -126,7 +126,7 @@ class TestDay14CivilDomainTranslator:
 
     # ─── [CIVIL-05] Real-Time Latency SLA (< 0.010 ms/pixel) ───────────────────
     def test_civil_05_realtime_latency_sla(self):
-        """Profile full execution latency and verify safety margin over DO-178C SLA."""
+        """Profile full execution latency and verify safety margin over Deterministic SLA."""
         bundle_path = repo_root / "9_spaceborne_operational_campaign/2_harmonized_tensors/s1_s2_dem_era5_harmonized_bundle.pt"
         bundle = torch.load(bundle_path, weights_only=False)
         theta_rz = bundle["soil_state_output"]["volumetric_moisture"].squeeze().numpy()

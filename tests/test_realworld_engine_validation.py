@@ -3,7 +3,7 @@ THE MRIDANSH : AUTOMATED TEST SUITE — REAL-WORLD FLIGHT ENGINE VALIDATION
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 10
 Subsystem: tests/test_realworld_engine_validation.py
-Standards: CEOS-WGCV Match-Up Protocol, DO-178C Level-A Flight Certification
+Standards: CEOS-WGCV Match-Up Protocol, Mission Assurance Level-A Flight Certification
 
 Contracts Tested:
   • SOC-16: Monolithic Forward Inference Latency (< 0.05 ms/px) & 8-State Zero-NaN/Zero-Inf
@@ -37,7 +37,7 @@ from aether_engine import AETHER_MRID1607X_Engine, IngestedTensorBundle, Unified
 
 
 class TestRealWorldEngineValidation:
-    """Rigorous DO-178C Level-A certification test suite for Day 10 real-world engine inference."""
+    """Rigorous Mission Assurance Level-A certification test suite for Day 10 real-world engine inference."""
 
     @pytest.fixture(autouse=True)
     def setup_campaign_paths(self):

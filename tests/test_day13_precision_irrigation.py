@@ -3,7 +3,7 @@ THE MRIDANSH : AUTOMATED TEST SUITE — DAY 13 PRECISION VRI & CONFORMAL RISK DI
 ================================================================================
 Mission: Phase 4 (Domain Translators & Downstream Intelligence) | Day 13
 Subsystem: tests/test_day13_precision_irrigation.py
-Standards: United Nations FAO-56, OGC GeoTIFF 1.1, DO-178C Level-A Avionics Rigor
+Standards: United Nations FAO-56, OGC GeoTIFF 1.1, Mission Assurance Level-A Avionics Rigor
 
 Contracts Tested:
   • AGRI-06: Prescription Volume Non-Negativity (I_net >= 0.0, V_ha >= 0.0, V_px >= 0.0)
@@ -139,8 +139,8 @@ class TestDay13PrecisionIrrigation:
             # Check bands data integrity
             for b in range(1, 5):
                 data = src.read(b)
-                assert not np.any(np.isnan(data)), f"DO-178C Violation: NaN found in band {b}"
-                assert not np.any(np.isinf(data)), f"DO-178C Violation: Inf found in band {b}"
+                assert not np.any(np.isnan(data)), f"Mission Assurance Level-A Violation: NaN found in band {b}"
+                assert not np.any(np.isinf(data)), f"Mission Assurance Level-A Violation: Inf found in band {b}"
                 assert np.min(data) >= 0.0, f"Negative value in band {b}"
 
         # Check manifest file

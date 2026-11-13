@@ -3,7 +3,7 @@ THE MRIDANSH : DAY 07 AUTOMATED TEST SUITE (SOC-01 TO SOC-05)
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 07
 Subsystem: tests/test_realworld_satellite_ingestion.py
-Standards: DO-178C Level-A Verification & CEOS-WGCV Ingestion Protocol
+Standards: Mission Assurance Level-A Verification & CEOS-WGCV Ingestion Protocol
 ================================================================================
 """
 

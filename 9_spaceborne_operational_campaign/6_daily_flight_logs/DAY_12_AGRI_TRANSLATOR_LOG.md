@@ -2,7 +2,7 @@
 ## FLIGHT LOG DAY 12: AGRICULTURE DOMAIN TRANSLATOR (FAO-56 CROP HYDRAULICS & WATER STRESS)
 **Mission Date:** Day 80 · 28 OCT 2026  
 **Subsystem:** `4_domain_translators/agronomy/` & `3_core_engine`  
-**Standards:** United Nations FAO-56 (Allen et al., 1998), USDA-NRCS Pedotransfer Mechanics, DO-178C Level-A  
+**Standards:** United Nations FAO-56 (Allen et al., 1998), USDA-NRCS Pedotransfer Mechanics, Mission Assurance Level-A  
 **Lead Systems & Remote Sensing Engineer:** Gouragopal Mohapatra (`GOURGOPAL618`)  
 **Mission Status:** `DAY_12_AGRI_TRANSLATOR_OPERATIONAL_CERTIFIED`  
 
@@ -19,7 +19,7 @@ Key achievements for Day 12:
 3. **Dynamic Phenology & Root Growth Model:** Implemented [`dynamic_phenology.py`](file:///d:/JAGANNATH_CODE_SANCTUM/JCC%20CAMPUS%202%20(RS-SDA%20DIVISION)/THE_MRIDANSH/4_domain_translators/agronomy/dynamic_phenology.py), driving biological sigmoidal root deepening $Z_r(f_c)$ from Sentinel-2 BOA surface reflectance (NDVI/NDRE), replacing arbitrary static root assumptions.
 4. **FAO-56 Dual Crop Coefficient ($K_c = K_{cb} + K_e$):** Implemented [`fao56_dual_kc.py`](file:///d:/JAGANNATH_CODE_SANCTUM/JCC%20CAMPUS%202%20(RS-SDA%20DIVISION)/THE_MRIDANSH/4_domain_translators/agronomy/fao56_dual_kc.py), isolating transpiration ($K_{cb}$) from direct soil surface evaporation ($K_e$) via AETHER Band 1 surface moisture ($\theta_{\text{surf}}$, 0–5 cm) and canopy shading ($1 - f_c$).
 5. **Vadose Depletion & Crop Water Stress Engine:** Implemented [`crop_water_stress.py`](file:///d:/JAGANNATH_CODE_SANCTUM/JCC%20CAMPUS%202%20(RS-SDA%20DIVISION)/THE_MRIDANSH/4_domain_translators/agronomy/crop_water_stress.py) and unified wrapper [`agronomy_domain_engine.py`](file:///d:/JAGANNATH_CODE_SANCTUM/JCC%20CAMPUS%202%20(RS-SDA%20DIVISION)/THE_MRIDANSH/4_domain_translators/agronomy/agronomy_domain_engine.py) computing real-time depletion $D_r$, transpiration reduction $K_s$, and $\text{CWSI} \in [0.0, 1.0]$.
-6. **DO-178C Level-A Verification:** Established automated test suite `tests/test_day12_agronomy_translator.py` passing all 5/5 flight contracts (**10/10 cumulative test suite passing with Day 11**).
+6. **Mission Assurance Level-A Verification:** Established automated test suite `tests/test_day12_agronomy_translator.py` passing all 5/5 flight contracts (**10/10 cumulative test suite passing with Day 11**).
 
 ---
 
@@ -53,7 +53,7 @@ Key achievements for Day 12:
 
 ---
 
-### 3. Flight Verification Test Results (DO-178C Level-A Compliance)
+### 3. Flight Verification Test Results (Mission Assurance Level-A Compliance)
 
 Execution Command:
 `pytest tests/test_day12_agronomy_translator.py -v`
@@ -102,7 +102,7 @@ Execution Command:
 ---
 
 ### 5. Transition to Day 13 Objectives
-With Day 12 core hydraulics, phenology, and water stress mechanics sealed and verified under DO-178C Level-A rigor, Day 13 will execute the operational production and dispatch phase:
+With Day 12 core hydraulics, phenology, and water stress mechanics sealed and verified under Mission Assurance Level-A rigor, Day 13 will execute the operational production and dispatch phase:
 1. **Precision Variable-Rate Irrigation (VRI) Deficit Engine:** Transforming millimeter deficits into farm scale units:
    $$1\text{ mm} = 10,000\text{ Liters / Hectare} = 100\text{ Liters / (10m Pixel)}$$
 2. **Conformal Uncertainty Risk Dispatch ($2\sigma$ Bounds):** Propagating AETHER's $\pm 2\sigma$ uncertainty into Lower ($I_{\min}$), Nominal ($I_{\text{mean}}$), and Upper ($I_{\max}$) irrigation prescriptions.

@@ -3,7 +3,7 @@ THE MRIDANSH : SPATIAL-TEMPORAL COLLOCATION ENGINE
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 09
 Subsystem: 9_spaceborne_operational_campaign/4_execution_engine/spatial_temporal_collocator.py
-Standards: CEOS-WGCV Match-Up Protocol, ISMN Collocation Guidelines, DO-178C Level-A
+Standards: CEOS-WGCV Match-Up Protocol, ISMN Collocation Guidelines, Mission Assurance Level-A
 
 Functionality:
 1. Ingests certified in-situ ground truth stations and harmonized 4-modality satellite tensors.
@@ -14,7 +14,7 @@ Functionality:
    - Copernicus DEM: Elevation, Slope (deg), Aspect (deg), Topographic Wetness Index (TWI)
    - ERA5-Land Weather: 24h Precipitation (mm), 2m Air Temp (C), VPD (kPa)
 4. Binds satellite feature vector with in-situ ground truth physical soil moisture (0-5cm & 5-30cm).
-5. Enforces DO-178C Level-A Zero-NaN integrity and exports master collocation benchmark matrix.
+5. Enforces Mission Assurance Level-A Zero-NaN integrity and exports master collocation benchmark matrix.
 ================================================================================
 """
 
@@ -199,7 +199,7 @@ class SpatialTemporalCollocator:
 
         collocated_df = pd.DataFrame(collocated_records)
 
-        # DO-178C Level-A Assertions
+        # Mission Assurance Level-A Assertions
         assert len(collocated_df) == len(stations_df), "Station count mismatch in collocation!"
         assert not collocated_df.isna().any().any(), "NaN detected in collocated matrix!"
         assert not np.isinf(collocated_df.select_dtypes(include=[np.number]).values).any(), "Inf detected in matrix!"

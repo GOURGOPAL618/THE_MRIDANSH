@@ -1,7 +1,7 @@
 # THE MRIDANSH - VERIFICATION TEST SUITE
 # Test: tests/test_step3_drawing_tool.py
 # Verification Target: Step 3 (Permanent Google Maps Hybrid & Draw Toolbar)
-# Standards: RTCA DO-178C Level-A / OGC GeoJSON
+# Standards: Mission Assurance Level-A / OGC GeoJSON
 # Lead Systems Architect: Gouragopal Mohapatra (JCC Campus 2, RS-SDA Division)
 
 import sys

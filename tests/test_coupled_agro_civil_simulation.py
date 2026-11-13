@@ -29,7 +29,7 @@ from coupled_agro_civil_simulator import CoupledAgroCivilSimulator
 
 
 class TestCoupledAgroCivilSimulation:
-    """Formal RTCA DO-178C Level-A Verification for Cross-Domain Agro-Civil Simulation."""
+    """Formal Mission Assurance Level-A Verification for Cross-Domain Agro-Civil Simulation."""
 
     @pytest.fixture(autouse=True)
     def setup_simulator(self):

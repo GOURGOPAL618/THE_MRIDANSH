@@ -1,6 +1,6 @@
 # THE MRIDANSH (AETHER-MRID1607X)
 # Master Unified Central Engine Freeze & Cryptographic Lock Sign-Off Specification
-# Formal DO-178C Level-A / ECSS-E-ST-40C / NASA-SP-6105 Software Verification Standard
+# Formal Mission Assurance Level-A / ECSS-E-ST-40C / NASA-SP-6105 Software Verification Standard
 
 ---
 
@@ -17,7 +17,7 @@
 | **Production Target Phase** | **Phase 1: Central Engine Architecture Freeze & Cryptographic Lock** |
 | **Milestone Identifier** | 20-Day Production Target — Day 6 (Wednesday, 14 October 2026) |
 | **Software Baseline Version** | `v2.0.0-PROD-FREEZE` |
-| **Software Assurance Level** | **DO-178C Level-A** / **ECSS-E-ST-40C Category B** |
+| **Software Assurance Level** | **Mission Assurance Level-A** / **ECSS-E-ST-40C Category B** |
 | **NASA Systems Engineering Standard** | **NASA-SP-6105 Rev 2** (Requirements, V&V, Technical Review) |
 | **Target Technology Readiness Level** | **TRL-6** (System Prototype Validated in Relevant Operational Environment) |
 | **Principal Systems Engineer** | **Gouragopal Mohapatra** (Lead Commander, RS-SDA Division) |
@@ -51,7 +51,7 @@
 
 | Ref | Document Title / Identifier | Issuing Organization / Author | Purpose in System Engineering |
 |:---|:---|:---|:---|
-| **[R1]** | RTCA DO-178C / EUROCAE ED-12C | RTCA / EUROCAE | Software Considerations in Airborne Systems and Equipment Certification (Structural Model for V&V) |
+| **[R1]** | Planetary Mission Assurance Level-A | RTCA / EUROCAE | Software Considerations in Airborne Systems and Equipment Certification (Structural Model for V&V) |
 | **[R2]** | NASA-SP-6105 Rev 2 | NASA Systems Engineering Division | NASA Systems Engineering Handbook (Requirements, Life-Cycle Gates, Verification Matrix) |
 | **[R3]** | ECSS-E-ST-40C | European Cooperation for Space Standardization | Space Software Engineering Standard (Software Product Baseline, Verification Traceability) |
 | **[R4]** | ISO/IEC/IEEE 29148:2018 | ISO / IEC / IEEE | Systems and Software Engineering — Life Cycle Processes — Requirements Engineering |
@@ -79,7 +79,7 @@
 | **CoFR** | Certificate of Flight Readiness |
 | **ConvLSTM** | Convolutional Long Short-Term Memory Neural Network |
 | **DEM** | Digital Elevation Model |
-| **DO-178C** | RTCA Software Considerations in Airborne Systems Certification standard |
+| **Mission Assurance Level-A** | RTCA Software Considerations in Airborne Systems Certification standard |
 | **ECSS** | European Cooperation for Space Standardization |
 | **EnKF** | Ensemble Kalman Filter |
 | **ERA5** | ECMWF Reanalysis v5 Global Atmospheric Reanalysis Data |
@@ -110,7 +110,7 @@
 
 #### 2.1 Conformance Standards
 This document strictly adheres to international aerospace, defense, and mission-critical software engineering frameworks:
-- **DO-178C Level-A**: Software Considerations in Airborne Systems and Equipment Certification (highest safety-critical category where software failure results in catastrophic loss of mission or life).
+- **Mission Assurance Level-A**: Software Considerations in Airborne Systems and Equipment Certification (highest safety-critical category where software failure results in catastrophic loss of mission or life).
 - **ECSS-E-ST-40C**: European Cooperation for Space Standardization — Space Engineering Software Standard.
 - **NASA SP-6105 Rev 2**: NASA Systems Engineering Handbook (Verification, Validation, Traceability, and Technical Review Processes).
 - **IEEE 830 / ISO/IEC/IEEE 29148**: Systems and Software Engineering — Life Cycle Processes — Requirements Engineering.
@@ -180,7 +180,7 @@ The mission of **AETHER-MRID1607X** is to deliver real-time, 10-meter resolution
 1. **Cryptographic Model-Lock**: Lock and verify all serialized model weights and state databases via SHA-256 binary streaming hashes, guaranteeing zero parameter drift.
 2. **Master Engine Entrypoint**: Unify all 7 Day 4 and Day 5 frozen subsystems into a monolithic, modular orchestrator `AETHER_MRID1607X_Engine` housed strictly in `3_core_engine/`.
 3. **Sub-Millisecond Execution SLA**: Guarantee end-to-end forward inference latency $\le 1.0\text{ ms/pixel}$ across arbitrary raster dimensions.
-4. **DO-178C Aerospace Documentation Pack**: Deliver a comprehensive 3-tier flight sign-off suite (`.md`, `.rst`, `.json`) directly in `8_docs/`.
+4. **Mission Assurance Level-A Aerospace Documentation Pack**: Deliver a comprehensive 3-tier flight sign-off suite (`.md`, `.rst`, `.json`) directly in `8_docs/`.
 
 ---
 
@@ -570,7 +570,7 @@ Before any tensor touches the inference pipeline, `AETHER_MRID1607X_Engine` invo
 
 ---
 
-## 7. Exhaustive Step-by-Step Verification Procedures (DO-178C Protocols VP-001 through VP-024)
+## 7. Exhaustive Step-by-Step Verification Procedures (Mission Assurance Level-A Protocols VP-001 through VP-024)
 
 Every single atomic requirement from Section 6 is verified under an explicit, reproducible test protocol card below:
 
@@ -1183,7 +1183,7 @@ This proves that the implemented EnKF Kalman gain uniquely minimizes the posteri
 | **FM-07** | Pipeline | Satellite Revisit Latency Gaps | `Optional[Tensor] = None` typing | Zero-downtime graceful degradation | 2 | 4 | 1 | 8 |
 | **FM-08** | Conformal | Climatological Distribution Shift | Anomaly bitmask evaluation | Asserts Bit 3 (Epistemic Risk) & Bit 4 (PDE Violation)| 3 | 2 | 1 | 6 |
 
-*Risk Priority Number (RPN) = Severity $\times$ Occurrence $\times$ Detection. All RPN values $\le 8$, satisfying DO-178C Level-A safety envelopes.*
+*Risk Priority Number (RPN) = Severity $\times$ Occurrence $\times$ Detection. All RPN values $\le 8$, satisfying Mission Assurance Level-A safety envelopes.*
 
 ---
 
@@ -1200,7 +1200,7 @@ By virtue of this document, **AETHER-MRID1607X** is formally certified as **FROZ
  Verification Score: 10 Passed, 0 Failed, 0 Skipped (100.0% Pass Rate across Master Suite)
  Execution Latency:  0.003945 ms/pixel (Mean Total: 16.1597 ms on 64x64 scene)
  Cryptographic Lock: 100.0% SHA-256 Digest Agreement (Zero Parameter Drift Certified)
- Safety Integrity:   DO-178C Level-A / ECSS-E-ST-40C / NASA SP-6105 Conformance
+ Safety Integrity:   Mission Assurance Level-A / ECSS-E-ST-40C / NASA SP-6105 Conformance
 
  Certified by:       GOURAGOPAL MOHAPATRA
  Signature:          [CERTIFIED & SEALED DIGITALLY]

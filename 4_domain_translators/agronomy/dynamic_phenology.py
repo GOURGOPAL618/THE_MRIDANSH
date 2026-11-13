@@ -1,7 +1,7 @@
 # THE MRIDANSH - Agriculture Domain Translator
 # Module: 4_domain_translators/agronomy/dynamic_phenology.py
 # Standard: United Nations FAO-56 & Remote Sensing Optical Canopy Mechanics
-# DO-178C Level-A Avionics & Remote Sensing Rigor
+# Mission Assurance Level-A Avionics & Remote Sensing Rigor
 
 import logging
 from dataclasses import dataclass
@@ -84,7 +84,7 @@ class DynamicPhenologyEngine:
         ndvi = np.clip(ndvi, -1.0, 1.0)
         
         if np.any(np.isnan(ndvi)) or np.any(np.isinf(ndvi)):
-            raise AssertionError("DO-178C Violation: NaN or Inf encountered in NDVI derivation")
+            raise AssertionError("Mission Assurance Level-A Violation: NaN or Inf encountered in NDVI derivation")
 
         return ndvi
 

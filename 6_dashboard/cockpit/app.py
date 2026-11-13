@@ -272,7 +272,7 @@ def main():
                 <div style="font-size:0.75rem; color:#94a3b8; line-height:1.6;">
                     • Service: <b style="color:#f8fafc;">Direct In-Memory Bus</b><br>
                     • Throughput: <b style="color:#00f0ff;">0.0063 ms / pixel</b><br>
-                    • Safety: <b style="color:#a5b4fc;">RTCA DO-178C Level-A</b>
+                    • Safety: <b style="color:#a5b4fc;">Mission Assurance Level-A</b>
                 </div>
             </div>
             """,
@@ -374,7 +374,7 @@ def main():
                     <span class="status-pill pill-cyan">⚡ 0.0063 MS/PX LATENCY</span>
                 </div>
                 <div class="mrid-badge-row">
-                    <span class="status-pill pill-purple">🛡️ DO-178C LEVEL-A CERTIFIED</span>
+                    <span class="status-pill pill-purple">🛡️ MISSION ASSURANCE LEVEL-A CERTIFIED</span>
                 </div>
             </div>
             <div class="mrid-jcc-frame">
@@ -751,7 +751,7 @@ def main():
                 f"""
                 <div style="margin-top:12px; padding:8px 14px; background:rgba(0,240,255,0.03); border:1px solid rgba(0,240,255,0.2); border-radius:6px; font-size:0.78rem; color:#94a3b8; display:flex; justify-content:space-between; align-items:center;">
                     <span>🛡️ <b>Subsystem 10 Provenance SHA-256:</b> <code style="color:#00f0ff;">{zonal_result.sha256_provenance_hash}</code></span>
-                    <span style="color:#00ff88; font-weight:600;">DO-178C LEVEL-A VERIFIED</span>
+                    <span style="color:#00ff88; font-weight:600;">MISSION ASSURANCE LEVEL-A VERIFIED</span>
                 </div>
                 """,
                 unsafe_allow_html=True,
@@ -975,7 +975,7 @@ def main():
         '</div>',
         '<div class="mrid-footer-badges">',
         '<span class="mrid-footer-pill pill-live">● TRL-7 OPERATIONAL</span>',
-        '<span class="mrid-footer-pill pill-cert">RTCA DO-178C LEVEL-A</span>',
+        '<span class="mrid-footer-pill pill-cert">PLANETARY MISSION ASSURANCE LEVEL-A</span>',
         '<span class="mrid-footer-pill pill-cert">JCC CAMPUS 1 • RS-SDA</span>',
         '<span class="mrid-footer-pill pill-cert">SOIL INTELLIGENCE DIRECTIVE</span>',
         '</div>',

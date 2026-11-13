@@ -3,7 +3,7 @@ THE MRIDANSH : PRODUCTION GIS GEOTIFF & CLOUD-OPTIMIZED GEOTIFF (COG) EXPORTER
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 11
 Subsystem: 9_spaceborne_operational_campaign/4_execution_engine/geotiff_production_exporter.py
-Standards: CEOS-WGCV, OGC GeoTIFF 1.1, ISO 19115-2, DO-178C Level-A Flight Standards
+Standards: CEOS-WGCV, OGC GeoTIFF 1.1, ISO 19115-2, Mission Assurance Level-A Flight Standards
 
 Functionality:
 1. Ingests frozen AETHER-MRID1607X multi-modal inference states across the 10m UTM 45N AOI.
@@ -219,7 +219,7 @@ class GeoTIFFProductionExporter:
 
         anomaly_map = state_surf.anomaly_flags[0, 0].cpu().numpy().astype(np.int32)
 
-        # Assert DO-178C Level-A Zero-NaN and physical range constraints
+        # Assert Mission Assurance Level-A Zero-NaN and physical range constraints
         for arr_name, arr in [
             ("theta_surface", theta_surf),
             ("theta_rootzone", theta_root),
@@ -230,7 +230,7 @@ class GeoTIFFProductionExporter:
             ("hydrological_anomaly_flags", anomaly_map)
         ]:
             if np.isnan(arr).any() or np.isinf(arr).any():
-                raise AssertionError(f"DO-178C Level-A Violation: NaN/Inf detected in {arr_name} raster!")
+                raise AssertionError(f"Mission Assurance Level-A Violation: NaN/Inf detected in {arr_name} raster!")
 
         assert (theta_surf >= 0.05).all() and (theta_surf <= 0.50).all()
         assert (theta_root >= 0.05).all() and (theta_root <= 0.50).all()
@@ -313,7 +313,7 @@ class GeoTIFFProductionExporter:
                 dst.update_tags(
                     MISSION="SPACEBORNE_OPERATIONAL_CAMPAIGN_DAY_11",
                     PLATFORM="AETHER-MRID1607X",
-                    STANDARDS="DO-178C Level-A, CEOS-WGCV Match-Up Protocol, ISO 19115-2",
+                    STANDARDS="Mission Assurance Level-A, CEOS-WGCV Match-Up Protocol, ISO 19115-2",
                     UNITS=b_def["units"],
                     PARAMETER_NAME=name,
                     SPATIAL_RESOLUTION="10.0m",
@@ -327,7 +327,7 @@ class GeoTIFFProductionExporter:
                 dst_b.update_tags(
                     MISSION="SPACEBORNE_OPERATIONAL_CAMPAIGN_DAY_11",
                     PLATFORM="AETHER-MRID1607X",
-                    STANDARDS="DO-178C Level-A, CEOS-WGCV Match-Up Protocol, ISO 19115-2",
+                    STANDARDS="Mission Assurance Level-A, CEOS-WGCV Match-Up Protocol, ISO 19115-2",
                     UNITS=b_def["units"]
                 )
 
@@ -419,7 +419,7 @@ class GeoTIFFProductionExporter:
                 GRID_DIMENSIONS="64x64 at 10.0m",
                 COORDINATE_SYSTEM="WGS 84 / UTM Zone 45N (EPSG:32645)",
                 BANDS_COUNT=7,
-                CERTIFICATION_STANDARD="DO-178C Level-A Flight Certified, CEOS-WGCV Match-Up Protocol"
+                CERTIFICATION_STANDARD="Mission Assurance Level-A Flight Certified, CEOS-WGCV Match-Up Protocol"
             )
 
         # Mirror backup write

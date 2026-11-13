@@ -3,13 +3,13 @@ THE MRIDANSH : IN-SITU GROUND TRUTH SOIL OBSERVATION INGESTOR
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 09
 Subsystem: 9_spaceborne_operational_campaign/4_execution_engine/insitu_ground_truth_ingestor.py
-Standards: ISMN Quality Flagging Protocol, NASA SMAP Core Cal/Val Guidelines, DO-178C Level-A
+Standards: ISMN Quality Flagging Protocol, NASA SMAP Core Cal/Val Guidelines, Mission Assurance Level-A
 
 Functionality:
 1. Generates & validates physical ground station observations (ISMN / SMAP Cal-Val schema).
 2. Captures Surface (0-5cm) & Root-zone (5-30cm) Volumetric Soil Moisture (m^3/m^3).
 3. Records soil physical matrix: Bulk Density (rho_b), Organic Carbon (SOC), and USDA texture.
-4. Executes DO-178C Level-A physical boundary assertions (Zero NaNs, Zero Infs, Physical ranges).
+4. Executes Mission Assurance Level-A physical boundary assertions (Zero NaNs, Zero Infs, Physical ranges).
 5. Exports certified persistent datasets to 9_spaceborne_operational_campaign/3_ground_truth/.
 ================================================================================
 """
@@ -158,7 +158,7 @@ class InSituGroundTruthIngestor:
 
     def validate_dataset(self, df: pd.DataFrame) -> Dict[str, Any]:
         """
-        Executes strict DO-178C Level-A assertions on in-situ sensor records.
+        Executes strict Mission Assurance Level-A assertions on in-situ sensor records.
         """
         # 1. Column completeness
         missing_cols = [c for c in self.REQUIRED_COLUMNS if c not in df.columns]

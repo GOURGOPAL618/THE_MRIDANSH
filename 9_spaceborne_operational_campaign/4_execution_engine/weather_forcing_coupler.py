@@ -3,14 +3,14 @@ THE MRIDANSH : ERA5-LAND METEOROLOGICAL FORCING COUPLER
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 08
 Subsystem: 9_spaceborne_operational_campaign/4_execution_engine/weather_forcing_coupler.py
-Standards: CEOS-WGCV Interoperability, DO-178C Level-A Interface Compliance
+Standards: CEOS-WGCV Interoperability, Mission Assurance Level-A Interface Compliance
 
 Functionality:
 1. Ingests ERA5-Land climate forcing (Precipitation P24h, 2m Air Temp T2m, Relative Humidity RH).
 2. Computes Vapor Pressure Deficit (VPD in kPa) using the Tetens empirical formulation.
 3. Couples with Copernicus 10m DEM via environmental adiabatic lapse rate (0.0065 K/m).
 4. Spatial reprojection & bilinear resampling to exact 10m UTM 45N grid (64x64 patch).
-5. Strict DO-178C Level-A bounds validation (Zero NaNs, Zero Infs, Non-negative precipitation).
+5. Strict Mission Assurance Level-A bounds validation (Zero NaNs, Zero Infs, Non-negative precipitation).
 ================================================================================
 """
 
@@ -167,7 +167,7 @@ class WeatherForcingCoupler:
 
         weather_stack = torch.stack([precip_norm, temp_norm, vpd_norm], dim=0).unsqueeze(0)
 
-        # DO-178C Level-A Assertions
+        # Mission Assurance Level-A Assertions
         assert not torch.isnan(weather_stack).any(), "NaN detected in processed weather stack!"
         assert not torch.isinf(weather_stack).any(), "Inf detected in processed weather stack!"
         assert weather_stack.shape == (1, 3, target_h, target_w), f"Invalid shape: {weather_stack.shape}"

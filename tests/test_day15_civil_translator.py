@@ -35,7 +35,7 @@ from civil_geotiff_exporter import CivilGeoTIFFExporter
 
 
 class TestDay15CivilDomainTranslator:
-    """Formal RTCA DO-178C Level-A Verification Suite for Civil Domain Translator Phase 4."""
+    """Formal Mission Assurance Level-A Verification Suite for Civil Domain Translator Phase 4."""
 
     @pytest.fixture(autouse=True)
     def setup_engines(self):
@@ -144,7 +144,7 @@ class TestDay15CivilDomainTranslator:
 
     # 🏛️ [CIVIL-10] End-to-End Pipeline & GeoTIFF Export Latency SLA 🏛️
     def test_civil_10_e2e_spaceborne_latency_and_geotiff_export(self):
-        """Execute full civil forward pass on real spaceborne bundle and verify DO-178C latency SLA."""
+        """Execute full civil forward pass on real spaceborne bundle and verify Mission Assurance Level-A latency SLA."""
         bundle_path = repo_root / "9_spaceborne_operational_campaign/2_harmonized_tensors/s1_s2_dem_era5_harmonized_bundle.pt"
         assert bundle_path.exists(), f"Flight bundle missing at {bundle_path}"
 
@@ -154,9 +154,9 @@ class TestDay15CivilDomainTranslator:
         dem_z = bundle["dem"].squeeze().numpy()[0]  # Elevation Band
 
         total_pixels = theta_rz.size
-        sla_limit_ms_per_pixel = 0.010000  # 10 microseconds per pixel DO-178C SLA
+        sla_limit_ms_per_pixel = 0.010000  # 10 microseconds per pixel Deterministic SLA
 
-        # Timed in-memory algorithmic execution (DO-178C compute pipeline)
+        # Timed in-memory algorithmic execution (Mission Assurance Level-A compute pipeline)
         t0 = time.perf_counter()
 
         # 1. Drainage Intelligence

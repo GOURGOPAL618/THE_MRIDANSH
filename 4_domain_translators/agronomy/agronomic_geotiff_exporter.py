@@ -1,7 +1,7 @@
 # THE MRIDANSH - Agriculture Domain Translator
 # Module: 4_domain_translators/agronomy/agronomic_geotiff_exporter.py
 # Production OGC GeoTIFF & Cloud-Optimized GeoTIFF (COG) Exporter
-# Standards: OGC GeoTIFF 1.1, CEOS-WGCV, ISO 19115-2, DO-178C Level-A Rigor
+# Standards: OGC GeoTIFF 1.1, CEOS-WGCV, ISO 19115-2, Mission Assurance Level-A Rigor
 
 import hashlib
 import json
@@ -151,7 +151,7 @@ class AgronomicGeoTIFFExporter:
                     f"Array {i} shape mismatch: {arr.shape} != {(self.GRID_ROWS, self.GRID_COLS)}"
                 )
             if np.any(np.isnan(arr)) or np.any(np.isinf(arr)):
-                raise AssertionError(f"DO-178C Violation: NaN or Inf detected in layer {i}")
+                raise AssertionError(f"Mission Assurance Level-A Violation: NaN or Inf detected in layer {i}")
 
         manifest = {
             "mission": "THE MRIDANSH - Phase 4 Agronomy Translator",
@@ -245,7 +245,7 @@ class AgronomicGeoTIFFExporter:
                 crs=self.DEFAULT_CRS,
                 crop=crop_name,
                 soil=soil_texture,
-                standard="FAO-56 / DO-178C Level-A",
+                standard="FAO-56 / Mission Assurance Level-A",
             )
 
         master_sha256 = self._compute_sha256(target_cog_path)

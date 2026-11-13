@@ -3,7 +3,7 @@ THE MRIDANSH : AUTOMATED TEST SUITE — DEM & WEATHER FORCING COUPLING
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 08
 Subsystem: tests/test_dem_weather_coupling.py
-Standards: CEOS-WGCV Interoperability, DO-178C Level-A Interface Compliance
+Standards: CEOS-WGCV Interoperability, Mission Assurance Level-A Interface Compliance
 
 Contracts Tested:
   • SOC-06: Copernicus 30m DEM Topographic Integrity (Slope, Aspect, TWI)

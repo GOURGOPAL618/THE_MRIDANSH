@@ -1,7 +1,7 @@
 # THE MRIDANSH - Agriculture Domain Translator
 # Module: 4_domain_translators/agronomy/conformal_risk_dispatcher.py
 # Standard: Conformal Prediction Bounds & Decision-Risk Irrigation Dispatch
-# DO-178C Level-A Avionics & Remote Sensing Rigor
+# Mission Assurance Level-A Avionics & Remote Sensing Rigor
 
 import logging
 import time
@@ -176,11 +176,11 @@ class ConformalRiskDispatcher:
         t_elapsed = time.perf_counter() - t0
         latency_px = (t_elapsed * 1000.0) / max(total_pixels, 1)
 
-        # DO-178C Safety Invariant Assertions
+        # Mission Assurance Level-A Safety Invariant Assertions
         if np.any(np.isnan(i_nom)) or np.any(np.isinf(i_nom)):
-            raise AssertionError("DO-178C Violation: NaN or Inf in nominal prescription dispatch")
+            raise AssertionError("Mission Assurance Level-A Violation: NaN or Inf in nominal prescription dispatch")
         if np.any(np.isnan(risk_spread)) or np.any(np.isinf(risk_spread)):
-            raise AssertionError("DO-178C Violation: NaN or Inf in risk spread derivation")
+            raise AssertionError("Mission Assurance Level-A Violation: NaN or Inf in risk spread derivation")
         if np.any(i_min > i_nom) or np.any(i_nom > i_max):
             raise AssertionError("Mathematical Invariant Violation: I_min <= I_nominal <= I_max violated")
 

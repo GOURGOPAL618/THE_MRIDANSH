@@ -3,7 +3,7 @@ THE MRIDANSH : AUTOMATED TEST SUITE — IN-SITU COLLOCATION & BASELINES
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 09
 Subsystem: tests/test_insitu_collocation_and_baselines.py
-Standards: CEOS-WGCV Interoperability, ISMN Protocols, DO-178C Level-A Compliance
+Standards: CEOS-WGCV Interoperability, ISMN Protocols, Mission Assurance Level-A Compliance
 
 Contracts Tested:
   • SOC-11: ISMN/SMAP Ground Truth In-Situ Ingestion Bounds & Schema Verification

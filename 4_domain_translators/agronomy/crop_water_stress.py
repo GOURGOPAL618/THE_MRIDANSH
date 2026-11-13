@@ -1,7 +1,7 @@
 # THE MRIDANSH - Agriculture Domain Translator
 # Module: 4_domain_translators/agronomy/crop_water_stress.py
 # Standard: United Nations FAO-56 Water Stress Mechanics (Allen et al., 1998, Chapter 8)
-# DO-178C Level-A Avionics & Remote Sensing Rigor
+# Mission Assurance Level-A Avionics & Remote Sensing Rigor
 
 import logging
 from dataclasses import dataclass
@@ -161,13 +161,13 @@ class CropWaterStressEngine:
         taw_arr = np.asarray(taw_mm, dtype=np.float32)
         stress_frac = np.clip(dr / np.maximum(taw_arr, 1.0), 0.0, 2.0)
 
-        # DO-178C Safety assertions
+        # Mission Assurance Level-A Safety assertions
         if np.any(np.isnan(ks)) or np.any(np.isinf(ks)):
-            raise AssertionError("DO-178C Violation: NaN or Inf in Ks calculation")
+            raise AssertionError("Mission Assurance Level-A Violation: NaN or Inf in Ks calculation")
         if np.any(np.isnan(cwsi)) or np.any(np.isinf(cwsi)):
-            raise AssertionError("DO-178C Violation: NaN or Inf in CWSI calculation")
+            raise AssertionError("Mission Assurance Level-A Violation: NaN or Inf in CWSI calculation")
         if np.any(np.isnan(etc_act)) or np.any(np.isinf(etc_act)):
-            raise AssertionError("DO-178C Violation: NaN or Inf in ETc_act calculation")
+            raise AssertionError("Mission Assurance Level-A Violation: NaN or Inf in ETc_act calculation")
 
         if np.isscalar(theta_rz):
             return WaterStressOutput(

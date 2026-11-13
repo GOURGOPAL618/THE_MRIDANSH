@@ -2,7 +2,7 @@
 # Module: 4_domain_translators/zonal_field_extractor.py
 # Subsystem 10: Spatial Zonal Farm Analytics & Polygon Extraction Engine
 # Architecture: Arbitrary Closed Jordan Polygon Integration over 10m Spaceborne Rasters
-# Standards: ISO 19115 / OGC Simple Features / FAO-56 / RTCA DO-178C Level-A
+# Standards: ISO 19115 / OGC Simple Features / FAO-56 / Mission Assurance Level-A
 # Lead Systems Architect: Gouragopal Mohapatra (JCC Campus 2, RS-SDA Division)
 
 from __future__ import annotations
@@ -66,7 +66,7 @@ class ZonalSpatialDistribution:
 class ZonalFieldResult:
     """
     Certified, audit-proof result of boundary-constrained zonal integration over arbitrary farm polygons.
-    Meets DO-178C Level-A requirements for determinism, traceability, and physical bounds.
+    Meets Mission Assurance Level-A requirements for determinism, traceability, and physical bounds.
     """
     polygon_coordinates: List[Tuple[float, float]]
     centroid: Tuple[float, float]
@@ -277,7 +277,7 @@ class ZonalFieldExtractor:
 
         t_elapsed_ms = (time.perf_counter() - t_start) * 1000.0
 
-        # 7. Cryptographic Provenance Hash (DO-178C Level-A Audit Requirement)
+        # 7. Cryptographic Provenance Hash (Mission Assurance Level-A Audit Requirement)
         provenance_payload = {
             "centroid": centroid,
             "pixel_count": pixel_count,

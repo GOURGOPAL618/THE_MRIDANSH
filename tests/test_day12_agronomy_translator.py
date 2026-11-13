@@ -3,7 +3,7 @@ THE MRIDANSH : AUTOMATED TEST SUITE — DAY 12 AGRICULTURE DOMAIN TRANSLATOR
 ================================================================================
 Mission: Phase 4 (Domain Translators & Downstream Intelligence) | Day 12
 Subsystem: tests/test_day12_agronomy_translator.py
-Standards: United Nations FAO-56, USDA-NRCS Pedotransfer, DO-178C Level-A Avionics Rigor
+Standards: United Nations FAO-56, USDA-NRCS Pedotransfer, Mission Assurance Level-A Avionics Rigor
 
 Contracts Tested:
   • AGRI-01: Mathematical Boundedness (0 <= Ks <= 1.0, 0 <= CWSI <= 1.0, Ks + CWSI == 1.0)
@@ -151,8 +151,8 @@ class TestDay12AgronomyTranslator:
         ]:
             arr = getattr(state, field_name)
             assert arr.shape == (H, W), f"Shape mismatch for {field_name}: {arr.shape} != {(H, W)}"
-            assert not np.any(np.isnan(arr)), f"DO-178C Violation: NaN encountered in {field_name}"
-            assert not np.any(np.isinf(arr)), f"DO-178C Violation: Inf encountered in {field_name}"
+            assert not np.any(np.isnan(arr)), f"Mission Assurance Level-A Violation: NaN encountered in {field_name}"
+            assert not np.any(np.isinf(arr)), f"Mission Assurance Level-A Violation: Inf encountered in {field_name}"
 
         # Physics bounds checks
         assert np.all(state.water_stress_ks >= 0.0) and np.all(state.water_stress_ks <= 1.0)
@@ -192,7 +192,7 @@ class TestDay12AgronomyTranslator:
 
     def test_agri_05_realtime_latency_sla(self):
         """
-        [CONTRACT AGRI-05] Enforces strict DO-178C Level-A real-time processing SLA:
+        [CONTRACT AGRI-05] Enforces strict Mission Assurance Level-A real-time processing SLA:
         Full forward agronomic decomposition of a 64x64 scene must execute in < 0.010 ms/pixel.
         """
         H, W = 64, 64

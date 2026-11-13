@@ -83,7 +83,7 @@
     "compliance_rate_pct": 100.0,
     "zero_defect_status": "ZERO_DEFECT_COMPLIANCE_CERTIFIED",
     "aerospace_standards": [
-      "DO-178C Level-A Autonomous Software Flight Verification",
+      "Mission Assurance Level-A Autonomous Software Flight Verification",
       "CEOS-WGCV In-Situ Match-Up Protocol",
       "OGC GeoTIFF 1.1 / Cloud-Optimized GeoTIFF (COG) Standards",
       "ISO 19115-2 Geographic Information Metadata Schema"

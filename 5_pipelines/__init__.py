@@ -1,7 +1,7 @@
 # THE MRIDANSH - UNIFIED MASTER PIPELINES
 # Package: 5_pipelines
 # Architecture: End-to-End Multimodal Spaceborne Ingestion to Downstream Ground Intelligence
-# DO-178C Level-A Avionics Standard / OGC GeoTIFF 1.1
+# Mission Assurance Level-A Avionics Standard / OGC GeoTIFF 1.1
 
 from .mridansh_unified_orchestrator import (
     MridanshUnifiedOrchestrator,

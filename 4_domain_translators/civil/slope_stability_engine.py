@@ -148,7 +148,7 @@ class SlopeStabilityEngine:
     @staticmethod
     def assert_invariants(fs: np.ndarray, hazard_class: np.ndarray) -> None:
         """
-        DO-178C Level-A Invariants:
+        Mission Assurance Level-A Invariants:
         1. Non-negativity: FS > 0 everywhere
         2. Boundedness: FS in [MIN_FS_CLAMP, MAX_FS_CLAMP]
         3. Hazard class values strictly in {0, 1, 2}

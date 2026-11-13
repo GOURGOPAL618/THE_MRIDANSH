@@ -3,7 +3,7 @@
 THE MRIDANSH : Master Unified Pipeline & Temporal Hydrodynamics Test Suite
 Module: tests/test_day16_unified_pipeline.py
 System: AETHER-MRID1607X Core Engine (Jagannath Command Center - Campus 2)
-Standards: RTCA DO-178C Level-A / OGC GeoTIFF 1.1 / WMO-No. 168 / Eurocode 7 / FAO-56
+Standards: Mission Assurance Level-A / OGC GeoTIFF 1.1 / WMO-No. 168 / Eurocode 7 / FAO-56
 
 Formal Verification Contracts:
   [PIPE-01] Temporal Hydrodynamic Drying Monotonicity (dθ/dt <= 0 under dry weather).
@@ -52,7 +52,7 @@ FLIGHT_BUNDLE_PATH = _REPO_ROOT / "9_spaceborne_operational_campaign" / "2_harmo
 
 
 class TestDay16UnifiedPipeline:
-    """Formal RTCA DO-178C Level-A Verification for Master Unified Multi-Domain Pipeline."""
+    """Formal Mission Assurance Level-A Verification for Master Unified Multi-Domain Pipeline."""
 
     @pytest.fixture(autouse=True)
     def setup_engines(self):
@@ -203,7 +203,7 @@ class TestDay16UnifiedPipeline:
     # ------------------------------------------------------------------------------------------------------------------
     def test_pipe_05_real_time_latency_sla(self):
         """
-        Verify that full in-memory multi-domain execution satisfies DO-178C Level-A
+        Verify that full in-memory multi-domain execution satisfies Mission Assurance Level-A
         throughput requirements: strictly < 0.025 ms per pixel (< 102.4 ms for 40.96 ha).
         """
         req = UnifiedExecutionRequest(
@@ -311,7 +311,7 @@ class TestDay16UnifiedPipeline:
             )
             res = self.orchestrator.run(req)
 
-            # Assert all DO-178C contracts verified for each scenario
+            # Assert all Mission Assurance Level-A contracts verified for each scenario
             assert all(res.contracts_verified.values()), f"Contracts failed under scenario {sc['name']}!"
             assert res.mean_surface_moisture > 0.05, f"Invalid surface moisture in {sc['name']}"
             assert res.agronomic_state.cwsi is not None, f"Agronomic state missing in {sc['name']}"

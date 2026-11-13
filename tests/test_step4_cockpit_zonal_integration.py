@@ -1,7 +1,7 @@
 # THE MRIDANSH - VERIFICATION TEST SUITE
 # Test: tests/test_step4_cockpit_zonal_integration.py
 # Verification Target: Step 4 (End-to-End Zonal Telemetry HUD & Kisan War Room Coupling)
-# Standards: RTCA DO-178C Level-A / FAO-56 / ISO 19115
+# Standards: Mission Assurance Level-A / FAO-56 / ISO 19115
 # Lead Systems Architect: Gouragopal Mohapatra (JCC Campus 2, RS-SDA Division)
 
 import sys

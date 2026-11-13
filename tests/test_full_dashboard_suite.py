@@ -1,7 +1,7 @@
 # THE MRIDANSH - VERIFICATION TEST SUITE
 # Test: tests/test_full_dashboard_suite.py
 # Verification Target: Full Dashboard Cockpit End-to-End System Audit
-# Standards: RTCA DO-178C Level-A / FAO-56 / USACE TM 5-818-1
+# Standards: Mission Assurance Level-A / FAO-56 / USACE TM 5-818-1
 # Lead Systems Architect: Gouragopal Mohapatra (JCC Campus 2, RS-SDA Division)
 
 import sys

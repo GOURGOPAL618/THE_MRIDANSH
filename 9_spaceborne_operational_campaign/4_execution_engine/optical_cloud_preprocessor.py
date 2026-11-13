@@ -3,7 +3,7 @@ THE MRIDANSH : OPTICAL RADIOMETRIC NORMALIZATION & SCL CLOUD MASK DECODER
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 07
 Subsystem: 9_spaceborne_operational_campaign/4_execution_engine/optical_cloud_preprocessor.py
-Standards: ESA Sentinel-2 L2A MSI Product Specification & DO-178C Safety Bounds
+Standards: ESA Sentinel-2 L2A MSI Product Specification & Mission Assurance Level-A Safety Bounds
 
 Functionality:
 1. Radiometric Scaling: Converts 16-bit integer DN to Bottom-of-Atmosphere (BOA)

@@ -12,7 +12,7 @@
 ║   Lead Author:       Gouragopal Mohapatra (GOURGOPAL618)                                           ║
 ║   Command Center:    Jagannath Command Center (JCC) · JCC Campus 2 (RS-SDA Division)               ║
 ║   Target AOI:        Mahanadi Coastal Delta, Odisha, India (10m UTM Zone 45N Raster Stack)         ║
-║   Certification:     DO-178C Level-A Flight Standards · CEOS-WGCV Match-Up Protocol · ISO 19115-2   ║
+║   Certification:     Mission Assurance Level-A Flight Standards · CEOS-WGCV Match-Up Protocol · ISO 19115-2   ║
 ║   Effective Date:    19 OCTOBER 2026 (Mission Build Day 79)                                        ║
 ║                                                                                                    ║
 ╚════════════════════════════════════════════════════════════════════════════════════════════════════╝
@@ -34,13 +34,13 @@ The system has progressed from Technology Readiness Level 6 (TRL-6: System Model
 | **1. Multi-Modal Spaceborne Ingestion** | CEOS-WGCV Interoperability | S1 SAR + S2 Optical + DEM + ERA5-Land ($10\text{m}$ UTM 45N) | **CERTIFIED** |
 | **2. Speckle Noise Suppression** | Lee / Refined Lee ($5\times 5$) | Equivalent Number of Looks (ENL): $\mathbf{+75.63\%}$ gain | **CERTIFIED** |
 | **3. Vadose Physics Conservation** | Richards PINN Residual | $\mathbf{\mathcal{R}_{\text{Richards}} = 0.001456\text{ m}^3/\text{m}^3}$ ($< 0.05$ threshold) | **CERTIFIED** |
-| **4. Hard Real-Time Determinism** | DO-178C Level-A Envelope | Core Latency: $\mathbf{0.005586\text{ ms/pixel}}$ ($< 0.05\text{ ms/px}$ SLA) | **CERTIFIED** |
+| **4. Hard Real-Time Determinism** | Mission Assurance Level-A Envelope | Core Latency: $\mathbf{0.005586\text{ ms/pixel}}$ ($< 0.05\text{ ms/px}$ SLA) | **CERTIFIED** |
 | **5. Atmospheric Fault-Tolerance** | Multi-Regime Stress Testing | **Zero Blind Spots** ($0/4,096\text{ px}$ under $100\%$ cloud blackout) | **CERTIFIED** |
 | **6. Microwave SAR Failover** | C-Band Active Radar Fallback | Degradation delta under blackout: only $\mathbf{+0.0048\text{ m}^3/\text{m}^3}$ ($\mathbf{+7.17\%}$) | **CERTIFIED** |
 | **7. Ground Truth Collocation** | ISMN / SMAP Cal-Val Core | Clear Sky Surface RMSE: $\mathbf{0.0669\text{ m}^3/\text{m}^3}$ (beats Naive OLS $\mathbf{0.0676}$) | **CERTIFIED** |
 | **8. Production GeoTIFF / COG Generation** | OGC GeoTIFF 1.1 / COG | $7\text{ layers} + \text{Master Stack}$, `EPSG:32645`, 0 NaNs | **CERTIFIED** |
-| **9. Autonomous Pipeline Orchestration** | DO-178C Zero-Touch Streaming | $3\text{-pass}$ continuous stream simulation, 0 pipeline faults | **CERTIFIED** |
-| **10. Zero-Defect Test Compliance** | DO-178C Verification Matrix | **25 out of 25 Test Contracts Passed cleanly (100.0%)** | **CERTIFIED** |
+| **9. Autonomous Pipeline Orchestration** | Mission Assurance Level-A Zero-Touch Streaming | $3\text{-pass}$ continuous stream simulation, 0 pipeline faults | **CERTIFIED** |
+| **10. Zero-Defect Test Compliance** | Mission Assurance Level-A Verification Matrix | **25 out of 25 Test Contracts Passed cleanly (100.0%)** | **CERTIFIED** |
 
 ---
 

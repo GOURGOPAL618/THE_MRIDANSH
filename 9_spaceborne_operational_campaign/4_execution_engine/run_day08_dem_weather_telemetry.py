@@ -3,7 +3,7 @@ THE MRIDANSH : DAY 08 4-SOURCE SPACEBORNE TELEMETRY RUNNER
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 08
 Subsystem: 9_spaceborne_operational_campaign/4_execution_engine/run_day08_dem_weather_telemetry.py
-Standards: CEOS-WGCV Interoperability, DO-178C Level-A Verification
+Standards: CEOS-WGCV Interoperability, Mission Assurance Level-A Verification
 
 Orchestrates the 4-source multi-modal fusion of:
   1. Sentinel-1 SAR (VV, VH calibrated dB)
@@ -209,7 +209,7 @@ def execute_day08_telemetry_handshake() -> Dict[str, Any]:
     mean_latency_ms = float(np.mean(latencies[1:]))  # Exclude warm-up
     latency_per_px = mean_latency_ms / (64 * 64)
 
-    # 10. DO-178C Level-A Zero-NaN Verification
+    # 10. Mission Assurance Level-A Zero-NaN Verification
     assert not torch.isnan(state.volumetric_moisture).any(), "NaN detected in volumetric_moisture!"
     assert not torch.isnan(state.pore_pressure_head).any(), "NaN detected in pore_pressure_head!"
     assert not torch.isnan(state.conformal_uncertainty).any(), "NaN detected in conformal_uncertainty!"
@@ -228,7 +228,7 @@ def execute_day08_telemetry_handshake() -> Dict[str, Any]:
     print(f"  • Conformal Uncertainty (2σ)    : ±{mean_unc:.4f} m³/m³")
     print(f"  • Richards PDE Residual Norm    : {mean_pde_res:.6e} m³/m³")
     print(f"  • Anomaly Detection Flag        : {bool(state.anomaly_flags.any().item())}")
-    print("  • DO-178C Level-A Integrity     : VERIFIED (Zero NaNs, Zero Infs)")
+    print("  • Mission Assurance Level-A Integrity     : VERIFIED (Zero NaNs, Zero Infs)")
 
     # 11. Serialize 4-Modality Harmonized Bundle Artifact
     harmonized_dir = _CAMPAIGN_ROOT / "2_harmonized_tensors"
@@ -253,7 +253,7 @@ def execute_day08_telemetry_handshake() -> Dict[str, Any]:
             "mean_latency_ms": mean_latency_ms,
             "latency_per_px_ms": latency_per_px,
             "date_sealed": "2026-10-16",
-            "certification": "DO-178C Level-A Interface Compliance"
+            "certification": "Mission Assurance Level-A Interface Compliance"
         }
     }, str(bundle_path))
 

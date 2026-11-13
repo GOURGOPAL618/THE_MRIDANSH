@@ -2,7 +2,7 @@
 ## FLIGHT LOG DAY 09: GROUND TRUTH IN-SITU COLLOCATION & CLASSICAL BASELINE BENCHMARKS
 **Mission Date:** Day 77 · 17 OCT 2026  
 **Subsystem:** `9_spaceborne_operational_campaign` & `2_data_pipeline/ingestion`  
-**Certification Standard:** CEOS-WGCV Match-Up Protocol, ISMN / NASA SMAP Cal/Val, DO-178C Level-A  
+**Certification Standard:** CEOS-WGCV Match-Up Protocol, ISMN / NASA SMAP Cal/Val, Mission Assurance Level-A  
 **Lead Systems & Remote Sensing Engineer:** Gouragopal Mohapatra (`GOURGOPAL618`)  
 **Mission Status:** `OPERATIONAL_FLIGHT_CERTIFIED_TRL_6_TO_TRL_7`  
 
@@ -11,7 +11,7 @@
 ### 1. Executive Summary & Flight Objectives
 On Day 09 of the Spaceborne Operational Campaign (SOC-AETHER-2026), the engineering team executed the formal ground truth observation ingestion and spatial-temporal collocation pipeline, linking 24 physical in-situ soil stations with the Day 08 multi-modal 4-source satellite raster stack on an exact 10m UTM 45N grid. Furthermore, two classical remote sensing baseline models (Naive Optical NDVI Empirical Regression and semi-empirical SAR Water Cloud Model) were trained, evaluated, and cryptographically sealed to establish the baseline performance benchmark for peer-reviewed journal publication.
 
-All 5 newly formulated DO-178C Level-A aerospace contracts ([SOC-11] through [SOC-15]) passed with 100% compliance, bringing the cumulative campaign verification suite to **15/15 tests passing cleanly**.
+All 5 newly formulated Mission Assurance Level-A aerospace contracts ([SOC-11] through [SOC-15]) passed with 100% compliance, bringing the cumulative campaign verification suite to **15/15 tests passing cleanly**.
 
 ---
 
@@ -27,7 +27,7 @@ All 5 newly formulated DO-178C Level-A aerospace contracts ([SOC-11] through [SO
 [SpatialTemporalCollocator (10m UTM 45N)] ◄─── [Day 08 4-Source Harmonized Bundle]
    ├── Geodetic UTM Mapping: (E, N) ──► Pixel (i, j)
    ├── Extracted 29-Feature Synchronized Vector
-   └── DO-178C Level-A Zero-NaN Certification
+   └── Mission Assurance Level-A Zero-NaN Certification
                           │
                           ▼
 [Collocated Master Dataset: collocated_insitu_matrix.csv] (24 × 29)
@@ -82,7 +82,7 @@ All 5 newly formulated DO-178C Level-A aerospace contracts ([SOC-11] through [SO
 
 ---
 
-### 5. Automated Verification & DO-178C Level-A Test Report
+### 5. Automated Verification & Mission Assurance Level-A Test Report
 
 ```
 ============================= test session starts =============================

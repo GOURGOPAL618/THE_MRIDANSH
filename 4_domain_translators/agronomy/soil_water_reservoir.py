@@ -1,7 +1,7 @@
 # THE MRIDANSH - Agriculture Domain Translator
 # Module: 4_domain_translators/agronomy/soil_water_reservoir.py
 # Standard: United Nations FAO-56 & USDA Soil Hydraulic Pedotransfer Mechanics
-# DO-178C Level-A Avionics & Remote Sensing Rigor
+# Mission Assurance Level-A Avionics & Remote Sensing Rigor
 
 import json
 import logging
@@ -269,11 +269,11 @@ class SoilWaterReservoirEngine:
         raw_mm = p_val * taw_mm
         raw_mm = np.maximum(raw_mm, 0.0)
 
-        # DO-178C Level-A Assertions: Zero NaNs, Zero Infs
+        # Mission Assurance Level-A Assertions: Zero NaNs, Zero Infs
         if np.any(np.isnan(taw_mm)) or np.any(np.isinf(taw_mm)):
-            raise AssertionError("DO-178C Violation: NaN or Inf encountered in TAW calculation")
+            raise AssertionError("Mission Assurance Level-A Violation: NaN or Inf encountered in TAW calculation")
         if np.any(np.isnan(raw_mm)) or np.any(np.isinf(raw_mm)):
-            raise AssertionError("DO-178C Violation: NaN or Inf encountered in RAW calculation")
+            raise AssertionError("Mission Assurance Level-A Violation: NaN or Inf encountered in RAW calculation")
         if np.any(raw_mm > taw_mm):
             raise AssertionError("Physics Violation: Readily Available Water (RAW) exceeds Total Available Water (TAW)")
 

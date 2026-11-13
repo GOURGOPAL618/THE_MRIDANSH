@@ -3,7 +3,7 @@ THE MRIDANSH : SAR RADIOMETRIC CALIBRATION & REFINED LEE SPECKLE FILTER
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 07
 Subsystem: 9_spaceborne_operational_campaign/4_execution_engine/sar_radiometric_calibrator.py
-Standards: CEOS-SAR Radiometric Calibration & DO-178C Deterministic Bounds
+Standards: CEOS-SAR Radiometric Calibration & Mission Assurance Level-A Deterministic Bounds
 
 Functionality:
 1. Radiometric Calibration: Converts raw DN to sigma-nought backscatter in linear and decibel (dB) scale:

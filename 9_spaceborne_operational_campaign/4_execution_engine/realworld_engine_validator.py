@@ -3,7 +3,7 @@ THE MRIDANSH : REAL-WORLD ENGINE VALIDATION & OPERATIONAL INFERENCE
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 10
 Subsystem: 9_spaceborne_operational_campaign/4_execution_engine/realworld_engine_validator.py
-Standards: CEOS-WGCV Match-Up Protocol, DO-178C Level-A Flight Certification
+Standards: CEOS-WGCV Match-Up Protocol, Mission Assurance Level-A Flight Certification
 
 Functionality:
 1. Ingests certified 4-source multi-modal spaceborne flight bundle:
@@ -122,7 +122,7 @@ class RealWorldEngineValidator:
     ) -> Tuple[UnifiedSoilState, Dict[str, Any]]:
         """
         Executes timed forward inference through AETHER-MRID1607X, asserting zero NaNs
-        and certifying DO-178C Level-A deterministic latency envelope.
+        and certifying Mission Assurance Level-A deterministic latency envelope.
         """
         bundle.force_dropout = force_dropout
 
@@ -153,7 +153,7 @@ class RealWorldEngineValidator:
             ("anomaly_flags", state.anomaly_flags)
         ]:
             if torch.isnan(tensor).any() or torch.isinf(tensor).any():
-                raise AssertionError(f"DO-178C Level-A Violation: NaN or Inf detected in {name} output!")
+                raise AssertionError(f"Mission Assurance Level-A Violation: NaN or Inf detected in {name} output!")
 
         # Physical aerospace bounds
         assert (state.volumetric_moisture >= 0.05).all() and (state.volumetric_moisture <= 0.50).all()
@@ -287,7 +287,7 @@ class RealWorldEngineValidator:
         collocated_csv_path: Optional[Path] = None
     ) -> Dict[str, Any]:
         """
-        Executes formal DO-178C Level-A stress test across 3 atmospheric regimes:
+        Executes formal Mission Assurance Level-A stress test across 3 atmospheric regimes:
           - Regime 1: Nominal Clear Sky (0% cloud)
           - Regime 2: Partial Cloud Fringe (36% localized cloud cluster)
           - Regime 3: Severe Monsoon Blackout (100% optical occlusion / force dropout)

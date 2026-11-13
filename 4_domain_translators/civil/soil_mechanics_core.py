@@ -1,7 +1,7 @@
 # THE MRIDANSH - CIVIL & GEOTECHNICAL DOMAIN TRANSLATOR
 # Module: 4_domain_translators/civil/soil_mechanics_core.py
 # Subsystem 05 of AETHER-MRID1607X Core Engine
-# Architecture: RTCA DO-178C Level-A Principles / Eurocode 7 (EN 1997) / ASTM D2487
+# Architecture: Mission Assurance Level-A Principles / Eurocode 7 (EN 1997) / ASTM D2487
 
 from __future__ import annotations
 
@@ -260,7 +260,7 @@ class SoilMechanicsCoreEngine:
         shear_strength: np.ndarray,
     ) -> None:
         """
-        DO-178C Level-A Formal Engineering Invariant Assertions.
+        Mission Assurance Level-A Formal Engineering Invariant Assertions.
         """
         # 1. Friction angle boundedness
         if not (0.0 <= params.friction_angle_deg <= 45.0):

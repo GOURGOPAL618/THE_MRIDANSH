@@ -3,14 +3,14 @@ THE MRIDANSH : COPERNICUS DEM TOPOGRAPHIC COUPLER & HYDROLOGICAL DERIVATIVES
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 08
 Subsystem: 9_spaceborne_operational_campaign/4_execution_engine/dem_topography_coupler.py
-Standards: CEOS-WGCV Interoperability, DO-178C Level-A Interface Compliance
+Standards: CEOS-WGCV Interoperability, Mission Assurance Level-A Interface Compliance
 
 Functionality:
 1. Resampling Copernicus 30m / SRTM DEM rasters to exact 10m UTM coordinate grid.
 2. Horn's 2nd-Order finite-difference gradient estimation for Slope (beta in radians).
 3. Compass Aspect (alpha in radians [0, 2*pi)) calculation.
 4. Topographic Wetness Index (TWI = ln(a / tan(beta + eps))) hydrological modeling.
-5. Strict DO-178C Level-A bounds validation (Zero NaNs, Zero Infs, Physical ranges).
+5. Strict Mission Assurance Level-A bounds validation (Zero NaNs, Zero Infs, Physical ranges).
 ================================================================================
 """
 
@@ -185,7 +185,7 @@ class DEMTopographyCoupler:
         # Step 5: Stack into 4-channel tensor (B=1, C=4, H=64, W=64)
         terrain_stack = torch.stack([z_norm, slope, aspect, twi], dim=0).unsqueeze(0)
 
-        # DO-178C Level-A Assertions
+        # Mission Assurance Level-A Assertions
         assert not torch.isnan(terrain_stack).any(), "NaN detected in processed DEM stack!"
         assert not torch.isinf(terrain_stack).any(), "Inf detected in processed DEM stack!"
         assert terrain_stack.shape == (1, 4, target_h, target_w), f"Invalid shape: {terrain_stack.shape}"

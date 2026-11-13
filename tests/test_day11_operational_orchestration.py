@@ -3,7 +3,7 @@ THE MRIDANSH : AUTOMATED TEST SUITE — DAY 11 AUTONOMOUS ORCHESTRATION & TRL-7
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 11
 Subsystem: tests/test_day11_operational_orchestration.py
-Standards: CEOS-WGCV Match-Up Protocol, OGC GeoTIFF 1.1, DO-178C Level-A Flight Standards
+Standards: CEOS-WGCV Match-Up Protocol, OGC GeoTIFF 1.1, Mission Assurance Level-A Flight Standards
 
 Contracts Tested:
   • SOC-21: GeoTIFF Georeference CRS & Affine Spatial Transform Integrity (EPSG:32645)
@@ -80,7 +80,7 @@ class TestDay11OperationalOrchestration:
             data = ds.read()
             assert data.shape == (7, 64, 64)
 
-            # Assert DO-178C Level-A Zero-NaN and Zero-Inf guarantee
+            # Assert Mission Assurance Level-A Zero-NaN and Zero-Inf guarantee
             assert not np.isnan(data).any(), "NaN detected in production COG raster!"
             assert not np.isinf(data).any(), "Inf detected in production COG raster!"
 

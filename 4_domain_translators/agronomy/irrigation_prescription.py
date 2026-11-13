@@ -1,7 +1,7 @@
 # THE MRIDANSH - Agriculture Domain Translator
 # Module: 4_domain_translators/agronomy/irrigation_prescription.py
 # Standard: United Nations FAO-56 & Precision Variable-Rate Irrigation (VRI) Mechanics
-# DO-178C Level-A Avionics & Remote Sensing Rigor
+# Mission Assurance Level-A Avionics & Remote Sensing Rigor
 
 import logging
 import time
@@ -174,11 +174,11 @@ class PrecisionIrrigationEngine:
         t_elapsed = time.perf_counter() - t0
         latency_px = (t_elapsed * 1000.0) / max(total_pixels, 1)
 
-        # DO-178C Safety Assertions
+        # Mission Assurance Level-A Safety Assertions
         if np.any(np.isnan(i_net)) or np.any(np.isinf(i_net)):
-            raise AssertionError("DO-178C Violation: NaN or Inf in net irrigation derivation")
+            raise AssertionError("Mission Assurance Level-A Violation: NaN or Inf in net irrigation derivation")
         if np.any(np.isnan(liters_per_ha)) or np.any(np.isinf(liters_per_ha)):
-            raise AssertionError("DO-178C Violation: NaN or Inf in volumetric L/ha derivation")
+            raise AssertionError("Mission Assurance Level-A Violation: NaN or Inf in volumetric L/ha derivation")
         if np.any(i_net < 0.0):
             raise AssertionError("Physics Violation: Negative irrigation depth encountered")
 

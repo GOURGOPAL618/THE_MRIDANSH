@@ -11,7 +11,7 @@
   "software_version": "v2.0.0-PROD-FREEZE",
   "technology_readiness_level": "TRL-6 (System Prototype Demonstrated in Operational Environment)",
   "compliance_standards": [
-    "DO-178C Level-A (Airborne Systems and Equipment Certification)",
+    "Mission Assurance Level-A (Airborne Systems and Equipment Certification)",
     "ECSS-E-ST-40C (Space Engineering — Software)",
     "NASA-SP-6105 Rev 2 (Systems Engineering Handbook)",
     "IEEE-830 / ISO/IEC/IEEE 29148 (Software Requirements Engineering)",

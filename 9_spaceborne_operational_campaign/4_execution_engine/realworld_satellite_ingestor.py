@@ -3,7 +3,7 @@ THE MRIDANSH : REAL-WORLD SATELLITE INGESTION & HARMONIZATION ORCHESTRATOR
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 07
 Subsystem: 9_spaceborne_operational_campaign/4_execution_engine/realworld_satellite_ingestor.py
-Standards: CEOS-WGCV Interoperability, DO-178C Level-A Interface Compliance
+Standards: CEOS-WGCV Interoperability, Mission Assurance Level-A Interface Compliance
 
 Functionality:
 1. Multi-Sensor Spatial Harmonization:

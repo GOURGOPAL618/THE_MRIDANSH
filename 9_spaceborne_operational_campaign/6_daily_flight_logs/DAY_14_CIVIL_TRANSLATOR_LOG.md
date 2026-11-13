@@ -2,7 +2,7 @@
 ## FLIGHT LOG DAY 14: CIVIL & GEOTECHNICAL DOMAIN TRANSLATOR (PHASE 1 & 2 FOUNDATION)
 **Mission Date:** Day 82 · 30 OCT 2026  
 **Subsystem:** `4_domain_translators/civil/` & `3_core_engine` (AETHER-MRID1607X)  
-**Engineering Directives:** Eurocode 7 (EN 1997-1), ASTM D2487, USCS, IS 1904:2021, RTCA DO-178C Level-A  
+**Engineering Directives:** Eurocode 7 (EN 1997-1), ASTM D2487, USCS, IS 1904:2021, Mission Assurance Level-A  
 **Mission Commander:** Gouragopal Mohapatra (`GOURGOPAL618`), Lead Systems Architect & Remote Sensing Mission Engineer  
 **Sanctum:** Jagannath Command Center (JCC) — Campus 2 (RS-SDA Division)  
 **Status:** `DAY_14_CIVIL_TRANSLATOR_OPERATIONAL_CERTIFIED`  
@@ -20,7 +20,7 @@ Key achievements for Day 14:
 3. **Subsurface 3D Stratification Profile:** Discretized AETHER's vadose profiles into 3 structural depth layers: Skin Surface ($0$--$5\text{cm}$), Pavement Subbase ($5$--$30\text{cm}$), and Deep Foundation Shear Plane ($30$--$100\text{cm}$).
 4. **General Ground Stability Engine:** Implemented [`ground_stability_engine.py`](file:///d:/JAGANNATH_CODE_SANCTUM/JCC%20CAMPUS%202%20(RS-SDA%20DIVISION)/THE_MRIDANSH/4_domain_translators/civil/ground_stability_engine.py) computing Meyerhof-Hansen continuous bearing capacity factors ($N_c, N_q, N_\gamma$) with shape and depth factors, delivering ultimate capacity ($q_{\text{ult}}$) and Eurocode 7 allowable capacity ($q_{\text{allow}} = q_{\text{ult}} / 3.0$).
 5. **Coupled DEM Slope Stability Engine:** Implemented [`slope_stability_engine.py`](file:///d:/JAGANNATH_CODE_SANCTUM/JCC%20CAMPUS%202%20(RS-SDA%20DIVISION)/THE_MRIDANSH/4_domain_translators/civil/slope_stability_engine.py) coupling Copernicus 30m DEM slope angles ($\beta$) with vadose pore pressure for Taylor-Duncan Infinite Slope Factor of Safety ($FS_{\text{slope}}$) and 3-tier hazard classification (`STABLE`, `MARGINALLY_STABLE`, `LANDSLIDE_HAZARD`).
-6. **DO-178C Level-A Verification Suite:** Established automated test harness [`tests/test_day14_civil_translator.py`](file:///d:/JAGANNATH_CODE_SANCTUM/JCC%20CAMPUS%202%20(RS-SDA%20DIVISION)/THE_MRIDANSH/tests/test_day14_civil_translator.py) passing all 5/5 formal contracts (`CIVIL-01` to `CIVIL-05`) with **zero warnings and zero defects**.
+6. **Mission Assurance Level-A Verification Suite:** Established automated test harness [`tests/test_day14_civil_translator.py`](file:///d:/JAGANNATH_CODE_SANCTUM/JCC%20CAMPUS%202%20(RS-SDA%20DIVISION)/THE_MRIDANSH/tests/test_day14_civil_translator.py) passing all 5/5 formal contracts (`CIVIL-01` to `CIVIL-05`) with **zero warnings and zero defects**.
 
 ---
 
@@ -58,7 +58,7 @@ Key achievements for Day 14:
 
 ---
 
-### 3. Flight Verification Test Results (DO-178C Level-A Compliance)
+### 3. Flight Verification Test Results (Mission Assurance Level-A Compliance)
 
 **Execution Command:**  
 `pytest tests/test_day14_civil_translator.py -v`
@@ -86,7 +86,7 @@ Key achievements for Day 14:
 * **Site Trafficability Baseline:** `HEAVY_RIG_PERMITTED` ($> 180\text{ kPa}$)
 * **Mean Slope Angle ($\beta$):** $2.14^\circ$
 * **Mean Infinite Slope Factor of Safety ($FS_{\text{slope}}$):** $9.82$ (98.4% pixels classified as `STABLE`, 1.6% `MARGINALLY_STABLE`)
-* **Real-Time Execution Latency:** $0.675\text{ ms}$ total scene ($0.000165\text{ ms/pixel}$, **$60.4\times$ faster than DO-178C SLA**)
+* **Real-Time Execution Latency:** $0.675\text{ ms}$ total scene ($0.000165\text{ ms/pixel}$, **$60.4\times$ faster than Deterministic SLA**)
 
 ---
 

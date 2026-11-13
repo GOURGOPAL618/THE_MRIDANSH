@@ -1,7 +1,7 @@
 # THE MRIDANSH - Agriculture Domain Translator
 # Module: 4_domain_translators/agronomy/agronomy_domain_engine.py
 # Unified Monolithic Agronomic Downstream Intelligence Engine
-# Standards: United Nations FAO-56 & DO-178C Level-A Avionics Rigor
+# Standards: United Nations FAO-56 & Mission Assurance Level-A Avionics Rigor
 
 import logging
 import time
@@ -151,7 +151,7 @@ class AgronomyDomainEngine:
 
         provenance = {
             "engine": "AgronomyDomainEngine-v1.0",
-            "standards": ["FAO-56", "DO-178C-Level-A"],
+            "standards": ["FAO-56", "Mission Assurance Level-A-Level-A"],
             "crop_species": crop_params.get("common_name", crop_name),
             "soil_texture": tex_props.texture_name,
             "soil_fc_m3m3": theta_fc,

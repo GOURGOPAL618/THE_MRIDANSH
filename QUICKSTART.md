@@ -3,7 +3,7 @@
 ## System: THE MRIDANSH (AETHER-MRID1607X Hydro-Terramorphic Engine)
 **Document Authority:** Commander Gouragopal Mohapatra (`GOURGOPAL618`), Lead Systems Architect & Remote Sensing Mission Engineer  
 **Institutional Sanctum:** Jagannath Command Center (JCC) — Campus 2 (RS-SDA Division)  
-**Classification:** Operational Flight Standard · RTCA DO-178C Level-A Verification Baseline  
+**Classification:** Operational Flight Standard · Mission Assurance Level-A Verification Baseline  
 **Flight Release Standard:** `v1.0.0-TRL7-OPERATIONAL` (14 November 2026 @ 18:18:00 IST)  
 **Cryptographic Integrity Digest:** `SHA-256: 2cad3c797a3e5a48444f8ea31150bd0f2b0304ee6bd662001dc61d2733936305`  
 
@@ -18,7 +18,7 @@
    COORDINATE SYSTEM : WGS 84 / UTM ZONE 45N (EPSG:32645) & GLOBAL GEODETIC (EPSG:4326)
    FLIGHT SCENE      : KENDRAPARA COASTAL DELTA (40.96 HECTARES, 64x64 RASTER GRID AT 10M RES)
    VERIFICATION SLA  : < 0.05 ms/pixel FORWARD INFERENCE / < 2.0 ms JORDAN CURVE EXTRACTION
-   CERTIFICATION BASE: RTCA DO-178C LEVEL-A PRINCIPLES & EUROCODE 7 LIMIT-STATE FORMULATIONS
+   CERTIFICATION BASE: PLANETARY MISSION ASSURANCE LEVEL-A PRINCIPLES & EUROCODE 7 LIMIT-STATE FORMULATIONS
 ========================================================================================================================
 ```
 
@@ -75,7 +75,7 @@ pip install -r requirements.txt
 
 ---
 
-## 4. Verification & Validation Protocol (DO-178C Level-A Suites)
+## 4. Verification & Validation Protocol (Mission Assurance Level-A Suites)
 
 Before operational execution, run the three mandatory zero-defect test suites:
 
@@ -203,7 +203,7 @@ THE_MRIDANSH/
 
 ## 9. Formal Mission Invariant Statement
 
-I hereby certify that this **Operational Quickstart & Verification Runbook (`QUICKSTART.md`)** provides deterministic, reproducible execution instructions for `THE_MRIDANSH` (`AETHER-MRID1607X`) in strict accordance with **RTCA DO-178C Level-A verification standards**.
+I hereby certify that this **Operational Quickstart & Verification Runbook (`QUICKSTART.md`)** provides deterministic, reproducible execution instructions for `THE_MRIDANSH` (`AETHER-MRID1607X`) in strict accordance with **Mission Assurance Level-A verification standards**.
 
 **Certified by:**  
 **Commander Gouragopal Mohapatra (`GOURGOPAL618`)**  

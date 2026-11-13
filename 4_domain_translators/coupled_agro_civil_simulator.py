@@ -2,7 +2,7 @@
 # Module: 4_domain_translators/coupled_agro_civil_simulator.py
 # Subsystem 06: Cross-Domain Agro-Geotechnical Simulation Engine
 # Architecture: Coupled Paddy Nursery Bed (Tala Gachha) Hydraulics & Tractor Puddling Mechanics
-# Standards: FAO-56 / Bekker-Meyerhof Soil Mechanics / RTCA DO-178C Level-A Monte Carlo
+# Standards: FAO-56 / Bekker-Meyerhof Soil Mechanics / Mission Assurance Level-A Monte Carlo
 
 from __future__ import annotations
 

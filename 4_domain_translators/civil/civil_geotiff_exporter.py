@@ -2,7 +2,7 @@
 # Module: 4_domain_translators/civil/civil_geotiff_exporter.py
 # Subsystem 05 of AETHER-MRID1607X Core Engine
 # Architecture: Production OGC GeoTIFF & Cloud-Optimized GeoTIFF (COG) Exporter
-# Standards: OGC GeoTIFF 1.1, CEOS-WGCV, ISO 19115-2, DO-178C Level-A Rigor
+# Standards: OGC GeoTIFF 1.1, CEOS-WGCV, ISO 19115-2, Mission Assurance Level-A Rigor
 
 from __future__ import annotations
 
@@ -139,7 +139,7 @@ class CivilGeoTIFFExporter:
                     f"Array {idx} shape mismatch: expected ({self.GRID_ROWS}, {self.GRID_COLS}), got {arr.shape}"
                 )
             if np.isnan(arr).any():
-                raise ValueError(f"Array {idx} contains NaN values; strictly prohibited under DO-178C.")
+                raise ValueError(f"Array {idx} contains NaN values; strictly prohibited under Mission Assurance Level-A.")
 
         manifest: Dict[str, Any] = {
             "mission": "THE_MRIDANSH",

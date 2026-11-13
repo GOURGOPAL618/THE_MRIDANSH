@@ -2,7 +2,7 @@
 # Module: 5_pipelines/mridansh_unified_orchestrator.py
 # Subsystem 08: Master Unified Multi-Domain Orchestrator
 # Architecture: Monolithic In-Memory Spaceborne Telemetry Ingestion to Downstream Operational Intelligence
-# Standards: RTCA DO-178C Level-A / OGC GeoTIFF 1.1 / WMO-No. 168 / ISO 19115-2 / Eurocode 7 / FAO-56
+# Standards: Mission Assurance Level-A / OGC GeoTIFF 1.1 / WMO-No. 168 / ISO 19115-2 / Eurocode 7 / FAO-56
 # Lead Systems Architect: Gouragopal Mohapatra (JCC Campus 2, RS-SDA Division)
 
 from __future__ import annotations
@@ -75,7 +75,7 @@ DEFAULT_GRID_DIM: int = 64
 DEFAULT_PIXEL_RES_M: float = 10.0
 DEFAULT_FOOTPRINT_HA: float = 40.96
 
-# DO-178C Latency SLA Threshold: 0.025 ms per pixel (102.4 ms for 4096 pixels)
+# Mission Assurance Level-A Latency SLA Threshold: 0.025 ms per pixel (102.4 ms for 4096 pixels)
 MAX_PERMISSIBLE_LATENCY_PER_PIXEL_MS: float = 0.025
 
 
@@ -146,7 +146,7 @@ class UnifiedExecutionResult:
     exported_rasters: Dict[str, str]
     sha256_manifest: Dict[str, str]
 
-    # DO-178C Level-A Verification Audit
+    # Mission Assurance Level-A Verification Audit
     contracts_verified: Dict[str, bool]
 
 
@@ -388,7 +388,7 @@ class MridanshUnifiedOrchestrator:
                 json.dump(manifest_data, f, indent=2)
 
         # --------------------------------------------------------------------------------------------------------------
-        # STAGE 7: DO-178C LEVEL-A CONTRACT VERIFICATION
+        # STAGE 7: MISSION ASSURANCE LEVEL-A CONTRACT VERIFICATION
         # --------------------------------------------------------------------------------------------------------------
         t_global_elapsed_ms = (time.perf_counter() - t_global_start) * 1000.0
 
@@ -512,7 +512,7 @@ class MridanshUnifiedOrchestrator:
         latency_per_pixel_ms: float,
     ) -> Dict[str, bool]:
         """
-        Formally certifies RTCA DO-178C Level-A Verification Contracts PIPE-01 through PIPE-05.
+        Formally certifies Mission Assurance Level-A Verification Contracts PIPE-01 through PIPE-05.
         """
         contracts: Dict[str, bool] = {}
 

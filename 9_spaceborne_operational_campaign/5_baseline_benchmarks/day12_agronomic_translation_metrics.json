@@ -4,7 +4,7 @@
   "date": "2026-10-28",
   "standards": [
     "FAO-56",
-    "DO-178C-Level-A"
+    "Mission Assurance Level-A-Level-A"
   ],
   "crop_evaluated": "Winter / Spring Wheat",
   "soil_texture": "silt_loam",

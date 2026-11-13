@@ -3,7 +3,7 @@
 **Mission Date:** Day 92 · 11 NOV 2026  
 **Campaign Code:** `PMC-1000-AETHER-MRID1607X`  
 **Subsystems Involved:** `11_simulation_test_campaign/scripts/planetary_monte_carlo_engine.py`, `11_simulation_test_campaign/scripts/generate_monte_carlo_artifacts.py`, `11_simulation_test_campaign/documentation/`  
-**Engineering Directives:** RTCA DO-178C Level-A Verification Principles / Eurocode 7 Geotechnical Limit-State Formulations / Richards-1D Vadose PDE / Bekker Terramechanics  
+**Engineering Directives:** Mission Assurance Level-A Verification Principles / Eurocode 7 Geotechnical Limit-State Formulations / Richards-1D Vadose PDE / Bekker Terramechanics  
 **Mission Commander:** Gouragopal Mohapatra (`GOURGOPAL618`), Lead Systems Architect & Remote Sensing Mission Engineer  
 **Sanctum:** Jagannath Command Center (JCC) — Campus 2 (RS-SDA Division)  
 **Status:** `DAY_18_PLANETARY_MONTE_CARLO_CERTIFIED_TRL7`  
@@ -69,7 +69,7 @@ The 1,000 trials were partitioned into four orthogonal quadrants (250 trials eac
 - **Regime:** 9-day multi-sensor assimilation with cloud fraction $\mathcal{U}(0.80, 1.00)$ and synthetic Sentinel-1 SAR speckle/RFI noise $\Delta\sigma^0 \in [-4.5, +4.5]\text{ dB}$.
 - **Optical Dropout Resilience:** Exactly **125 / 250 trials (50.0%)** experienced complete optical NDVI/EVI blackout ($\ge 90\%$ cloud cover). The dual-satellite Kalman filter seamlessly shifted 100% radiometric weight to Sentinel-1 SAR + Richards PDE.
 - **SAR Anomaly Telemetry:** Subsystem 07 classified backscatter perturbations into **66 Wetting Surges ($> +2.5\text{ dB}$)**, **8 Rapid Desiccations ($< -2.0\text{ dB}$)**, and **176 Normal Drifts**.
-- **Conditioning Ceiling:** Error covariance condition number peaked at $\kappa(P)_{\max} = 1709.03 \ll 10^6$ (**$585.1\times$ DO-178C safety margin**), with minimum eigenvalue $\lambda_{\min} = 9.7 \times 10^{-5} > 10^{-9}$.
+- **Conditioning Ceiling:** Error covariance condition number peaked at $\kappa(P)_{\max} = 1709.03 \ll 10^6$ (**$585.1\times$ Mission Assurance Level-A safety margin**), with minimum eigenvalue $\lambda_{\min} = 9.7 \times 10^{-5} > 10^{-9}$.
 
 #### D. Quadrant 4: Mud Liquefaction & Heavy Machinery Sinkage (Trials 751–1000 | Seed `16074`)
 - **Regime:** Hyper-saturated coastal alluvial clay and silt loam ($\theta \ge 0.85\theta_{\text{sat}}$) subjected to heavy agricultural machinery axle loading ($35-55\text{ kN}$, nominal $45\text{ kN}$) over dual tire patches ($b = 0.45-0.65\text{ m}$, $\ell = 0.50-0.75\text{ m}$).

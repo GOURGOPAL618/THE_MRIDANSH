@@ -1,7 +1,7 @@
 # THE MRIDANSH - VERIFICATION TEST SUITE
 # Test: tests/test_zonal_field_extractor.py
 # Verification Target: Subsystem 10 (Zonal Farm Analytics & Polygon Extraction Engine)
-# Standards: RTCA DO-178C Level-A / ISO 19115 / FAO-56
+# Standards: Mission Assurance Level-A / ISO 19115 / FAO-56
 # Lead Systems Architect: Gouragopal Mohapatra (JCC Campus 2, RS-SDA Division)
 
 import sys
@@ -145,7 +145,7 @@ class TestZonalFieldExtractorDO178C:
         assert res.recommended_water_mm_per_ha == pytest.approx(res.water_deficit_mm.mean, rel=1e-3)
 
     def test_zone_04_execution_latency_sla(self, synthetic_flight_rasters):
-        """ZONE-04: Verifies DO-178C SLA: Sub-2ms execution latency for zero-lag interactive drawing."""
+        """ZONE-04: Verifies Deterministic SLA: Sub-2ms execution latency for zero-lag interactive drawing."""
         theta_surf, theta_root, cwsi, q_allow_kpa, bbox = synthetic_flight_rasters
         extractor = ZonalFieldExtractor()
 
@@ -172,6 +172,6 @@ class TestZonalFieldExtractorDO178C:
         median_latency = float(np.median(latencies_ms))
         print(f"\n[BENCHMARK] Zonal Extraction Mean: {mean_latency:.3f} ms, Median: {median_latency:.3f} ms (SLA: < 2.0 ms median / < 5.0 ms max)")
 
-        assert median_latency < 2.0, f"Median latency {median_latency:.3f} ms exceeds 2.0 ms DO-178C SLA"
+        assert median_latency < 2.0, f"Median latency {median_latency:.3f} ms exceeds 2.0 ms Deterministic SLA"
         assert mean_latency < 5.0, f"Mean latency {mean_latency:.3f} ms exceeds 5.0 ms SLA"
         assert res.trafficability_grade in ["SAFE_SMOOTH_TILLAGE", "MODERATE_RUT_RISK", "CRITICAL_BOGGING_HAZARD"]

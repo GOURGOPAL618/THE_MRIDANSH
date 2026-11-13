@@ -11,7 +11,7 @@ THE MRIDANSH (AETHER-MRID1607X) - Master Unified Engine Freeze & Design Specific
 :Author / Maintainer: Gouragopal Mohapatra
 :Copyright: (c) 2026 Gouragopal Mohapatra. All Rights Reserved.
 :Document Type: Software Design Specification (SDS) & Interface Control Document (ICD)
-:Document Status: Certified Production Freeze (DO-178C Level-A / ECSS-E-ST-40C Equivalent)
+:Document Status: Certified Production Freeze (Mission Assurance Level-A / ECSS-E-ST-40C Equivalent)
 :Technology Readiness Level: TRL-6 (System Prototype Demonstrated in Operational Environment)
 :Cryptographic Lock Status: SEALED & FROZEN (Zero Parameter Drift Guaranteed)
 :Git Commit Hash (Model Lock): ``9e89409``
@@ -49,7 +49,7 @@ THE MRIDANSH (AETHER-MRID1607X) - Master Unified Engine Freeze & Design Specific
    * - **Software Baseline Version**
      - ``v2.0.0-PROD-FREEZE``
    * - **Software Assurance Level**
-     - **DO-178C Level-A** / **ECSS-E-ST-40C Category B**
+     - **Mission Assurance Level-A** / **ECSS-E-ST-40C Category B**
    * - **NASA Systems Engineering Standard**
      - **NASA-SP-6105 Rev 2** (Requirements, V&V, Technical Review)
    * - **Target Technology Readiness Level**
@@ -131,7 +131,7 @@ THE MRIDANSH (AETHER-MRID1607X) - Master Unified Engine Freeze & Design Specific
      - Issuing Body / Author
      - Application in System Engineering
    * - **[R1]**
-     - RTCA DO-178C / EUROCAE ED-12C
+     - Planetary Mission Assurance Level-A
      - RTCA / EUROCAE
      - Software Considerations in Airborne Systems and Equipment Certification (Structural V&V Model)
    * - **[R2]**
@@ -212,7 +212,7 @@ THE MRIDANSH (AETHER-MRID1607X) - Master Unified Engine Freeze & Design Specific
      - Convolutional Long Short-Term Memory Neural Network
    * - **DEM**
      - Digital Elevation Model
-   * - **DO-178C**
+   * - **Mission Assurance Level-A**
      - RTCA Software Considerations in Airborne Systems Certification standard
    * - **ECSS**
      - European Cooperation for Space Standardization
@@ -739,7 +739,7 @@ The following artifacts constitute the immutable physical AI baseline of THE MRI
 * **LR-002 [SHALL]**: All intermediate tensors SHALL be memory-bounded and released immediately upon function return, preventing CUDA/CPU RAM accumulation.
 * **DI-001 [SHALL]**: The output ``UnifiedSoilState`` SHALL contain ZERO ``NaN`` values and ZERO ``Inf`` values across all emitted tensors.
 
-7. Step-by-Step Verification Procedures (DO-178C Protocols VP-001 to VP-024)
+7. Step-by-Step Verification Procedures (Mission Assurance Level-A Protocols VP-001 to VP-024)
 ============================================================================
 
 VP-001: Verification of Cryptographic Hash Ledger (CR-001)

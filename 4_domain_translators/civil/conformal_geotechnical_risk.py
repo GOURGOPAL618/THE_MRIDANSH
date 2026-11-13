@@ -2,7 +2,7 @@
 # Module: 4_domain_translators/civil/conformal_geotechnical_risk.py
 # Subsystem 05 of AETHER-MRID1607X Core Engine
 # Architecture: Conformal 2-Sigma Epistemic Decision-Risk Dispatcher
-# Standards: Eurocode 7 (EN 1997-1) / IS 1904:2021 / DO-178C Level-A Rigor
+# Standards: Eurocode 7 (EN 1997-1) / IS 1904:2021 / Mission Assurance Level-A Rigor
 
 from __future__ import annotations
 

@@ -4,7 +4,7 @@
 **Mission Phase:** Phase 5 (Temporal Integration & Unified Multi-Domain Orchestration)  
 **Lead Investigator & Mission Commander:** Gouragopal Mohapatra (`GOURGOPAL618`), Lead Systems Architect & Remote Sensing Mission Engineer  
 **Sanctum:** Jagannath Command Center (JCC) — Campus 2 (RS-SDA Division)  
-**Standard Compliance:** RTCA DO-178C Level-A / WMO-No. 168 / ISO 19115 / OGC GeoTIFF 1.1  
+**Standard Compliance:** Mission Assurance Level-A / WMO-No. 168 / ISO 19115 / OGC GeoTIFF 1.1  
 **Target Execution Date:** 02 NOVEMBER 2026 (Monday)  
 **Status:** `READY_FOR_EXECUTION`  
 
@@ -123,7 +123,7 @@ The Day 16 unified pipeline bridges the entire repository from spaceborne teleme
 
 ---
 
-## 4. FORMAL DO-178C LEVEL-A VERIFICATION CONTRACTS (`PIPE-01` .. `PIPE-05`)
+## 4. FORMAL MISSION ASSURANCE LEVEL-A VERIFICATION CONTRACTS (`PIPE-01` .. `PIPE-05`)
 
 Day 16 introduces five automated verification contracts implemented in `tests/test_day16_unified_pipeline.py`:
 

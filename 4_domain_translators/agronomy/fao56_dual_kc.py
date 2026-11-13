@@ -1,7 +1,7 @@
 # THE MRIDANSH - Agriculture Domain Translator
 # Module: 4_domain_translators/agronomy/fao56_dual_kc.py
 # Standard: United Nations FAO-56 Dual Crop Coefficient (Allen et al., 1998, Chapter 7)
-# DO-178C Level-A Avionics & Remote Sensing Rigor
+# Mission Assurance Level-A Avionics & Remote Sensing Rigor
 
 import logging
 from dataclasses import dataclass
@@ -175,9 +175,9 @@ class FAO56DualKcEngine:
 
         # Safety assertions
         if np.any(np.isnan(kc_total)) or np.any(np.isinf(kc_total)):
-            raise AssertionError("DO-178C Violation: NaN or Inf encountered in dual Kc calculation")
+            raise AssertionError("Mission Assurance Level-A Violation: NaN or Inf encountered in dual Kc calculation")
         if np.any(np.isnan(etc_pot)) or np.any(np.isinf(etc_pot)):
-            raise AssertionError("DO-178C Violation: NaN or Inf encountered in ETc calculation")
+            raise AssertionError("Mission Assurance Level-A Violation: NaN or Inf encountered in ETc calculation")
 
         if np.isscalar(kcb) and np.isscalar(fractional_cover) and np.isscalar(theta_surf):
             return DualKcOutput(

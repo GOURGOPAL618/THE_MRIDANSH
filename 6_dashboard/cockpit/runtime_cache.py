@@ -393,7 +393,7 @@ class FastAPIClient:
                 "model_metadata": {
                     "engine": "AETHER-MRID1607X",
                     "data_state": "LIVE",
-                    "certification": "RTCA DO-178C Level-A",
+                    "certification": "Mission Assurance Level-A",
                     "latency_ms": res.execution_time_compute_ms,
                 },
             }

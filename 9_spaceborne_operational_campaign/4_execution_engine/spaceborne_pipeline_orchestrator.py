@@ -3,7 +3,7 @@ THE MRIDANSH : AUTONOMOUS SPACEBORNE PIPELINE ORCHESTRATOR
 ================================================================================
 Mission: Spaceborne Operational Campaign (SOC-AETHER-2026) | Day 11
 Subsystem: 9_spaceborne_operational_campaign/4_execution_engine/spaceborne_pipeline_orchestrator.py
-Standards: CEOS-WGCV Match-Up Protocol, DO-178C Level-A Autonomous Flight Operations
+Standards: CEOS-WGCV Match-Up Protocol, Mission Assurance Level-A Autonomous Flight Operations
 
 Functionality:
 1. Autonomous End-to-End Mission Pipeline Orchestration:
@@ -178,7 +178,7 @@ class SpacebornePipelineOrchestrator:
         latency_per_px_ms = (t_stage3_ms / 2.0) / max(total_pixels, 1)
 
         # ----------------------------------------------------------------------
-        # Stage 4: DO-178C Level-A Zero-NaN & Physics Residual Verification
+        # Stage 4: Mission Assurance Level-A Zero-NaN & Physics Residual Verification
         # ----------------------------------------------------------------------
         for name, tensor in [
             ("theta_surface", state_surf.volumetric_moisture),
@@ -190,7 +190,7 @@ class SpacebornePipelineOrchestrator:
             ("anomaly_flags", state_surf.anomaly_flags)
         ]:
             if torch.isnan(tensor).any() or torch.isinf(tensor).any():
-                raise AssertionError(f"DO-178C Level-A Violation: NaN or Inf detected in {name} output!")
+                raise AssertionError(f"Mission Assurance Level-A Violation: NaN or Inf detected in {name} output!")
 
         # Richards mass conservation residual norm
         pde_res_norm = float(state_surf.pde_residual_norm.mean().item())
