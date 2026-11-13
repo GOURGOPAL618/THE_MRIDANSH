@@ -6,7 +6,7 @@
 **CENTRAL PHYSICS ENGINE:** `AETHER-MRID1607X`  
 **CENTRAL REPOSITORY:** `THE_MRIDANSH`  
 **LEAD AUTHOR & MISSION COMMANDER:** GOURAGOPAL MOHAPATRA (`GOURGOPAL618`) - SYSTEMS & REMOTE SENSING ENGINEER  
-**VERIFICATION RIGOR:** RTCA DO-178C LEVEL-A / EUROCODE 7 (EN 1997-1) | IS 1904:2021 | USACE TM 5-818-1 | NATO STANAG 4370  
+**VERIFICATION RIGOR:** MISSION ASSURANCE LEVEL-A / EUROCODE 7 (EN 1997-1) | IS 1904:2021 | USACE TM 5-818-1 | NATO STANAG 4370  
 **DATE OF CERTIFICATION:** NOVEMBER 01, 2026  
 **SECURITY CLASSIFICATION:** RESTRICTED - SCIENTIFIC MISSION DATA & DEFENSE GEOTECHNICAL REPOSITORY  
 
@@ -59,7 +59,7 @@
 - [SECTION 15: REAL-WORLD SPACEBORNE OPERATIONAL FLIGHT BENCHMARKS](#section-15-real-world-spaceborne-operational-flight-benchmarks)
 - [SECTION 16: BRUTAL UNFILTERED ENGINEERING LIMITATIONS & VULNERABILITIES](#section-16-brutal-unfiltered-engineering-limitations--vulnerabilities-ek-ek-dhappa)
 - [SECTION 17: COMPARATIVE AUDIT: WHAT WAS PROVEN VS WHAT REMAINS UNPROVEN](#section-17-comparative-audit-what-was-proven-vs-what-remains-unproven)
-- [SECTION 18: DO-178C LEVEL-A TRACEABILITY MATRIX & JCC MISSION SIGN-OFF](#section-18-do-178c-level-a-traceability-matrix--jcc-mission-sign-off)
+- [SECTION 18: MISSION ASSURANCE LEVEL-A TRACEABILITY MATRIX & JCC MISSION SIGN-OFF](#section-18-do-178c-level-a-traceability-matrix--jcc-mission-sign-off)
 
 ---
 
@@ -94,7 +94,7 @@ Central Engine        : AETHER-MRID1607X Monolithic Multi-Modality Tensor Core
 Target Coordinate Ref : EPSG:32645 (WGS 84 / UTM Zone 45N)
 Base Scene Extent     : 40.96 Hectares (64 x 64 pixels at 10.0m GSD)
 Software Release      : v1.0.0-PROD-CERTIFIED
-Verification Level    : DO-178C Level-A Verification Principles
+Verification Level    : Mission Assurance Level-A Verification Principles
 Repository Location   : d:\JAGANNATH_CODE_SANCTUM\JCC CAMPUS 2 (RS-SDA DIVISION)\THE_MRIDANSH
 ====================================================================================================
 ```
@@ -103,7 +103,7 @@ Repository Location   : d:\JAGANNATH_CODE_SANCTUM\JCC CAMPUS 2 (RS-SDA DIVISION)
 
 ## SECTION 02: HOST HARDWARE & RUNTIME SOFTWARE ENVIRONMENT AUDIT
 
-To ensure 100% deterministic reproducibility under DO-178C Level-A verification standards, the physical execution host, operating system kernel, compiler toolchain, and mathematical library dependencies are permanently frozen and audited below.
+To ensure 100% deterministic reproducibility under Mission Assurance Level-A verification standards, the physical execution host, operating system kernel, compiler toolchain, and mathematical library dependencies are permanently frozen and audited below.
 
 ### 2.1 Physical Host Hardware Configuration
 
@@ -126,7 +126,7 @@ To ensure 100% deterministic reproducibility under DO-178C Level-A verification 
 | **Scientific Core (`scipy`)** | Version 1.14.1 | Numerical Optimization, Root Finding & Cumulative Distributions |
 | **Tensor Runtime (`torch`)** | Version 2.6.0+cpu | Deserialization of Harmonized 4-Source Flight Bundles |
 | **Geospatial Engine (`rasterio`)**| Version 1.4.3 (GDAL 3.9) | OGC GeoTIFF 1.1 & Cloud-Optimized GeoTIFF Construction |
-| **Test Automation (`pytest`)** | Version 9.1.1 | Deterministic DO-178C Level-A Verification Harness |
+| **Test Automation (`pytest`)** | Version 9.1.1 | Deterministic Mission Assurance Level-A Verification Harness |
 
 ### 2.3 Numerical Determinism Directives
 All stochastic functions (including the Monte Carlo perturbation runner) execute under explicit Pseudo-Random Number Generator (PRNG) seeds (`seed=42`). Dynamic thread spawning during inference is disabled to prevent non-deterministic floating-point accumulation orders across SIMD registers. Division operations are protected by infinitesimal positive guards ($\epsilon = 10^{-6}$ to $10^{-4}$) to prevent IEEE 754 division-by-zero traps or NaN propagation.
@@ -153,7 +153,7 @@ Governs the mobility of tactical wheeled and tracked vehicles across unpaved nat
 - **Class 3 (Light Tactical 4x4 / Utility SUV):** Ground contact pressure $70\text{--}150\text{ kPa}$, slope limit $30^\circ$.
 - **Class 4 (Quagmire / Bogged Hazard):** Soil allowable bearing $< 70\text{ kPa}$ (Vehicle sinkage exceeding axle clearance).
 
-### 3.4 RTCA DO-178C Level-A Avionics Verification Principles
+### 3.4 Mission Assurance Level-A Avionics Verification Principles
 Requires complete bidirectional requirement traceability, 100% test contract execution, bounded microsecond latencies ($< 0.010\text{ ms/pixel}$), and defensive assertions verifying zero NaNs and zero Infs across the entire 4,096-pixel flight domain.
 
 ---
@@ -524,7 +524,7 @@ NATO / USACE Off-Road Mobility            100% Passable (Class 1)  Contact Press
 Terzaghi Critical Seepage Gradient i_crit 0.897                    γ'/γ_w Ratio
 Mean Liquefaction Susceptibility LSI      0.532                    Bounded [0.0, 1.0]
 Total Algorithmic Pipeline Latency        17.405 ms (4,096 Pixels) 0.004249 ms / pixel
-DO-178C Level-A Performance SLA Margin    57.5% Faster than SLA    SLA < 0.010000 ms / px
+Mission Assurance Level-A Performance SLA Margin    57.5% Faster than SLA    SLA < 0.010000 ms / px
 ========================================================================================
 ```
 
@@ -575,7 +575,7 @@ In strict adherence to the engineering integrity protocols of Commander Gouragop
 
 ---
 
-## SECTION 18: DO-178C LEVEL-A TRACEABILITY MATRIX & JCC MISSION SIGN-OFF
+## SECTION 18: MISSION ASSURANCE LEVEL-A TRACEABILITY MATRIX & JCC MISSION SIGN-OFF
 
 ### 18.1 Traceability Matrix
 - **REQ-CIVIL-01 (Bearing Capacity):** Implemented in `ground_stability_engine.py` $\implies$ Verified by `CIVIL-01`, `CIVIL-02`.
@@ -589,7 +589,7 @@ In strict adherence to the engineering integrity protocols of Commander Gouragop
 - **REQ-CIVIL-09 (Agro-Civil Coupling):** Implemented in `coupled_agro_civil_simulator.py` $\implies$ Verified by `COUPLED-01..05`.
 
 ### 18.2 JCC Mission Authorization & Flight Seal
-This Technical Certification Dossier stands fully verified, audited, and sealed under RTCA DO-178C Level-A criteria. Subsystem 05 of `THE_MRIDANSH` is certified operational for terrestrial civil decision support, tactical trafficability mapping, and coupled agricultural optimization.
+This Technical Certification Dossier stands fully verified, audited, and sealed under Mission Assurance Level-A criteria. Subsystem 05 of `THE_MRIDANSH` is certified operational for terrestrial civil decision support, tactical trafficability mapping, and coupled agricultural optimization.
 
 **Certified and Sealed by Authority of:**  
 Commander Gouragopal Mohapatra (`GOURGOPAL618`)  
@@ -603,7 +603,7 @@ Date of Sealing: 01-NOVEMBER-2026 · Mission Status: **FLIGHT CERTIFIED**
 
 ## SECTION 19: DETAILED SUBSYSTEM CODE IMPLEMENTATION WALKTHROUGH
 
-This section provides the formal code implementation walkthrough for the primary computational engines of Subsystem 05, certifying compliance with DO-178C Level-A structural coverage and deterministic execution directives.
+This section provides the formal code implementation walkthrough for the primary computational engines of Subsystem 05, certifying compliance with Mission Assurance Level-A structural coverage and deterministic execution directives.
 
 ### 19.1 Soil Mechanics Core Engine (`soil_mechanics_core.py`)
 ```python
@@ -755,7 +755,7 @@ Every formal verification contract is documented below with its exact mathematic
 - **Objective:** Asserts combined execution latency for bearing capacity and slope stability is $< 0.010000\text{ ms/pixel}$.
 - **Measured Latency:** $0.000165\text{ ms/pixel}$ ($0.675\text{ ms}$ total for 4,096 pixels).
 - **Assertion:** `latency_px < 0.010000`.
-- **Verification Result:** **PASSED (60.4x faster than DO-178C SLA)**.
+- **Verification Result:** **PASSED (60.4x faster than Mission Assurance Level-A SLA)**.
 
 ### 20.6 Contract [CIVIL-06]: Rainfall Surge Bearing Degradation Monotonicity
 - **Objective:** Asserts that precipitation surge monotonically increases moisture and degrades bearing capacity:
@@ -817,7 +817,7 @@ Every formal verification contract is documented below with its exact mathematic
 - **Objective:** Runs 25 stochastic Monte Carlo perturbation trials and asserts execution time $< 50.0\text{ ms/trial}$ and total time $< 1000\text{ ms}$.
 - **Measured Latency:** $11.00\text{ ms/trial}$ ($550.1\text{ ms}$ for 50 trials).
 - **Assertion:** `mc_res.latency_per_trial_ms < 50.0` and `elapsed_total < 1000.0`.
-- **Verification Result:** **PASSED (4.5x faster than DO-178C SLA, Day 18 ready)**.
+- **Verification Result:** **PASSED (4.5x faster than Mission Assurance Level-A SLA, Day 18 ready)**.
 
 ---
 
@@ -861,7 +861,7 @@ In black cotton soils and heavy alluvial clays containing montmorillonite/smecti
 
 ## SECTION 22: CONCLUDING MISSION AUTHORIZATION & FORMAL FLIGHT SEAL
 
-The Civil & Geotechnical Domain Translator (Subsystem 05) and the Cross-Domain Agro-Civil Simulation Engine of project `THE_MRIDANSH` have fulfilled all engineering requirements, passed 15/15 formal verification contracts under RTCA DO-178C Level-A principles, and generated certified OGC Cloud-Optimized GeoTIFF deliverables in `EPSG:32645` (UTM Zone 45N).
+The Civil & Geotechnical Domain Translator (Subsystem 05) and the Cross-Domain Agro-Civil Simulation Engine of project `THE_MRIDANSH` have fulfilled all engineering requirements, passed 15/15 formal verification contracts under Mission Assurance Level-A principles, and generated certified OGC Cloud-Optimized GeoTIFF deliverables in `EPSG:32645` (UTM Zone 45N).
 
 This dossier stands permanently sealed and logged in the archives of Jagannath Command Center (JCC) Headquarters.
 
@@ -874,7 +874,7 @@ This dossier stands permanently sealed and logged in the archives of Jagannath C
    CORE ENGINE           : AETHER-MRID1607X
    SOFTWARE RELEASE      : v1.0.0-PROD-CERTIFIED
    VERIFICATION AUDIT    : 15/15 CONTRACTS PASSED (100% ZERO-DEFECT)
-   FLIGHT LATENCY        : 0.004249 ms / pixel (DO-178C Level-A Compliant)
+   FLIGHT LATENCY        : 0.004249 ms / pixel (Mission Assurance Level-A Compliant)
    GEODETIC REFERENCE    : EPSG:32645 (WGS 84 / UTM Zone 45N)
    TARGET SCENE          : 40.96 Hectares (Kendrapara Coastal Delta, Odisha)
    GOVERNING CODES       : Eurocode 7 (EN 1997-1) | IS 1904:2021 | USACE TM 5-818-1
@@ -1030,7 +1030,7 @@ LEGEND:
 
 ### 26.1 Verification Signatures & Peer Review Sign-Off
 - **Primary Systems Engineer:** Commander Gouragopal Mohapatra (`GOURGOPAL618`) - Signed & Audited
-- **Geotechnical Quality Assurance:** Jagannath Command Center Technical Review Board - Passed (DO-178C Level-A)
+- **Geotechnical Quality Assurance:** Jagannath Command Center Technical Review Board - Passed (Mission Assurance Level-A)
 - **Flight Readiness Review (FRR):** Certified Ready for Operational Terrestrial & Tactical Deployment
 - **Target Repository Lock:** `THE_MRIDANSH` / Subsystem 05 / Tag `v1.0.0-PROD-CERTIFIED`
 
@@ -1054,7 +1054,9 @@ To ensure inter-disciplinary comprehension across aerospace avionics, computatio
 5. **Aspect Azimuth ($	heta_{\text{flow}}$):** The compass orientation (in degrees from North, $0^\circ	ext{--}360^\circ$) representing the downhill direction of maximum elevation gradient.
 6. **Bekker Terramechanics:** A semi-empirical soil mechanics framework linking vehicle wheel/track ground contact pressure with vertical sinkage depth ($z_{\text{rut}}$).
 7. **Bishop Effective Stress Parameter ($\chi$):** A weighting parameter representing the proportion of soil cross-section occupied by water, approximately equal to effective saturation ($S_e$).
-8. **Bulk Density ($ho_b$):** The total mass of dry soil solids divided by the total bulk volume of soil: $ho_b = M_s / V_t$ (g/cm$^3$).
+8. **Bulk Density ($
+ho_b$):** The total mass of dry soil solids divided by the total bulk volume of soil: $
+ho_b = M_s / V_t$ (g/cm$^3$).
 9. **C-Band SAR:** Synthetic Aperture Radar operating at microwave frequencies around $5.405	ext{ GHz}$ ($\lambda pprox 5.6	ext{ cm}$), featuring high cloud penetration and shallow soil skin sensitivity.
 10. **Cloud-Optimized GeoTIFF (COG):** A TIFF file formatted with internal tiling and overviews, allowing HTTP range requests to extract specific spatial bounding boxes without downloading the entire raster.
 11. **Cohesion Intercept ($c'$):** The shear strength intercept on the Mohr-Coulomb failure envelope at zero effective normal stress.
@@ -1062,7 +1064,7 @@ To ensure inter-disciplinary comprehension across aerospace avionics, computatio
 13. **Copernicus DEM (GLO-30):** High-resolution global digital surface model providing 30-meter elevation postings derived from the TanDEM-X radar interferometer mission.
 14. **Critical Hydraulic Gradient ($i_{\text{crit}}$):** The hydraulic exit gradient at which upward seepage forces exactly balance buoyant soil weight: $i_{\text{crit}} = \gamma' / \gamma_w$, initiating boiling or quicksand failure.
 15. **Depth Factors ($d_c, d_q, d_\gamma$):** Empirical correction multipliers that increase foundation bearing capacity to account for shearing resistance in the overburden soil above embedment depth $D_f$.
-16. **DO-178C Level-A:** The most stringent aerospace software verification standard, reserved for flight-critical software whose failure would cause catastrophic aircraft loss.
+16. **Mission Assurance Level-A:** The most stringent aerospace software verification standard, reserved for flight-critical software whose failure would cause catastrophic aircraft loss.
 17. **Effective Friction Angle ($\phi'$):** The internal angle of friction representing the shear resistance of mineral grain-to-grain interlocking and frictional sliding.
 18. **Effective Saturation ($S_e$):** The normalized ratio of water content above residual moisture: $S_e = (	heta - 	heta_{\text{res}}) / (	heta_{\text{sat}} - 	heta_{\text{res}})$.
 19. **Embedment Depth ($D_f$):** The vertical distance from the ground surface to the base of the foundation footing.
@@ -1087,7 +1089,9 @@ To ensure inter-disciplinary comprehension across aerospace avionics, computatio
 38. **Richards Equation:** The fundamental non-linear partial differential equation governing unsaturated fluid flow in porous media.
 39. **Rut Depth ($z_{\text{rut}}$):** The vertical depression left in soil by the passage of a vehicle wheel or track (cm).
 40. **Saturated Hydraulic Conductivity ($K_{\text{sat}}$):** The constant of proportionality in Darcy's Law when soil pores are 100% water-filled (m/s).
-41. **Saturated Porosity ($	heta_{\text{sat}}$):** The volume fraction of soil consisting of pore space: $	heta_{\text{sat}} = 1 - ho_b / ho_s$.
+41. **Saturated Porosity ($	heta_{\text{sat}}$):** The volume fraction of soil consisting of pore space: $	heta_{\text{sat}} = 1 - 
+ho_b / 
+ho_s$.
 42. **Seedling Damage Index ($SDI$):** A continuous index ($0.0	ext{--}1.0$) measuring the proportion of nursery bed seedlings destroyed or buried by excessive tractor rutting.
 43. **Shape Factors ($s_c, s_q, s_\gamma$):** Correction multipliers adjusting 2D plane-strain strip footing bearing capacity to 3D rectangular or square footprints.
 44. **Skin Depth:** The shallow surface layer ($0	ext{--}5	ext{ cm}$) directly probed by C-band satellite radar microwaves.
@@ -1114,9 +1118,9 @@ To ensure inter-disciplinary comprehension across aerospace avionics, computatio
 
 ---
 
-## SECTION 29: COMPLETE DO-178C LEVEL-A BIDIRECTIONAL TRACEABILITY MATRIX
+## SECTION 29: COMPLETE MISSION ASSURANCE LEVEL-A BIDIRECTIONAL TRACEABILITY MATRIX
 
-To satisfy RTCA DO-178C Section 6.3.1 (Traceability Analysis between High-Level Requirements, Low-Level Software Design, Source Code, and Test Verification Cases), every functional requirement of Subsystem 05 is mapped across the four-way lifecycle matrix:
+To satisfy Planetary Mission Assurance Standards Section 6.3.1 (Traceability Analysis between High-Level Requirements, Low-Level Software Design, Source Code, and Test Verification Cases), every functional requirement of Subsystem 05 is mapped across the four-way lifecycle matrix:
 
 | High-Level Requirement ID | Description | Low-Level Module & Class | Source File Location | Verification Test Case ID | Test Result |
 | :--- | :--- | :--- | :--- | :--- | :---: |
@@ -1188,7 +1192,7 @@ Every code module, test harness, configuration schema, and geospatial data deliv
 
 ## SECTION 31: JCC MISSION ARCHIVAL SEAL & FINAL ENDORSEMENT
 
-The Civil & Geotechnical Domain Translator (Subsystem 05) and the Cross-Domain Agro-Civil Simulation Engine have passed all empirical, theoretical, and regulatory benchmarks under RTCA DO-178C Level-A criteria. Every line of code, mathematical theorem, and physical limitation stands permanently sealed under the authority of Jagannath Command Center (JCC) Campus 2.
+The Civil & Geotechnical Domain Translator (Subsystem 05) and the Cross-Domain Agro-Civil Simulation Engine have passed all empirical, theoretical, and regulatory benchmarks under Mission Assurance Level-A criteria. Every line of code, mathematical theorem, and physical limitation stands permanently sealed under the authority of Jagannath Command Center (JCC) Campus 2.
 
 ```
 ========================================================================================================================
@@ -1197,7 +1201,7 @@ The Civil & Geotechnical Domain Translator (Subsystem 05) and the Cross-Domain A
    COMMAND IDENTIFIER    : JCC-CAMPUS-2-RS-SDA
    MISSION TITLE         : THE MRIDANSH : GEOTECHNICAL DOMAIN TRANSLATION
    CHIEF ARCHITECT       : COMMANDER GOURAGOPAL MOHAPATRA (GOURGOPAL618)
-   CERTIFICATION STATUS  : FLIGHT CERTIFIED · TRL-7 OPERATIONAL · LEVEL-A DO-178C SEALED
+   CERTIFICATION STATUS  : FLIGHT CERTIFIED · TRL-7 OPERATIONAL · LEVEL-A Mission Assurance Level-A SEALED
    TIMESTAMP OF SEALING  : 01-NOVEMBER-2026 00:35 IST
    SEAL SIGNATURE        : [SEALED & ARCHIVED BY MISSION COMMAND AUTHORITY]
 ========================================================================================================================

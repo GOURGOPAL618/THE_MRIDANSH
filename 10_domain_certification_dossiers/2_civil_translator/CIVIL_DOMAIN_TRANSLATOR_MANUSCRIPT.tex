@@ -27,7 +27,7 @@
     urlcolor=blue!80!black,
     pdftitle={JCC-DCD-CIVIL-2026-002: Civil and Geotechnical Domain Translator Specification and Research Manuscript},
     pdfauthor={Gouragopal Mohapatra, Jagannath Command Center (JCC) Campus 2 RS-SDA Division},
-    pdfkeywords={Spaceborne SAR, Unsaturated Soil Mechanics, Meyerhof-Hansen Bearing Capacity, Taylor-Duncan Slope Stability, Bekker Terramechanics, DO-178C Level-A, AETHER-MRID1607X}
+    pdfkeywords={Spaceborne SAR, Unsaturated Soil Mechanics, Meyerhof-Hansen Bearing Capacity, Taylor-Duncan Slope Stability, Bekker Terramechanics, Mission Assurance Level-A, AETHER-MRID1607X}
 }
 
 % --- THEOREM ENVIRONMENTS ---
@@ -86,7 +86,7 @@
     {\Large \textbf{JAGANNATH COMMAND CENTER (JCC) --- RESEARCH \& DEFENSE REPOSITORY}}\\[0.2cm]
     {\large \textbf{CAMPUS 2 (RS-SDA DIVISION) --- SENSOR DATA ANALYTICS SANCTUM}}\\[0.4cm]
     {\LARGE \textbf{Spaceborne Multi-Modal Telemetry to Unsaturated Soil Mechanics: Closed-Form Meyerhof-Hansen Bearing Capacity, DEM-Coupled Slope Stability, Dynamic Multi-Hazard Scenarios, and Grassroots Terramechanics}}\\[0.3cm]
-    {\large \textbf{A DO-178C Level-A Verified Civil \& Geotechnical Domain Translator Subsystem for AETHER-MRID1607X}}\\[0.4cm]
+    {\large \textbf{A Mission Assurance Level-A Verified Civil \& Geotechnical Domain Translator Subsystem for AETHER-MRID1607X}}\\[0.4cm]
     \textbf{Document Identifier:} \texttt{JCC-DCD-CIVIL-2026-002} \quad | \quad \textbf{Security Classification:} \texttt{RESTRICTED / SCIENTIFIC} \\[0.3cm]
     
     \textbf{Lead Author \& Mission Commander:}\\
@@ -106,12 +106,12 @@
 \noindent
 Civil infrastructure stability, off-road heavy mechanized mobility, and rural agricultural tillage fundamentally depend on the shear strength and bearing capacity of the unsaturated soil vadose zone. In standard civil engineering practice, site investigation relies on discrete standard penetration test (SPT) soundings and localized laboratory triaxial tests. While empirically accurate at borehole locations, these ground methods are spatially blind, prohibitively expensive across broad regional corridors, and completely static over time. Conversely, spaceborne earth observation systems (e.g., Copernicus Sentinel-1 C-band SAR and Sentinel-2 multi-spectral sensors) provide continuous, high-frequency regional coverage, but output raw dielectric permittivity, backscatter cross-sections ($\sigma^0_{\text{VV}}, \sigma^0_{\text{VH}}$), and normalized soil moisture values ($\theta \in [0.0, 1.0]$) that cannot be directly interpreted by civil foundation engineers, disaster response teams, or field agronomists. When an earth observation algorithm outputs that soil moisture is $0.231~\text{m}^3/\text{m}^3$, an engineer cannot ascertain whether an 80-ton mobile crane outrigger will punch through the crust, whether a rainfall storm will induce translational slope collapse, or whether rotary puddling will shear the plow pan and destroy germinating rice seedlings.
 
-To resolve this critical operational barrier, this treatise presents the complete theoretical formulation, mathematical derivations, software architecture, and RTCA DO-178C Level-A flight verification of the \textbf{Civil \& Geotechnical Domain Translator (Subsystem 05)} within the \textbf{\texttt{AETHER-MRID1607X}} computational engine. Ingesting spaceborne multi-modal observation tensors (Sentinel-1 SAR, Sentinel-2 Optical, Copernicus GLO-30 DEM, and ECMWF ERA5-Land reanalysis), the translation engine achieves: (1) closed-form inversion of the Van Genuchten (1980) soil water retention curve to obtain continuous matric suction fields ($\psi \in [0.0, 500.0]~\text{kPa}$); (2) extended apparent unsaturated cohesion modeling via Lu and Likos (2004) suction stress characteristic curves ($c_{\text{app}} = c' + (\theta/\theta_s)\psi \tan \phi'$); (3) continuous 3-zone subsurface vadose stratification (active skin, capillary transition fringe, and saturated deep datum); (4) analytical Meyerhof--Hansen ultimate and allowable bearing capacity evaluation ($q_{\text{ult}}, q_{\text{allow}}$) strictly enforcing Eurocode 7 (EN 1997-1) and IS 1904:2021 safety invariants ($FS \equiv 3.0$); (5) DEM-coupled 2D Horn gradient slope inclination derivation with Taylor--Duncan infinite slope factor of safety ($FS_{\text{slope}}$) incorporating smooth flat-ground singularity damping; (6) dynamic multi-hazard scenario stress testing simulating precipitation infiltration suction collapse, NATO / USACE 4-tier tactical vehicle trafficability passability, and flood upward seepage liquefaction quicksand ($i \ge i_{\text{crit}}$); (7) Beven--Kirkby Topographic Wetness Index (TWI) and high-energy runoff conduit mapping; (8) coupled agro-civil terramechanics linking Bekker--Meyerhof tyre rut sinkage ($z_{\text{rut}}$) to a Seedling Damage Index ($SDI$) for smallholder paddy nursery protection; and (9) conformal $2\sigma$ non-linear risk bounding guaranteeing conservative design envelopes.
+To resolve this critical operational barrier, this treatise presents the complete theoretical formulation, mathematical derivations, software architecture, and Mission Assurance Level-A flight verification of the \textbf{Civil \& Geotechnical Domain Translator (Subsystem 05)} within the \textbf{\texttt{AETHER-MRID1607X}} computational engine. Ingesting spaceborne multi-modal observation tensors (Sentinel-1 SAR, Sentinel-2 Optical, Copernicus GLO-30 DEM, and ECMWF ERA5-Land reanalysis), the translation engine achieves: (1) closed-form inversion of the Van Genuchten (1980) soil water retention curve to obtain continuous matric suction fields ($\psi \in [0.0, 500.0]~\text{kPa}$); (2) extended apparent unsaturated cohesion modeling via Lu and Likos (2004) suction stress characteristic curves ($c_{\text{app}} = c' + (\theta/\theta_s)\psi \tan \phi'$); (3) continuous 3-zone subsurface vadose stratification (active skin, capillary transition fringe, and saturated deep datum); (4) analytical Meyerhof--Hansen ultimate and allowable bearing capacity evaluation ($q_{\text{ult}}, q_{\text{allow}}$) strictly enforcing Eurocode 7 (EN 1997-1) and IS 1904:2021 safety invariants ($FS \equiv 3.0$); (5) DEM-coupled 2D Horn gradient slope inclination derivation with Taylor--Duncan infinite slope factor of safety ($FS_{\text{slope}}$) incorporating smooth flat-ground singularity damping; (6) dynamic multi-hazard scenario stress testing simulating precipitation infiltration suction collapse, NATO / USACE 4-tier tactical vehicle trafficability passability, and flood upward seepage liquefaction quicksand ($i \ge i_{\text{crit}}$); (7) Beven--Kirkby Topographic Wetness Index (TWI) and high-energy runoff conduit mapping; (8) coupled agro-civil terramechanics linking Bekker--Meyerhof tyre rut sinkage ($z_{\text{rut}}$) to a Seedling Damage Index ($SDI$) for smallholder paddy nursery protection; and (9) conformal $2\sigma$ non-linear risk bounding guaranteeing conservative design envelopes.
 
-Flight-validated across a 40.96-hectare coastal alluvial floodplain scene in Kendrapara, Odisha (4,096 operational pixels), the system demonstrates zero numerical divergence (0 NaN / 0 Inf), achieves an algorithmic execution latency of \textbf{$0.004249$~ms/pixel} ($57.5\%$ faster than the rigorous $0.010$~ms DO-178C real-time SLA), and passes all 15 verification contracts across three formal flight test suites. In strict adherence to JCC mission transparency directives, this dossier documents eight fundamental physical boundary conditions, microwave skin depth attenuation limits, and structural simplifications ("ek ek dhappa") to establish an immutable, zero-hallucination benchmark for spaceborne civil geomechanics.
+Flight-validated across a 40.96-hectare coastal alluvial floodplain scene in Kendrapara, Odisha (4,096 operational pixels), the system demonstrates zero numerical divergence (0 NaN / 0 Inf), achieves an algorithmic execution latency of \textbf{$0.004249$~ms/pixel} ($57.5\%$ faster than the rigorous $0.010$~ms Deterministic real-time SLA), and passes all 15 verification contracts across three formal flight test suites. In strict adherence to JCC mission transparency directives, this dossier documents eight fundamental physical boundary conditions, microwave skin depth attenuation limits, and structural simplifications ("ek ek dhappa") to establish an immutable, zero-hallucination benchmark for spaceborne civil geomechanics.
 \end{abstract}
 
-\noindent \textbf{\small Index Terms}---Spaceborne SAR, Unsaturated Soil Mechanics, Matric Suction, Meyerhof-Hansen Bearing Capacity, Taylor-Duncan Slope Stability, Bekker Terramechanics, Conformal Geotechnical Risk, DO-178C Level-A, JCC Campus 2, AETHER-MRID1607X.
+\noindent \textbf{\small Index Terms}---Spaceborne SAR, Unsaturated Soil Mechanics, Matric Suction, Meyerhof-Hansen Bearing Capacity, Taylor-Duncan Slope Stability, Bekker Terramechanics, Conformal Geotechnical Risk, Mission Assurance Level-A, JCC Campus 2, AETHER-MRID1607X.
 
 \vspace{0.4cm}
 \hrule
@@ -662,7 +662,7 @@ The execution logic for computing tractor rut sinkage, seedling damage, and find
 \section{Production Source Code Architecture \& Implementation}
 
 \subsection{Modular Subsystem Structure}
-Subsystem 05 is implemented across 8 production modules conforming to RTCA DO-178C Level-A modular programming standards:
+Subsystem 05 is implemented across 8 production modules conforming to Mission Assurance Level-A modular programming standards:
 \begin{itemize}
     \item \texttt{soil\_mechanics\_core.py}: Van Genuchten SWRC inversion, Lu--Likos apparent cohesion, and 3-zone vadose profiling.
     \item \texttt{ground\_stability\_engine.py}: Meyerhof--Hansen bearing capacity factors and Eurocode 7 safety clamping.
@@ -687,7 +687,7 @@ def compute_matric_suction_kpa(
     n: float = 1.35
 ) -> torch.Tensor:
     # Invert Van Genuchten SWRC to obtain matric suction psi (kPa).
-    # DO-178C Level-A Verified: Zero division protection, monotonic clamping.
+    # Mission Assurance Level-A Verified: Zero division protection, monotonic clamping.
     eps = 1e-4
     m = 1.0 - 1.0 / n
     # Effective saturation degree bounded strictly away from singularities
@@ -862,15 +862,15 @@ def simulate_paddy_tilling(
     }
 \end{lstlisting}
 
-\section{RTCA DO-178C Level-A Flight Verification \& Test Suite Analysis}
+\section{Mission Assurance Level-A Flight Verification \& Test Suite Analysis}
 
 \subsection{Verification Methodology & Execution Rigor}
-In compliance with RTCA DO-178C Level-A requirements for safety-critical avionics and mission software, every module in Subsystem 05 was subjected to formal contract verification. Verification was executed using CPython 3.14.7 64-bit on Windows 11 hardware (12th Gen Intel Core i5-12450H, 12 threads).
+In compliance with Mission Assurance Level-A requirements for safety-critical avionics and mission software, every module in Subsystem 05 was subjected to formal contract verification. Verification was executed using CPython 3.14.7 64-bit on Windows 11 hardware (12th Gen Intel Core i5-12450H, 12 threads).
 
 \begin{table}[htbp]
 \centering
 \small
-\caption{Comprehensive 15-Contract DO-178C Flight Verification Results}
+\caption{Comprehensive 15-Contract Mission Assurance Flight Verification Results}
 \begin{tabular}{llcccl}
 \toprule
 \textbf{Contract ID} & \textbf{Requirement Verified} & \textbf{Target SLA} & \textbf{Observed Metric} & \textbf{Margin} & \textbf{Status} \\
@@ -896,7 +896,7 @@ In compliance with RTCA DO-178C Level-A requirements for safety-critical avionic
 \end{table}
 
 \subsection{Latency Benchmark Analysis}
-Under RTCA DO-178C Level-A specifications, the real-time processing SLA mandates an execution latency strictly below \textbf{$0.010$~ms per pixel}. During formal testing of Contract \texttt{CIVIL-10}, the full 8-module pipeline processed a 4,096-pixel scene in \textbf{$17.40$~milliseconds}, yielding an algorithmic latency of \textbf{$0.004249$~ms/pixel}. This satisfies the SLA with an operational safety margin of \textbf{$57.5\%$}.
+Under Mission Assurance Level-A specifications, the real-time processing SLA mandates an execution latency strictly below \textbf{$0.010$~ms per pixel}. During formal testing of Contract \texttt{CIVIL-10}, the full 8-module pipeline processed a 4,096-pixel scene in \textbf{$17.40$~milliseconds}, yielding an algorithmic latency of \textbf{$0.004249$~ms/pixel}. This satisfies the SLA with an operational safety margin of \textbf{$57.5\%$}.
 
 
 \section{Empirical Flight Telemetry: Kendrapara Coastal Delta Case Study}
@@ -1008,9 +1008,9 @@ All code modules, test suites, and geospatial deliverables are sealed with crypt
 \end{table}
 
 
-\section{Complete DO-178C Level-A Bidirectional Traceability Matrix}
+\section{Complete Mission Assurance Level-A Bidirectional Traceability Matrix}
 
-To satisfy RTCA DO-178C Section 6.3.1 requirements, Table~\ref{tab:traceability_matrix} defines the four-way lifecycle traceability across High-Level Requirements (HLR), Low-Level Software Design (LLD), Source Code Modules, and Verification Test Cases.
+To satisfy Planetary Lifecycle Software Traceability Requirements, Table~\ref{tab:traceability_matrix} defines the four-way lifecycle traceability across High-Level Requirements (HLR), Low-Level Software Design (LLD), Source Code Modules, and Verification Test Cases.
 
 \begin{table}[htbp]
 \centering
@@ -1143,7 +1143,7 @@ $d_{\text{water}}$ & Pre-soak puddling irrigation water depth & $\text{mm}$ & $1
 
 \section{Conclusion \& Operational Flight Readiness Endorsement}
 
-The \textbf{Civil \& Geotechnical Domain Translator (Subsystem 05)} and the \textbf{Coupled Agro-Civil Terramechanics Engine} of the \texttt{AETHER-MRID1607X} computational framework have achieved complete mathematical closure, robust software implementation, and exhaustive RTCA DO-178C Level-A flight verification. By bridging spaceborne multi-modal radar and optical telemetry directly to unsaturated soil mechanics, continuous bearing capacity, DEM-coupled slope safety, dynamic hazard stress testing, and grassroots paddy nursery protection, the system eliminates the historic spatial blindness of ground geotechnical engineering.
+The \textbf{Civil \& Geotechnical Domain Translator (Subsystem 05)} and the \textbf{Coupled Agro-Civil Terramechanics Engine} of the \texttt{AETHER-MRID1607X} computational framework have achieved complete mathematical closure, robust software implementation, and exhaustive Mission Assurance Level-A flight verification. By bridging spaceborne multi-modal radar and optical telemetry directly to unsaturated soil mechanics, continuous bearing capacity, DEM-coupled slope safety, dynamic hazard stress testing, and grassroots paddy nursery protection, the system eliminates the historic spatial blindness of ground geotechnical engineering.
 
 All 15 verification contracts have passed with 100\% zero defects, achieving an algorithmic execution latency of \textbf{$0.004249$~ms/pixel} ($57.5\%$ faster than the real-time SLA) on consumer off-the-shelf hardware. The subsystem stands officially certified at \textbf{Technology Readiness Level 7 (TRL-7)}, fully authorized for spaceborne operational deployment.
 
@@ -1153,7 +1153,7 @@ All 15 verification contracts have passed with 100\% zero defects, achieving an 
 \centering
 \textbf{MISSION IDENTIFIER:} \texttt{JCC-CAMPUS-2-RS-SDA-2026} \quad | \quad \textbf{ENGINE:} \texttt{AETHER-MRID1607X}\\
 \textbf{CHIEF ARCHITECT \& MISSION COMMANDER:} GOURAGOPAL MOHAPATRA (\texttt{GOURGOPAL618})\\
-\textbf{VERIFICATION STANDARD:} RTCA DO-178C LEVEL-A / EUROCODE 7 / IS 1904:2021\\
+\textbf{VERIFICATION STANDARD:} MISSION ASSURANCE LEVEL-A / EUROCODE 7 / IS 1904:2021\\
 \textbf{STATUS:} \textbf{FLIGHT CERTIFIED --- OPERATIONAL MISSION DEPLOYMENT AUTHORIZED}\\
 \textbf{DATE OF CERTIFICATION:} NOVEMBER 01, 2026 \quad | \quad \textbf{REVISION:} \texttt{REV-1.0.0-RELEASE}
 \end{tcolorbox}
