@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "🚨 Security Vulnerability Disclosure"
+    url: "https://github.com/GOURGOPAL618/THE_MRIDANSH/blob/main/SECURITY.md"
+    about: "Report security vulnerabilities or telemetry tampering privately to Supreme Mission Command (ggmohapatra.info.2007@gmail.com)."
+  - name: "📜 Sovereign License & Public Benefit Terms"
+    url: "https://github.com/GOURGOPAL618/THE_MRIDANSH/blob/main/LICENSE.md"
+    about: "Review the Jagannath Sovereign Technological Integrity & Restricted Public License (JSTIRPL-v1.0)."

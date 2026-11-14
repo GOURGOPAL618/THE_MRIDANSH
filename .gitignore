@@ -60,3 +60,12 @@ map/
 
 # Scratch Build & Generator Utilities
 scratch/
+
+# Large Uncompressed Video Archives (>100MB GitHub limit - preserved locally)
+8_docs/12_flight_dossiers_and_media/Screen Recording 2026-11-12 194931.mp4
+
+
+# Test & Coverage artifacts
+.coverage
+*.coverage*
+htmlcov/

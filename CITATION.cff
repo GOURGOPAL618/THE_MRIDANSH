@@ -1,0 +1,64 @@
+cff-version: 1.2.0
+message: "If you utilize THE MRIDANSH, the AETHER-MRID1607X computational engine, or its research artifacts in your scientific work, please cite it using the metadata below."
+title: "THE MRIDANSH: AETHER-MRID1607X Planetary Hydro-Terramorphic Engine"
+abstract: >-
+  THE MRIDANSH (AETHER-MRID1607X) is an aerospace-certified, physics-guided multi-modal
+  Earth observation digital twin designed to estimate the vadose-zone state of soil
+  from multi-spectral and synthetic aperture radar (SAR) satellite telemetry. Operating
+  under RTCA DO-178C Level-A deterministic invariants, the system couples the nonlinear
+  1D/2D Richards partial differential equation (PDE) with deep Physics-Informed Neural
+  Networks (PINN), Ensemble Kalman Filtering (EnKF), and Saxton-Rawls pedotransfer models.
+  The engine powers two downstream sovereign domains: precision Variable-Rate Irrigation
+  (VRI) for smallholder farmer welfare in agronomy, and Meyerhof-Bekker terramechanics
+  for heavy civil machine trafficability and slope liquefaction risk.
+authors:
+  - family-names: "Mohapatra"
+    given-names: "Gouragopal"
+    affiliation: "Jagannath Command Center (JCC) - Campus 2 (RS-SDA Division), Balasore / Bhadrak, Odisha, Bharat"
+    email: "ggmohapatra.info.2007@gmail.com"
+version: "1.0.0-TRL7-OPERATIONAL"
+date-released: "2026-11-14"
+license-url: "https://github.com/GOURGOPAL618/THE_MRIDANSH/blob/main/LICENSE.md"
+repository-code: "https://github.com/GOURGOPAL618/THE_MRIDANSH"
+url: "https://the-mridansh-official-website.vercel.app/"
+keywords:
+  - "remote sensing"
+  - "synthetic aperture radar"
+  - "sentinel-1"
+  - "sentinel-2"
+  - "isro bhuvan"
+  - "soil moisture"
+  - "physics-informed neural networks"
+  - "richards equation"
+  - "ensemble kalman filter"
+  - "precision agronomy"
+  - "terramechanics"
+  - "variable rate irrigation"
+  - "earth observation"
+  - "vadose zone"
+  - "jagannath command center"
+  - "odisha"
+  - "bharat"
+type: software
+contact:
+  - family-names: "Mohapatra"
+    given-names: "Gouragopal"
+    affiliation: "Jagannath Command Center (JCC) - Campus 2 (RS-SDA Division)"
+    email: "ggmohapatra.info.2007@gmail.com"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Mohapatra"
+      given-names: "Gouragopal"
+      affiliation: "Jagannath Command Center (JCC) - Campus 2 (RS-SDA Division), Balasore / Bhadrak, Odisha, Bharat"
+  title: "THE MRIDANSH: A Physics-Guided Earth Observation Digital Twin for Vadose Zone Hydrodynamics and Terramechanics"
+  journal: "Jagannath Command Center Spaceborne Research Monograph Series"
+  year: 2026
+  month: 11
+  volume: "1"
+  issue: "TRL-7"
+  pages: "1-1268"
+  url: "https://github.com/GOURGOPAL618/THE_MRIDANSH"
+  institution:
+    name: "Jagannath Command Center (JCC) - Campus 2 (RS-SDA Division)"
+    address: "Balasore / Bhadrak Border Sanctum, Odisha, Bharat"
